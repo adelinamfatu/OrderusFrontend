@@ -12,12 +12,16 @@ using Xamarin.Forms.Xaml;
 namespace AppFrontend.ContentPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ServicesCategoriesPage : Xamarin.Forms.TabbedPage
+    public partial class MenuPage : Xamarin.Forms.TabbedPage
     {
-        public ServicesCategoriesPage()
+        public MenuPage()
         {
             InitializeComponent();
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+            //this.BackgroundColor = Color.FromHex("#7e8fa9");
+            this.BarBackgroundColor = Color.FromHex("#26364d");
+            this.BarTextColor = Color.Gray;
+            this.SelectedTabColor = Color.White;
         }
     }
 }

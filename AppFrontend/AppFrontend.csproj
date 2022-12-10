@@ -16,14 +16,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="ContentPages\ServicesCategoriesPage.xaml.cs">
-      <DependentUpon>ServicesCategoriesPage.xaml</DependentUpon>
+    <Compile Update="ContentPages\MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="ContentPages\ServicesCategoriesPage.xaml">
+    <EmbeddedResource Update="ContentPages\MenuPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

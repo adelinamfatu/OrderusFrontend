@@ -11,7 +11,7 @@ namespace AppFrontend
         {
             InitializeComponent();
 
-            MainPage = new ServicesCategoriesPage();
+            MainPage = new MenuPage();
         }
 
         protected override void OnStart()
