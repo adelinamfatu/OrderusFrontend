@@ -17,6 +17,12 @@ namespace AppFrontend.ContentPages
         public MenuPage()
         {
             InitializeComponent();
+
+            TabStyling();
+        }
+
+        public void TabStyling()
+        {
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             //this.BackgroundColor = Color.FromHex("#7e8fa9");
             this.BarBackgroundColor = Color.FromHex("#26364d");

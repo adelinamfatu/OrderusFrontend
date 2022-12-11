@@ -5,11 +5,11 @@
             xmlns:local="clr-namespace:AppFrontend.ContentPages">
   <!--Pages can be added as references or inline-->
   <local:SearchPage Title="Search" 
-               IconImageSource="/Resources/drawable/search.png"/>
+               IconImageSource="search.png"/>
   <local:BasketPage Title="Basket" 
-               IconImageSource="/Resources/drawable/basket.png"/>
+               IconImageSource="basket.png"/>
   <local:HistoryPage Title="History" 
-               IconImageSource="/Resources/drawable/activity_history.png"/>
+               IconImageSource="activity_history.png"/>
   <local:ProfilePage Title="Account" 
-               IconImageSource="/Resources/drawable/female_user.png"/>
+               IconImageSource="female_user.png"/>
 </TabbedPage>
