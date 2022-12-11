@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppFrontend.ContentPages.MenuPage">
+             x:Class="AppFrontend.ContentPages.MenuPage"
+            xmlns:local="clr-namespace:AppFrontend.ContentPages">
   <!--Pages can be added as references or inline-->
-  <ContentPage Title="Search" 
+  <local:SearchPage Title="Search" 
                IconImageSource="/Resources/drawable/search.png"/>
-  <ContentPage Title="Basket" 
+  <local:BasketPage Title="Basket" 
                IconImageSource="/Resources/drawable/basket.png"/>
-  <ContentPage Title="History" 
+  <local:HistoryPage Title="History" 
                IconImageSource="/Resources/drawable/activity_history.png"/>
-  <ContentPage Title="Account" 
+  <local:ProfilePage Title="Account" 
                IconImageSource="/Resources/drawable/female_user.png"/>
 </TabbedPage>

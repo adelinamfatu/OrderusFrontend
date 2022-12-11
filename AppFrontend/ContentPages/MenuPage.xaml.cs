@@ -20,8 +20,8 @@ namespace AppFrontend.ContentPages
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             //this.BackgroundColor = Color.FromHex("#7e8fa9");
             this.BarBackgroundColor = Color.FromHex("#26364d");
-            this.BarTextColor = Color.Gray;
             this.SelectedTabColor = Color.White;
+            this.UnselectedTabColor = Color.Gray;
         }
     }
 }
