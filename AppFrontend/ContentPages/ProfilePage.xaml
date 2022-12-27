@@ -4,9 +4,23 @@
              x:Class="AppFrontend.ContentPages.ProfilePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="This is your profile!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame CornerRadius="100" 
+                HeightRequest="100"
+                WidthRequest="100"
+                HorizontalOptions="Center"
+                Padding="0"
+                IsClippedToBounds="True">
+                    <Image Source="female_user.jpg" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+            </Frame>
+            <Label Text="Numele meu"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <Button Text="Informatii cont"/>
+            <Button Text="Adresa"/>
+            <Button Text="Carduri"/>
+            <Button Text="Oferte si cupoane"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
