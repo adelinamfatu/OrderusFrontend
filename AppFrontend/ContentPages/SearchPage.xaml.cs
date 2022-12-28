@@ -22,15 +22,13 @@ namespace AppFrontend.ContentPages
         public SearchPage()
         {
             InitializeComponent();
-            categories.Add(new CategoryDTO { Name = "Hehe" });
-            categories.Add(new CategoryDTO { Name = "Hehehe" });
-            //retrieveCategories();
-            categoriesListView.ItemsSource = categories;
+            this.BindingContext = this;
+            retrieveCategories();
         }
 
         private async void retrieveCategories()
         {
-            string url = "http://172.18.96.1:9000/api/services/categories";
+            string url = "http://192.168.2.39:9000/api/services/categories";
 
             using (HttpClient client = new HttpClient())
             {
