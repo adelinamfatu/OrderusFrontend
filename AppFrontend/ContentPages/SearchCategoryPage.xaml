@@ -1,18 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppFrontend.ContentPages.SearchPage">
-    <ListView x:Name="categoriesListView" ItemsSource="{Binding Categories}" HorizontalOptions="Center" 
+             x:Class="AppFrontend.ContentPages.SearchCategoryPage">
+
+    <ListView x:Name="categoriesListView" ItemsSource="{Binding Categories}" HorizontalOptions="Center" VerticalOptions="Center"
               RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <StackLayout Orientation="Vertical" Margin="10,0">
                         <Button BackgroundColor="#26364d"
-                                    HorizontalOptions="Center" VerticalOptions="Center"
-                                    CornerRadius="60" WidthRequest="75" HeightRequest="75"/>
-                        <Label Text="{Binding Name}" HorizontalOptions="Center"
-                                    TextColor="#26364d" FontSize="20"/>
+                                HorizontalOptions="Center" VerticalOptions="Center"
+                                CornerRadius="10" WidthRequest="150" HeightRequest="50"
+                                Text="{Binding Name}"
+                                TextColor="White"
+                                Clicked="OpenServiceSearchPage"
+                                Margin="0,75,0,0"/>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

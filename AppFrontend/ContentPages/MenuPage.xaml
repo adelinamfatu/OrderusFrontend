@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppFrontend.ContentPages.MenuPage"
             xmlns:local="clr-namespace:AppFrontend.ContentPages">
-  <!--Pages can be added as references or inline-->
-  <local:SearchPage Title="Cauta" 
+
+  <local:SearchCategoryPage Title="Cauta" 
                IconImageSource="search.png"/>
   <local:BasketPage Title="Cos" 
                IconImageSource="basket.png"/>
