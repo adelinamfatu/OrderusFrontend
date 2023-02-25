@@ -43,6 +43,7 @@ namespace AppFrontend.ContentPages
                 }
             }
         }
+
         private void BuildCategorySearch(List<CategoryDTO> categoriesJSON)
         {
             foreach(var category in categoriesJSON)
@@ -75,11 +76,9 @@ namespace AppFrontend.ContentPages
         private void OpenServiceSearchPage(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            /*StackLayout listViewItem = (StackLayout)button.Parent;
-            Label label = (Label)listViewItem.Children[0];
-            var text = label.Text;
+            var text = button.Text;
             CategoryDTO category = Categories.FirstOrDefault(c => c.Name == text);
-            RetrieveServicesByCategory(category.ID);*/
+            RetrieveServicesByCategory(category.ID);
         }
     }
 }

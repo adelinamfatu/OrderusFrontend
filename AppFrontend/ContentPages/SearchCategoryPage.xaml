@@ -8,14 +8,16 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Orientation="Vertical" Margin="10,0">
+                    <StackLayout Orientation="Vertical" Margin="5,5">
                         <Button BackgroundColor="#26364d"
-                                HorizontalOptions="Center" VerticalOptions="Center"
-                                CornerRadius="10" WidthRequest="150" HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                CornerRadius="20" 
+                                HeightRequest="150"
                                 Text="{Binding Name}"
                                 TextColor="White"
+                                FontSize="30"
                                 Clicked="OpenServiceSearchPage"
-                                Margin="0,75,0,0"/>
+                                />
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

@@ -49,4 +49,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\AplicatieDeComenziServiciiBackend\App.DTO\App.DTO.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ContentPages\Resources\" />
+  </ItemGroup>
 </Project>

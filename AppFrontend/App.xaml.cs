@@ -11,7 +11,10 @@ namespace AppFrontend
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MenuPage());
+            MainPage = new NavigationPage(new MenuPage())
+            {
+                BarBackgroundColor = Color.FromHex("#26364d")
+            };
         }
 
         protected override void OnStart()

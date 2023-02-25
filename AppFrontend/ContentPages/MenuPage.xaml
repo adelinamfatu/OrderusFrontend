@@ -4,6 +4,7 @@
              x:Class="AppFrontend.ContentPages.MenuPage"
             xmlns:local="clr-namespace:AppFrontend.ContentPages"
             Title="Orderus">
+    
     <TabbedPage.ToolbarItems>
         <ToolbarItem Text="Orderus"
                  IconImageSource="Icon.png"
