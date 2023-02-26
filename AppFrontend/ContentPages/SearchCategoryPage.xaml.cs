@@ -51,7 +51,7 @@ namespace AppFrontend.ContentPages
                 categories.Add(new CategoryDTO 
                 { 
                     ID = category.ID,
-                    Name = category.Name 
+                    Name = category.Name
                 });
             }
         }

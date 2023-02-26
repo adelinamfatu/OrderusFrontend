@@ -11,6 +11,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Categories\Afaceri.jpeg" />
+    <None Remove="Resources\Categories\Afaceri.jpg" />
+    <None Remove="Resources\Categories\Casa.jpg" />
+    <None Remove="Resources\Categories\Evenimente.jpg" />
+    <None Remove="Resources\Categories\Meditatii.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Categories\Afaceri.jpg" />
+    <EmbeddedResource Include="Resources\Categories\Casa.jpg" />
+    <EmbeddedResource Include="Resources\Categories\Evenimente.jpg" />
+    <EmbeddedResource Include="Resources\Categories\Meditatii.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
@@ -52,5 +67,9 @@
 
   <ItemGroup>
     <Folder Include="ContentPages\Resources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Categories\Afaceri.jpeg" />
   </ItemGroup>
 </Project>

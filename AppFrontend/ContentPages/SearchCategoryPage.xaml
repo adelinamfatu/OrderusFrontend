@@ -1,26 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppFrontend.ContentPages.SearchCategoryPage">
+             x:Class="AppFrontend.ContentPages.SearchCategoryPage"
+             xmlns:conv="clr-namespace:AppFrontend.Convertors">
 
+    <ContentPage.Resources>
+        <conv:ImageConverter x:Key="ImageConverter" />
+    </ContentPage.Resources>
     <ListView x:Name="categoriesListView" ItemsSource="{Binding Categories}" HorizontalOptions="Center" VerticalOptions="Center"
               RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <ViewCell>
+                <ViewCell IsEnabled="false">
                     <StackLayout Orientation="Vertical" Margin="5,5">
-                        <Button BackgroundColor="#26364d"
-                                HorizontalOptions="FillAndExpand"
-                                CornerRadius="20" 
+                        <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <ImageButton
+                                Source="{Binding Name, Converter={StaticResource ImageConverter}}"
+                                Grid.Row="0"
+                                CornerRadius="20"
                                 HeightRequest="150"
+                                Clicked="OpenServiceSearchPage"
+                                IsEnabled="True"
+                                Aspect="AspectFill"
+                                />
+                            <Label HorizontalOptions="Center" VerticalOptions="Center"
                                 Text="{Binding Name}"
                                 TextColor="White"
+                                TextTransform="Uppercase"
+                                FontAttributes="Bold"
                                 FontSize="30"
-                                Clicked="OpenServiceSearchPage"
+                                Grid.Row="0"
                                 />
+                        </Grid>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
 </ContentPage>
+    
