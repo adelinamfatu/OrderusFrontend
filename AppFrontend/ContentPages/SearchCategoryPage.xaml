@@ -11,7 +11,7 @@
               RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <ViewCell IsEnabled="false">
+                <ViewCell>
                     <StackLayout Orientation="Vertical" Margin="5,5">
                         <Grid HorizontalOptions="Center" VerticalOptions="Center">
                             <Grid.RowDefinitions>
@@ -33,6 +33,7 @@
                                 FontAttributes="Bold"
                                 FontSize="30"
                                 Grid.Row="0"
+                                InputTransparent="True"   
                                 />
                         </Grid>
                     </StackLayout>

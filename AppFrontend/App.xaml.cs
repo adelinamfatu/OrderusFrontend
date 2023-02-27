@@ -16,17 +16,5 @@ namespace AppFrontend
                 BarBackgroundColor = Color.FromHex("#26364d")
             };
         }
-
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
-        }
     }
 }

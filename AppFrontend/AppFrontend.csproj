@@ -66,10 +66,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ContentPages\Resources\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Resources\Categories\Afaceri.jpeg" />
   </ItemGroup>
 </Project>

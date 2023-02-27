@@ -56,29 +56,14 @@ namespace AppFrontend.ContentPages
             }
         }
 
-        private async void RetrieveServicesByCategory(int categoryID)
-        {
-            string url = "http://192.168.2.39:9000/api/services/categories/" + categoryID;
-
-            using (HttpClient client = new HttpClient())
-            {
-                HttpResponseMessage response = await client.GetAsync(url);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    string json = await response.Content.ReadAsStringAsync();
-                    List<ServiceDTO> servicesJSON = JsonConvert.DeserializeObject<List<ServiceDTO>>(json);
-                    
-                }
-            }
-        }
-
         private void OpenServiceSearchPage(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            var text = button.Text;
+            ImageButton button = (ImageButton)sender;
+            var parentGrid = (Grid)button.Parent;
+            var label = (Label)parentGrid.Children.FirstOrDefault(l => l is Label);
+            var text = label.Text;
             CategoryDTO category = Categories.FirstOrDefault(c => c.Name == text);
-            RetrieveServicesByCategory(category.ID);
+            Navigation.PushAsync(new SearchServicePage(category.ID));
         }
     }
 }
