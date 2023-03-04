@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -14,13 +15,16 @@ using Xamarin.Forms.Xaml;
 namespace AppFrontend.ContentPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SearchCategoryPage : ContentPage
+    public partial class SearchCategoryPage : ContentPage, INotifyPropertyChanged
     {
         ObservableCollection<CategoryDTO> categories = new ObservableCollection<CategoryDTO>();
         public ObservableCollection<CategoryDTO> Categories { get { return categories; } }
-
+        public bool LabelVisible { get; set; }
+        public bool ListViewVisible { get; set; }
         public SearchCategoryPage()
         {
+            ListViewVisible = true;
+            LabelVisible = false;
             InitializeComponent();
             categoriesListView.SelectedItem = null;
             this.BindingContext = this;
@@ -63,7 +67,11 @@ namespace AppFrontend.ContentPages
             var label = (Label)parentGrid.Children.FirstOrDefault(l => l is Label);
             var text = label.Text;
             CategoryDTO category = Categories.FirstOrDefault(c => c.Name == text);
-            Navigation.PushAsync(new SearchServicePage(category.ID));
+            LabelVisible = true;
+            ListViewVisible = false;
+            OnPropertyChanged("LabelVisible");
+            OnPropertyChanged("ListViewVisible");
+            //Navigation.PushModalAsync(new SearchServicePage(category.ID));
         }
     }
 }

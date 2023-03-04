@@ -7,17 +7,18 @@
     <ContentPage.Resources>
         <conv:ImageConverter x:Key="ImageConverter" />
     </ContentPage.Resources>
-    <ListView x:Name="categoriesListView" ItemsSource="{Binding Categories}" HorizontalOptions="Center" VerticalOptions="Center"
-              RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Vertical" Margin="5,5">
-                        <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <ImageButton
+    <StackLayout Orientation="Vertical">
+        <ListView x:Name="categoriesListView" ItemsSource="{Binding Categories}" HorizontalOptions="Center" VerticalOptions="Center"
+              RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None" IsVisible="{Binding ListViewVisible}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Margin="5,5">
+                            <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <ImageButton
                                 Source="{Binding Name, Converter={StaticResource ImageConverter}}"
                                 Grid.Row="0"
                                 CornerRadius="20"
@@ -26,7 +27,7 @@
                                 IsEnabled="True"
                                 Aspect="AspectFill"
                                 />
-                            <Label HorizontalOptions="Center" VerticalOptions="Center"
+                                <Label HorizontalOptions="Center" VerticalOptions="Center"
                                 Text="{Binding Name}"
                                 TextColor="White"
                                 TextTransform="Uppercase"
@@ -35,11 +36,13 @@
                                 Grid.Row="0"
                                 InputTransparent="True"   
                                 />
-                        </Grid>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label Text="Jjsd" IsVisible="{Binding LabelVisible}"/>
+    </StackLayout>
 </ContentPage>
     
