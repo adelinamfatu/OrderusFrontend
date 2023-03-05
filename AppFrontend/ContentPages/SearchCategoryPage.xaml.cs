@@ -67,11 +67,11 @@ namespace AppFrontend.ContentPages
             var label = (Label)parentGrid.Children.FirstOrDefault(l => l is Label);
             var text = label.Text;
             CategoryDTO category = Categories.FirstOrDefault(c => c.Name == text);
-            LabelVisible = true;
+            /*LabelVisible = true;
             ListViewVisible = false;
             OnPropertyChanged("LabelVisible");
-            OnPropertyChanged("ListViewVisible");
-            //Navigation.PushModalAsync(new SearchServicePage(category.ID));
+            OnPropertyChanged("ListViewVisible");*/
+            Navigation.PushAsync(new SearchServicePage(category.ID));
         }
     }
 }
