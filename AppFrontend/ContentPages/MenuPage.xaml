@@ -3,12 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppFrontend.ContentPages.MenuPage"
             xmlns:local="clr-namespace:AppFrontend.ContentPages"
-            Title="Orderus">
+            Title="Orderus"
+            BackgroundColor="#4B596C">
 
     <NavigationPage Title="Cauta" IconImageSource="search.png" BarBackgroundColor="#26364d">
         <x:Arguments Title="Orderus">
             <local:SearchCategoryPage />
         </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+        </NavigationPage.ToolbarItems>
     </NavigationPage>
     <local:BasketPage Title="Cos" 
                IconImageSource="basket.png"/>

@@ -19,12 +19,8 @@ namespace AppFrontend.ContentPages
     {
         ObservableCollection<CategoryDTO> categories = new ObservableCollection<CategoryDTO>();
         public ObservableCollection<CategoryDTO> Categories { get { return categories; } }
-        public bool LabelVisible { get; set; }
-        public bool ListViewVisible { get; set; }
         public SearchCategoryPage()
         {
-            ListViewVisible = true;
-            LabelVisible = false;
             InitializeComponent();
             categoriesListView.SelectedItem = null;
             this.BindingContext = this;
@@ -67,10 +63,6 @@ namespace AppFrontend.ContentPages
             var label = (Label)parentGrid.Children.FirstOrDefault(l => l is Label);
             var text = label.Text;
             CategoryDTO category = Categories.FirstOrDefault(c => c.Name == text);
-            /*LabelVisible = true;
-            ListViewVisible = false;
-            OnPropertyChanged("LabelVisible");
-            OnPropertyChanged("ListViewVisible");*/
             Navigation.PushAsync(new SearchServicePage(category.ID));
         }
     }
