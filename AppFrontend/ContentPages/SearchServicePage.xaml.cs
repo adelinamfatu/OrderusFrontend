@@ -25,7 +25,7 @@ namespace AppFrontend.ContentPages
         {
             InitializeComponent();
             this.BindingContext = this;
-            services.Add(new ServiceDTO
+            /*services.Add(new ServiceDTO
             {
                 ID = 1,
                 Name = "Tamplarie"
@@ -43,9 +43,14 @@ namespace AppFrontend.ContentPages
             services.Add(new ServiceDTO
             {
                 ID = 4,
-                Name = "Reparatii"
+                Name = "Reparare"
             });
-            //RetrieveServicesByCategory(categoryId);
+            services.Add(new ServiceDTO
+            {
+                ID = 5,
+                Name = "Curatare"
+            });*/
+            RetrieveServicesByCategory(categoryId);
         }
 
         private void BuildServiceSearch(List<ServiceDTO> servicesJSON)

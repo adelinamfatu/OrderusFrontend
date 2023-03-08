@@ -11,18 +11,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Categories\Afaceri.jpeg" />
-    <None Remove="Resources\Categories\Afaceri.jpg" />
-    <None Remove="Resources\Categories\Casa.jpg" />
-    <None Remove="Resources\Categories\Evenimente.jpg" />
-    <None Remove="Resources\Categories\Meditatii.jpg" />
+    <None Remove="Resources\ImageIcons\Afaceri.jpeg" />
+    <None Remove="Resources\ImageIcons\Afaceri.jpg" />
+    <None Remove="Resources\ImageIcons\Casa.jpg" />
+    <None Remove="Resources\ImageIcons\Dulgherie.jpg" />
+    <None Remove="Resources\ImageIcons\Evenimente.jpg" />
+    <None Remove="Resources\ImageIcons\Meditatii.jpg" />
+    <None Remove="Resources\ImageIcons\Montare.jpg" />
+    <None Remove="Resources\ImageIcons\Reparare.jpg" />
+    <None Remove="Resources\ImageIcons\Tamplarie.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Categories\Afaceri.jpg" />
-    <EmbeddedResource Include="Resources\Categories\Casa.jpg" />
-    <EmbeddedResource Include="Resources\Categories\Evenimente.jpg" />
-    <EmbeddedResource Include="Resources\Categories\Meditatii.jpg" />
+    <EmbeddedResource Include="Resources\ImageIcons\Afaceri.jpg" />
+    <EmbeddedResource Include="Resources\ImageIcons\Casa.jpg" />
+    <EmbeddedResource Include="Resources\ImageIcons\Dulgherie.jpg" />
+    <EmbeddedResource Include="Resources\ImageIcons\Evenimente.jpg" />
+    <EmbeddedResource Include="Resources\ImageIcons\Meditatii.jpg" />
+    <EmbeddedResource Include="Resources\ImageIcons\Montare.jpg" />
+    <EmbeddedResource Include="Resources\ImageIcons\Reparare.jpg" />
+    <EmbeddedResource Include="Resources\ImageIcons\Tamplarie.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,6 +65,9 @@
     <EmbeddedResource Update="ContentPages\SearchCategoryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="ContentPages\SearchCompaniesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="ContentPages\SearchServicePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -67,6 +78,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Categories\Afaceri.jpeg" />
+    <Resource Include="Resources\ImageIcons\Afaceri.jpeg" />
   </ItemGroup>
 </Project>
