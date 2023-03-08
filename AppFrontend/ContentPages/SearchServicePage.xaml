@@ -4,21 +4,20 @@
              x:Class="AppFrontend.ContentPages.SearchServicePage"
              Title="Orderus">
 
-    <ListView x:Name="servicesListView" ItemsSource="{Binding Services}" HorizontalOptions="Center" VerticalOptions="Center"
-              RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
-        <ListView.ItemTemplate>
+    <FlexLayout x:Name="servicesLayout" BindableLayout.ItemsSource="{Binding Services}" 
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="StartAndExpand">
+        <BindableLayout.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Orientation="Vertical" Margin="10,0">
-                        <Button BackgroundColor="#26364d"
+                    <Button BackgroundColor="#26364d"
                                 HorizontalOptions="Center" VerticalOptions="Center"
-                                CornerRadius="10" WidthRequest="150" HeightRequest="50"
+                                CornerRadius="10" WidthRequest="100" HeightRequest="100"
                                 Text="{Binding Name}"
                                 TextColor="White"
-                                Margin="0,75,0,0"/>
-                    </StackLayout>
+                                Margin="5"/>
                 </ViewCell>
             </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+        </BindableLayout.ItemTemplate>
+    </FlexLayout>
 </ContentPage>

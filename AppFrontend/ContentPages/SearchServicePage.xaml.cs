@@ -24,7 +24,7 @@ namespace AppFrontend.ContentPages
         public SearchServicePage(int categoryId)
         {
             InitializeComponent();
-            servicesListView.SelectedItem = null;
+            //servicesCollectionView.SelectedItem = null;
             this.BindingContext = this;
             RetrieveServicesByCategory(categoryId);
         }
