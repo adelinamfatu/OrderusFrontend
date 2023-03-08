@@ -24,9 +24,28 @@ namespace AppFrontend.ContentPages
         public SearchServicePage(int categoryId)
         {
             InitializeComponent();
-            //servicesCollectionView.SelectedItem = null;
             this.BindingContext = this;
-            RetrieveServicesByCategory(categoryId);
+            services.Add(new ServiceDTO
+            {
+                ID = 1,
+                Name = "Tamplarie"
+            });
+            services.Add(new ServiceDTO
+            {
+                ID = 2,
+                Name = "Dulgherie"
+            });
+            services.Add(new ServiceDTO
+            {
+                ID = 3,
+                Name = "Montare"
+            });
+            services.Add(new ServiceDTO
+            {
+                ID = 4,
+                Name = "Reparatii"
+            });
+            //RetrieveServicesByCategory(categoryId);
         }
 
         private void BuildServiceSearch(List<ServiceDTO> servicesJSON)

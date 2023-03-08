@@ -24,7 +24,27 @@ namespace AppFrontend.ContentPages
             InitializeComponent();
             categoriesListView.SelectedItem = null;
             this.BindingContext = this;
-            RetrieveCategories();
+            categories.Add(new CategoryDTO
+            {
+                ID = 1,
+                Name = "Casa"
+            });
+            categories.Add(new CategoryDTO
+            {
+                ID = 2,
+                Name = "Evenimente"
+            });
+            categories.Add(new CategoryDTO
+            {
+                ID = 3,
+                Name = "Meditatii"
+            });
+            categories.Add(new CategoryDTO
+            {
+                ID = 4,
+                Name = "Afaceri"
+            });
+            //RetrieveCategories();
         }
 
         private async void RetrieveCategories()
