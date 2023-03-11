@@ -29,6 +29,7 @@
                                 WidthRequest="150"
                                 HeightRequest="150"
                                 Aspect="AspectFill"
+                                Clicked="OpenCompanySearchPage"
                             />
                             <Label HorizontalOptions="Center" VerticalOptions="Center"
                                 Text="{Binding Name}"

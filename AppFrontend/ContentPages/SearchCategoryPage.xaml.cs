@@ -1,4 +1,5 @@
 ﻿using App.DTO;
+using AppFrontend.Resources.Files;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,8 @@ namespace AppFrontend.ContentPages
 
         private async void RetrieveCategories()
         {
-            string url = "http://192.168.2.39:9000/api/services/categories";
+            //string url = "http://192.168.2.39:9000/api/services/categories";
+            string url = RestResources.ConnectionURL + RestResources.CategoriesURL;
 
             using (HttpClient client = new HttpClient())
             {

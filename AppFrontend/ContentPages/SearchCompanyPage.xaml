@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFrontend.ContentPages.SearchCompanyPage"
+             Title="Orderus">
+
+    <ListView x:Name="companiesListView" ItemsSource="{Binding Companies}" HorizontalOptions="Center" VerticalOptions="Center"
+              RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Vertical" Margin="5,5">
+                        <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <ImageButton
+                                Source="{Binding Name, Converter={StaticResource ImageConverter}}"
+                                Grid.Row="0"
+                                CornerRadius="20"
+                                HeightRequest="150"
+                                IsEnabled="True"
+                                Aspect="AspectFill"
+                            />
+                            <Label HorizontalOptions="Center" VerticalOptions="Center"
+                                Text="{Binding Name}"
+                                TextColor="White"
+                                TextTransform="Uppercase"
+                                FontAttributes="Bold"
+                                FontSize="30"
+                                Grid.Row="0"
+                                InputTransparent="True"   
+                            />
+                        </Grid>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

@@ -1,4 +1,5 @@
 ﻿using App.DTO;
+using AppFrontend.Resources.Files;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -67,7 +68,7 @@ namespace AppFrontend.ContentPages
 
         private async void RetrieveServicesByCategory(int categoryID)
         {
-            string url = "http://192.168.2.39:9000/api/services/categories/" + categoryID;
+            string url = RestResources.ConnectionURL + RestResources.CategoriesURL + categoryID;
 
             using (HttpClient client = new HttpClient())
             {
@@ -80,6 +81,16 @@ namespace AppFrontend.ContentPages
                     BuildServiceSearch(servicesJSON);
                 }
             }
+        }
+
+        private void OpenCompanySearchPage(object sender, EventArgs e)
+        {
+            ImageButton button = (ImageButton)sender;
+            var parentGrid = (Grid)button.Parent;
+            var label = (Label)parentGrid.Children.FirstOrDefault(l => l is Label);
+            var text = label.Text;
+            ServiceDTO service = Services.FirstOrDefault(c => c.Name == text);
+            Navigation.PushAsync(new SearchCompanyPage(service.ID));
         }
     }
 }

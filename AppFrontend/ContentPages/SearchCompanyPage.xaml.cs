@@ -10,11 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace AppFrontend.ContentPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SearchCompaniesPage : ContentPage
+    public partial class SearchCompanyPage : ContentPage
     {
-        public SearchCompaniesPage()
+        public SearchCompanyPage(int serviceId)
         {
             InitializeComponent();
+            this.BindingContext = this;
         }
     }
 }
