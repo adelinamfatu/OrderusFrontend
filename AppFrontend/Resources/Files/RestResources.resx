@@ -120,7 +120,10 @@
   <data name="CategoriesURL" xml:space="preserve">
     <value>/api/services/categories/</value>
   </data>
+  <data name="CompaniesURL" xml:space="preserve">
+    <value>/api/companies/services/</value>
+  </data>
   <data name="ConnectionURL" xml:space="preserve">
-    <value>http://192.168.1.15:9000</value>
+    <value>http://192.168.2.39:9000</value>
   </data>
 </root>
