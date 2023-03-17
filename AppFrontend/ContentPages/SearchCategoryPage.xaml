@@ -7,7 +7,7 @@
              >
 
     <ContentPage.Resources>
-        <conv:ImageConverter x:Key="ImageConverter" />
+        <conv:ImageResourceConverter x:Key="ImageResourceConverter" />
     </ContentPage.Resources>
     <ListView x:Name="categoriesListView" ItemsSource="{Binding Categories}" HorizontalOptions="Center" VerticalOptions="Center"
               RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
@@ -20,7 +20,7 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <ImageButton
-                                Source="{Binding Name, Converter={StaticResource ImageConverter}}"
+                                Source="{Binding Name, Converter={StaticResource ImageResourceConverter}}"
                                 Grid.Row="0"
                                 CornerRadius="20"
                                 HeightRequest="150"

@@ -24,7 +24,7 @@ namespace AppFrontend.ContentPages
         {
             InitializeComponent();
             this.BindingContext = this;
-            companies.Add(new CompanyDTO
+            /*companies.Add(new CompanyDTO
             {
                 ID = 1,
                 Name = "Reparatot",
@@ -35,8 +35,8 @@ namespace AppFrontend.ContentPages
                 ID = 2,
                 Name = "Reparathor",
                 Logo = "reparathor.ro/wp-content/uploads/2021/01/cropped-hammer-3-1.png"
-            });
-            //RetrieveCompaniesByService(serviceId);
+            });*/
+            RetrieveCompaniesByService(serviceId);
         }
 
         private async void RetrieveCompaniesByService(int serviceId)

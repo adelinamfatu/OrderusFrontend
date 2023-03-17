@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace AppFrontend.Convertors
 {
-    public class ImageConverter : IValueConverter
+    public class ImageResourceConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

@@ -2,8 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppFrontend.ContentPages.SearchCompanyPage"
+             xmlns:conv="clr-namespace:AppFrontend.Converters"
              Title="Orderus">
 
+    <ContentPage.Resources>
+        <conv:ImageUriConverter x:Key="ImageUriConverter" />
+    </ContentPage.Resources>
     <ListView x:Name="companiesListView" ItemsSource="{Binding Companies}" HasUnevenRows="True" SeparatorVisibility="None">
         <ListView.ItemTemplate>
             <DataTemplate>
@@ -18,7 +22,7 @@
                                 <RowDefinition Height="75" />
                             </Grid.RowDefinitions>
                             <Image
-                                Source="{Binding Logo}"
+                                Source="{Binding Logo, Converter={StaticResource ImageUriConverter}}"
                                 HeightRequest="50"
                                 WidthRequest="50"
                                 Aspect="AspectFit"
