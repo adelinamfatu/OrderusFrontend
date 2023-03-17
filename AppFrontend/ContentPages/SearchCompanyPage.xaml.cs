@@ -68,5 +68,11 @@ namespace AppFrontend.ContentPages
                 });
             }
         }
+
+        private void OpenCompanyPage(object sender, SelectedItemChangedEventArgs e)
+        {
+            var company = (CompanyDTO)e.SelectedItem;
+            Navigation.PushAsync(new CompanyPage(company));
+        }
     }
 }
