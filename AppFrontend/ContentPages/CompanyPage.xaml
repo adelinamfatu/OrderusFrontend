@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppFrontend.ContentPages.CompanyPage"
              Title="Orderus">
-    
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Name}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+    <StackLayout>
+        <Label Text="{Binding Company.Name}"
+               BackgroundColor="White"
+               VerticalOptions="CenterAndExpand" 
+               HorizontalOptions="CenterAndExpand" />
+    </StackLayout>
 </ContentPage>

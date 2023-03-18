@@ -61,7 +61,7 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /api/services/categories/.
+        ///   Looks up a localized string similar to services/categories/.
         /// </summary>
         internal static string CategoriesURL {
             get {
@@ -70,7 +70,16 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /api/companies/services/.
+        ///   Looks up a localized string similar to comments/.
+        /// </summary>
+        internal static string CommentsURL {
+            get {
+                return ResourceManager.GetString("CommentsURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to companies/services/.
         /// </summary>
         internal static string CompaniesURL {
             get {
@@ -79,7 +88,16 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.39:9000.
+        ///   Looks up a localized string similar to details/.
+        /// </summary>
+        internal static string CompanyDetailsURL {
+            get {
+                return ResourceManager.GetString("CompanyDetailsURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://192.168.2.39:9000/api/.
         /// </summary>
         internal static string ConnectionURL {
             get {

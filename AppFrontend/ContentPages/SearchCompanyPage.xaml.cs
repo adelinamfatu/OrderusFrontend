@@ -64,7 +64,15 @@ namespace AppFrontend.ContentPages
                 {
                     ID = company.ID,
                     Name = company.Name,
-                    Logo = company.Logo
+                    City = company.City,
+                    Street = company.Street,
+                    StreetNumber = company.StreetNumber,
+                    Building = company.Building,
+                    Staircase = company.Staircase,
+                    ApartmentNumber = company.ApartmentNumber,
+                    Floor = company.Floor,
+                    Logo = company.Logo,
+                    Site = company.Site
                 });
             }
         }
