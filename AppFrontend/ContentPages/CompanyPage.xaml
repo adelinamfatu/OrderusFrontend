@@ -2,12 +2,117 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppFrontend.ContentPages.CompanyPage"
+             xmlns:conv="clr-namespace:AppFrontend.Converters"
              Title="Orderus">
 
-    <StackLayout>
-        <Label Text="{Binding Company.Name}"
-               BackgroundColor="White"
-               VerticalOptions="CenterAndExpand" 
-               HorizontalOptions="CenterAndExpand" />
-    </StackLayout>
+    <ContentPage.Resources>
+        <conv:ImageUriConverter x:Key="ImageUriConverter" />
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Center" Padding="5">
+                <Image Source="{Binding Company.Logo, Converter={StaticResource ImageUriConverter}}" 
+                    HeightRequest="50"
+                    WidthRequest="50"
+                />
+                <Label Text="{Binding Company.Name}"
+                    TextColor="White"
+                    FontSize="35"
+                />
+            </StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Text="{Binding Company.Site}" 
+                       TextColor="White"
+                       FontSize="15"
+                       Grid.Row="0"
+                       HorizontalOptions="Center"
+                />
+                <Frame CornerRadius="10" BackgroundColor="#959fab" Padding="5" Grid.Row="1">
+                    <Label TextColor="White" FontSize="20">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold" FontSize="20" Text="Adresa: " />
+                                <Span Text="{Binding Company.City}" />
+                                <Span Text=", " />
+                                <Span Text="{Binding Company.Street}" />
+                                <Span Text=" nr. " />
+                                <Span Text="{Binding Company.StreetNumber}" />
+                                <Span Text=", Cladirea " />
+                                <Span Text="{Binding Company.Building}" />
+                                <Span Text=", Scara " />
+                                <Span Text="{Binding Company.Staircase}" />
+                                <Span Text=", Apartament " />
+                                <Span Text="{Binding Company.ApartmentNumber}" />
+                                <Span Text=", Etaj " />
+                                <Span Text="{Binding Company.Floor}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Frame>
+            </Grid>
+            <ListView x:Name="companiesListView" ItemsSource="{Binding ServiceOptions}" HasUnevenRows="True" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Margin="5,5">
+                                <Frame BackgroundColor="#26364d" CornerRadius="10" Padding="10">
+                                    <Grid VerticalOptions="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="75" />
+                                        </Grid.RowDefinitions>
+                                        <Image
+                                            Source="{Binding Logo, Converter={StaticResource ImageUriConverter}}"
+                                            HeightRequest="50"
+                                            WidthRequest="50"
+                                            Aspect="AspectFit"
+                                        />
+                                        <StackLayout 
+                                            VerticalOptions="Center"
+                                            Grid.Column="1"
+                                            InputTransparent="True"
+                                            Margin="15,0"
+                                        >
+                                            <Label 
+                                                Text="{Binding Service.Name}"
+                                                TextColor="White"
+                                                FontAttributes="Bold"
+                                                FontSize="30"
+                                            />
+                                        </StackLayout>
+                                        <StackLayout 
+                                            VerticalOptions="Center"
+                                            Grid.Column="2"
+                                            InputTransparent="True"
+                                            Margin="15,0"
+                                        >
+                                            <Label 
+                                                TextColor="White"
+                                                FontAttributes="Bold"
+                                                FontSize="30">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Price}" />
+                                                        <Span Text=" lei/ora" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

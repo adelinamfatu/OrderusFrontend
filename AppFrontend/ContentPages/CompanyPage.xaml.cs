@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -15,7 +16,7 @@ using Xamarin.Forms.Xaml;
 namespace AppFrontend.ContentPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CompanyPage : ContentPage
+    public partial class CompanyPage : ContentPage, INotifyPropertyChanged
     {
         public CompanyDTO Company { get; set; }
 
@@ -30,7 +31,6 @@ namespace AppFrontend.ContentPages
         public CompanyPage(CompanyDTO company)
         {
             InitializeComponent();
-            this.BindingContext = this;
             this.Company = company;
             /*serviceOptions.Add(new CompanyServiceOptionDTO
             {
@@ -52,6 +52,7 @@ namespace AppFrontend.ContentPages
             });*/
             RetrieveCompanyDetails(Company.ID);
             RetrieveComments(Company.ID);
+            this.BindingContext = this;
         }
 
         private async void RetrieveCompanyDetails(int companyId)
