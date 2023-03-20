@@ -114,5 +114,19 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <ListView x:Name="commentsListView" ItemsSource="{Binding Comments}" HasUnevenRows="True" SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label 
+                            Text="{Binding Content}"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="30"
+                        />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>
