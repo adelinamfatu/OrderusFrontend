@@ -22,14 +22,14 @@ namespace AppFrontend.Resources.Files {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class RestResources {
+    internal class DisplayPrompts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal RestResources() {
+        internal DisplayPrompts() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace AppFrontend.Resources.Files {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AppFrontend.Resources.Files.RestResources", typeof(RestResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AppFrontend.Resources.Files.DisplayPrompts", typeof(DisplayPrompts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,38 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to services/categories/.
+        ///   Looks up a localized string similar to , Apart. .
         /// </summary>
-        internal static string CategoriesURL {
+        internal static string Apartment {
             get {
-                return ResourceManager.GetString("CategoriesURL", resourceCulture);
+                return ResourceManager.GetString("Apartment", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to comments/.
+        ///   Looks up a localized string similar to , Cladirea .
         /// </summary>
-        internal static string CommentsURL {
+        internal static string Building {
             get {
-                return ResourceManager.GetString("CommentsURL", resourceCulture);
+                return ResourceManager.GetString("Building", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to companies/.
+        ///   Looks up a localized string similar to , Etaj .
         /// </summary>
-        internal static string CompaniesURL {
+        internal static string Floor {
             get {
-                return ResourceManager.GetString("CompaniesURL", resourceCulture);
+                return ResourceManager.GetString("Floor", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to services/details/.
+        ///   Looks up a localized string similar to , Scara .
         /// </summary>
-        internal static string CompanyDetailsURL {
+        internal static string Staircase {
             get {
-                return ResourceManager.GetString("CompanyDetailsURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.39:9000/api/.
-        /// </summary>
-        internal static string ConnectionURL {
-            get {
-                return ResourceManager.GetString("ConnectionURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to services/.
-        /// </summary>
-        internal static string ServicesURL {
-            get {
-                return ResourceManager.GetString("ServicesURL", resourceCulture);
+                return ResourceManager.GetString("Staircase", resourceCulture);
             }
         }
     }

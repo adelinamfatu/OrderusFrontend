@@ -117,22 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CategoriesURL" xml:space="preserve">
-    <value>services/categories/</value>
+  <data name="Apartment" xml:space="preserve">
+    <value>, Apart. </value>
   </data>
-  <data name="CommentsURL" xml:space="preserve">
-    <value>comments/</value>
+  <data name="Building" xml:space="preserve">
+    <value>, Cladirea </value>
   </data>
-  <data name="CompaniesURL" xml:space="preserve">
-    <value>companies/</value>
+  <data name="Floor" xml:space="preserve">
+    <value>, Etaj </value>
   </data>
-  <data name="CompanyDetailsURL" xml:space="preserve">
-    <value>services/details/</value>
-  </data>
-  <data name="ConnectionURL" xml:space="preserve">
-    <value>http://192.168.2.39:9000/api/</value>
-  </data>
-  <data name="ServicesURL" xml:space="preserve">
-    <value>services/</value>
+  <data name="Staircase" xml:space="preserve">
+    <value>, Scara </value>
   </data>
 </root>

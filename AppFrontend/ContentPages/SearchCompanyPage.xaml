@@ -8,46 +8,44 @@
     <ContentPage.Resources>
         <conv:ImageUriConverter x:Key="ImageUriConverter" />
     </ContentPage.Resources>
-    <ScrollView>
-        <ListView x:Name="companiesListView" ItemsSource="{Binding Companies}" HasUnevenRows="True" SeparatorVisibility="None" ItemSelected="OpenCompanyPage">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Vertical" Margin="5,5">
-                            <Frame BackgroundColor="#26364d" CornerRadius="10" Padding="10">
-                                <Grid VerticalOptions="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="75" />
-                                    </Grid.RowDefinitions>
-                                    <Image
+    <ListView x:Name="companiesListView" ItemsSource="{Binding Companies}" HasUnevenRows="True" SeparatorVisibility="None" ItemSelected="OpenCompanyPage">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Vertical" Margin="5,5">
+                        <Frame BackgroundColor="#26364d" CornerRadius="10" Padding="10">
+                            <Grid VerticalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="75" />
+                                </Grid.RowDefinitions>
+                                <Image
                                         Source="{Binding Logo, Converter={StaticResource ImageUriConverter}}"
                                         HeightRequest="50"
                                         WidthRequest="50"
                                         Aspect="AspectFit"
                                     />
-                                    <StackLayout 
+                                <StackLayout 
                                         VerticalOptions="Center"
                                         Grid.Column="1"
                                         InputTransparent="True"
                                         Margin="15,0"
                                     >
-                                        <Label 
+                                    <Label 
                                             Text="{Binding Name}"
                                             TextColor="White"
                                             FontAttributes="Bold"
                                             FontSize="30"
                                         />
-                                    </StackLayout>
-                                </Grid>
-                            </Frame>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ScrollView>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

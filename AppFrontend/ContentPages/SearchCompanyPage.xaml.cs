@@ -41,7 +41,7 @@ namespace AppFrontend.ContentPages
 
         private async void RetrieveCompaniesByService(int serviceId)
         {
-            string url = RestResources.ConnectionURL + RestResources.CompaniesURL + serviceId;
+            string url = RestResources.ConnectionURL + RestResources.CompaniesURL + RestResources.ServicesURL + serviceId;
 
             using (HttpClient client = new HttpClient())
             {

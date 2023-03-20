@@ -28,10 +28,22 @@ namespace AppFrontend.ContentPages
 
         public ObservableCollection<CommentDTO> Comments { get { return comments; } }
 
+        public string BuildingPrompt { get; set; }
+
+        public string StaircasePrompt { get; set; }
+
+        public string ApartmentPrompt { get; set; }
+
+        public string FloorPrompt { get; set; }
+
         public CompanyPage(CompanyDTO company)
         {
             InitializeComponent();
             this.Company = company;
+            BuildingPrompt = company.Building == null ? null : DisplayPrompts.Building;
+            StaircasePrompt = company.Staircase is null ? null : DisplayPrompts.Staircase;
+            ApartmentPrompt = company.ApartmentNumber is null ? null : DisplayPrompts.Apartment;
+            FloorPrompt = company.Floor is null ? null : DisplayPrompts.Floor;
             /*serviceOptions.Add(new CompanyServiceOptionDTO
             {
                 Service = new ServiceDTO
