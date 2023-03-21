@@ -111,6 +111,7 @@ namespace AppFrontend.ContentPages
                     BuildComments(commentsJSON);
                 }
             }
+            this.servicesListView.HeightRequest = 400 * serviceOptions.Count;
         }
 
         private void BuildComments(List<CommentDTO> commentsJSON)
