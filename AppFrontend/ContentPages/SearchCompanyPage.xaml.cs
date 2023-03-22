@@ -79,7 +79,8 @@ namespace AppFrontend.ContentPages
 
         private void OpenCompanyPage(object sender, SelectedItemChangedEventArgs e)
         {
-            var company = (CompanyDTO)e.SelectedItem;
+            //var company = (CompanyDTO)e.SelectedItem;
+            var company = (CompanyDTO)companiesListView.SelectedItem;
             Navigation.PushAsync(new CompanyPage(company));
         }
     }

@@ -36,6 +36,10 @@ namespace AppFrontend.ContentPages
 
         public string FloorPrompt { get; set; }
 
+        private double listViewHeight = 0;
+
+        private int listViewNbRows = 0;
+
         public CompanyPage(CompanyDTO company)
         {
             InitializeComponent();
@@ -111,7 +115,6 @@ namespace AppFrontend.ContentPages
                     BuildComments(commentsJSON);
                 }
             }
-            this.servicesListView.HeightRequest = 400 * serviceOptions.Count;
         }
 
         private void BuildComments(List<CommentDTO> commentsJSON)
@@ -130,6 +133,24 @@ namespace AppFrontend.ContentPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+        }
+
+        private void CalculateListViewHeight(object sender, EventArgs e)
+        {
+            
+            if (sender is Grid)
+            {
+                Grid grid = (Grid)sender;
+
+                listViewHeight += grid.Height - 20;
+                listViewHeight += grid.Margin.Top;
+                listViewHeight += grid.Margin.Bottom;
+
+                if (++listViewNbRows == serviceOptions.Count)
+                {
+                    Device.BeginInvokeOnMainThread(() => servicesListView.MinimumHeightRequest = listViewHeight);
+                }
+            }
         }
     }
 }

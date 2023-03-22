@@ -23,23 +23,24 @@
                                     <RowDefinition Height="75" />
                                 </Grid.RowDefinitions>
                                 <Image
-                                        Source="{Binding Logo, Converter={StaticResource ImageUriConverter}}"
-                                        HeightRequest="50"
-                                        WidthRequest="50"
-                                        Aspect="AspectFit"
-                                    />
+                                    Source="{Binding Logo, Converter={StaticResource ImageUriConverter}}"
+                                    HeightRequest="50"
+                                    WidthRequest="50"
+                                    Aspect="AspectFit"
+                                />
                                 <StackLayout 
-                                        VerticalOptions="Center"
-                                        Grid.Column="1"
-                                        InputTransparent="True"
-                                        Margin="15,0"
-                                    >
+                                    VerticalOptions="Center"
+                                    Grid.Column="1"
+                                    InputTransparent="True"
+                                    Margin="15,0"
+                                >
                                     <Label 
-                                            Text="{Binding Name}"
-                                            TextColor="White"
-                                            FontAttributes="Bold"
-                                            FontSize="30"
-                                        />
+                                        Text="{Binding Name}"
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        FontSize="30"
+                                        InputTransparent="True"
+                                    />
                                 </StackLayout>
                             </Grid>
                         </Frame>
