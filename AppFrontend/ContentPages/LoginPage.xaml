@@ -1,46 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppFrontend.CustomControls"
              x:Class="AppFrontend.ContentPages.LoginPage">
-    
+
     <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand" Margin="0,175,0,0">
-            <Frame CornerRadius="100" 
-                HeightRequest="100"
-                WidthRequest="100"
-                HorizontalOptions="Center"
-                Padding="0"
-                IsClippedToBounds="True">
-                <Image Source="female_user.jpg" 
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
-            </Frame>
+        <StackLayout VerticalOptions="FillAndExpand" Margin="0,80,0,0">
+            <Image Source="Icon.png" HorizontalOptions="Center" WidthRequest="100" Margin="0,0,0,50"/>
             <StackLayout HorizontalOptions="Center" WidthRequest="250">
-                <Entry x:Name="email" 
-                       Placeholder="Adresa email" 
-                       MinimumHeightRequest="50" 
-                       ClearButtonVisibility="WhileEditing"
-                       Keyboard="Email" 
-                       FontSize="20"
-                       ReturnType="Next"/>
-                <Entry x:Name="password" 
-                       Placeholder="Parola" 
-                       IsPassword="True" 
-                       ClearButtonVisibility="WhileEditing" 
-                       FontSize="20"
-                       ReturnType="Done"/>
+                <local:CustomEntry
+                    x:Name="email" 
+                    Placeholder="Adresa email" 
+                    MinimumHeightRequest="50" 
+                    ClearButtonVisibility="WhileEditing"
+                    Keyboard="Email" 
+                    FontSize="20"
+                    BackgroundColor="Transparent"
+                    ReturnType="Next"/>
+                <local:CustomEntry 
+                    x:Name="password" 
+                    Placeholder="Parola" 
+                    IsPassword="True" 
+                    ClearButtonVisibility="WhileEditing" 
+                    FontSize="20"
+                    ReturnType="Done"/>
             </StackLayout>
             <Button Text="Conectare" 
                     WidthRequest="150"
                     HorizontalOptions="Center"
                     Margin="0,50,0,0"
                     Clicked="SendUserInfo"
+                    BackgroundColor="#93b0e0"
                     CornerRadius="40" />
             <Button Text="Nu aveti cont?" 
                     Clicked="OpenCreateAccountPage"
                     WidthRequest="150"
                     HorizontalOptions="Center"
                     Margin="0,20,0,0"
+                    BackgroundColor="#93b0e0"
                     CornerRadius="40"/>
         </StackLayout>
     </ContentPage.Content>
