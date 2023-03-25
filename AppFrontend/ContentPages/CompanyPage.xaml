@@ -129,7 +129,6 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -159,6 +158,8 @@
                                     FontSize="15"
                                     Grid.Row="1"
                                     BackgroundColor="White"
+                                    Grid.Column="0" 
+                                    Grid.ColumnSpan="2"
                                 />
                             </Grid>
                         </Frame>

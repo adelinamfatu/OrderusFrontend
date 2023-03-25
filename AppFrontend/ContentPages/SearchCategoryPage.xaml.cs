@@ -1,4 +1,5 @@
 ﻿using App.DTO;
+using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using Newtonsoft.Json;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,9 +22,12 @@ namespace AppFrontend.ContentPages
     {
         ObservableCollection<CategoryDTO> categories = new ObservableCollection<CategoryDTO>();
         public ObservableCollection<CategoryDTO> Categories { get { return categories; } }
+        private GlobalService globalService { get; set; }
+
         public SearchCategoryPage()
         {
             InitializeComponent();
+            globalService = DependencyService.Get<GlobalService>();
             categoriesListView.SelectedItem = null;
             this.BindingContext = this;
             /*categories.Add(new CategoryDTO
@@ -50,11 +55,13 @@ namespace AppFrontend.ContentPages
 
         private async void RetrieveCategories()
         {
-            //string url = "http://192.168.2.39:9000/api/services/categories";
             string url = RestResources.ConnectionURL + RestResources.CategoriesURL;
 
-            using (HttpClient client = new HttpClient())
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient client = new HttpClient(handler))
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", globalService.token);
                 HttpResponseMessage response = await client.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)

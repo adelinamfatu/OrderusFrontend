@@ -1,4 +1,6 @@
 ﻿using AppFrontend.ContentPages;
+using AppFrontend.Resources;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,8 +12,8 @@ namespace AppFrontend
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MenuPage();
+            DependencyService.Register<GlobalService>();
+            MainPage = new LoginPage();
         }
     }
 }

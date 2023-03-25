@@ -1,4 +1,5 @@
 ﻿using App.DTO;
+using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using Newtonsoft.Json;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,12 +21,14 @@ namespace AppFrontend.ContentPages
     {
         ObservableCollection<ServiceDTO> services = new ObservableCollection<ServiceDTO>();
         public ObservableCollection<ServiceDTO> Services { get { return services; } }
+        private GlobalService globalService { get; set; }
 
         public SearchServicePage() { }
 
         public SearchServicePage(int categoryId)
         {
             InitializeComponent();
+            globalService = DependencyService.Get<GlobalService>();
             this.BindingContext = this;
             /*services.Add(new ServiceDTO
             {
@@ -70,8 +74,11 @@ namespace AppFrontend.ContentPages
         {
             string url = RestResources.ConnectionURL + RestResources.CategoriesURL + categoryID;
 
-            using (HttpClient client = new HttpClient())
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient client = new HttpClient(handler))
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", globalService.token);
                 HttpResponseMessage response = await client.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)

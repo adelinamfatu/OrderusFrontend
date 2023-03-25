@@ -120,6 +120,9 @@
   <data name="CategoriesURL" xml:space="preserve">
     <value>services/categories/</value>
   </data>
+  <data name="ClientsURL" xml:space="preserve">
+    <value>clients/</value>
+  </data>
   <data name="CommentsURL" xml:space="preserve">
     <value>comments/</value>
   </data>
@@ -130,7 +133,10 @@
     <value>services/details/</value>
   </data>
   <data name="ConnectionURL" xml:space="preserve">
-    <value>http://192.168.2.39:9000/api/</value>
+    <value>https://192.168.2.39:9000/api/</value>
+  </data>
+  <data name="LoginURL" xml:space="preserve">
+    <value>login/</value>
   </data>
   <data name="ServicesURL" xml:space="preserve">
     <value>services/</value>
