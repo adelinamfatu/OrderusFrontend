@@ -2,6 +2,7 @@
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using Newtonsoft.Json;
+using Plugin.Toast;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +47,12 @@ namespace AppFrontend.ContentPages
                 if (response.IsSuccessStatusCode)
                 {
                     globalService.token = await response.Content.ReadAsStringAsync();
+                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CreateAccountSuccess);
                     OpenCategoryPage();
+                }
+                if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.LoginError);
                 }
             }
         }

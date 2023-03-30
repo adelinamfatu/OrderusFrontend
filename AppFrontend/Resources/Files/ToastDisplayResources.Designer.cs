@@ -22,14 +22,14 @@ namespace AppFrontend.Resources.Files {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class RestResources {
+    internal class ToastDisplayResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal RestResources() {
+        internal ToastDisplayResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace AppFrontend.Resources.Files {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AppFrontend.Resources.Files.RestResources", typeof(RestResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AppFrontend.Resources.Files.ToastDisplayResources", typeof(ToastDisplayResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,83 +61,65 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to services/categories/.
+        ///   Looks up a localized string similar to Exista deja un cont cu aceasta adresa.
         /// </summary>
-        internal static string CategoriesURL {
+        internal static string CreateAccountError {
             get {
-                return ResourceManager.GetString("CategoriesURL", resourceCulture);
+                return ResourceManager.GetString("CreateAccountError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to clients/.
+        ///   Looks up a localized string similar to Contul a fost creat cu succes.
         /// </summary>
-        internal static string ClientsURL {
+        internal static string CreateAccountSuccess {
             get {
-                return ResourceManager.GetString("ClientsURL", resourceCulture);
+                return ResourceManager.GetString("CreateAccountSuccess", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to comments/.
+        ///   Looks up a localized string similar to Adresa de mail nu are formatul corect.
         /// </summary>
-        internal static string CommentsURL {
+        internal static string EmailError {
             get {
-                return ResourceManager.GetString("CommentsURL", resourceCulture);
+                return ResourceManager.GetString("EmailError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to companies/.
+        ///   Looks up a localized string similar to Contul deja exista sau datele sunt incorecte.
         /// </summary>
-        internal static string CompaniesURL {
+        internal static string LoginError {
             get {
-                return ResourceManager.GetString("CompaniesURL", resourceCulture);
+                return ResourceManager.GetString("LoginError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to services/details/.
+        ///   Looks up a localized string similar to Parolele nu corespund.
         /// </summary>
-        internal static string CompanyDetailsURL {
+        internal static string PasswordError {
             get {
-                return ResourceManager.GetString("CompanyDetailsURL", resourceCulture);
+                return ResourceManager.GetString("PasswordError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://192.168.2.39:9000/api/.
+        ///   Looks up a localized string similar to Numarul de telefon nu este unul valid.
         /// </summary>
-        internal static string ConnectionURL {
+        internal static string PhoneNumberError {
             get {
-                return ResourceManager.GetString("ConnectionURL", resourceCulture);
+                return ResourceManager.GetString("PhoneNumberError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to add.
+        ///   Looks up a localized string similar to Trebuie sa alegeti un tip de strada.
         /// </summary>
-        internal static string CreateAccountURL {
+        internal static string StreetTypeError {
             get {
-                return ResourceManager.GetString("CreateAccountURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to login/.
-        /// </summary>
-        internal static string LoginURL {
-            get {
-                return ResourceManager.GetString("LoginURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to services/.
-        /// </summary>
-        internal static string ServicesURL {
-            get {
-                return ResourceManager.GetString("ServicesURL", resourceCulture);
+                return ResourceManager.GetString("StreetTypeError", resourceCulture);
             }
         }
     }

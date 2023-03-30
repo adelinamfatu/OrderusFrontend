@@ -6,50 +6,60 @@
              x:Class="AppFrontend.ContentPages.CreateAccountPage">
     
     <ContentPage.Content>
-        <StackLayout Margin="0,0,0,0">
-            <Path Stroke="#6ba1f9" Fill="#6ba1f9"
-                Data="m0.115,14.3875l0,0c0,6.84833 51.71112,12.4 115.50003,12.4c63.78887,0 115.49998,-5.55167 115.49998,-12.4l0,0c0,-6.84833 51.71114,-12.4 115.50004,-12.4c63.7889,0 115.49998,5.55167 115.49998,12.4l0,99.19999c0,-6.84833 -51.71109,-12.40001 -115.49998,-12.40001c-63.7889,0 -115.50004,5.55167 -115.50004,12.40001c0,6.84832 -51.71111,12.39999 -115.49998,12.39999c-63.7889,0 -115.50003,-5.55167 -115.50003,-12.39999l0,-99.19999z" />
-            <Image Source="Icon.png" HorizontalOptions="Center" WidthRequest="100" Margin="0,0,0,30"/>
+        <StackLayout>
+            <Image Source="Icon.png" HorizontalOptions="Center" WidthRequest="100" Margin="0,20,0,30"/>
             <Grid Margin="10,0,10,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="0" Grid.Column="0" >
-                    <local:CustomEntry x:Name="Email" Placeholder="Email*" />
+                    <local:CustomEntry x:Name="email" Placeholder="Email*" PlaceholderColor="White" />
                 </Frame>
                 <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="0" Grid.Column="1" >
-                    <local:CustomEntry x:Name="PhoneNumber" Placeholder="Numar de telefon*" Keyboard="Numeric"  />
+                    <local:CustomEntry x:Name="phoneNumber" Placeholder="Numar de telefon*" Keyboard="Numeric"  />
                 </Frame>
                 <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="1" Grid.Column="0" >
-                    <local:CustomEntry x:Name="Password" Placeholder="Parola*" IsPassword="True" />
+                    <local:CustomEntry x:Name="password" Placeholder="Parola*" IsPassword="True" />
                 </Frame>
                 <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="1" Grid.Column="1" >
-                    <local:CustomEntry x:Name="ConfirmPassword" Placeholder="Confirmare parola*" IsPassword="True"  />
+                    <local:CustomEntry x:Name="confirmPassword" Placeholder="Confirmare parola*" IsPassword="True" PlaceholderColor="White" />
                 </Frame>
                 <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="2" Grid.Column="0" >
-                    <local:CustomEntry x:Name="Surname" Placeholder="Nume*"  />
+                    <local:CustomEntry x:Name="surname" Placeholder="Nume*" PlaceholderColor="White" />
                 </Frame>
                 <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="2" Grid.Column="1" >
-                    <local:CustomEntry x:Name="Name" Placeholder="Prenume*"  />
+                    <local:CustomEntry x:Name="name" Placeholder="Prenume*"  />
                 </Frame>
                 <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="3" Grid.Column="0" >
-                    <local:CustomEntry x:Name="City" Placeholder="Oras*"  />
+                    <local:CustomEntry x:Name="city" Placeholder="Oras*"  />
                 </Frame>
                 <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="3" Grid.Column="1" >
-                    <Picker x:Name="StreetTypePicker" Title="Selectati tipul de strada" ItemsSource="{Binding StreetTypes}"  />
+                    <Picker x:Name="streetTypePicker" Title="Selectati tipul de strada" ItemsSource="{Binding StreetTypes}" TitleColor="White" />
                 </Frame>
                 <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="4" Grid.Column="0" >
-                    <local:CustomEntry x:Name="Street" Placeholder="Strada*"  />
+                    <local:CustomEntry x:Name="street" Placeholder="Strada*" PlaceholderColor="White" BackgroundColor="#94b1e3" />
                 </Frame>
                 <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="4" Grid.Column="1" >
-                    <local:CustomEntry x:Name="StreetNumber" Placeholder="Numar"  />
+                    <local:CustomEntry x:Name="streetNumber" Placeholder="Numar strada*" />
+                </Frame>
+                <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="5" Grid.Column="0" >
+                    <local:CustomEntry x:Name="building" Placeholder="Bloc"  />
+                </Frame>
+                <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="5" Grid.Column="1" >
+                    <local:CustomEntry x:Name="staircase" Placeholder="Scara" PlaceholderColor="White" BackgroundColor="#94b1e3" />
+                </Frame>
+                <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="6" Grid.Column="0" >
+                    <local:CustomEntry x:Name="apartmentNumber" Placeholder="Numar apartament" PlaceholderColor="White" BackgroundColor="#94b1e3" />
+                </Frame>
+                <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="6" Grid.Column="1" >
+                    <local:CustomEntry x:Name="floor" Placeholder="Etaj" />
                 </Frame>
             </Grid>
             <StackLayout HorizontalOptions="Center" WidthRequest="250">
                 <Button 
                     Text="Creare cont" 
-                    Clicked="VerifyAccountDetails" 
+                    Clicked="CreateAccount" 
                     HorizontalOptions="Center"
                     Margin="0,20,0,0"
                     CornerRadius="40"
