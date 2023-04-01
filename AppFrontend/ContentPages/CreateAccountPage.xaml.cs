@@ -47,7 +47,7 @@ namespace AppFrontend.ContentPages
                     {
                         if(phoneNumber.Text.Length == 10)
                         {
-                            SaveAccountAsync();
+                            SaveAccount();
                         }
                         else
                         {
@@ -89,7 +89,7 @@ namespace AppFrontend.ContentPages
             };
         }
 
-        private async Task SaveAccountAsync()
+        private async void SaveAccount()
         {
             ClientDTO client = GetClientFromUI();
             string url = RestResources.ConnectionURL + RestResources.ClientsURL + RestResources.CreateAccountURL;
