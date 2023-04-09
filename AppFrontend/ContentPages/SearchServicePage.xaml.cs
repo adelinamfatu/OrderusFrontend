@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,33 +28,8 @@ namespace AppFrontend.ContentPages
         public SearchServicePage(int categoryId)
         {
             InitializeComponent();
-            globalService = DependencyService.Get<GlobalService>();
+            //globalService = DependencyService.Get<GlobalService>();
             this.BindingContext = this;
-            /*services.Add(new ServiceDTO
-            {
-                ID = 1,
-                Name = "Tamplarie"
-            });
-            services.Add(new ServiceDTO
-            {
-                ID = 2,
-                Name = "Dulgherie"
-            });
-            services.Add(new ServiceDTO
-            {
-                ID = 3,
-                Name = "Montare"
-            });
-            services.Add(new ServiceDTO
-            {
-                ID = 4,
-                Name = "Reparare"
-            });
-            services.Add(new ServiceDTO
-            {
-                ID = 5,
-                Name = "Curatare"
-            });*/
             RetrieveServicesByCategory(categoryId);
         }
 
@@ -78,7 +53,8 @@ namespace AppFrontend.ContentPages
             handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
             using (HttpClient client = new HttpClient(handler))
             {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", globalService.token);
+                var token = SecureStorage.GetAsync("orderus_token").Result;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage response = await client.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)

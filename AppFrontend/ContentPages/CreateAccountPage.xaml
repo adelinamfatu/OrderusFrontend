@@ -26,22 +26,22 @@
                     <local:CustomEntry x:Name="confirmPassword" Placeholder="Confirmare parola*" IsPassword="True" />
                 </Frame>
                 <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="2" Grid.Column="0" >
-                    <local:CustomEntry x:Name="surname" Placeholder="Nume*" />
+                    <local:CustomEntry x:Name="surname" Placeholder="Nume*" TextChanged="ValidateTextInput" />
                 </Frame>
                 <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="2" Grid.Column="1" >
-                    <local:CustomEntry x:Name="name" Placeholder="Prenume*" PlaceholderColor="White" TextColor="White" />
+                    <local:CustomEntry x:Name="name" Placeholder="Prenume*" PlaceholderColor="White" TextColor="White" TextChanged="ValidateTextInput" />
                 </Frame>
                 <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="3" Grid.Column="0" >
-                    <local:CustomEntry x:Name="city" Placeholder="Oras*" PlaceholderColor="White" TextColor="White" />
+                    <local:CustomEntry x:Name="city" Placeholder="Oras*" PlaceholderColor="White" TextColor="White" TextChanged="ValidateTextInput" />
                 </Frame>
                 <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="3" Grid.Column="1" >
                     <local:CustomPicker x:Name="streetTypePicker" Title="Selectati tipul de strada" ItemsSource="{Binding StreetTypes}" />
                 </Frame>
                 <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="4" Grid.Column="0" >
-                    <local:CustomEntry x:Name="street" Placeholder="Strada*" />
+                    <local:CustomEntry x:Name="street" Placeholder="Strada*" TextChanged="ValidateTextInput" />
                 </Frame>
                 <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="4" Grid.Column="1" >
-                    <local:CustomEntry x:Name="streetNumber" Placeholder="Numar strada*" PlaceholderColor="White" TextColor="White" />
+                    <local:CustomEntry x:Name="streetNumber" Placeholder="Numar strada*" PlaceholderColor="White" TextColor="White" TextChanged="ValidateTextAndNumbersInput" />
                 </Frame>
                 <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="5" Grid.Column="0" >
                     <local:CustomEntry x:Name="building" Placeholder="Bloc" PlaceholderColor="White" TextColor="White" />
@@ -50,10 +50,10 @@
                     <local:CustomEntry x:Name="staircase" Placeholder="Scara" />
                 </Frame>
                 <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="6" Grid.Column="0" >
-                    <local:CustomEntry x:Name="apartmentNumber" Placeholder="Numar apartament" />
+                    <local:CustomEntry x:Name="apartmentNumber" Placeholder="Numar apartament" Keyboard="Numeric" />
                 </Frame>
                 <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="6" Grid.Column="1" >
-                    <local:CustomEntry x:Name="floor" Placeholder="Etaj" PlaceholderColor="White" TextColor="White" />
+                    <local:CustomEntry x:Name="floor" Placeholder="Etaj" Keyboard="Numeric" PlaceholderColor="White" TextColor="White" />
                 </Frame>
             </Grid>
             <StackLayout HorizontalOptions="Center" WidthRequest="250">

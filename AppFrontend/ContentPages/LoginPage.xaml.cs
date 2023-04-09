@@ -9,7 +9,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -47,6 +47,7 @@ namespace AppFrontend.ContentPages
                 if (response.IsSuccessStatusCode)
                 {
                     globalService.token = await response.Content.ReadAsStringAsync();
+                    await SecureStorage.SetAsync("orderus_token", globalService.token);
                     CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CreateAccountSuccess);
                     OpenCategoryPage();
                 }

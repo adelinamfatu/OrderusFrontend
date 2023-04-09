@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
@@ -18,6 +19,11 @@ namespace AppFrontend.ContentPages
     public partial class CreateAccountPage : ContentPage
     {
         public List<string> StreetTypes { get; set; }
+
+        const string onlyLettersRegex = @"^[a-zA-Z]+$";
+
+        const string lettersAndNumbersRegex = @"^[a-zA-Z0-9]+$";
+
         public CreateAccountPage()
         {
             InitializeComponent();
@@ -33,8 +39,6 @@ namespace AppFrontend.ContentPages
         private void CreateAccount(object sender, EventArgs e)
         {
             VerifyAccountDetails();
-            //ClientDTO client = GetClientFromUI();
-            //SaveAccount(client);
         }
 
         private void VerifyAccountDetails()
@@ -111,6 +115,24 @@ namespace AppFrontend.ContentPages
                 {
                     CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.CreateAccountError);
                 }
+            }
+        }
+
+        private void ValidateTextInput(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(e.NewTextValue))
+            {
+                var IsValid = Regex.IsMatch(e.NewTextValue, onlyLettersRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+                ((Entry)sender).Text = IsValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
+            }
+        }
+
+        private void ValidateTextAndNumbersInput(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(e.NewTextValue))
+            {
+                var IsValid = Regex.IsMatch(e.NewTextValue, lettersAndNumbersRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+                ((Entry)sender).Text = IsValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
             }
         }
     }

@@ -20,6 +20,7 @@
                         FontSize="20"
                         Margin="10,0,10,0"
                         PlaceholderColor="#ebf3fb"
+                        TextColor="#ebf3fb"
                         ReturnType="Next"/>
                 </Frame>
                     <Frame BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Padding="0" HasShadow="True" BorderColor="#667284" Margin="0,10,0,0">
@@ -31,6 +32,7 @@
                         FontSize="20"
                         Margin="10,0,10,0"
                         PlaceholderColor="#ebf3fb"
+                        TextColor="#ebf3fb"
                         ReturnType="Done"/>
                 </Frame>
             </StackLayout>

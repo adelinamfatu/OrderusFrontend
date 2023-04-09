@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,20 +26,8 @@ namespace AppFrontend.ContentPages
         public SearchCompanyPage(int serviceId)
         {
             InitializeComponent();
-            globalService = DependencyService.Get<GlobalService>();
+            //globalService = DependencyService.Get<GlobalService>();
             this.BindingContext = this;
-            /*companies.Add(new CompanyDTO
-            {
-                ID = 1,
-                Name = "Reparatot",
-                Logo = "reparatot.ro/wp-content/uploads/2015/03/head-logo.png"
-            });
-            companies.Add(new CompanyDTO
-            {
-                ID = 2,
-                Name = "Reparathor",
-                Logo = "reparathor.ro/wp-content/uploads/2021/01/cropped-hammer-3-1.png"
-            });*/
             RetrieveCompaniesByService(serviceId);
         }
 
@@ -51,7 +39,8 @@ namespace AppFrontend.ContentPages
             handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
             using (HttpClient client = new HttpClient(handler))
             {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", globalService.token);
+                var token = SecureStorage.GetAsync("orderus_token").Result;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage response = await client.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)

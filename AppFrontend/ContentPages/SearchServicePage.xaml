@@ -17,7 +17,7 @@
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <Frame Padding="5" BackgroundColor="Transparent">
-                        <Grid>
+                        <Grid BackgroundColor="White">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -25,20 +25,21 @@
                             <ImageButton
                                 Source="{Binding Name, Converter={StaticResource ImageResourceConverter}}"
                                 Grid.Row="0"
-                                CornerRadius="20"
-                                WidthRequest="150"
+                                WidthRequest="130"
                                 HeightRequest="150"
                                 Aspect="AspectFill"
+                                Margin="10,10,10,0"
                                 Clicked="OpenCompanySearchPage"
                             />
                             <Label HorizontalOptions="Center" VerticalOptions="Center"
                                 Text="{Binding Name}"
-                                TextColor="White"
+                                TextColor="Black"
                                 TextTransform="Uppercase"
                                 FontAttributes="Bold"
                                 FontSize="20"
                                 Grid.Row="1"
                                 InputTransparent="True"   
+                                Margin="0,0,0,5"
                             />
                         </Grid>
                     </Frame>

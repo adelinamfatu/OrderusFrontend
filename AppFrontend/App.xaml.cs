@@ -2,6 +2,7 @@
 using AppFrontend.Resources;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +14,15 @@ namespace AppFrontend
         {
             InitializeComponent();
             DependencyService.Register<GlobalService>();
-            MainPage = new LoginPage();
+            var token = SecureStorage.GetAsync("orderus_token").Result;
+            if(string.IsNullOrEmpty(token))
+            {
+                MainPage = new LoginPage();
+            }
+            else
+            {
+                MainPage = new MenuPage();
+            }
         }
     }
 }
