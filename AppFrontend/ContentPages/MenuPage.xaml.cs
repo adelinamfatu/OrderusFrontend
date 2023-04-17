@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace AppFrontend.ContentPages
 {
@@ -27,6 +23,12 @@ namespace AppFrontend.ContentPages
             this.BarBackgroundColor = Color.FromHex("#26364d");
             this.SelectedTabColor = Color.White;
             this.UnselectedTabColor = Color.Gray;
+        }
+
+        private void LogoutAccount(object sender, EventArgs e)
+        {
+            SecureStorage.Remove("orderus_token");
+            Application.Current.MainPage = new LoginPage();
         }
     }
 }

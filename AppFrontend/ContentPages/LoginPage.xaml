@@ -5,13 +5,12 @@
              BackgroundColor="#ebf3fb"
              x:Class="AppFrontend.ContentPages.LoginPage">
 
-    <ContentPage.Content>
-        <StackLayout>
-            <Path Fill="#6ba1f9" Stroke="#6ba1f9" Aspect="Fill" Data="m251.66503,82.2175l343.99993,0l0,64.27026c-141.66296,-31.53184 -171.99996,24.48815 -343.99993,10.57443l0,-74.84469z" />
+    <StackLayout>
+        <Path Fill="#6ba1f9" Stroke="#6ba1f9" Aspect="Fill" Data="m251.66503,82.2175l343.99993,0l0,64.27026c-141.66296,-31.53184 -171.99996,24.48815 -343.99993,10.57443l0,-74.84469z" />
         <StackLayout VerticalOptions="Fill">
             <Image Source="user.png" HorizontalOptions="Center" WidthRequest="100" Margin="0,0,0,30"/>
             <StackLayout HorizontalOptions="Center" WidthRequest="280">
-                    <Frame BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Padding="0" HasShadow="True" BorderColor="#667284">
+                <Frame BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Padding="0" HasShadow="True" BorderColor="#667284">
                     <local:CustomEntry
                         x:Name="email" 
                         Placeholder="Adresa email" 
@@ -23,7 +22,7 @@
                         TextColor="#ebf3fb"
                         ReturnType="Next"/>
                 </Frame>
-                    <Frame BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Padding="0" HasShadow="True" BorderColor="#667284" Margin="0,10,0,0">
+                <Frame BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Padding="0" HasShadow="True" BorderColor="#667284" Margin="0,10,0,0">
                     <local:CustomEntry 
                         x:Name="password" 
                         Placeholder="Parola" 
@@ -51,6 +50,5 @@
                     TextColor="#6ba1f9"
                     BackgroundColor="Transparent"/>
         </StackLayout>
-        </StackLayout>
-    </ContentPage.Content>
+    </StackLayout>
 </ContentPage>

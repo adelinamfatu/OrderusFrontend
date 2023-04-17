@@ -12,6 +12,7 @@
         </x:Arguments>
         <NavigationPage.ToolbarItems>
             <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+            <ToolbarItem IconImageSource="logout.png" Priority="1" Clicked="LogoutAccount"/>
         </NavigationPage.ToolbarItems>
     </NavigationPage>
     <local:BasketPage Title="Cos" 

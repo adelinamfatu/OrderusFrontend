@@ -22,14 +22,13 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <ImageButton
+                            <Image
                                 Source="{Binding Name, Converter={StaticResource ImageResourceConverter}}"
                                 Grid.Row="0"
                                 WidthRequest="130"
                                 HeightRequest="150"
                                 Aspect="AspectFill"
                                 Margin="10,10,10,0"
-                                Clicked="OpenCompanySearchPage"
                             />
                             <Label HorizontalOptions="Center" VerticalOptions="Center"
                                 Text="{Binding Name}"
@@ -38,8 +37,7 @@
                                 FontAttributes="Bold"
                                 FontSize="20"
                                 Grid.Row="1"
-                                InputTransparent="True"   
-                                Margin="0,0,0,5"
+                                InputTransparent="True"  
                             />
                         </Grid>
                     </Frame>
