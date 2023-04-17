@@ -68,12 +68,27 @@ namespace AppFrontend.ContentPages
 
         private void OpenCompanySearchPage(object sender, EventArgs e)
         {
-            ImageButton button = (ImageButton)sender;
-            var parentGrid = (Grid)button.Parent;
-            var label = (Label)parentGrid.Children.FirstOrDefault(l => l is Label);
+            Frame frame = sender as Frame;
+            Label label = FindLabelInVisualTree(frame);
             var text = label.Text;
             ServiceDTO service = Services.FirstOrDefault(c => c.Name == text);
             Navigation.PushAsync(new SearchCompanyPage(service.ID));
+        }
+
+        private Label FindLabelInVisualTree(Element element)
+        {
+            if (element is Label label)
+                return label;
+
+            if (element is VisualElement visualElement)
+            {
+                foreach (Element child in visualElement.Descendants())
+                {
+                    if (child is Label nestedLabel)
+                        return nestedLabel;
+                }
+            }
+            return null;
         }
     }
 }

@@ -17,6 +17,9 @@
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <Frame Padding="5" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenCompanySearchPage" />
+                        </Frame.GestureRecognizers>
                         <Grid BackgroundColor="#94b1e3">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />

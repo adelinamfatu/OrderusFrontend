@@ -15,7 +15,7 @@
                     WidthRequest="50"
                 />
             <Label Text="{Binding Company.Name}"
-                    TextColor="White"
+                    TextColor="#667284"
                     FontSize="35"
                 />
         </StackLayout>
@@ -25,12 +25,12 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Label Text="{Binding Company.Site}" 
-                       TextColor="White"
+                       TextColor="#667284"
                        FontSize="15"
                        Grid.Row="0"
                        HorizontalOptions="Center"
                 />
-            <Frame CornerRadius="10" BackgroundColor="#959fab" Padding="5" Grid.Row="1" Margin="5,10,5,0">
+            <Frame CornerRadius="10" BackgroundColor="#94b1e3" Padding="5" Grid.Row="1" Margin="5,10,5,0">
                 <Label TextColor="White" FontSize="20">
                     <Label.FormattedText>
                         <FormattedString>
@@ -58,7 +58,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Vertical" Margin="5,5">
-                            <Frame BackgroundColor="#26364d" CornerRadius="10" Padding="10">
+                            <Frame BackgroundColor="#6ba1f9" CornerRadius="10" Padding="10">
                                 <Grid VerticalOptions="Center" SizeChanged="CalculateListViewHeight">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
