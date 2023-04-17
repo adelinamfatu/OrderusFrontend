@@ -4,9 +4,9 @@
              x:Class="AppFrontend.ContentPages.MenuPage"
             xmlns:local="clr-namespace:AppFrontend.ContentPages"
             Title="Orderus"
-            BackgroundColor="#4B596C">
+            BackgroundColor="#ecf3fb">
 
-    <NavigationPage Title="Cauta" IconImageSource="search.png" BarBackgroundColor="#26364d">
+    <NavigationPage Title="Cauta" IconImageSource="search.png" BarBackgroundColor="#6ba1f9">
         <x:Arguments Title="Orderus">
             <local:SearchCategoryPage />
         </x:Arguments>
@@ -20,5 +20,5 @@
     <local:HistoryPage Title="Istoric" 
                IconImageSource="activity_history.png"/>
     <local:ProfilePage Title="Cont" 
-               IconImageSource="female_user.png"/>
+               IconImageSource="user.png"/>
 </TabbedPage>

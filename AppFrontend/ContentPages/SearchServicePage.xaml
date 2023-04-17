@@ -17,7 +17,7 @@
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <Frame Padding="5" BackgroundColor="Transparent">
-                        <Grid BackgroundColor="White">
+                        <Grid BackgroundColor="#94b1e3">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />

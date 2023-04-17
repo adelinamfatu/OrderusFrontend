@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
@@ -20,9 +21,9 @@ namespace AppFrontend.ContentPages
         public void TabStyling()
         {
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
-            this.BarBackgroundColor = Color.FromHex("#26364d");
+            this.BarBackgroundColor = Color.FromHex("#6ba1f9");
             this.SelectedTabColor = Color.White;
-            this.UnselectedTabColor = Color.Gray;
+            this.UnselectedTabColor = Color.FromHex("#667284");
         }
 
         private void LogoutAccount(object sender, EventArgs e)
