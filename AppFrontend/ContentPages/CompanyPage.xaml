@@ -115,50 +115,59 @@
             </ListView.ItemTemplate>
         </ListView>
         <Label 
-            Text="Comentarii:"
-            Margin="5,-5,0,0"
-            TextColor="White"
+            Text=" - Comentarii - "
+            TextColor="#667284"
+            Margin="0,0,0,5"
             FontAttributes="Bold"
             TextTransform="Uppercase"
+            HorizontalOptions="Center"
         />
         <ListView x:Name="commentsListView" ItemsSource="{Binding Comments}" HasUnevenRows="True" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame CornerRadius="10" BackgroundColor="#959fab" Margin="5,0,5,0">
+                        <Frame CornerRadius="25" BackgroundColor="#94b1e3" Margin="5,0,5,0" Padding="10">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
+                                <Frame CornerRadius="50" WidthRequest="40" HeightRequest="40" Grid.Column="0" Grid.RowSpan="2" Padding="0" IsClippedToBounds="True">
+                                    <Image 
+                                        Source="user.jpg" 
+                                        Aspect="AspectFill" 
+                                    />
+                                </Frame>
                                 <Label 
                                     Text="{Binding ClientEmail}"
                                     TextColor="White"
                                     FontAttributes="Bold"
                                     FontSize="15"
-                                    Grid.Column="0"
-                                    Margin="5,-10,0,0"
+                                    Grid.Column="1"
+                                    LineBreakMode="NoWrap"
                                 />
                                 <Label 
-                                    Text="{Binding Score}"
+                                    Text="{Binding Score, StringFormat='{0} ★'}"
                                     TextColor="White"
                                     FontAttributes="Bold"
                                     FontSize="15"
-                                    Grid.Column="1"
-                                    HorizontalOptions="EndAndExpand"
-                                    Margin="0,-10,5,0"
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    HorizontalOptions="End"
+                                    Margin="0,0,5,0"
                                 />
                                 <Label 
                                     Text="{Binding Content}"
-                                    TextColor="Black"
+                                    TextColor="White"
                                     FontAttributes="Bold"
                                     FontSize="15"
                                     Grid.Row="1"
-                                    BackgroundColor="White"
-                                    Grid.Column="0" 
+                                    Grid.Column="1" 
                                     Grid.ColumnSpan="2"
                                 />
                             </Grid>
