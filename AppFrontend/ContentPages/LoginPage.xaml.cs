@@ -46,8 +46,8 @@ namespace AppFrontend.ContentPages
 
                 if (response.IsSuccessStatusCode)
                 {
-                    globalService.token = await response.Content.ReadAsStringAsync();
-                    await SecureStorage.SetAsync("orderus_token", globalService.token);
+                    var token = await response.Content.ReadAsStringAsync();
+                    await SecureStorage.SetAsync("orderus_token", token);
                     CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CreateAccountSuccess);
                     OpenCategoryPage();
                 }

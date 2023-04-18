@@ -140,5 +140,14 @@ namespace AppFrontend.Resources.Files {
                 return ResourceManager.GetString("ServicesURL", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to token/.
+        /// </summary>
+        internal static string TokenURL {
+            get {
+                return ResourceManager.GetString("TokenURL", resourceCulture);
+            }
+        }
     }
 }
