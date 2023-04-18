@@ -12,13 +12,19 @@
         </x:Arguments>
         <NavigationPage.ToolbarItems>
             <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
-            <ToolbarItem IconImageSource="logout.png" Priority="1" Clicked="LogoutAccount"/>
         </NavigationPage.ToolbarItems>
     </NavigationPage>
     <local:BasketPage Title="Cos" 
                IconImageSource="basket.png"/>
     <local:HistoryPage Title="Istoric" 
                IconImageSource="activity_history.png"/>
-    <local:ProfilePage Title="Cont" 
-               IconImageSource="user.png"/>
+    <NavigationPage Title="Cont" IconImageSource="user.png" BarBackgroundColor="#6ba1f9">
+        <x:Arguments Title="Orderus">
+            <local:ProfilePage />
+        </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+            <ToolbarItem IconImageSource="logout.png" Priority="1" Clicked="LogoutAccount"/>
+        </NavigationPage.ToolbarItems>
+    </NavigationPage>
 </TabbedPage>

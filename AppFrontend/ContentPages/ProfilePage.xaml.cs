@@ -16,14 +16,19 @@ namespace AppFrontend.ContentPages
     {
         public GlobalService globalService { get; set; }
 
-        public ClientDTO Client { get; set; }
-
         public ProfilePage()
         {
             InitializeComponent();
             globalService = DependencyService.Get<GlobalService>();
-            Client = globalService.Client;
-            this.BindingContext = this;
+            globalService.PropertyChanged += GlobalService_PropertyChanged;
+        }
+
+        private void GlobalService_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "Client")
+            {
+                this.BindingContext = globalService.Client;
+            }
         }
     }
 }
