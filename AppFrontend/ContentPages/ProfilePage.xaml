@@ -14,7 +14,7 @@
                         HorizontalOptions="Center"
                         VerticalOptions="Center" />
             </Frame>
-            <Label Text="Numele meu"
+            <Label Text="{Binding Client.Name}"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
             <Button Text="Informatii cont"/>

@@ -52,7 +52,7 @@ namespace AppFrontend.ContentPages
                 {
                     string json = await response.Content.ReadAsStringAsync();
                     ClientDTO user = JsonConvert.DeserializeObject<ClientDTO>(json);
-                    globalService.client = user;
+                    globalService.Client = user;
                 }
             }
         }
