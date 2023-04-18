@@ -1,7 +1,9 @@
-﻿using App.DTO;
+﻿using Acr.UserDialogs;
+using App.DTO;
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using Newtonsoft.Json;
+using Plugin.Toast;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -57,10 +59,25 @@ namespace AppFrontend.ContentPages
             }
         }
 
-        private void LogoutAccount(object sender, EventArgs e)
+        private async void LogoutAccount(object sender, EventArgs e)
         {
-            SecureStorage.Remove("orderus_token");
-            Application.Current.MainPage = new LoginPage();
+            var result = await DisplayConfirmPopUp();
+            if(result == true)
+            {
+                SecureStorage.Remove("orderus_token");
+                Application.Current.MainPage = new LoginPage();
+            }
+        }
+
+        private async Task<bool> DisplayConfirmPopUp()
+        {
+            return await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+            {
+                Title = ToastDisplayResources.LogoutConfirmationTitle,
+                Message = ToastDisplayResources.LogoutConfirmation,
+                OkText = ToastDisplayResources.PromptYes,
+                CancelText = ToastDisplayResources.PromptCancel
+            });
         }
     }
 }

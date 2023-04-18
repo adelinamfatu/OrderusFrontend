@@ -14,18 +14,9 @@ namespace AppFrontend.ContentPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
-        private GlobalService globalService { get; set; }
+        public GlobalService globalService { get; set; }
 
-        private ClientDTO _client;
-        public ClientDTO Client
-        {
-            get { return _client; }
-            set
-            {
-                _client = value;
-                OnPropertyChanged(nameof(Client));
-            }
-        }
+        public ClientDTO Client { get; set; }
 
         public ProfilePage()
         {

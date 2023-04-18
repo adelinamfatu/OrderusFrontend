@@ -46,9 +46,9 @@ namespace AppFrontend.ContentPages
 
                 if (response.IsSuccessStatusCode)
                 {
+                    await ShowSuccessToastAndWaitForDismissal(ToastDisplayResources.LoginSuccess);
                     var token = await response.Content.ReadAsStringAsync();
                     await SecureStorage.SetAsync("orderus_token", token);
-                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CreateAccountSuccess);
                     OpenCategoryPage();
                 }
                 if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
@@ -56,6 +56,12 @@ namespace AppFrontend.ContentPages
                     CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.LoginError);
                 }
             }
+        }
+
+        private async Task ShowSuccessToastAndWaitForDismissal(string successMessage)
+        {
+            CrossToastPopUp.Current.ShowToastSuccess(successMessage);
+            await Task.Delay(1000);
         }
 
         private ClientDTO GetClientFromUI()

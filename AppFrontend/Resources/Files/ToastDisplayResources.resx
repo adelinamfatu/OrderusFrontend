@@ -129,11 +129,26 @@
   <data name="LoginError" xml:space="preserve">
     <value>Contul deja exista sau datele sunt incorecte</value>
   </data>
+  <data name="LoginSuccess" xml:space="preserve">
+    <value>Ati fost autentificat cu succes</value>
+  </data>
+  <data name="LogoutConfirmation" xml:space="preserve">
+    <value>Sunteti sigur ca doriti sa iesiti din cont?</value>
+  </data>
+  <data name="LogoutConfirmationTitle" xml:space="preserve">
+    <value>Confirmare delogare</value>
+  </data>
   <data name="PasswordError" xml:space="preserve">
     <value>Parolele nu corespund</value>
   </data>
   <data name="PhoneNumberError" xml:space="preserve">
     <value>Numarul de telefon nu este unul valid</value>
+  </data>
+  <data name="PromptCancel" xml:space="preserve">
+    <value>Renunta</value>
+  </data>
+  <data name="PromptYes" xml:space="preserve">
+    <value>Da</value>
   </data>
   <data name="StreetTypeError" xml:space="preserve">
     <value>Trebuie sa alegeti un tip de strada</value>

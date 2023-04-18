@@ -97,6 +97,33 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ati fost autentificat cu succes.
+        /// </summary>
+        internal static string LoginSuccess {
+            get {
+                return ResourceManager.GetString("LoginSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sunteti sigur ca doriti sa iesiti din cont?.
+        /// </summary>
+        internal static string LogoutConfirmation {
+            get {
+                return ResourceManager.GetString("LogoutConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmare delogare.
+        /// </summary>
+        internal static string LogoutConfirmationTitle {
+            get {
+                return ResourceManager.GetString("LogoutConfirmationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parolele nu corespund.
         /// </summary>
         internal static string PasswordError {
@@ -111,6 +138,24 @@ namespace AppFrontend.Resources.Files {
         internal static string PhoneNumberError {
             get {
                 return ResourceManager.GetString("PhoneNumberError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Renunta.
+        /// </summary>
+        internal static string PromptCancel {
+            get {
+                return ResourceManager.GetString("PromptCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Da.
+        /// </summary>
+        internal static string PromptYes {
+            get {
+                return ResourceManager.GetString("PromptYes", resourceCulture);
             }
         }
         

@@ -9,7 +9,9 @@
     <ContentPage.Resources>
         <conv:ImageResourceConverter x:Key="ImageResourceConverter" />
     </ContentPage.Resources>
-    <ListView x:Name="categoriesListView" ItemsSource="{Binding Categories}" HorizontalOptions="Center" VerticalOptions="Center"
+    <StackLayout>
+        <SearchBar x:Name="companiesSearchBar" />
+        <ListView x:Name="categoriesListView" ItemsSource="{Binding Categories}" HorizontalOptions="Center" VerticalOptions="Center"
               RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
         <ListView.ItemTemplate>
             <DataTemplate>
@@ -42,6 +44,7 @@
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
-    </ListView>
+        </ListView>
+    </StackLayout>
 </ContentPage>
     

@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using Acr.UserDialogs;
+using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
@@ -21,7 +22,7 @@ namespace AppFrontend.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            UserDialogs.Init(this);
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
             // Create your application here
         }
