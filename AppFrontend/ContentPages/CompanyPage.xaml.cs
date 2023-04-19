@@ -53,24 +53,6 @@ namespace AppFrontend.ContentPages
             StaircasePrompt = company.Staircase is null ? null : DisplayPrompts.Staircase;
             ApartmentPrompt = company.ApartmentNumber is null ? null : DisplayPrompts.Apartment;
             FloorPrompt = company.Floor is null ? null : DisplayPrompts.Floor;
-            /*serviceOptions.Add(new CompanyServiceOptionDTO
-            {
-                Service = new ServiceDTO
-                {
-                    ID = 1,
-                    Name = "Tamplarie"
-                },
-                Price = 5.2F
-            });
-            serviceOptions.Add(new CompanyServiceOptionDTO
-            {
-                Service = new ServiceDTO
-                {
-                    ID = 2,
-                    Name = "Montare"
-                },
-                Price = 6.5F
-            });*/
             RetrieveCompanyDetails(Company.ID);
             RetrieveComments(Company.ID);
             this.BindingContext = this;

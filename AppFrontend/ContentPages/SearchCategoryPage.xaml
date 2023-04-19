@@ -2,15 +2,44 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppFrontend.ContentPages.SearchCategoryPage"
-             xmlns:conv="clr-namespace:AppFrontend.Convertors"
-             Title="Orderus"
-             >
+             xmlns:conv="clr-namespace:AppFrontend.Convertors" 
+             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
+             Title="Orderus">
 
     <ContentPage.Resources>
         <conv:ImageResourceConverter x:Key="ImageResourceConverter" />
     </ContentPage.Resources>
     <StackLayout>
-        <SearchBar x:Name="companiesSearchBar" />
+        <Frame CornerRadius="25"
+            Padding="0"
+            Margin="10"
+            HasShadow="True"
+            InputTransparent="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <xfx:XfxComboBox x:Name="searchComboBox"
+                     Grid.Column="0"
+                     Margin="8,0,0,0"
+                     Placeholder="Cauta companie"
+                     ItemsSource="{Binding Companies}"
+                     SortingAlgorithm="{Binding SortingAlgorithm}"
+                     PlaceholderColor="#667284"
+                     ActivePlaceholderColor="Transparent" />
+                <Button 
+                    Grid.Column="1"
+                    WidthRequest="50"
+                    CornerRadius="10"
+                    Margin="0,0,5,0"
+                    VerticalOptions="FillAndExpand"
+                    BackgroundColor="Transparent"
+                    HeightRequest="40"
+                    Clicked="OpenCompanyPage"
+                    ImageSource="search_grey.png" />
+            </Grid>
+        </Frame>
         <ListView x:Name="categoriesListView" ItemsSource="{Binding Categories}" HorizontalOptions="Center" VerticalOptions="Center"
               RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
         <ListView.ItemTemplate>

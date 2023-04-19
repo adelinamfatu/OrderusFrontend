@@ -22,15 +22,23 @@ namespace AppFrontend.ContentPages
     {
         ObservableCollection<CategoryDTO> categories = new ObservableCollection<CategoryDTO>();
         public ObservableCollection<CategoryDTO> Categories { get { return categories; } }
-        private GlobalService globalService { get; set; }
+
+        ObservableCollection<string> companies = new ObservableCollection<string>();
+        public ObservableCollection<string> Companies { get { return companies; } }
+
+        private List<CompanyDTO> companiesJSON { get; set; }
+
+        public Func<string, ICollection<string>, ICollection<string>> SortingAlgorithm 
+            { get; } = (text, values) => values.Where(x => x.StartsWith(text, StringComparison.CurrentCultureIgnoreCase))
+                                                .OrderBy(x => x).ToList();
 
         public SearchCategoryPage()
         {
             InitializeComponent();
-            //globalService = DependencyService.Get<GlobalService>();
             categoriesListView.SelectedItem = null;
             this.BindingContext = this;
             RetrieveCategories();
+            RetrieveCompanies();
         }
 
         private async void RetrieveCategories()
@@ -54,6 +62,27 @@ namespace AppFrontend.ContentPages
             }
         }
 
+        private async void RetrieveCompanies()
+        {
+            string url = RestResources.ConnectionURL + RestResources.CompaniesURL;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient client = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("orderus_token").Result;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    companiesJSON = JsonConvert.DeserializeObject<List<CompanyDTO>>(json);
+                    BuildCompanySearch(companiesJSON);
+                }
+            }
+        }
+
         private void BuildCategorySearch(List<CategoryDTO> categoriesJSON)
         {
             foreach(var category in categoriesJSON)
@@ -66,6 +95,14 @@ namespace AppFrontend.ContentPages
             }
         }
 
+        private void BuildCompanySearch(List<CompanyDTO> companiesJSON)
+        {
+            foreach (var company in companiesJSON)
+            {
+                companies.Add(company.Name);
+            }
+        }
+
         private void OpenServiceSearchPage(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
@@ -74,6 +111,16 @@ namespace AppFrontend.ContentPages
             var text = label.Text;
             CategoryDTO category = Categories.FirstOrDefault(c => c.Name == text);
             Navigation.PushAsync(new SearchServicePage(category.ID));
+        }
+
+        private void OpenCompanyPage(object sender, EventArgs e)
+        {
+            if(searchComboBox.SelectedItem != null)
+            {
+                var companyName = searchComboBox.SelectedItem;
+                var company = companiesJSON.Where(comp => comp.Name == (string)companyName).FirstOrDefault();
+                Navigation.PushAsync(new CompanyPage(company));
+            }
         }
     }
 }
