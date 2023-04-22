@@ -2,13 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:AppFrontend.CustomControls"
+             xmlns:sc="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
              BackgroundColor="#ebf3fb"
              x:Class="AppFrontend.ContentPages.LoginPage">
 
     <StackLayout>
         <Path Fill="#6ba1f9" Stroke="#6ba1f9" Aspect="Fill" Data="m251.66503,82.2175l343.99993,0l0,64.27026c-141.66296,-31.53184 -171.99996,24.48815 -343.99993,10.57443l0,-74.84469z" />
         <StackLayout VerticalOptions="Fill">
-            <Image Source="user.png" HorizontalOptions="Center" WidthRequest="100" Margin="0,0,0,30"/>
+            <Image Source="user.png" HorizontalOptions="Center" WidthRequest="100" Margin="0,0,0,10"/>
+            <sc:SegmentedControl x:Name="loginOptionsSC" TintColor="#6ba1f9" Margin="0,0,0,10" HorizontalOptions="Center" WidthRequest="250">
+                <sc:SegmentedControl.Children>
+                    <sc:SegmentedControlOption Text="Client" />
+                    <sc:SegmentedControlOption Text="Angajat" />
+                    <sc:SegmentedControlOption Text="Companie" />
+                </sc:SegmentedControl.Children>
+            </sc:SegmentedControl>
             <StackLayout HorizontalOptions="Center" WidthRequest="280">
                 <Frame BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Padding="0" HasShadow="True" BorderColor="#667284">
                     <local:CustomEntry

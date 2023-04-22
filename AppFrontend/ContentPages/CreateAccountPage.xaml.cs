@@ -43,13 +43,13 @@ namespace AppFrontend.ContentPages
 
         private void VerifyAccountDetails()
         {
-            if (email.Text.Contains("@"))
+            if (clientEmail.Text.Contains("@"))
             {
-                if(password.Text == confirmPassword.Text)
+                if(clientPassword.Text == clientConfirmPassword.Text)
                 {
-                    if(streetTypePicker.SelectedItem != null)
+                    if(clientStreetTypePicker.SelectedItem != null)
                     {
-                        if(phoneNumber.Text.Length == 10)
+                        if(clientPhoneNumber.Text.Length == 10)
                         {
                             SaveAccount();
                         }
@@ -78,18 +78,18 @@ namespace AppFrontend.ContentPages
         {
             return new ClientDTO
             {
-                Email = email.Text,
-                Phone = phoneNumber.Text,
-                Password = password.Text,
-                Name = char.ToUpper(name.Text[0]) + name.Text.Substring(1),
-                Surname = char.ToUpper(surname.Text[0]) + surname.Text.Substring(1),
-                City = city.Text,
-                Street = streetTypePicker.SelectedItem + street.Text,
-                StreetNumber = streetNumber.Text,
-                Building = !string.IsNullOrEmpty(building.Text) ? building.Text : null,
-                Staircase = !string.IsNullOrEmpty(staircase.Text) ? staircase.Text : null,
-                ApartmentNumber = !string.IsNullOrEmpty(apartmentNumber.Text) ? int.Parse(apartmentNumber.Text) : (int?)null,
-                Floor = !string.IsNullOrEmpty(floor.Text) ? int.Parse(floor.Text) : (int?)null
+                Email = clientEmail.Text,
+                Phone = clientPhoneNumber.Text,
+                Password = clientPassword.Text,
+                Name = char.ToUpper(clientName.Text[0]) + clientName.Text.Substring(1),
+                Surname = char.ToUpper(clientSurname.Text[0]) + clientSurname.Text.Substring(1),
+                City = clientCity.Text,
+                Street = clientStreetTypePicker.SelectedItem + clientStreet.Text,
+                StreetNumber = clientStreetNumber.Text,
+                Building = !string.IsNullOrEmpty(clientBuilding.Text) ? clientBuilding.Text : null,
+                Staircase = !string.IsNullOrEmpty(clientStaircase.Text) ? clientStaircase.Text : null,
+                ApartmentNumber = !string.IsNullOrEmpty(clientApartmentNumber.Text) ? int.Parse(clientApartmentNumber.Text) : (int?)null,
+                Floor = !string.IsNullOrEmpty(clientFloor.Text) ? int.Parse(clientFloor.Text) : (int?)null
             };
         }
 
@@ -133,6 +133,32 @@ namespace AppFrontend.ContentPages
             {
                 var IsValid = Regex.IsMatch(e.NewTextValue, lettersAndNumbersRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
                 ((Entry)sender).Text = IsValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
+            }
+        }
+
+        private void OnCreateAccountOptionChanged(object sender, SegmentedControl.FormsPlugin.Abstractions.ValueChangedEventArgs e)
+        {
+            string selectedOption = createAccountOptionsSC.Children[createAccountOptionsSC.SelectedSegment].Text;
+            if(selectedOption == DisplayPrompts.Client)
+            {
+                clientGrid.IsVisible = true;
+                employeeGrid.IsVisible = false;
+                companyGrid.IsVisible = false;
+            }
+            else
+            {
+                if(selectedOption == DisplayPrompts.Employee)
+                {
+                    employeeGrid.IsVisible = true;
+                    clientGrid.IsVisible = false;
+                    companyGrid.IsVisible = false;
+                }
+                else if(selectedOption == DisplayPrompts.Company)
+                {
+                    companyGrid.IsVisible = true;
+                    clientGrid.IsVisible = false;
+                    employeeGrid.IsVisible = false;
+                }
             }
         }
     }

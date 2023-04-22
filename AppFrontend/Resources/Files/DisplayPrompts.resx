@@ -123,6 +123,15 @@
   <data name="Building" xml:space="preserve">
     <value>, Cladirea </value>
   </data>
+  <data name="Client" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Companie</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>Angajat</value>
+  </data>
   <data name="Floor" xml:space="preserve">
     <value>, Etaj </value>
   </data>
