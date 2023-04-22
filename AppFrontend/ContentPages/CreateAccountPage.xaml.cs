@@ -20,9 +20,9 @@ namespace AppFrontend.ContentPages
     {
         public List<string> StreetTypes { get; set; }
 
-        const string onlyLettersRegex = @"^[a-zA-Z]+$";
+        const string onlyLettersRegex = @"^[a-zA-Z\s]+$";
 
-        const string lettersAndNumbersRegex = @"^[a-zA-Z0-9]+$";
+        const string lettersAndNumbersRegex = @"^[a-zA-Z0-9\s]+$";
 
         public CreateAccountPage()
         {
@@ -38,10 +38,22 @@ namespace AppFrontend.ContentPages
 
         private void CreateAccount(object sender, EventArgs e)
         {
-            VerifyAccountDetails();
+            string selectedOption = createAccountOptionsSC.Children[createAccountOptionsSC.SelectedSegment].Text;
+            if (selectedOption == DisplayPrompts.Client)
+            {
+                VerifyClientAccountDetails();
+            }
+            else if(selectedOption == DisplayPrompts.Employee)
+            {
+                
+            }
+            else if(selectedOption == DisplayPrompts.Company)
+            {
+                VerifyCompanyAccountDetails();
+            }
         }
 
-        private void VerifyAccountDetails()
+        private void VerifyClientAccountDetails()
         {
             if (clientEmail.Text.Contains("@"))
             {
@@ -51,7 +63,7 @@ namespace AppFrontend.ContentPages
                     {
                         if(clientPhoneNumber.Text.Length == 10)
                         {
-                            SaveAccount();
+                            SaveClientAccount();
                         }
                         else
                         {
@@ -67,6 +79,18 @@ namespace AppFrontend.ContentPages
                 {
                     CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.PasswordError);
                 }
+            }
+            else
+            {
+                CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.EmailError);
+            }
+        }
+
+        private void VerifyCompanyAccountDetails()
+        {
+            if(companyEmail.Text.Contains("@"))
+            {
+                SaveCompanyAccount();
             }
             else
             {
@@ -93,7 +117,28 @@ namespace AppFrontend.ContentPages
             };
         }
 
-        private async void SaveAccount()
+        private CompanyDTO GetCompanyFromUI()
+        {
+            return new CompanyDTO
+            {
+                RepresentativeEmail = companyEmail.Text,
+                RepresentativePassword = companyPassword.Text,
+                RepresentativeName = companyName.Text,
+                RepresentativeSurname = companySurname.Text,
+                Name = companyTitle.Text,
+                City = companyCity.Text,
+                Street = companyStreetTypePicker.SelectedItem + companyStreet.Text,
+                StreetNumber = companyStreetNumber.Text,
+                Building = !string.IsNullOrEmpty(companyBuilding.Text) ? companyBuilding.Text : null,
+                Staircase = !string.IsNullOrEmpty(companyStaircase.Text) ? companyStaircase.Text : null,
+                ApartmentNumber = !string.IsNullOrEmpty(companyApartmentNumber.Text) ? int.Parse(companyApartmentNumber.Text) : (int?)null,
+                Floor = !string.IsNullOrEmpty(companyFloor.Text) ? int.Parse(companyFloor.Text) : (int?)null,
+                Site = companySite.Text,
+                Description = companyDescription.Text
+            };
+        }
+
+        private async void SaveClientAccount()
         {
             ClientDTO client = GetClientFromUI();
             string url = RestResources.ConnectionURL + RestResources.ClientsURL + RestResources.CreateAccountURL;
@@ -103,6 +148,31 @@ namespace AppFrontend.ContentPages
             using (HttpClient httpClient = new HttpClient(handler))
             {
                 var json = JsonConvert.SerializeObject(client);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.PostAsync(url, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CreateAccountSuccess);
+                }
+                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.CreateAccountError);
+                }
+            }
+        }
+
+        private async void SaveCompanyAccount()
+        {
+            CompanyDTO company = GetCompanyFromUI();
+            string url = RestResources.ConnectionURL + RestResources.CompaniesURL + RestResources.CreateAccountURL;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient httpClient = new HttpClient(handler))
+            {
+                var json = JsonConvert.SerializeObject(company);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await httpClient.PostAsync(url, content);
