@@ -8,5 +8,13 @@
 
     <local:CompanyEmployeesPage Title="Angajati" IconImageSource="employees.png"/>
     <local:CompanyStatisticsPage Title="Statistici" IconImageSource="statistics.png"/>
-    <local:CompanyProfilePage Title="Profil" IconImageSource="company.png"/>
+    <NavigationPage Title="Profil" IconImageSource="company.png" BarBackgroundColor="#6ba1f9">
+        <x:Arguments Title="Orderus">
+            <local:CompanyProfilePage />
+        </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+            <ToolbarItem IconImageSource="logout.png" Priority="1" Clicked="LogoutAccount"/>
+        </NavigationPage.ToolbarItems>
+    </NavigationPage>
 </TabbedPage>

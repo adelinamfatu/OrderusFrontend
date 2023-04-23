@@ -116,11 +116,6 @@ namespace AppFrontend.ContentPages
             }
         }
 
-        private async void SendData()
-        {
-
-        }
-
         private async Task ShowSuccessToastAndWaitForDismissal(string successMessage)
         {
             CrossToastPopUp.Current.ShowToastSuccess(successMessage);

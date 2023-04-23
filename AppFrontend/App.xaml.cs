@@ -19,7 +19,7 @@ namespace AppFrontend
             var companyToken = SecureStorage.GetAsync("company_token").Result;
             if (!string.IsNullOrEmpty(clientToken))
             {
-                MainPage = new LoginPage();
+                MainPage = new MenuPage();
             }
             else if(!string.IsNullOrEmpty(employeeToken))
             {
@@ -31,7 +31,7 @@ namespace AppFrontend
             }
             else
             {
-                MainPage = new MenuPage();
+                MainPage = new LoginPage();
             }
         }
     }
