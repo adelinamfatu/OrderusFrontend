@@ -20,6 +20,18 @@ namespace AppFrontend.Resources
             }
         }
 
+        private CompanyDTO _company;
+
+        public CompanyDTO Company
+        {
+            get { return _company; }
+            set
+            {
+                _company = value;
+                OnPropertyChanged("Company");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)

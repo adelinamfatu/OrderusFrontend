@@ -1,12 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppFrontend.ContentPages.CompanyProfilePage">
+             x:Class="AppFrontend.ContentPages.CompanyProfilePage"
+             Title="Orderus">
+    
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame CornerRadius="100" 
+                HeightRequest="100"
+                WidthRequest="100"
+                HorizontalOptions="Center"
+                Padding="0"
+                IsClippedToBounds="True">
+                <Image Source="company.jpg" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+            </Frame>
+            <Label Text="{Binding Name}" FontSize="17" TextColor="#667284" HorizontalOptions="Center"/>
+            <Button Text="Informatii cont"/>
+            <Button Text="Adresa"/>
+            <Button Text="Carduri"/>
+            <Button Text="Oferte si cupoane"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

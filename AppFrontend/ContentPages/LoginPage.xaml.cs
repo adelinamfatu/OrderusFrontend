@@ -106,7 +106,7 @@ namespace AppFrontend.ContentPages
                         await ShowSuccessToastAndWaitForDismissal(ToastDisplayResources.LoginSuccess);
                         var token = await response.Content.ReadAsStringAsync();
                         await SecureStorage.SetAsync("company_token", token);
-                        OpenCategoryPage();
+                        OpenCompanyPage();
                     }
                     if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                     {
@@ -153,5 +153,15 @@ namespace AppFrontend.ContentPages
         {
             Application.Current.MainPage = new MenuPage();
         }
+
+        private void OpenCompanyPage()
+        {
+            Application.Current.MainPage = new CompanyMenuPage();
+        }
+
+        /*private void OpenCategoryPage()
+        {
+            Application.Current.MainPage = new MenuPage();
+        }*/
     }
 }
