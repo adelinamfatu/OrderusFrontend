@@ -40,7 +40,7 @@ namespace AppFrontend.ContentPages
 
         private async void SetClientData()
         {
-            var token = SecureStorage.GetAsync("orderus_token").Result;
+            var token = SecureStorage.GetAsync("client_token").Result;
             string url = RestResources.ConnectionURL + RestResources.ClientsURL + RestResources.TokenURL;
 
             var handler = new HttpClientHandler();
@@ -64,7 +64,7 @@ namespace AppFrontend.ContentPages
             var result = await DisplayConfirmPopUp();
             if(result == true)
             {
-                SecureStorage.Remove("orderus_token");
+                SecureStorage.Remove("client_token");
                 Application.Current.MainPage = new LoginPage();
             }
         }

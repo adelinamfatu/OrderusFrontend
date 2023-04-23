@@ -49,6 +49,9 @@
     <Compile Update="ContentPages\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="ContentPages\ClientProfilePage.xaml.cs">
+      <DependentUpon>ClientProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="ContentPages\SearchCategoryPage.xaml.cs">
       <DependentUpon>SearchCategoryPage.xaml</DependentUpon>
     </Compile>
@@ -81,10 +84,25 @@
     <EmbeddedResource Update="ContentPages\BasketPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="ContentPages\CompanyEmployeesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ContentPages\CompanyMenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="ContentPages\CompanyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="ContentPages\CompanyProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ContentPages\CompanyStatisticsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="ContentPages\CreateAccountPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ContentPages\EmployeeDataPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ContentPages\HistoryPage.xaml">
@@ -96,7 +114,7 @@
     <EmbeddedResource Update="ContentPages\MenuPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\ProfilePage.xaml">
+    <EmbeddedResource Update="ContentPages\ClientProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ContentPages\SearchCategoryPage.xaml">

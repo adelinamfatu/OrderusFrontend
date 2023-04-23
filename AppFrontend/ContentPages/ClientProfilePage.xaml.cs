@@ -12,11 +12,11 @@ using Xamarin.Forms.Xaml;
 namespace AppFrontend.ContentPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProfilePage : ContentPage
+    public partial class ClientProfilePage : ContentPage
     {
         public GlobalService globalService { get; set; }
 
-        public ProfilePage()
+        public ClientProfilePage()
         {
             InitializeComponent();
             globalService = DependencyService.Get<GlobalService>();

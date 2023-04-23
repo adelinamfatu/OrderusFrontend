@@ -14,10 +14,20 @@ namespace AppFrontend
         {
             InitializeComponent();
             DependencyService.Register<GlobalService>();
-            var token = SecureStorage.GetAsync("orderus_token").Result;
-            if(string.IsNullOrEmpty(token))
+            var clientToken = SecureStorage.GetAsync("client_token").Result;
+            var employeeToken = SecureStorage.GetAsync("employee_token").Result;
+            var companyToken = SecureStorage.GetAsync("company_token").Result;
+            if (!string.IsNullOrEmpty(clientToken))
             {
                 MainPage = new LoginPage();
+            }
+            else if(!string.IsNullOrEmpty(employeeToken))
+            {
+                
+            }
+            else if(!string.IsNullOrEmpty(companyToken))
+            {
+                MainPage = new CompanyMenuPage();
             }
             else
             {

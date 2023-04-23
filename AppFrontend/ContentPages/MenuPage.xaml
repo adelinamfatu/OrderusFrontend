@@ -20,7 +20,7 @@
                IconImageSource="activity_history.png"/>
     <NavigationPage Title="Cont" IconImageSource="user.png" BarBackgroundColor="#6ba1f9">
         <x:Arguments Title="Orderus">
-            <local:ProfilePage />
+            <local:ClientProfilePage />
         </x:Arguments>
         <NavigationPage.ToolbarItems>
             <ToolbarItem IconImageSource="icon_white.png" Priority="0" />

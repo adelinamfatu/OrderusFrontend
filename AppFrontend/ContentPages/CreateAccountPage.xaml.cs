@@ -90,7 +90,28 @@ namespace AppFrontend.ContentPages
         {
             if(companyEmail.Text.Contains("@"))
             {
-                SaveCompanyAccount();
+                if(companyPassword.Text == companyConfirmPassword.Text)
+                {
+                    if(companyStreetTypePicker.SelectedItem != null)
+                    {
+                        if(companyPhoneNumber.Text.Length == 10)
+                        {
+                            SaveCompanyAccount();
+                        }
+                        else
+                        {
+                            CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.PhoneNumberError);
+                        }
+                    }
+                    else
+                    {
+                        CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.StreetTypeError);
+                    }
+                }    
+                else
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.PasswordError);
+                }
             }
             else
             {

@@ -32,30 +32,93 @@ namespace AppFrontend.ContentPages
 
         private async void SendUserInfo(object sender, EventArgs e)
         {
-            ClientDTO client = GetClientFromUI();
-            string url = RestResources.ConnectionURL + RestResources.ClientsURL + RestResources.LoginURL;
-
-            var handler = new HttpClientHandler();
-            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
-            using (HttpClient httpClient = new HttpClient(handler))
+            string selectedOption = loginOptionsSC.Children[loginOptionsSC.SelectedSegment].Text;
+            if (selectedOption == DisplayPrompts.Client)
             {
-                var json = JsonConvert.SerializeObject(client);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                ClientDTO client = GetClientFromUI();
+                string url = RestResources.ConnectionURL + RestResources.ClientsURL + RestResources.LoginURL;
 
-                HttpResponseMessage response = await httpClient.PostAsync(url, content);
+                var handler = new HttpClientHandler();
+                handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+                using (HttpClient httpClient = new HttpClient(handler))
+                {
+                    var json = JsonConvert.SerializeObject(client);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                if (response.IsSuccessStatusCode)
-                {
-                    await ShowSuccessToastAndWaitForDismissal(ToastDisplayResources.LoginSuccess);
-                    var token = await response.Content.ReadAsStringAsync();
-                    await SecureStorage.SetAsync("orderus_token", token);
-                    OpenCategoryPage();
-                }
-                if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                {
-                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.LoginError);
+                    HttpResponseMessage response = await httpClient.PostAsync(url, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        await ShowSuccessToastAndWaitForDismissal(ToastDisplayResources.LoginSuccess);
+                        var token = await response.Content.ReadAsStringAsync();
+                        await SecureStorage.SetAsync("client_token", token);
+                        OpenCategoryPage();
+                    }
+                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.LoginError);
+                    }
                 }
             }
+            else if(selectedOption == DisplayPrompts.Employee)
+            {
+                EmployeeDTO employee = GetEmployeeFromUI();
+                string url = RestResources.ConnectionURL + RestResources.EmployessURL + RestResources.LoginURL;
+
+                var handler = new HttpClientHandler();
+                handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+                using (HttpClient httpClient = new HttpClient(handler))
+                {
+                    var json = JsonConvert.SerializeObject(employee);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await httpClient.PostAsync(url, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        await ShowSuccessToastAndWaitForDismissal(ToastDisplayResources.LoginSuccess);
+                        var token = await response.Content.ReadAsStringAsync();
+                        await SecureStorage.SetAsync("employee_token", token);
+                        OpenCategoryPage();
+                    }
+                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.LoginError);
+                    }
+                }
+            }
+            else if(selectedOption == DisplayPrompts.Company)
+            {
+                CompanyDTO company = GetCompanyFromUI();
+                string url = RestResources.ConnectionURL + RestResources.CompaniesURL + RestResources.LoginURL;
+
+                var handler = new HttpClientHandler();
+                handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+                using (HttpClient httpClient = new HttpClient(handler))
+                {
+                    var json = JsonConvert.SerializeObject(company);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = await httpClient.PostAsync(url, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        await ShowSuccessToastAndWaitForDismissal(ToastDisplayResources.LoginSuccess);
+                        var token = await response.Content.ReadAsStringAsync();
+                        await SecureStorage.SetAsync("company_token", token);
+                        OpenCategoryPage();
+                    }
+                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.LoginError);
+                    }
+                }
+            }
+        }
+
+        private async void SendData()
+        {
+
         }
 
         private async Task ShowSuccessToastAndWaitForDismissal(string successMessage)
@@ -70,6 +133,24 @@ namespace AppFrontend.ContentPages
             {
                 Email = email.Text,
                 Password = password.Text
+            };
+        }
+
+        private EmployeeDTO GetEmployeeFromUI()
+        {
+            return new EmployeeDTO
+            {
+                Email = email.Text,
+                Password = password.Text
+            };
+        }
+
+        private CompanyDTO GetCompanyFromUI()
+        {
+            return new CompanyDTO
+            {
+                RepresentativeEmail = email.Text,
+                RepresentativePassword = password.Text
             };
         }
 

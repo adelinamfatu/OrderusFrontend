@@ -66,7 +66,7 @@ namespace AppFrontend.ContentPages
             handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
             using (HttpClient client = new HttpClient(handler))
             {
-                var token = SecureStorage.GetAsync("orderus_token").Result;
+                var token = SecureStorage.GetAsync("client_token").Result;
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -99,7 +99,7 @@ namespace AppFrontend.ContentPages
             handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
             using (HttpClient client = new HttpClient(handler))
             {
-                var token = SecureStorage.GetAsync("orderus_token").Result;
+                var token = SecureStorage.GetAsync("client_token").Result;
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage response = await client.GetAsync(url);
 

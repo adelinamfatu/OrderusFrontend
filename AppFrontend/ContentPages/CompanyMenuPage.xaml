@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFrontend.ContentPages.CompanyMenuPage"
+            Title="Orderus"
+            xmlns:local="clr-namespace:AppFrontend.ContentPages"
+            BackgroundColor="#ecf3fb">
+
+    <local:CompanyEmployeesPage Title="Angajati" IconImageSource="employees.png"/>
+    <local:CompanyStatisticsPage Title="Statistici" IconImageSource="statistics.png"/>
+    <local:CompanyProfilePage Title="Profil" IconImageSource="company.png"/>
+</TabbedPage>
