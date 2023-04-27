@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppFrontend.ContentPages.CompanyProfilePage"
+             xmlns:local="clr-namespace:AppFrontend.CustomControls"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              Title="Orderus">
     
     <ContentPage.Content>
@@ -16,11 +18,141 @@
                         HorizontalOptions="Center"
                         VerticalOptions="Center" />
             </Frame>
-            <Label Text="{Binding Name}" FontSize="17" TextColor="#667284" HorizontalOptions="Center"/>
-            <Button Text="Informatii cont"/>
-            <Button Text="Adresa"/>
-            <Button Text="Carduri"/>
-            <Button Text="Oferte si cupoane"/>
+            <StackLayout HorizontalOptions="Center" WidthRequest="350">
+                <Frame x:Name="name" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                    <local:CustomEntry
+                        Text="{Binding Name}"
+                        ClearButtonVisibility="WhileEditing"
+                        FontSize="20"
+                        Margin="10,0,10,0"
+                        PlaceholderColor="#ebf3fb"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center"
+                        ReturnType="Next" />
+                </Frame>
+                <Frame x:Name="city" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                    <local:CustomEntry
+                        Text="{Binding City}"
+                        ClearButtonVisibility="WhileEditing"
+                        FontSize="20"
+                        Margin="10,0,10,0"
+                        PlaceholderColor="#ebf3fb"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center"
+                        ReturnType="Next" />
+                </Frame>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="90" />
+                    </Grid.ColumnDefinitions>
+                    <Frame x:Name="street" BackgroundColor="#94b1e3" Grid.Column="0" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                        <local:CustomEntry
+                        Text="{Binding Street}"
+                        ClearButtonVisibility="WhileEditing"
+                        FontSize="20"
+                        Margin="10,0,10,0"
+                        PlaceholderColor="#ebf3fb"
+                        TextColor="White"
+                        ReturnType="Next" />
+                    </Frame>
+                    <Frame x:Name="streetNumber" BackgroundColor="#94b1e3" Grid.Column="1" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                        <local:CustomEntry
+                            Text="{Binding StreetNumber}"
+                            ClearButtonVisibility="WhileEditing"
+                            FontSize="20"
+                            Margin="10,0,10,0"
+                            PlaceholderColor="#ebf3fb"
+                            TextColor="White"
+                            ReturnType="Next" />
+                    </Frame>
+                </Grid>
+                <Frame x:Name="building"  BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                    <local:CustomEntry
+                        Text="{Binding Building}"
+                        Placeholder="Cladirea"
+                        PlaceholderColor="#667284"
+                        ClearButtonVisibility="WhileEditing"
+                        FontSize="20"
+                        Margin="10,0,10,0"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center"
+                        ReturnType="Next" />
+                </Frame>
+                <Frame x:Name="staircase" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                    <local:CustomEntry
+                        Placeholder="Scara"
+                        PlaceholderColor="#667284"
+                        Text="{Binding Staircase}"
+                        ClearButtonVisibility="WhileEditing"
+                        FontSize="20"
+                        Margin="10,0,10,0"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center"
+                        ReturnType="Next" />
+                </Frame>
+                <Frame x:Name="apartmentNumber" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                    <local:CustomEntry
+                        Placeholder="Numar apartament"
+                        PlaceholderColor="#667284"
+                        Text="{Binding ApartmentNumber}"
+                        ClearButtonVisibility="WhileEditing"
+                        FontSize="20"
+                        Margin="10,0,10,0"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center"
+                        ReturnType="Next" />
+                </Frame>
+                <Grid x:Name="functionEntryGrid" IsVisible="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="function" Placeholder="Introduceti functiile" Grid.Column="0" />
+                    <Button 
+                        ImageSource="ok.png" 
+                        Grid.Column="1" 
+                        BackgroundColor="#93b0e0" 
+                        WidthRequest="50" 
+                        HeightRequest="40" 
+                        Clicked="AddFunctionToList"
+                        />
+                </Grid>
+                <xct:UniformGrid x:Name="functionsUniformGrid" VerticalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding Functions, Mode=OneWay}" IsVisible="False">
+                    <BindableLayout.EmptyView>
+                        <Label Text="Nicio functie introdusa"/>
+                    </BindableLayout.EmptyView>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="5" BackgroundColor="#94b1e3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label 
+                                        Text="{Binding}"
+                                        TextColor="White"
+                                        TextTransform="Uppercase"
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Grid.Column="0"
+                                        InputTransparent="True"  
+                                    />
+                                    <Button 
+                                        ImageSource="cancel.png"
+                                        Grid.Column="1"
+                                    />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </xct:UniformGrid>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" RadioButtonGroup.GroupName="companyDetailsChangeDisplay">
+                    <RadioButton IsChecked="True" x:Name="page1Button" CheckedChanged="ChangePage" />
+                    <RadioButton x:Name="page2Button" CheckedChanged="ChangePage"/>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
