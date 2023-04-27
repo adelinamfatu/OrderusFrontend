@@ -160,6 +160,24 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logo-ul nu a fost salvat cu succes.
+        /// </summary>
+        internal static string SavePhotoFail {
+            get {
+                return ResourceManager.GetString("SavePhotoFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logo-ul a fost salvat cu succes.
+        /// </summary>
+        internal static string SavePhotoSuccess {
+            get {
+                return ResourceManager.GetString("SavePhotoSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trebuie sa alegeti un tip de strada.
         /// </summary>
         internal static string StreetTypeError {

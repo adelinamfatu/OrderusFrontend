@@ -142,6 +142,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to photo/.
+        /// </summary>
+        internal static string PhotoURL {
+            get {
+                return ResourceManager.GetString("PhotoURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to services/.
         /// </summary>
         internal static string ServicesURL {

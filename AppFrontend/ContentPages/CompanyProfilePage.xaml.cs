@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
+using System.Net;
+using System.Net.Http;
+using AppFrontend.Resources.Files;
+using Plugin.Toast;
+using System.IO;
 
 namespace AppFrontend.ContentPages
 {
@@ -66,6 +72,63 @@ namespace AppFrontend.ContentPages
                 globalService.Company.Functions = new List<string>();
             }
             globalService.Company.Functions.Add(function.Text);
+        }
+
+        private async void ChoosePhotoFromGallery(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+                {
+                    Title = "Selectati o image"
+                });
+
+                if (result != null)
+                {
+                    var selectedPhotoPath = result.FullPath;
+                    SendPhoto(selectedPhotoPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+
+        private async void SendPhoto(string selectedPhotoPath)
+        {
+            using (var stream = new FileStream(selectedPhotoPath, FileMode.Open, FileAccess.Read))
+            {
+                string url = RestResources.ConnectionURL + RestResources.CompaniesURL + RestResources.PhotoURL;
+
+                var handler = new HttpClientHandler();
+                handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+                using (HttpClient httpClient = new HttpClient(handler))
+                {
+                    var multipartContent = new MultipartFormDataContent();
+                    var imageContent = new StreamContent(stream);
+
+                    imageContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
+                    imageContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data")
+                    {
+                        Name = "logo",
+                        FileName = globalService.Company.Name + ".png"
+                    };
+
+                    multipartContent.Add(imageContent);
+
+                    HttpResponseMessage response = await httpClient.PostAsync(url, multipartContent);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.SavePhotoSuccess);
+                    }
+                    if (response.StatusCode == HttpStatusCode.Conflict)
+                    {
+                        CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.SavePhotoFail);
+                    }
+                }
+            }
         }
     }
 }

@@ -150,6 +150,12 @@
   <data name="PromptYes" xml:space="preserve">
     <value>Da</value>
   </data>
+  <data name="SavePhotoFail" xml:space="preserve">
+    <value>Logo-ul nu a fost salvat cu succes</value>
+  </data>
+  <data name="SavePhotoSuccess" xml:space="preserve">
+    <value>Logo-ul a fost salvat cu succes</value>
+  </data>
   <data name="StreetTypeError" xml:space="preserve">
     <value>Trebuie sa alegeti un tip de strada</value>
   </data>

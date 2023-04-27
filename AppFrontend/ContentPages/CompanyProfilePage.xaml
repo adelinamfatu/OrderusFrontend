@@ -8,16 +8,19 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Frame CornerRadius="100" 
-                HeightRequest="100"
-                WidthRequest="100"
-                HorizontalOptions="Center"
-                Padding="0"
-                IsClippedToBounds="True">
-                <Image Source="company.jpg" 
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
-            </Frame>
+            <AbsoluteLayout HorizontalOptions="Center">
+                <Frame CornerRadius="100" 
+                    HeightRequest="100"
+                    WidthRequest="100"
+                    Padding="0"
+                    IsClippedToBounds="True">
+                    <Image Source="company.jpg" />
+                </Frame>
+                <Button ImageSource="add.png" 
+                        WidthRequest="30"
+                        HeightRequest="30" 
+                        Clicked="ChoosePhotoFromGallery"/>
+            </AbsoluteLayout>
             <StackLayout HorizontalOptions="Center" WidthRequest="350">
                 <Frame x:Name="name" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
                     <local:CustomEntry
