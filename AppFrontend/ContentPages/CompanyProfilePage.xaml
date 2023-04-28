@@ -4,8 +4,12 @@
              x:Class="AppFrontend.ContentPages.CompanyProfilePage"
              xmlns:local="clr-namespace:AppFrontend.CustomControls"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:conv="clr-namespace:AppFrontend.Converters"
              Title="Orderus">
-    
+
+    <ContentPage.Resources>
+        <conv:ImageUriConverter x:Key="ImageUriConverter" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <AbsoluteLayout HorizontalOptions="Center">
@@ -14,7 +18,7 @@
                     WidthRequest="100"
                     Padding="0"
                     IsClippedToBounds="True">
-                    <Image Source="company.jpg" />
+                    <Image Source="{Binding Logo, Converter={StaticResource ImageUriConverter}}" />
                 </Frame>
                 <Button ImageSource="add.png" 
                         WidthRequest="30"
@@ -127,7 +131,7 @@
                     </BindableLayout.EmptyView>
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Frame Padding="5" BackgroundColor="#94b1e3">
+                            <Frame Padding="2" BackgroundColor="#94b1e3" CornerRadius="10" Margin="5">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -136,7 +140,6 @@
                                     <Label 
                                         Text="{Binding}"
                                         TextColor="White"
-                                        TextTransform="Uppercase"
                                         FontAttributes="Bold"
                                         FontSize="20"
                                         Grid.Column="0"
@@ -144,7 +147,10 @@
                                     />
                                     <Button 
                                         ImageSource="cancel.png"
+                                        WidthRequest="20"
+                                        HeightRequest="20"
                                         Grid.Column="1"
+                                        BackgroundColor="Red"
                                     />
                                 </Grid>
                             </Frame>

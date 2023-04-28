@@ -126,6 +126,9 @@
   <data name="EmailError" xml:space="preserve">
     <value>Adresa de mail nu are formatul corect</value>
   </data>
+  <data name="FunctionError" xml:space="preserve">
+    <value>Functia deja exista</value>
+  </data>
   <data name="LoginError" xml:space="preserve">
     <value>Contul deja exista sau datele sunt incorecte</value>
   </data>

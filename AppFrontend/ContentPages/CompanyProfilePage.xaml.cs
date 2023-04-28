@@ -14,13 +14,16 @@ using System.Net.Http;
 using AppFrontend.Resources.Files;
 using Plugin.Toast;
 using System.IO;
+using System.ComponentModel;
 
 namespace AppFrontend.ContentPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CompanyProfilePage : ContentPage
+    public partial class CompanyProfilePage : ContentPage, INotifyPropertyChanged
     {
         public GlobalService globalService { get; set; }
+
+        public CompanyViewModel company { get; set; }
 
         public CompanyProfilePage()
         {
@@ -33,7 +36,8 @@ namespace AppFrontend.ContentPages
         {
             if (e.PropertyName == "Company")
             {
-                this.BindingContext = globalService.Company;
+                this.company = new CompanyViewModel(globalService.Company);
+                this.BindingContext = company;
             }
         }
 
@@ -67,11 +71,14 @@ namespace AppFrontend.ContentPages
 
         private void AddFunctionToList(object sender, EventArgs e)
         {
-            if (globalService.Company.Functions == null)
+            if(company.Functions.Contains(function.Text))
             {
-                globalService.Company.Functions = new List<string>();
+                CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.FunctionError);
             }
-            globalService.Company.Functions.Add(function.Text);
+            else
+            {
+                company.Functions.Add(function.Text);
+            }
         }
 
         private async void ChoosePhotoFromGallery(object sender, EventArgs e)
