@@ -196,9 +196,54 @@ namespace AppFrontend.ContentPages
             }
         }
 
-        private void SaveCompanyAccountUpdates(object sender, EventArgs e)
+        private void GetCompanyAccountUpdatesFromUI(object sender, EventArgs e)
         {
+            var functions = new List<string>();
+            foreach(var function in company.Functions)
+            {
+                if(!globalService.Company.Functions.Contains(function))
+                {
+                    functions.Add(function);
+                }
+            }
+            var Company = new CompanyDTO()
+            {
+                Name = company.Name,
+                City = company.City,
+                Street = company.Street,
+                StreetNumber = company.StreetNumber,
+                Building = company.Building,
+                Staircase = company.Staircase,
+                ApartmentNumber = company.ApartmentNumber,
+                Floor = company.Floor,
+                Site = company.Site,
+                Description = company.Description
+            };
+            SendCompanyAccountUpdates(Company);
+        }
 
+        private async void SendCompanyAccountUpdates(CompanyDTO Company)
+        {
+            string url = RestResources.ConnectionURL + RestResources.CompaniesURL + RestResources.UpdateURL;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient httpClient = new HttpClient(handler))
+            {
+                var json = JsonConvert.SerializeObject(Company);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.PutAsync(url, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.DataUpdateSuccess);
+                }
+                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.DataUpdateFail);
+                }
+            }
         }
     }
 }

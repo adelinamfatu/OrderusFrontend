@@ -35,6 +35,7 @@
                         PlaceholderColor="#ebf3fb"
                         TextColor="White"
                         HorizontalTextAlignment="Center"
+                        IsEnabled="False"
                         ReturnType="Next" />
             </Frame>
             <Frame x:Name="city" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
@@ -225,7 +226,7 @@
             <Frame x:Name="saveButton" Margin="0,-10,0,0" IsVisible="false" HasShadow="True" Padding="0" CornerRadius="40" WidthRequest="150" HorizontalOptions="Center">
                 <Button Text="Salvare" 
                         TextColor="#ebf3fb"
-                        Clicked="SaveCompanyAccountUpdates"
+                        Clicked="GetCompanyAccountUpdatesFromUI"
                         BackgroundColor="#6ba1f9"/>
             </Frame>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" RadioButtonGroup.GroupName="companyDetailsChangeDisplay">

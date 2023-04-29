@@ -123,6 +123,12 @@
   <data name="CreateAccountSuccess" xml:space="preserve">
     <value>Contul a fost creat cu succes</value>
   </data>
+  <data name="DataUpdateFail" xml:space="preserve">
+    <value>S-a produs o eroare la salvarea datelor</value>
+  </data>
+  <data name="DataUpdateSuccess" xml:space="preserve">
+    <value>Datele au fost salvate cu succes</value>
+  </data>
   <data name="EmailError" xml:space="preserve">
     <value>Adresa de mail nu are formatul corect</value>
   </data>

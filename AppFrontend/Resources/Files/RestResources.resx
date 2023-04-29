@@ -153,4 +153,7 @@
   <data name="TokenURL" xml:space="preserve">
     <value>token/</value>
   </data>
+  <data name="UpdateURL" xml:space="preserve">
+    <value>update/</value>
+  </data>
 </root>

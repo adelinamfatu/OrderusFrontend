@@ -167,5 +167,14 @@ namespace AppFrontend.Resources.Files {
                 return ResourceManager.GetString("TokenURL", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to update/.
+        /// </summary>
+        internal static string UpdateURL {
+            get {
+                return ResourceManager.GetString("UpdateURL", resourceCulture);
+            }
+        }
     }
 }

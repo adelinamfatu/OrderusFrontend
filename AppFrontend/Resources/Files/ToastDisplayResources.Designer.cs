@@ -79,6 +79,24 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la salvarea datelor.
+        /// </summary>
+        internal static string DataUpdateFail {
+            get {
+                return ResourceManager.GetString("DataUpdateFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Datele au fost salvate cu succes.
+        /// </summary>
+        internal static string DataUpdateSuccess {
+            get {
+                return ResourceManager.GetString("DataUpdateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adresa de mail nu are formatul corect.
         /// </summary>
         internal static string EmailError {
