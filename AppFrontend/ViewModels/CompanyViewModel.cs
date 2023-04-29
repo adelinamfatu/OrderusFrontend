@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms.MultiSelectListView;
 
 namespace AppFrontend
 {
@@ -39,6 +40,8 @@ namespace AppFrontend
 
         public ObservableCollection<string> Functions { get; set; }
 
+        public MultiSelectObservableCollection<ServiceDTO> Services { get; set; }
+
         public CompanyViewModel(CompanyDTO company)
         {
             this.Name = company.Name;
@@ -56,6 +59,7 @@ namespace AppFrontend
             this.RepresentativeName = company.RepresentativeName;
             this.RepresentativeSurname = company.RepresentativeSurname;
             this.Functions = new ObservableCollection<string>();
+            this.Services = new MultiSelectObservableCollection<ServiceDTO>();
             if(company.Functions != null)
             {
                 foreach (string function in company.Functions)

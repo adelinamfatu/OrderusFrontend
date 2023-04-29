@@ -5,29 +5,29 @@
              xmlns:local="clr-namespace:AppFrontend.CustomControls"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:conv="clr-namespace:AppFrontend.Converters"
+             xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView"
              Title="Orderus">
 
     <ContentPage.Resources>
         <conv:ImageUriConverter x:Key="ImageUriConverter" />
     </ContentPage.Resources>
-    <ContentPage.Content>
-        <StackLayout>
-            <AbsoluteLayout HorizontalOptions="Center">
-                <Frame CornerRadius="100" 
+    <StackLayout>
+        <AbsoluteLayout HorizontalOptions="Center">
+            <Frame CornerRadius="100" 
                     HeightRequest="100"
                     WidthRequest="100"
                     Padding="0"
                     IsClippedToBounds="True">
-                    <Image Source="{Binding Logo, Converter={StaticResource ImageUriConverter}}" />
-                </Frame>
-                <Button ImageSource="add.png" 
+                <Image Source="{Binding Logo, Converter={StaticResource ImageUriConverter}}" />
+            </Frame>
+            <Button ImageSource="add.png" 
                         WidthRequest="30"
                         HeightRequest="30" 
                         Clicked="ChoosePhotoFromGallery"/>
-            </AbsoluteLayout>
-            <StackLayout HorizontalOptions="Center" WidthRequest="350">
-                <Frame x:Name="name" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
-                    <local:CustomEntry
+        </AbsoluteLayout>
+        <StackLayout HorizontalOptions="Center" WidthRequest="350">
+            <Frame x:Name="name" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                <local:CustomEntry
                         Text="{Binding Name}"
                         ClearButtonVisibility="WhileEditing"
                         FontSize="20"
@@ -36,9 +36,9 @@
                         TextColor="White"
                         HorizontalTextAlignment="Center"
                         ReturnType="Next" />
-                </Frame>
-                <Frame x:Name="city" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
-                    <local:CustomEntry
+            </Frame>
+            <Frame x:Name="city" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                <local:CustomEntry
                         Text="{Binding City}"
                         ClearButtonVisibility="WhileEditing"
                         FontSize="20"
@@ -47,24 +47,24 @@
                         TextColor="White"
                         HorizontalTextAlignment="Center"
                         ReturnType="Next" />
+            </Frame>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="90" />
+                </Grid.ColumnDefinitions>
+                <Frame x:Name="street" BackgroundColor="#94b1e3" Grid.Column="0" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                    <local:CustomEntry
+                            Text="{Binding Street}"
+                            ClearButtonVisibility="WhileEditing"
+                            FontSize="20"
+                            Margin="10,0,10,0"
+                            PlaceholderColor="#ebf3fb"
+                            TextColor="White"
+                            ReturnType="Next" />
                 </Frame>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="250" />
-                        <ColumnDefinition Width="90" />
-                    </Grid.ColumnDefinitions>
-                    <Frame x:Name="street" BackgroundColor="#94b1e3" Grid.Column="0" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
-                        <local:CustomEntry
-                        Text="{Binding Street}"
-                        ClearButtonVisibility="WhileEditing"
-                        FontSize="20"
-                        Margin="10,0,10,0"
-                        PlaceholderColor="#ebf3fb"
-                        TextColor="White"
-                        ReturnType="Next" />
-                    </Frame>
-                    <Frame x:Name="streetNumber" BackgroundColor="#94b1e3" Grid.Column="1" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
-                        <local:CustomEntry
+                <Frame x:Name="streetNumber" BackgroundColor="#94b1e3" Grid.Column="1" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                    <local:CustomEntry
                             Text="{Binding StreetNumber}"
                             ClearButtonVisibility="WhileEditing"
                             FontSize="20"
@@ -72,51 +72,94 @@
                             PlaceholderColor="#ebf3fb"
                             TextColor="White"
                             ReturnType="Next" />
-                    </Frame>
-                </Grid>
-                <Frame x:Name="building"  BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
-                    <local:CustomEntry
-                        Text="{Binding Building}"
-                        Placeholder="Cladirea"
-                        PlaceholderColor="#667284"
-                        ClearButtonVisibility="WhileEditing"
-                        FontSize="20"
-                        Margin="10,0,10,0"
-                        TextColor="White"
-                        HorizontalTextAlignment="Center"
-                        ReturnType="Next" />
                 </Frame>
-                <Frame x:Name="staircase" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="90" />
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+                <Frame x:Name="building" Grid.Column="0" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
                     <local:CustomEntry
-                        Placeholder="Scara"
-                        PlaceholderColor="#667284"
-                        Text="{Binding Staircase}"
-                        ClearButtonVisibility="WhileEditing"
-                        FontSize="20"
-                        Margin="10,0,10,0"
-                        TextColor="White"
-                        HorizontalTextAlignment="Center"
-                        ReturnType="Next" />
+                            Text="{Binding Building}"
+                            Placeholder="Cladirea"
+                            PlaceholderColor="#667284"
+                            ClearButtonVisibility="WhileEditing"
+                            FontSize="20"
+                            Margin="10,0,10,0"
+                            TextColor="White"
+                            ReturnType="Next" />
                 </Frame>
-                <Frame x:Name="apartmentNumber" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                <Frame x:Name="staircase" Grid.Column="1" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
                     <local:CustomEntry
-                        Placeholder="Numar apartament"
-                        PlaceholderColor="#667284"
-                        Text="{Binding ApartmentNumber}"
-                        ClearButtonVisibility="WhileEditing"
-                        FontSize="20"
-                        Margin="10,0,10,0"
-                        TextColor="White"
-                        HorizontalTextAlignment="Center"
-                        ReturnType="Next" />
+                            Placeholder="Scara"
+                            PlaceholderColor="#667284"
+                            Text="{Binding Staircase}"
+                            ClearButtonVisibility="WhileEditing"
+                            FontSize="20"
+                            Margin="10,0,10,0"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            ReturnType="Next" />
                 </Frame>
-                <Grid x:Name="functionEntryGrid" IsVisible="False">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Entry x:Name="function" Placeholder="Introduceti functiile" Grid.Column="0" />
-                    <Button 
+                <Frame x:Name="apartmentNumber" Grid.Column="2" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                    <local:CustomEntry
+                            Placeholder="Numar apartament"
+                            PlaceholderColor="#667284"
+                            Text="{Binding ApartmentNumber}"
+                            ClearButtonVisibility="WhileEditing"
+                            FontSize="20"
+                            Margin="10,0,10,0"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            ReturnType="Next" />
+                </Frame>
+                <Frame x:Name="floor" Grid.Column="3" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                    <local:CustomEntry
+                            Placeholder="Etaj"
+                            PlaceholderColor="#667284"
+                            Text="{Binding Floor}"
+                            ClearButtonVisibility="WhileEditing"
+                            FontSize="20"
+                            Margin="10,0,10,0"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            ReturnType="Next" />
+                </Frame>
+            </Grid>
+            <Frame x:Name="site" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                <local:CustomEntry
+                            Placeholder="Site"
+                            PlaceholderColor="#667284"
+                            Text="{Binding Site}"
+                            ClearButtonVisibility="WhileEditing"
+                            FontSize="20"
+                            Margin="10,0,10,0"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            ReturnType="Next" />
+            </Frame>
+            <Frame x:Name="description" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                <local:CustomEntry
+                            Placeholder="Descriere"
+                            PlaceholderColor="#667284"
+                            Text="{Binding Description}"
+                            ClearButtonVisibility="WhileEditing"
+                            FontSize="20"
+                            Margin="10,0,10,0"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            ReturnType="Next" />
+            </Frame>
+            <Grid x:Name="functionEntryGrid" IsVisible="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Entry x:Name="function" Placeholder="Introduceti functiile" Grid.Column="0" HeightRequest="50"/>
+                <Button 
                         ImageSource="ok.png" 
                         Grid.Column="1" 
                         BackgroundColor="#93b0e0" 
@@ -124,20 +167,20 @@
                         HeightRequest="40" 
                         Clicked="AddFunctionToList"
                         />
-                </Grid>
-                <xct:UniformGrid x:Name="functionsUniformGrid" VerticalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding Functions, Mode=OneWay}" IsVisible="False">
-                    <BindableLayout.EmptyView>
-                        <Label Text="Nicio functie introdusa"/>
-                    </BindableLayout.EmptyView>
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <Frame Padding="2" BackgroundColor="#94b1e3" CornerRadius="10" Margin="5">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label 
+            </Grid>
+            <xct:UniformGrid x:Name="functionsUniformGrid" VerticalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding Functions, Mode=OneWay}" IsVisible="False">
+                <BindableLayout.EmptyView>
+                    <Label Text="Nicio functie introdusa"/>
+                </BindableLayout.EmptyView>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="2" BackgroundColor="#94b1e3" CornerRadius="10" Margin="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label 
                                         Text="{Binding}"
                                         TextColor="White"
                                         FontAttributes="Bold"
@@ -145,23 +188,51 @@
                                         Grid.Column="0"
                                         InputTransparent="True"  
                                     />
-                                    <Button 
+                                <Button 
                                         ImageSource="cancel.png"
                                         WidthRequest="20"
                                         HeightRequest="20"
                                         Grid.Column="1"
                                         BackgroundColor="Red"
                                     />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </xct:UniformGrid>
+            <Label x:Name="servicesLabel" Text="Bifati serviciile" IsVisible="false" Margin="0,30,0,0"/>
+            <ListView x:Name="multiListViewServices"  HasUnevenRows="true" SeparatorVisibility="Default" ItemsSource="{Binding Services}" lv:MultiSelect.Enable="true" IsVisible="false">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <lv:SelectableCell x:Name="SelectableCell">
+                            <lv:SelectableCell.CheckView>
+                                <Image Source="ok.png" WidthRequest="30" HeightRequest="30" BackgroundColor="#94b1e3" xct:CornerRadiusEffect.CornerRadius="20" />
+                            </lv:SelectableCell.CheckView>
+                            <lv:SelectableCell.DataView>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Name}" FontSize="17" VerticalOptions="Start" />
+                                    <local:CustomEntry Placeholder="Pret / ora" Grid.Column="1" Margin="10,-10,0,0" HorizontalTextAlignment="Center"/>
                                 </Grid>
-                            </Frame>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </xct:UniformGrid>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" RadioButtonGroup.GroupName="companyDetailsChangeDisplay">
-                    <RadioButton IsChecked="True" x:Name="page1Button" CheckedChanged="ChangePage" />
-                    <RadioButton x:Name="page2Button" CheckedChanged="ChangePage"/>
-                </StackLayout>
+                            </lv:SelectableCell.DataView>
+                        </lv:SelectableCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Frame x:Name="saveButton" Margin="0,-10,0,0" IsVisible="false" HasShadow="True" Padding="0" CornerRadius="40" WidthRequest="150" HorizontalOptions="Center">
+                <Button Text="Salvare" 
+                        TextColor="#ebf3fb"
+                        Clicked="SaveCompanyAccountUpdates"
+                        BackgroundColor="#6ba1f9"/>
+            </Frame>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" RadioButtonGroup.GroupName="companyDetailsChangeDisplay">
+                <RadioButton IsChecked="True" x:Name="page1Button" CheckedChanged="ChangePage" />
+                <RadioButton x:Name="page2Button" CheckedChanged="ChangePage"/>
+                <RadioButton x:Name="page3Button" CheckedChanged="ChangePage"/>
             </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+    </StackLayout>
 </ContentPage>

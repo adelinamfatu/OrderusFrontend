@@ -15,6 +15,9 @@ using AppFrontend.Resources.Files;
 using Plugin.Toast;
 using System.IO;
 using System.ComponentModel;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using App.DTO;
 
 namespace AppFrontend.ContentPages
 {
@@ -32,12 +35,37 @@ namespace AppFrontend.ContentPages
             globalService.PropertyChanged += GlobalService_PropertyChanged;
         }
 
-        private void GlobalService_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void GlobalService_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Company")
             {
                 this.company = new CompanyViewModel(globalService.Company);
+                GetAllServices();
                 this.BindingContext = company;
+            }
+        }
+
+        private async void GetAllServices()
+        {
+            string url = RestResources.ConnectionURL + RestResources.ServicesURL;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient client = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("company_token").Result;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    var servicesJSON = JsonConvert.DeserializeObject<List<ServiceDTO>>(json);
+                    foreach(var service in servicesJSON)
+                    {
+                        company.Services.Add(service);
+                    }
+                }
             }
         }
 
@@ -52,10 +80,16 @@ namespace AppFrontend.ContentPages
                 building.IsVisible = false;
                 staircase.IsVisible = false;
                 apartmentNumber.IsVisible = false;
+                floor.IsVisible = false;
+                site.IsVisible = false;
+                description.IsVisible = false;
+                servicesLabel.IsVisible = false;
+                saveButton.IsVisible = false;
                 functionEntryGrid.IsVisible = true;
                 functionsUniformGrid.IsVisible = true;
+                multiListViewServices.IsVisible = false;
             }
-            else
+            else if(page1Button.IsChecked == true)
             {
                 name.IsVisible = true;
                 city.IsVisible = true;
@@ -64,8 +98,32 @@ namespace AppFrontend.ContentPages
                 building.IsVisible = true;
                 staircase.IsVisible = true;
                 apartmentNumber.IsVisible = true;
+                floor.IsVisible = true;
+                site.IsVisible = true;
+                description.IsVisible = true;
+                servicesLabel.IsVisible = false;
+                saveButton.IsVisible = false;
                 functionEntryGrid.IsVisible = false;
                 functionsUniformGrid.IsVisible = false;
+                multiListViewServices.IsVisible = false;
+            }
+            else
+            {
+                name.IsVisible = false;
+                city.IsVisible = false;
+                street.IsVisible = false;
+                streetNumber.IsVisible = false;
+                building.IsVisible = false;
+                staircase.IsVisible = false;
+                apartmentNumber.IsVisible = false;
+                floor.IsVisible = false;
+                site.IsVisible = false;
+                description.IsVisible = false;
+                servicesLabel.IsVisible = true;
+                saveButton.IsVisible = true;
+                functionEntryGrid.IsVisible = false;
+                functionsUniformGrid.IsVisible = false;
+                multiListViewServices.IsVisible = true;
             }
         }
 
@@ -136,6 +194,11 @@ namespace AppFrontend.ContentPages
                     }
                 }
             }
+        }
+
+        private void SaveCompanyAccountUpdates(object sender, EventArgs e)
+        {
+
         }
     }
 }
