@@ -10,6 +10,7 @@ namespace AppFrontend
 {
     public class CompanyViewModel : INotifyPropertyChanged
     {
+        public int ID { get; set; }
         public string Name { get; set; }
 
         public string City { get; set; }
@@ -40,10 +41,13 @@ namespace AppFrontend
 
         public ObservableCollection<string> Functions { get; set; }
 
-        public MultiSelectObservableCollection<ServiceDTO> Services { get; set; }
+        public List<CompanyServiceOptionDTO> services = new List<CompanyServiceOptionDTO>();
+
+        public MultiSelectObservableCollection<CompanyServiceOptionDTO> Services { get; set; }
 
         public CompanyViewModel(CompanyDTO company)
         {
+            this.ID = company.ID;
             this.Name = company.Name;
             this.City = company.City;
             this.Street = company.Street;
@@ -59,7 +63,7 @@ namespace AppFrontend
             this.RepresentativeName = company.RepresentativeName;
             this.RepresentativeSurname = company.RepresentativeSurname;
             this.Functions = new ObservableCollection<string>();
-            this.Services = new MultiSelectObservableCollection<ServiceDTO>();
+            this.Services = new MultiSelectObservableCollection<CompanyServiceOptionDTO>();
             if(company.Functions != null)
             {
                 foreach (string function in company.Functions)

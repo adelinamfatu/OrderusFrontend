@@ -18,6 +18,8 @@ using System.ComponentModel;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using App.DTO;
+using Xamarin.Forms.MultiSelectListView;
+using AppFrontend.CustomControls;
 
 namespace AppFrontend.ContentPages
 {
@@ -41,6 +43,7 @@ namespace AppFrontend.ContentPages
             {
                 this.company = new CompanyViewModel(globalService.Company);
                 GetAllServices();
+                GetCompanyServices();
                 this.BindingContext = company;
             }
         }
@@ -63,7 +66,43 @@ namespace AppFrontend.ContentPages
                     var servicesJSON = JsonConvert.DeserializeObject<List<ServiceDTO>>(json);
                     foreach(var service in servicesJSON)
                     {
-                        company.Services.Add(service);
+                        company.services.Add(new CompanyServiceOptionDTO() { Service = service });
+                    }
+                }
+            }
+        }
+
+        private async void GetCompanyServices()
+        {
+            string url = RestResources.ConnectionURL + RestResources.CompaniesURL + RestResources.CompanyDetailsURL + company.ID;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient client = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("company_token").Result;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    var servicesJSON = JsonConvert.DeserializeObject<List<CompanyServiceOptionDTO>>(json);
+                    foreach (var service in servicesJSON)
+                    {
+                        company.services.FirstOrDefault(s => s.Service.Name == service.Service.Name).Price = service.Price;
+                    }
+                    foreach(var service in company.services)
+                    {
+                        service.Company = globalService.Company;
+                        if(service.Price != 0)
+                        {
+                            company.Services.Add(service, true);
+                        }
+                        else
+                        {
+                            company.Services.Add(service);
+                        }
                     }
                 }
             }
@@ -173,8 +212,8 @@ namespace AppFrontend.ContentPages
                     var multipartContent = new MultipartFormDataContent();
                     var imageContent = new StreamContent(stream);
 
-                    imageContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
-                    imageContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data")
+                    imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+                    imageContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
                     {
                         Name = "logo",
                         FileName = globalService.Company.Name + ".png"
@@ -201,10 +240,7 @@ namespace AppFrontend.ContentPages
             var functions = new List<string>();
             foreach(var function in company.Functions)
             {
-                if(!globalService.Company.Functions.Contains(function))
-                {
-                    functions.Add(function);
-                }
+                functions.Add(function);
             }
             var Company = new CompanyDTO()
             {
@@ -217,9 +253,39 @@ namespace AppFrontend.ContentPages
                 ApartmentNumber = company.ApartmentNumber,
                 Floor = company.Floor,
                 Site = company.Site,
-                Description = company.Description
+                Description = company.Description,
+                Functions = functions
             };
+            List<CompanyServiceOptionDTO> services = new List<CompanyServiceOptionDTO>();
+            foreach(var service in company.Services)
+            {
+                if(service.IsSelected)
+                {
+                    services.Add(service.Data);
+                }
+            }
+            SendCompanyServicesUpdates(services);
             SendCompanyAccountUpdates(Company);
+        }
+
+        private async void SendCompanyServicesUpdates(IEnumerable<CompanyServiceOptionDTO> companyServiceOptions)
+        {
+            string url = RestResources.ConnectionURL + RestResources.CompaniesURL + RestResources.ServicesURL + RestResources.UpdateURL;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient httpClient = new HttpClient(handler))
+            {
+                var json = JsonConvert.SerializeObject(companyServiceOptions);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.PostAsync(url, content);
+
+                if (response.StatusCode == HttpStatusCode.Conflict)
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.CompanyServicesError);
+                }
+            }
         }
 
         private async void SendCompanyAccountUpdates(CompanyDTO Company)
@@ -239,11 +305,20 @@ namespace AppFrontend.ContentPages
                 {
                     CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.DataUpdateSuccess);
                 }
-                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                if (response.StatusCode == HttpStatusCode.Conflict)
                 {
                     CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.DataUpdateFail);
                 }
             }
+        }
+
+        private void RemoveFunctionFromList(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            Grid grid = (Grid)button.Parent;
+            Label label = (Label)grid.Children[0];
+            string function = label.Text;
+            company.Functions.Remove(function);
         }
     }
 }

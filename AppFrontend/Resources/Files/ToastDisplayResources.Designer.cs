@@ -61,6 +61,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la salvarea serviciilor.
+        /// </summary>
+        internal static string CompanyServicesError {
+            get {
+                return ResourceManager.GetString("CompanyServicesError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exista deja un cont cu aceasta adresa.
         /// </summary>
         internal static string CreateAccountError {
@@ -187,7 +196,7 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logo-ul nu a fost salvat cu succes.
+        ///   Looks up a localized string similar to Logo-ul nu a fost salvat cu succes. Incercati din nou.
         /// </summary>
         internal static string SavePhotoFail {
             get {

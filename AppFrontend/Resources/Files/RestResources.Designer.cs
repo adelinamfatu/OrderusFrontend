@@ -106,7 +106,7 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://192.168.2.39:9000/api/.
+        ///   Looks up a localized string similar to https://192.168.0.102:9000/api/.
         /// </summary>
         internal static string ConnectionURL {
             get {
