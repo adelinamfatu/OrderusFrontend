@@ -63,7 +63,7 @@ namespace AppFrontend.ContentPages
             else if(selectedOption == DisplayPrompts.Employee)
             {
                 EmployeeDTO employee = GetEmployeeFromUI();
-                string url = RestResources.ConnectionURL + RestResources.EmployessURL + RestResources.LoginURL;
+                string url = RestResources.ConnectionURL + RestResources.EmployeesURL + RestResources.LoginURL;
 
                 var handler = new HttpClientHandler();
                 handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;

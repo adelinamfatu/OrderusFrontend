@@ -26637,19 +26637,22 @@ namespace AppFrontend.Droid
 			public const int statistics = 2131165347;
 			
 			// aapt resource value: 0x7F0700A4
-			public const int test_custom_background = 2131165348;
+			public const int stock = 2131165348;
 			
 			// aapt resource value: 0x7F0700A5
-			public const int tooltip_frame_dark = 2131165349;
+			public const int test_custom_background = 2131165349;
 			
 			// aapt resource value: 0x7F0700A6
-			public const int tooltip_frame_light = 2131165350;
+			public const int tooltip_frame_dark = 2131165350;
 			
 			// aapt resource value: 0x7F0700A7
-			public const int user = 2131165351;
+			public const int tooltip_frame_light = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int warning_icon = 2131165352;
+			public const int user = 2131165352;
+			
+			// aapt resource value: 0x7F0700A9
+			public const int warning_icon = 2131165353;
 			
 			static Drawable()
 			{

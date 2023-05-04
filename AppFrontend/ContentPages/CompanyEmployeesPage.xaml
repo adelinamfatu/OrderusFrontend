@@ -1,12 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppFrontend.ContentPages.CompanyEmployeesPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="AppFrontend.ContentPages.CompanyEmployeesPage"
+             Title="Orderus">
+    
+    <ListView x:Name="employeesListView" ItemsSource="{Binding Employees}" HorizontalOptions="Center" VerticalOptions="Center"
+              RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Frame BackgroundColor="#94b1e3" CornerRadius="20" Padding="5" Margin="5,5,5,0">
+                        <Grid HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" TextColor="White" FontSize="20" HorizontalOptions="Start" Margin="5,0,0,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Nume: " />
+                                        <Span Text="{Binding Surname}" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding Name}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Button
+                                ImageSource="ok.png"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="Green"
+                                WidthRequest="60"
+                                HeightRequest="30"
+                                HorizontalOptions="End"
+                                Margin="0,0,10,0"
+                            />
+                            <xct:UniformGrid x:Name="servicesUniformGrid" Grid.Row="1" Grid.ColumnSpan="2" BindableLayout.ItemsSource="{Binding Services, Mode=OneWay}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame Padding="2" BackgroundColor="White" CornerRadius="10" Margin="5">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label 
+                                                    Text="{Binding Name}"
+                                                    TextColor="Pink"
+                                                    FontAttributes="Bold"
+                                                    FontSize="20"
+                                                    Grid.Column="0"
+                                                    InputTransparent="True"  
+                                                />
+                                                <Button 
+                                                    ImageSource="cancel.png"
+                                                    WidthRequest="20"
+                                                    HeightRequest="20"
+                                                    Grid.Column="1"
+                                                    Clicked="RemoveServiceFromList"
+                                                    BackgroundColor="Red"
+                                                />
+                                            </Grid>
+                                        </Frame>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </xct:UniformGrid>
+                        </Grid>
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

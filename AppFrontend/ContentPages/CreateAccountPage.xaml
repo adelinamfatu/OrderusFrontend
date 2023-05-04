@@ -88,11 +88,8 @@
             <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="2" Grid.Column="1" >
                 <local:CustomEntry x:Name="employeeName" Placeholder="Prenume*" PlaceholderColor="White" TextColor="White" TextChanged="ValidateTextInput" />
             </Frame>
-            <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="3" Grid.Column="0" >
-                <xfx:XfxComboBox x:Name="searchComboBox" Placeholder="Cauta compania" HeightRequest="50" ItemsSource="{Binding StreetTypes}" SortingAlgorithm="{Binding SortingAlgorithm}" PlaceholderColor="White" ActivePlaceholderColor="Transparent" />
-            </Frame>
-            <Frame BackgroundColor="Transparent" Padding="0" Grid.Row="3" Grid.Column="1" >
-                <local:CustomPicker x:Name="employeeFunctionPicker" Title="Selectati ocupatia" ItemsSource="{Binding StreetTypes}" />
+            <Frame BackgroundColor="#94b1e3" Padding="0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                <xfx:XfxComboBox x:Name="searchComboBox" Placeholder="Cauta compania" HeightRequest="50" ItemsSource="{Binding Companies}" SortingAlgorithm="{Binding SortingAlgorithm}" PlaceholderColor="White" ActivePlaceholderColor="Transparent" TextColor="White" />
             </Frame>
         </Grid>
         <Grid Margin="10,0,10,0" x:Name="companyGrid">

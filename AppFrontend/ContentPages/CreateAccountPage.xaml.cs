@@ -4,12 +4,14 @@ using Newtonsoft.Json;
 using Plugin.Toast;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,11 +26,48 @@ namespace AppFrontend.ContentPages
 
         const string lettersAndNumbersRegex = @"^[a-zA-Z0-9\s]+$";
 
+        ObservableCollection<string> companies = new ObservableCollection<string>();
+        public ObservableCollection<string> Companies { get { return companies; } }
+
+        public Func<string, ICollection<string>, ICollection<string>> SortingAlgorithm
+        { get; } = (text, values) => values.Where(x => x.StartsWith(text, StringComparison.CurrentCultureIgnoreCase))
+                                            .OrderBy(x => x).ToList();
+
+        public List<CompanyDTO> companiesJSON { get; set; }
+
         public CreateAccountPage()
         {
             InitializeComponent();
             StreetTypes = new List<string> { "Bd.", "Str.", "Aleea" };
+            RetrieveCompanyNames();
             this.BindingContext = this;
+        }
+
+        private async void RetrieveCompanyNames()
+        {
+            string url = RestResources.ConnectionURL + RestResources.CompaniesURL;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient client = new HttpClient(handler))
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    companiesJSON = JsonConvert.DeserializeObject<List<CompanyDTO>>(json);
+                    BuildCompanySearch(companiesJSON);
+                }
+            }
+        }
+
+        private void BuildCompanySearch(List<CompanyDTO> companiesJSON)
+        {
+            foreach (var company in companiesJSON)
+            {
+                companies.Add(company.Name);
+            }
         }
 
         private void OpenLoginPage(object sender, EventArgs e)
@@ -45,11 +84,44 @@ namespace AppFrontend.ContentPages
             }
             else if(selectedOption == DisplayPrompts.Employee)
             {
-                
+                VerifyEmployeeAccountDetails();
             }
             else if(selectedOption == DisplayPrompts.Company)
             {
                 VerifyCompanyAccountDetails();
+            }
+        }
+
+        private void VerifyEmployeeAccountDetails()
+        {
+            if (employeeEmail.Text.Contains("@"))
+            {
+                if (employeePassword.Text == employeeConfirmPassword.Text)
+                {
+                    if (employeePhoneNumber.Text.Length == 10)
+                    {
+                        if(searchComboBox.Text != null)
+                        {
+                            SaveEmployeeAccount();
+                        }
+                        else
+                        {
+                            CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.CompanyChoiceError);
+                        }
+                    }
+                    else
+                    {
+                        CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.PhoneNumberError);
+                    }
+                }
+                else
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.PasswordError);
+                }
+            }
+            else
+            {
+                CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.EmailError);
             }
         }
 
@@ -159,6 +231,20 @@ namespace AppFrontend.ContentPages
             };
         }
 
+        private EmployeeDTO GetEmployeeFromUI()
+        {
+            return new EmployeeDTO
+            {
+                Email = employeeEmail.Text,
+                Phone = employeePhoneNumber.Text,
+                Password = employeePassword.Text,
+                Name = char.ToUpper(employeeName.Text[0]) + employeeName.Text.Substring(1),
+                Surname = char.ToUpper(employeeSurname.Text[0]) + employeeSurname.Text.Substring(1),
+                CompanyID = companiesJSON.FirstOrDefault(c => c.Name == searchComboBox.Text).ID,
+                IsConfirmed = false
+            };
+        }
+
         private async void SaveClientAccount()
         {
             ClientDTO client = GetClientFromUI();
@@ -194,6 +280,31 @@ namespace AppFrontend.ContentPages
             using (HttpClient httpClient = new HttpClient(handler))
             {
                 var json = JsonConvert.SerializeObject(company);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.PostAsync(url, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CreateAccountSuccess);
+                }
+                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.CreateAccountError);
+                }
+            }
+        }
+
+        private async void SaveEmployeeAccount()
+        {
+            EmployeeDTO employee = GetEmployeeFromUI();
+            string url = RestResources.ConnectionURL + RestResources.EmployeesURL + RestResources.CreateAccountURL;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient httpClient = new HttpClient(handler))
+            {
+                var json = JsonConvert.SerializeObject(employee);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await httpClient.PostAsync(url, content);

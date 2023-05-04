@@ -6,8 +6,23 @@
             xmlns:local="clr-namespace:AppFrontend.ContentPages"
             BackgroundColor="#ecf3fb">
 
-    <local:CompanyEmployeesPage Title="Angajati" IconImageSource="employees.png"/>
+    <NavigationPage Title="Angajati" IconImageSource="employees.png" BarBackgroundColor="#6ba1f9">
+        <x:Arguments Title="Orderus">
+            <local:CompanyEmployeesPage />
+        </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+        </NavigationPage.ToolbarItems>
+    </NavigationPage>
     <local:CompanyStatisticsPage Title="Statistici" IconImageSource="statistics.png"/>
+    <NavigationPage Title="Stoc" IconImageSource="stock.png" BarBackgroundColor="#6ba1f9">
+        <x:Arguments Title="Orderus">
+            <local:CompanyStockPage />
+        </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+        </NavigationPage.ToolbarItems>
+    </NavigationPage>
     <NavigationPage Title="Profil" IconImageSource="company.png" BarBackgroundColor="#6ba1f9">
         <x:Arguments Title="Orderus">
             <local:CompanyProfilePage />

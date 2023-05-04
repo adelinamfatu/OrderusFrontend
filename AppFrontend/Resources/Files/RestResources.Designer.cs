@@ -106,7 +106,16 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://192.168.0.102:9000/api/.
+        ///   Looks up a localized string similar to company/.
+        /// </summary>
+        internal static string CompanyURL {
+            get {
+                return ResourceManager.GetString("CompanyURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://192.168.0.103:9000/api/.
         /// </summary>
         internal static string ConnectionURL {
             get {
@@ -126,9 +135,9 @@ namespace AppFrontend.Resources.Files {
         /// <summary>
         ///   Looks up a localized string similar to employees/.
         /// </summary>
-        internal static string EmployessURL {
+        internal static string EmployeesURL {
             get {
-                return ResourceManager.GetString("EmployessURL", resourceCulture);
+                return ResourceManager.GetString("EmployeesURL", resourceCulture);
             }
         }
         
@@ -138,6 +147,15 @@ namespace AppFrontend.Resources.Files {
         internal static string LoginURL {
             get {
                 return ResourceManager.GetString("LoginURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to materials/.
+        /// </summary>
+        internal static string MaterialsURL {
+            get {
+                return ResourceManager.GetString("MaterialsURL", resourceCulture);
             }
         }
         

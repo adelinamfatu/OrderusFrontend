@@ -154,7 +154,7 @@
                             HorizontalTextAlignment="Center"
                             ReturnType="Next" />
             </Frame>
-            <Grid x:Name="functionEntryGrid" IsVisible="False">
+            <!--<Grid x:Name="functionEntryGrid" IsVisible="False">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -201,7 +201,7 @@
                         </Frame>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
-            </xct:UniformGrid>
+            </xct:UniformGrid>-->
             <Label x:Name="servicesLabel" Text="Bifati serviciile" IsVisible="false" Margin="0,30,0,0"/>
             <ListView x:Name="multiListViewServices" HasUnevenRows="true" SeparatorVisibility="Default" ItemsSource="{Binding Services}" lv:MultiSelect.Enable="true" IsVisible="false">
                 <ListView.ItemTemplate>
@@ -242,7 +242,6 @@
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" RadioButtonGroup.GroupName="companyDetailsChangeDisplay">
                 <RadioButton IsChecked="True" x:Name="page1Button" CheckedChanged="ChangePage" />
                 <RadioButton x:Name="page2Button" CheckedChanged="ChangePage"/>
-                <RadioButton x:Name="page3Button" CheckedChanged="ChangePage"/>
             </StackLayout>
         </StackLayout>
     </StackLayout>

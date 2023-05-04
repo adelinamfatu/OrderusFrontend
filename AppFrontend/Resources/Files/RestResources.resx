@@ -132,17 +132,23 @@
   <data name="CompanyDetailsURL" xml:space="preserve">
     <value>services/details/</value>
   </data>
+  <data name="CompanyURL" xml:space="preserve">
+    <value>company/</value>
+  </data>
   <data name="ConnectionURL" xml:space="preserve">
-    <value>https://192.168.0.102:9000/api/</value>
+    <value>https://192.168.0.103:9000/api/</value>
   </data>
   <data name="CreateAccountURL" xml:space="preserve">
     <value>add</value>
   </data>
-  <data name="EmployessURL" xml:space="preserve">
+  <data name="EmployeesURL" xml:space="preserve">
     <value>employees/</value>
   </data>
   <data name="LoginURL" xml:space="preserve">
     <value>login/</value>
+  </data>
+  <data name="MaterialsURL" xml:space="preserve">
+    <value>materials/</value>
   </data>
   <data name="PhotoURL" xml:space="preserve">
     <value>photo/</value>

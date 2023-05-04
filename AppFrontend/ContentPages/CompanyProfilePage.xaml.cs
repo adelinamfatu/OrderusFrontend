@@ -42,13 +42,18 @@ namespace AppFrontend.ContentPages
             if (e.PropertyName == "Company")
             {
                 this.company = new CompanyViewModel(globalService.Company);
-                GetAllServices();
-                GetCompanyServices();
+                GetServices();
                 this.BindingContext = company;
             }
         }
 
-        private async void GetAllServices()
+        private async void GetServices()
+        {
+            await GetAllServices();
+            GetCompanyServices();
+        }
+
+        private async Task GetAllServices()
         {
             string url = RestResources.ConnectionURL + RestResources.ServicesURL;
 
@@ -122,11 +127,11 @@ namespace AppFrontend.ContentPages
                 floor.IsVisible = false;
                 site.IsVisible = false;
                 description.IsVisible = false;
-                servicesLabel.IsVisible = false;
-                saveButton.IsVisible = false;
-                functionEntryGrid.IsVisible = true;
-                functionsUniformGrid.IsVisible = true;
-                multiListViewServices.IsVisible = false;
+                servicesLabel.IsVisible = true;
+                saveButton.IsVisible = true;
+                //functionEntryGrid.IsVisible = false;
+                //functionsUniformGrid.IsVisible = false;
+                multiListViewServices.IsVisible = true;
             }
             else if(page1Button.IsChecked == true)
             {
@@ -142,11 +147,11 @@ namespace AppFrontend.ContentPages
                 description.IsVisible = true;
                 servicesLabel.IsVisible = false;
                 saveButton.IsVisible = false;
-                functionEntryGrid.IsVisible = false;
-                functionsUniformGrid.IsVisible = false;
+                //functionEntryGrid.IsVisible = false;
+                //functionsUniformGrid.IsVisible = false;
                 multiListViewServices.IsVisible = false;
             }
-            else
+            /*else
             {
                 name.IsVisible = false;
                 city.IsVisible = false;
@@ -163,10 +168,10 @@ namespace AppFrontend.ContentPages
                 functionEntryGrid.IsVisible = false;
                 functionsUniformGrid.IsVisible = false;
                 multiListViewServices.IsVisible = true;
-            }
+            }*/
         }
 
-        private void AddFunctionToList(object sender, EventArgs e)
+        /*private void AddFunctionToList(object sender, EventArgs e)
         {
             if(company.Functions.Contains(function.Text))
             {
@@ -176,7 +181,7 @@ namespace AppFrontend.ContentPages
             {
                 company.Functions.Add(function.Text);
             }
-        }
+        }*/
 
         private async void ChoosePhotoFromGallery(object sender, EventArgs e)
         {
@@ -237,11 +242,11 @@ namespace AppFrontend.ContentPages
 
         private void GetCompanyAccountUpdatesFromUI(object sender, EventArgs e)
         {
-            var functions = new List<string>();
+            /*var functions = new List<string>();
             foreach(var function in company.Functions)
             {
                 functions.Add(function);
-            }
+            }*/
             var Company = new CompanyDTO()
             {
                 Name = company.Name,
@@ -254,7 +259,7 @@ namespace AppFrontend.ContentPages
                 Floor = company.Floor,
                 Site = company.Site,
                 Description = company.Description,
-                Functions = functions
+                //Functions = functions
             };
             List<CompanyServiceOptionDTO> services = new List<CompanyServiceOptionDTO>();
             foreach(var service in company.Services)

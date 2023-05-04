@@ -61,6 +61,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trebuie sa alegeti o companie caruia ii veti fi afiliat.
+        /// </summary>
+        internal static string CompanyChoiceError {
+            get {
+                return ResourceManager.GetString("CompanyChoiceError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to S-a produs o eroare la salvarea serviciilor.
         /// </summary>
         internal static string CompanyServicesError {
