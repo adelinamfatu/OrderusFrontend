@@ -1,6 +1,7 @@
 ﻿using App.DTO;
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
+using AppFrontend.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,10 @@ namespace AppFrontend.ContentPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CompanyEmployeesPage : ContentPage
     {
-        ObservableCollection<EmployeeDTO> employees = new ObservableCollection<EmployeeDTO>();
-        public ObservableCollection<EmployeeDTO> Employees { get { return employees; } }
+        ObservableCollection<EmployeeViewModel> employees = new ObservableCollection<EmployeeViewModel>();
+        public ObservableCollection<EmployeeViewModel> Employees { get { return employees; } }
 
-        ObservableCollection<ServiceDTO> services = new ObservableCollection<ServiceDTO>();
-        public ObservableCollection<ServiceDTO> Services { get { return services; } }
+        List<ServiceDTO> services = new List<ServiceDTO>();
 
         public GlobalService globalService { get; set; }
 
@@ -40,8 +40,8 @@ namespace AppFrontend.ContentPages
         {
             if (e.PropertyName == "Company")
             {
-                RetrieveEmployees();
                 GetCompanyServices();
+                RetrieveEmployees();
             }
         }
 
@@ -70,7 +70,14 @@ namespace AppFrontend.ContentPages
         {
             foreach (var employee in employeeJSON)
             {
-                employees.Add(employee);
+                if(employee.IsConfirmed == false)
+                {
+                    Employees.Add(new EmployeeViewModel(employee, services));
+                }
+                else
+                {
+                    Employees.Add(new EmployeeViewModel(employee));
+                }
             }
         }
 
@@ -101,10 +108,28 @@ namespace AppFrontend.ContentPages
         private void RemoveServiceFromList(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            Grid grid = (Grid)button.Parent;
-            Label label = (Label)grid.Children[0];
-            string service = label.Text;
-            services.Remove(services.FirstOrDefault(s => s.Name == service));
+            var service = (ServiceDTO)button.BindingContext;
+            var viewCell = FindParentViewCell(button);
+
+            if (viewCell != null)
+            {
+                EmployeeViewModel employee = (EmployeeViewModel)viewCell.BindingContext;
+                employee.Services.Remove(service);
+            }
+        }
+
+        private ViewCell FindParentViewCell(Element element)
+        {
+            Element parent = element.Parent;
+            while (parent != null)
+            {
+                if (parent is ViewCell viewCell)
+                {
+                    return viewCell;
+                }
+                parent = parent.Parent;
+            }
+            return null;
         }
     }
 }

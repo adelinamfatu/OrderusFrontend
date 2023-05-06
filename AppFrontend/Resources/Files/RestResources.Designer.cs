@@ -115,7 +115,7 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://192.168.0.103:9000/api/.
+        ///   Looks up a localized string similar to https://192.168.1.39:9000/api/.
         /// </summary>
         internal static string ConnectionURL {
             get {
@@ -124,7 +124,7 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to add.
+        ///   Looks up a localized string similar to add/.
         /// </summary>
         internal static string CreateAccountURL {
             get {

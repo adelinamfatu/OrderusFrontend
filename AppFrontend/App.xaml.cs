@@ -19,11 +19,11 @@ namespace AppFrontend
             var companyToken = SecureStorage.GetAsync("company_token").Result;
             if (!string.IsNullOrEmpty(clientToken))
             {
-                MainPage = new MenuPage();
+                MainPage = new ClientMenuPage();
             }
             else if(!string.IsNullOrEmpty(employeeToken))
             {
-                
+                MainPage = new EmployeeMenuPage();
             }
             else if(!string.IsNullOrEmpty(companyToken))
             {

@@ -18,11 +18,11 @@ using Application = Xamarin.Forms.Application;
 namespace AppFrontend.ContentPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuPage : Xamarin.Forms.TabbedPage
+    public partial class ClientMenuPage : Xamarin.Forms.TabbedPage
     {
         private GlobalService globalService { get; set; }
 
-        public MenuPage()
+        public ClientMenuPage()
         {
             InitializeComponent();
             TabStyling();

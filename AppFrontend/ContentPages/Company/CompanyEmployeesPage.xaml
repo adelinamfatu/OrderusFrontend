@@ -43,7 +43,7 @@
                             <xct:UniformGrid x:Name="servicesUniformGrid" Grid.Row="1" Grid.ColumnSpan="2" BindableLayout.ItemsSource="{Binding Services, Mode=OneWay}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
-                                        <Frame Padding="2" BackgroundColor="White" CornerRadius="10" Margin="5">
+                                        <Frame Padding="2" BackgroundColor="White" CornerRadius="10" Margin="10">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -51,7 +51,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <Label 
                                                     Text="{Binding Name}"
-                                                    TextColor="Pink"
+                                                    TextColor="Black"
                                                     FontAttributes="Bold"
                                                     FontSize="20"
                                                     Grid.Column="0"

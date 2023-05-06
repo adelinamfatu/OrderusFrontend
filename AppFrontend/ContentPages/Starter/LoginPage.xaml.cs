@@ -151,7 +151,7 @@ namespace AppFrontend.ContentPages
 
         private void OpenCategoryPage()
         {
-            Application.Current.MainPage = new MenuPage();
+            Application.Current.MainPage = new ClientMenuPage();
         }
 
         private void OpenCompanyPage()

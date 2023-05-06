@@ -136,10 +136,10 @@
     <value>company/</value>
   </data>
   <data name="ConnectionURL" xml:space="preserve">
-    <value>https://192.168.0.103:9000/api/</value>
+    <value>https://192.168.1.39:9000/api/</value>
   </data>
   <data name="CreateAccountURL" xml:space="preserve">
-    <value>add</value>
+    <value>add/</value>
   </data>
   <data name="EmployeesURL" xml:space="preserve">
     <value>employees/</value>

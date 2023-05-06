@@ -47,16 +47,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="ContentPages\MenuPage.xaml.cs">
-      <DependentUpon>MenuPage.xaml</DependentUpon>
+    <Compile Update="ContentPages\Starter\ClientMenuPage.xaml.cs">
+      <DependentUpon>ClientMenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="ContentPages\ClientProfilePage.xaml.cs">
+    <Compile Update="ContentPages\Client\ClientProfilePage.xaml.cs">
       <DependentUpon>ClientProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="ContentPages\SearchCategoryPage.xaml.cs">
+    <Compile Update="ContentPages\Client\SearchCategoryPage.xaml.cs">
       <DependentUpon>SearchCategoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="ContentPages\SearchCompanyPage.xaml.cs">
+    <Compile Update="ContentPages\Client\SearchCompanyPage.xaml.cs">
       <DependentUpon>SearchCompanyPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Resources\Files\AppResources.Designer.cs">
@@ -82,52 +82,55 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="ContentPages\BasketPage.xaml">
+    <EmbeddedResource Update="ContentPages\Client\BasketPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\CompanyEmployeesPage.xaml">
+    <EmbeddedResource Update="ContentPages\Company\CompanyEmployeesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\CompanyMenuPage.xaml">
+    <EmbeddedResource Update="ContentPages\Starter\CompanyMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\CompanyPage.xaml">
+    <EmbeddedResource Update="ContentPages\Client\CompanyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\CompanyProfilePage.xaml">
+    <EmbeddedResource Update="ContentPages\Company\CompanyProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\CompanyStatisticsPage.xaml">
+    <EmbeddedResource Update="ContentPages\Company\CompanyStatisticsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\CompanyStockPage.xaml">
+    <EmbeddedResource Update="ContentPages\Company\CompanyStockPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\CreateAccountPage.xaml">
+    <EmbeddedResource Update="ContentPages\Starter\CreateAccountPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ContentPages\EmployeeDataPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\HistoryPage.xaml">
+    <EmbeddedResource Update="ContentPages\Starter\EmployeeMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\LoginPage.xaml">
+    <EmbeddedResource Update="ContentPages\Client\HistoryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\MenuPage.xaml">
+    <EmbeddedResource Update="ContentPages\Starter\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ContentPages\Starter\ClientMenuPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\ClientProfilePage.xaml">
+    <EmbeddedResource Update="ContentPages\Client\ClientProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\SearchCategoryPage.xaml">
+    <EmbeddedResource Update="ContentPages\Client\SearchCategoryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\SearchCompanyPage.xaml">
+    <EmbeddedResource Update="ContentPages\Client\SearchCompanyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContentPages\SearchServicePage.xaml">
+    <EmbeddedResource Update="ContentPages\Client\SearchServicePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Files\AppResources.resx">
@@ -154,5 +157,9 @@
 
   <ItemGroup>
     <Resource Include="Resources\ImageIcons\Afaceri.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ContentPages\Employee\" />
   </ItemGroup>
 </Project>

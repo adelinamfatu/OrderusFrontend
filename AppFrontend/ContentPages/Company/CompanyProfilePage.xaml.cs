@@ -317,13 +317,13 @@ namespace AppFrontend.ContentPages
             }
         }
 
-        private void RemoveFunctionFromList(object sender, EventArgs e)
+        /*private void RemoveFunctionFromList(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             Grid grid = (Grid)button.Parent;
             Label label = (Label)grid.Children[0];
             string function = label.Text;
             company.Functions.Remove(function);
-        }
+        }*/
     }
 }
