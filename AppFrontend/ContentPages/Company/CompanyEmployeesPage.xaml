@@ -2,9 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:conv="clr-namespace:AppFrontend.Converters"
              x:Class="AppFrontend.ContentPages.CompanyEmployeesPage"
              Title="Orderus">
-    
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:IsConfirmedConverter x:Key="IsConfirmedConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ListView x:Name="employeesListView" ItemsSource="{Binding Employees}" HorizontalOptions="Center" VerticalOptions="Center"
               RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
         <ListView.ItemTemplate>
@@ -39,8 +45,10 @@
                                 HeightRequest="30"
                                 HorizontalOptions="End"
                                 Margin="0,0,10,0"
+                                Clicked="ConfirmEmployeeAndServices"
+                                IsVisible="{Binding IsConfirmed, Converter={StaticResource IsConfirmedConverter}}"
                             />
-                            <xct:UniformGrid x:Name="servicesUniformGrid" Grid.Row="1" Grid.ColumnSpan="2" BindableLayout.ItemsSource="{Binding Services, Mode=OneWay}">
+                            <xct:UniformGrid x:Name="servicesUniformGrid" Grid.Row="1" Grid.ColumnSpan="2" BindableLayout.ItemsSource="{Binding Services, Mode=OneWay}" IsVisible="{Binding IsConfirmed, Converter={StaticResource IsConfirmedConverter}}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <Frame Padding="2" BackgroundColor="White" CornerRadius="10" Margin="10">

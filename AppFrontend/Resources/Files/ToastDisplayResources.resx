@@ -138,6 +138,12 @@
   <data name="EmailError" xml:space="preserve">
     <value>Adresa de mail nu are formatul corect</value>
   </data>
+  <data name="EmployeeConfirmation" xml:space="preserve">
+    <value>Sunteti sigur ca doriti sa confirmati angajatul?</value>
+  </data>
+  <data name="EmployeeConfirmationTitle" xml:space="preserve">
+    <value>Confirmare cont angajat</value>
+  </data>
   <data name="FunctionError" xml:space="preserve">
     <value>Functia deja exista</value>
   </data>

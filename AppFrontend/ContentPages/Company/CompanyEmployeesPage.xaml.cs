@@ -1,4 +1,5 @@
-﻿using App.DTO;
+﻿using Acr.UserDialogs;
+using App.DTO;
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using AppFrontend.ViewModels;
@@ -40,9 +41,14 @@ namespace AppFrontend.ContentPages
         {
             if (e.PropertyName == "Company")
             {
-                GetCompanyServices();
-                RetrieveEmployees();
+                GetDataForUI();
             }
+        }
+
+        private async void GetDataForUI()
+        {
+            await GetCompanyServices();
+            RetrieveEmployees();
         }
 
         private async void RetrieveEmployees()
@@ -81,7 +87,7 @@ namespace AppFrontend.ContentPages
             }
         }
 
-        private async void GetCompanyServices()
+        private async Task GetCompanyServices()
         {
             string url = RestResources.ConnectionURL + RestResources.CompaniesURL + RestResources.CompanyDetailsURL + globalService.Company.ID;
 
@@ -130,6 +136,47 @@ namespace AppFrontend.ContentPages
                 parent = parent.Parent;
             }
             return null;
+        }
+
+        private void ConfirmEmployeeAndServices(object sender, EventArgs e)
+        {
+            var result = UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+            {
+                Title = ToastDisplayResources.EmployeeConfirmationTitle,
+                Message = ToastDisplayResources.EmployeeConfirmation,
+                OkText = ToastDisplayResources.PromptYes,
+                CancelText = ToastDisplayResources.PromptCancel
+            });
+            if(result.Result == true)
+            {
+                Button button = (Button)sender;
+                EmployeeViewModel employee = (EmployeeViewModel)button.BindingContext;
+                employee.IsConfirmed = true;
+                EmployeeDTO employeeToSend = new EmployeeDTO() { Email = employee.Email };
+                employeeToSend.Services = new List<ServiceDTO>();
+                foreach (var service in employee.Services)
+                {
+                    employeeToSend.Services.Add(service);
+                }
+                SendEmployeeData(employeeToSend);
+            }
+        }
+
+        private async void SendEmployeeData(EmployeeDTO employee)
+        {
+            string url = RestResources.ConnectionURL + RestResources.EmployeesURL + RestResources.UpdateURL;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient httpClient = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("company_token").Result;
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var json = JsonConvert.SerializeObject(employee);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.PutAsync(url, content);
+            }
         }
     }
 }

@@ -27,9 +27,9 @@ namespace AppFrontend.ViewModels
             this.Name = employee.Name;
             this.Surname = employee.Surname;
             this.IsConfirmed = employee.IsConfirmed;
-            if(this.IsConfirmed == false)
+            this.Services = new ObservableCollection<ServiceDTO>();
+            if (this.IsConfirmed == false)
             {
-                this.Services = new ObservableCollection<ServiceDTO>();
                 foreach(var service in services)
                 {
                     this.Services.Add(service);

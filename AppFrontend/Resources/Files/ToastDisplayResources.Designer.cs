@@ -124,6 +124,24 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sunteti sigur ca doriti sa confirmati angajatul?.
+        /// </summary>
+        internal static string EmployeeConfirmation {
+            get {
+                return ResourceManager.GetString("EmployeeConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmare cont angajat.
+        /// </summary>
+        internal static string EmployeeConfirmationTitle {
+            get {
+                return ResourceManager.GetString("EmployeeConfirmationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Functia deja exista.
         /// </summary>
         internal static string FunctionError {
