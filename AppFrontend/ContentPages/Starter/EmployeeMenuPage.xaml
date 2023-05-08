@@ -1,9 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppFrontend.ContentPages.EmployeeMenuPage">
-  <!--Pages can be added as references or inline-->
-  <ContentPage Title="Tab 1" />
-  <ContentPage Title="Tab 2" />
-  <ContentPage Title="Tab 3" />
+            xmlns:local="clr-namespace:AppFrontend.ContentPages.Employee"
+             x:Class="AppFrontend.ContentPages.EmployeeMenuPage"
+            BackgroundColor="#ecf3fb">
+
+    <NavigationPage Title="Program" IconImageSource="schedule.png" BarBackgroundColor="#6ba1f9">
+        <x:Arguments Title="Orderus">
+            <local:EmployeeSchedulePage />
+        </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+        </NavigationPage.ToolbarItems>
+    </NavigationPage>
+    <NavigationPage Title="Cont" IconImageSource="employee.png" BarBackgroundColor="#6ba1f9">
+        <x:Arguments Title="Orderus">
+            <local:EmployeeProfilePage />
+        </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+            <ToolbarItem IconImageSource="logout.png" Priority="1" Clicked="LogoutAccount"/>
+        </NavigationPage.ToolbarItems>
+    </NavigationPage>
 </TabbedPage>

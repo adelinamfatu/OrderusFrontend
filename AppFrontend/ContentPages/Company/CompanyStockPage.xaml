@@ -18,10 +18,10 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <local:CustomEntry x:Name="materialName" Placeholder="Nume" Grid.Column="0" />
-                <local:CustomEntry x:Name="materialQuantity" Placeholder="Cantitate" Grid.Column="1" Keyboard="Numeric" />
-                <local:CustomEntry x:Name="materialPrice" Placeholder="Pret unitar" Grid.Column="2" Keyboard="Numeric" />
-                <Button Text="Adauga" Grid.Column="3" Clicked="AddMaterialToList" HeightRequest="30"/>
+                <local:CustomEntry x:Name="materialName" Placeholder="Nume" Grid.Column="0" TextColor="#1D267D" />
+                <local:CustomEntry x:Name="materialQuantity" Placeholder="Cantitate" Grid.Column="1" Keyboard="Numeric" TextColor="#1D267D" />
+                <local:CustomEntry x:Name="materialPrice" Placeholder="Pret unitar" Grid.Column="2" Keyboard="Numeric" TextColor="#1D267D" />
+                <Button ImageSource="add_white.png" BackgroundColor="DarkBlue" Grid.Column="3" Clicked="AddMaterialToList" WidthRequest="70"/>
             </Grid>
         </StackLayout>
         <ListView x:Name="materialsListView" ItemsSource="{Binding Materials}" Grid.Row="1" HasUnevenRows="True" SeparatorVisibility="None">
@@ -35,10 +35,10 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <local:CustomEntry Text="{Binding Name}" Grid.Column="0" IsEnabled="False" />
-                            <local:CustomEntry Text="{Binding Quantity}" Grid.Column="1" />
-                            <local:CustomEntry Text="{Binding Price}" Grid.Column="2" />
-                            <Button Text="Salveaza" Grid.Column="3" Clicked="SaveMaterial" HeightRequest="30"/>
+                            <local:CustomEntry Text="{Binding Name}" Grid.Column="0" IsEnabled="False" HorizontalTextAlignment="End" />
+                            <local:CustomEntry Text="{Binding Quantity}" Grid.Column="1" HorizontalTextAlignment="End" TextColor="#1D267D" />
+                            <local:CustomEntry Text="{Binding Price}" Grid.Column="2" HorizontalTextAlignment="End" TextColor="#1D267D"/>
+                            <Button ImageSource="ok.png" BackgroundColor="Green" Grid.Column="3" Clicked="SaveMaterial" WidthRequest="70" Margin="0,0,0,5"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

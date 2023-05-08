@@ -79,7 +79,7 @@ namespace AppFrontend.ContentPages
                         await ShowSuccessToastAndWaitForDismissal(ToastDisplayResources.LoginSuccess);
                         var token = await response.Content.ReadAsStringAsync();
                         await SecureStorage.SetAsync("employee_token", token);
-                        OpenCategoryPage();
+                        OpenEmployeePage();
                     }
                     if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                     {
@@ -159,9 +159,9 @@ namespace AppFrontend.ContentPages
             Application.Current.MainPage = new CompanyMenuPage();
         }
 
-        /*private void OpenCategoryPage()
+        private void OpenEmployeePage()
         {
-            Application.Current.MainPage = new MenuPage();
-        }*/
+            Application.Current.MainPage = new EmployeeMenuPage();
+        }
     }
 }
