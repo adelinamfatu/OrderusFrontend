@@ -14,8 +14,14 @@
             <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
         </NavigationPage.ToolbarItems>
     </NavigationPage>
-    <local:BasketPage Title="Cos" 
-               IconImageSource="basket.png"/>
+    <NavigationPage Title="Cos" IconImageSource="basket.png" BarBackgroundColor="#6ba1f9">
+        <x:Arguments Title="Orderus">
+            <local:BasketPage />
+        </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+        </NavigationPage.ToolbarItems>
+    </NavigationPage>
     <local:HistoryPage Title="Istoric" 
                IconImageSource="activity_history.png"/>
     <NavigationPage Title="Cont" IconImageSource="user.png" BarBackgroundColor="#6ba1f9">

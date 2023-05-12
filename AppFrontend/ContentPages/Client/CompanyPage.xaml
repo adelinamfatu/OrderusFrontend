@@ -53,7 +53,7 @@
                 </Label>
             </Frame>
         </Grid>
-        <ListView x:Name="servicesListView" ItemsSource="{Binding ServiceOptions}" HasUnevenRows="True" SeparatorVisibility="None">
+        <ListView x:Name="servicesListView" ItemsSource="{Binding ServiceOptions}" HasUnevenRows="True" SeparatorVisibility="None" ItemTapped="ServiceSelectedEvent">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

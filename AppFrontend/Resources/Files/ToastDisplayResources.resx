@@ -177,6 +177,12 @@
   <data name="SavePhotoSuccess" xml:space="preserve">
     <value>Logo-ul a fost salvat cu succes</value>
   </data>
+  <data name="ServiceSelected" xml:space="preserve">
+    <value>Sunteti sigur ca vreti sa adaugati serviciul {0} in cos?</value>
+  </data>
+  <data name="ServiceSelectedTitle" xml:space="preserve">
+    <value>Selectare serviciu</value>
+  </data>
   <data name="StreetTypeError" xml:space="preserve">
     <value>Trebuie sa alegeti un tip de strada</value>
   </data>

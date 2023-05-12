@@ -13,6 +13,22 @@
             <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
         </NavigationPage.ToolbarItems>
     </NavigationPage>
+    <NavigationPage Title="Comenzi" IconImageSource="orders.png" BarBackgroundColor="#6ba1f9">
+        <x:Arguments Title="Orderus">
+            <local:EmployeeUnconfirmedOrdersPage />
+        </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+        </NavigationPage.ToolbarItems>
+    </NavigationPage>
+    <NavigationPage Title="Istoric" IconImageSource="activity_history.png" BarBackgroundColor="#6ba1f9">
+        <x:Arguments Title="Orderus">
+            <local:EmployeeHistoryPage />
+        </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+        </NavigationPage.ToolbarItems>
+    </NavigationPage>
     <NavigationPage Title="Cont" IconImageSource="employee.png" BarBackgroundColor="#6ba1f9">
         <x:Arguments Title="Orderus">
             <local:EmployeeProfilePage />

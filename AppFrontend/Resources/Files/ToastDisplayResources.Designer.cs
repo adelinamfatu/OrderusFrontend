@@ -241,6 +241,24 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sunteti sigur ca vreti sa adaugati serviciul {0} in cos?.
+        /// </summary>
+        internal static string ServiceSelected {
+            get {
+                return ResourceManager.GetString("ServiceSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selectare serviciu.
+        /// </summary>
+        internal static string ServiceSelectedTitle {
+            get {
+                return ResourceManager.GetString("ServiceSelectedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trebuie sa alegeti un tip de strada.
         /// </summary>
         internal static string StreetTypeError {

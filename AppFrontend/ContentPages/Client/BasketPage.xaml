@@ -2,11 +2,126 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppFrontend.ContentPages.BasketPage">
+    
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame BackgroundColor="#94b1e3" Margin="10,10,10,0" CornerRadius="20" Padding="5" HasShadow="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding CSO.Company.Name}"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           TextTransform="Uppercase"
+                           FontSize="20"
+                           Margin="0,0,0,10"
+                           TextColor="Black"
+                    />
+                    <Label Text="{Binding CSO.Service.Name}"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           FontSize="18"
+                           TextColor="Black"
+                    />
+                    <Label Text="{Binding CSO.Price, StringFormat='{0} lei / ora'}"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           FontSize="18"
+                           Margin="0,0,10,0"
+                           HorizontalTextAlignment="End"
+                           TextColor="Black"
+                    />
+                    <Label Text="Timp necesar"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           FontSize="18"
+                           TextColor="Black"
+                    />
+                    <Label Text="x"
+                           Grid.Row="2"
+                           Grid.Column="1"
+                           FontSize="18"
+                           Margin="0,0,10,0"
+                           HorizontalTextAlignment="End"
+                           TextColor="Black"
+                    />
+                    <BoxView HeightRequest="5" BackgroundColor="White" Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="20" />
+                    <Label Text="Data"
+                           Grid.Row="4"
+                           Grid.Column="0"
+                           FontSize="18"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                    />
+                    <DatePicker
+                        Grid.Row="5"
+                        Grid.Column="0"
+                    />
+                    <Label Text="Timpul"
+                           Grid.Row="4"
+                           Grid.Column="1"
+                           FontSize="18"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                    />
+                    <TimePicker
+                        Grid.Row="5"
+                        Grid.Column="1"
+                    />
+                    <Button 
+                        Text="Verificare disponibilitate" 
+                        BackgroundColor="#667284" 
+                        TextColor="White" 
+                        Grid.Row="6" 
+                        Grid.ColumnSpan="2" 
+                        CornerRadius="20"
+                        Margin="5,0,5,0"
+                    />
+                </Grid>
+            </Frame>
+            <Frame BackgroundColor="#94b1e3" Margin="0,30,0,0" Padding="5" HasShadow="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Total"
+                           Grid.Column="0"
+                           FontSize="20"
+                           TextTransform="Uppercase"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                    />
+                    <Label Text="x lei"
+                           Grid.Column="1"
+                           FontSize="20"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                    />
+                    <Button 
+                        Text="Comanda" 
+                        BackgroundColor="#667284" 
+                        TextColor="White" 
+                        Grid.Column="2" 
+                        CornerRadius="30"
+                        Margin="5,0,5,0"
+                    />
+                </Grid>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

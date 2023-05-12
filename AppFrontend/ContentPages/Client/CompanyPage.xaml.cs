@@ -1,6 +1,8 @@
-﻿using App.DTO;
+﻿using Acr.UserDialogs;
+using App.DTO;
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
+using AppFrontend.Resources.Helpers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -145,6 +147,28 @@ namespace AppFrontend.ContentPages
                 {
                     Device.BeginInvokeOnMainThread(() => servicesListView.MinimumHeightRequest = listViewHeight);
                 }
+            }
+        }
+
+        private async void ServiceSelectedEvent(object sender, ItemTappedEventArgs e)
+        {
+            var service = (CompanyServiceOptionDTO)e.Item;
+            service.Company = Company;
+            var message = $"{string.Format(ToastDisplayResources.ServiceSelected, service.Service.Name)}";
+
+            var response = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+            {
+                Title = ToastDisplayResources.ServiceSelectedTitle,
+                Message = message,
+                OkText = ToastDisplayResources.PromptYes,
+                CancelText = ToastDisplayResources.PromptCancel
+            });
+
+            if(response)
+            {
+                Preferences.Set("BasketItem", JsonConvert.SerializeObject(service));
+                var basketItemMessage = new BasketItemMessage { CSO = service };
+                MessagingCenter.Send(this, "BasketItemMessage", basketItemMessage);
             }
         }
     }
