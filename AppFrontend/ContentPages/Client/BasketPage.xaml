@@ -5,10 +5,10 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Frame BackgroundColor="#94b1e3" Margin="10,10,10,0" CornerRadius="20" Padding="5" HasShadow="True">
+            <Frame x:Name="serviceDetailsFrame" BackgroundColor="#94b1e3" Margin="10,10,10,0" CornerRadius="20" Padding="5" HasShadow="True">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -28,6 +28,17 @@
                            Margin="0,0,0,10"
                            TextColor="Black"
                     />
+                    <ImageButton Source="x.png"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            BackgroundColor="Red"
+                            HeightRequest="30"
+                            WidthRequest="30"
+                            VerticalOptions="Start"
+                            HorizontalOptions="End"
+                            Margin="0,0,5,0"
+                            Clicked="RemoveOrderFromBasket"     
+                    />
                     <Label Text="{Binding CSO.Service.Name}"
                            Grid.Row="1"
                            Grid.Column="0"
@@ -42,13 +53,13 @@
                            HorizontalTextAlignment="End"
                            TextColor="Black"
                     />
-                    <Label Text="Timp necesar"
+                    <Label Text="Timp estimat"
                            Grid.Row="2"
                            Grid.Column="0"
                            FontSize="18"
                            TextColor="Black"
                     />
-                    <Label Text="x"
+                    <Label Text="nedeterminat"
                            Grid.Row="2"
                            Grid.Column="1"
                            FontSize="18"
@@ -79,18 +90,51 @@
                         Grid.Row="5"
                         Grid.Column="1"
                     />
+                    <Label x:Name="surfaceLabel"
+                           IsVisible="false"
+                           Text="Suprafata casa"
+                           Grid.Row="6"
+                           Grid.Column="0"
+                           FontSize="18"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                    />
+                    <Entry x:Name="surfaceEntry"
+                           IsVisible="false"
+                           Placeholder="metri patrati"
+                           HorizontalTextAlignment="Center"
+                           Grid.Row="7"
+                           Grid.Column="0"
+                    />
+                    <Label x:Name="noRoomsLabel"
+                           IsVisible="false"
+                           Text="Numar camere"
+                           Grid.Row="6"
+                           Grid.Column="1"
+                           FontSize="18"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                    />
+                    <Entry x:Name="noRoomsEntry"
+                           IsVisible="false"
+                           Placeholder="ex: 2"
+                           HorizontalTextAlignment="Center"
+                           Grid.Row="7"
+                           Grid.Column="1"
+                    />
                     <Button 
-                        Text="Verificare disponibilitate" 
+                        Text="Calculeaza timp estimat" 
                         BackgroundColor="#667284" 
                         TextColor="White" 
-                        Grid.Row="6" 
+                        Grid.Row="8" 
                         Grid.ColumnSpan="2" 
                         CornerRadius="20"
                         Margin="5,0,5,0"
+                        Clicked="CalculateEstimatedDuration"
                     />
                 </Grid>
             </Frame>
-            <Frame BackgroundColor="#94b1e3" Margin="0,30,0,0" Padding="5" HasShadow="True">
+            <Frame x:Name="serviceOrderFrame" BackgroundColor="#94b1e3" Margin="0,30,0,0" Padding="5" HasShadow="True">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -112,13 +156,14 @@
                            HorizontalOptions="Center"
                            TextColor="Black"
                     />
-                    <Button 
+                    <Button x:Name="orderButton"
                         Text="Comanda" 
                         BackgroundColor="#667284" 
                         TextColor="White" 
                         Grid.Column="2" 
                         CornerRadius="30"
                         Margin="5,0,5,0"
+                        IsEnabled="False"
                     />
                 </Grid>
             </Frame>

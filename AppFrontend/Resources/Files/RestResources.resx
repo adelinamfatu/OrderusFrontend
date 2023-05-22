@@ -150,6 +150,9 @@
   <data name="MaterialsURL" xml:space="preserve">
     <value>materials/</value>
   </data>
+  <data name="OrdersURL" xml:space="preserve">
+    <value>orders/</value>
+  </data>
   <data name="PhotoURL" xml:space="preserve">
     <value>photo/</value>
   </data>
