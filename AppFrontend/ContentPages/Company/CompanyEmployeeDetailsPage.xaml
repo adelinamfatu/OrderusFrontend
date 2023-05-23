@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conv="clr-namespace:AppFrontend.Converters"
+             x:Class="AppFrontend.ContentPages.Company.CompanyEmployeeDetailsPage">
+
+    <ContentPage.Resources>
+        <conv:ImageUriConverter x:Key="ImageUriConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Frame CornerRadius="100" 
+                    HeightRequest="100"
+                    WidthRequest="100"
+                    Padding="0"
+                    Grid.Row="0"
+                    IsClippedToBounds="True">
+                <!--<Image Source="{Binding Employee.Picture, Converter={StaticResource ImageUriConverter}}" />-->
+                <Image Source="ok.png" />
+            </Frame>
+            <Frame BackgroundColor="#94b1e3" CornerRadius="20" Padding="5" Margin="5,5,5,0" Grid.Row="1">
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label TextColor="White" FontSize="20" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Employee.Name}" FontSize="20" FontAttributes="Bold" />
+                                <Span Text=" " />
+                                <Span Text="{Binding Employee.Surname}" FontSize="20" FontAttributes="Bold" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label TextColor="White" 
+                           HorizontalOptions="Center" 
+                           Grid.Row="1" 
+                           Grid.ColumnSpan="2" 
+                           Text="{Binding Employee.Email}" />
+                </Grid>
+            </Frame>
+            <Frame BackgroundColor="White" CornerRadius="20" Padding="5" Margin="5,5,5,0" Grid.Row="2">
+                <ListView x:Name="ordersListView" ItemsSource="{Binding Employee.Orders}" HorizontalOptions="Center" VerticalOptions="Center"
+                        RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame BackgroundColor="#94b1e3" CornerRadius="20" Padding="5" Margin="5,5,5,0">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label TextColor="White" 
+                                            HorizontalOptions="Center" 
+                                            Grid.Column="0" 
+                                            FontSize="20"   
+                                            Text="{Binding ServiceName}" />
+                                        <Label TextColor="White" 
+                                            HorizontalOptions="Center" 
+                                            Grid.Column="1" 
+                                            FontSize="20"
+                                            Text="{Binding DateTime, StringFormat='{0:dd.MM.yyyy}'}" />
+                                        <Label TextColor="White" 
+                                            HorizontalOptions="Center" 
+                                            Grid.Column="2" 
+                                            FontSize="20"
+                                            Text="{Binding DateTime, StringFormat='{0:hh:mm tt}'}" />
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>               
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

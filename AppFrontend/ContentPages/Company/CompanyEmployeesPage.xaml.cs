@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using App.DTO;
+using AppFrontend.ContentPages.Company;
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using AppFrontend.ViewModels;
@@ -177,6 +178,13 @@ namespace AppFrontend.ContentPages
 
                 HttpResponseMessage response = await httpClient.PutAsync(url, content);
             }
+        }
+
+        private void OpenEmployeeDetails(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            EmployeeViewModel employee = (EmployeeViewModel)button.BindingContext;
+            Navigation.PushAsync(new CompanyEmployeeDetailsPage(employee.Email));
         }
     }
 }

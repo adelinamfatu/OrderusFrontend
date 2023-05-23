@@ -77,8 +77,7 @@ namespace AppFrontend.ContentPages
                     Color = color,
                     Label = service.Key,
                     ValueLabel = service.Value.ToString(),
-                    ValueLabelColor = color,
-                    LabelTextSize = 
+                    ValueLabelColor = color
                 });
             }
             servicesPieChart.Chart = new PieChart { Entries = ServicesData };

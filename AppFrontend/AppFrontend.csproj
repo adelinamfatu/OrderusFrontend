@@ -48,6 +48,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ContentPages\Company\CompanyEmployeeDetailsPage.xaml.cs">
+      <DependentUpon>CompanyEmployeeDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="ContentPages\Starter\ClientMenuPage.xaml.cs">
       <DependentUpon>ClientMenuPage.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="ContentPages\Client\BasketPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ContentPages\Company\CompanyEmployeeDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ContentPages\Company\CompanyEmployeesPage.xaml">
