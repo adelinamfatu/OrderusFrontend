@@ -1,12 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppFrontend.ContentPages.Employee.EmployeeHistoryPage">
+             x:Class="AppFrontend.ContentPages.Employee.EmployeeHistoryPage"
+             Title="Orderus">
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView x:Name="scheduledOrdersListView" ItemsSource="{Binding Orders}" HasUnevenRows="True" SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Margin="5,5">
+                            <Frame CornerRadius="10" Padding="10" BackgroundColor="SlateGray">
+                                <Grid VerticalOptions="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Text="{Binding ServiceName}"
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        InputTransparent="True"
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                    />
+                                    <Label 
+                                        Text="{Binding DateTime, StringFormat='{0:dd.MM.yyyy}'}"
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        InputTransparent="True"
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        HorizontalTextAlignment="End"
+                                    />
+                                    <Label 
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        InputTransparent="True"
+                                        HorizontalTextAlignment="Center"
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="2" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding DateTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic" FontSize="20" />
+                                                <Span Text=" - " FontAttributes="Italic" FontSize="20" />
+                                                <Span Text="{Binding FinishTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic" FontSize="20" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

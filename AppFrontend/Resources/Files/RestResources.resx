@@ -147,6 +147,9 @@
   <data name="EmployeesURL" xml:space="preserve">
     <value>employees/</value>
   </data>
+  <data name="HistoryURL" xml:space="preserve">
+    <value>history/</value>
+  </data>
   <data name="LoginURL" xml:space="preserve">
     <value>login/</value>
   </data>

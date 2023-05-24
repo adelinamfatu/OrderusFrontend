@@ -151,6 +151,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to history/.
+        /// </summary>
+        internal static string HistoryURL {
+            get {
+                return ResourceManager.GetString("HistoryURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to login/.
         /// </summary>
         internal static string LoginURL {
