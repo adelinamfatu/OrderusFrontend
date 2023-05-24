@@ -29,11 +29,13 @@
                                 <Grid VerticalOptions="Center">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Label 
                                         Text="{Binding ServiceName}"
@@ -43,29 +45,49 @@
                                         InputTransparent="True"
                                         Grid.Column="0"
                                         Grid.Row="0"
+                                        VerticalOptions="Center"
                                     />
+                                    <Image 
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Source="delay.png" 
+                                        HorizontalOptions="End"
+                                        />
+                                    <Button 
+                                        Text="+10m"
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        WidthRequest="70"
+                                        HorizontalOptions="End"
+                                        />
+                                    <Button 
+                                        Text="+20m"
+                                        Grid.Row="0"
+                                        Grid.Column="3"
+                                        WidthRequest="70"
+                                        HorizontalOptions="End"
+                                        />
                                     <Label 
                                         Text="{Binding DateTime, StringFormat='{0:dd.MM.yyyy}'}"
                                         TextColor="White"
-                                        FontAttributes="Bold"
-                                        FontSize="25"
+                                        FontAttributes="Italic"
+                                        FontSize="20"
                                         InputTransparent="True"
-                                        Grid.Column="1"
-                                        Grid.Row="0"
-                                        HorizontalTextAlignment="End"
+                                        Grid.Column="0"
+                                        Grid.Row="1"
                                     />
                                     <Label 
                                         TextColor="White"
                                         FontAttributes="Bold"
                                         InputTransparent="True"
-                                        HorizontalTextAlignment="Center"
+                                        HorizontalTextAlignment="End"
                                         Grid.Row="1"
-                                        Grid.ColumnSpan="2" >
+                                        Grid.ColumnSpan="4" >
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding DateTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic" FontSize="20" />
+                                                <Span Text="{Binding DateTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic, Bold" FontSize="20" />
                                                 <Span Text=" - " FontAttributes="Italic" FontSize="20" />
-                                                <Span Text="{Binding FinishTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic" FontSize="20" />
+                                                <Span Text="{Binding FinishTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic, Bold" FontSize="20" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
