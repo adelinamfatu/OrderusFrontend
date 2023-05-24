@@ -129,6 +129,9 @@
   <data name="Company" xml:space="preserve">
     <value>Companie</value>
   </data>
+  <data name="DayAfterTomorrow" xml:space="preserve">
+    <value>Poimaine</value>
+  </data>
   <data name="Employee" xml:space="preserve">
     <value>Angajat</value>
   </data>
@@ -137,5 +140,11 @@
   </data>
   <data name="Staircase" xml:space="preserve">
     <value>, Scara </value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Azi</value>
+  </data>
+  <data name="Tomorrow" xml:space="preserve">
+    <value>Maine</value>
   </data>
 </root>

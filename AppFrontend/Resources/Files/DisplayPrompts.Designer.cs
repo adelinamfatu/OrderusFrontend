@@ -97,6 +97,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Poimaine.
+        /// </summary>
+        internal static string DayAfterTomorrow {
+            get {
+                return ResourceManager.GetString("DayAfterTomorrow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Angajat.
         /// </summary>
         internal static string Employee {
@@ -120,6 +129,24 @@ namespace AppFrontend.Resources.Files {
         internal static string Staircase {
             get {
                 return ResourceManager.GetString("Staircase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azi.
+        /// </summary>
+        internal static string Today {
+            get {
+                return ResourceManager.GetString("Today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maine.
+        /// </summary>
+        internal static string Tomorrow {
+            get {
+                return ResourceManager.GetString("Tomorrow", resourceCulture);
             }
         }
     }

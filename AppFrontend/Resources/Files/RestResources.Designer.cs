@@ -187,6 +187,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to schedule/.
+        /// </summary>
+        internal static string ScheduleURL {
+            get {
+                return ResourceManager.GetString("ScheduleURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to services/.
         /// </summary>
         internal static string ServicesURL {
