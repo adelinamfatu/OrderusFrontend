@@ -1,12 +1,87 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conv="clr-namespace:AppFrontend.Converters"
+             xmlns:local="clr-namespace:AppFrontend.CustomControls"
              x:Class="AppFrontend.ContentPages.Employee.EmployeeProfilePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    
+    <ContentPage.Resources>
+        <conv:ImageUriConverter x:Key="ImageUriConverter" />
+    </ContentPage.Resources>
+    <StackLayout>
+        <AbsoluteLayout HorizontalOptions="Center" Margin="0,10,0,0">
+            <Frame CornerRadius="100" 
+                    HeightRequest="100"
+                    WidthRequest="100"
+                    Padding="0"
+                    IsClippedToBounds="True">
+                <Image Source="{Binding Picture, Converter={StaticResource ImageUriConverter}}" />
+            </Frame>
+            <Button ImageSource="add.png" 
+                        WidthRequest="30"
+                        HeightRequest="30" 
+                        Clicked="ChoosePhotoFromGallery"/>
+        </AbsoluteLayout>
+        <StackLayout HorizontalOptions="Center" WidthRequest="350">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition Width="170" />
+                </Grid.ColumnDefinitions>
+                <Frame x:Name="surname" Grid.Column="0" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                    <local:CustomEntry
+                        Text="{Binding Surname}"
+                        ClearButtonVisibility="WhileEditing"
+                        FontSize="20"
+                        Margin="10,0,10,0"
+                        PlaceholderColor="#ebf3fb"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center"
+                        IsEnabled="False"
+                        ReturnType="Next" />
+                </Frame>
+                <Frame x:Name="name" Grid.Column="1" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                    <local:CustomEntry
+                        Text="{Binding Name}"
+                        ClearButtonVisibility="WhileEditing"
+                        FontSize="20"
+                        Margin="10,0,10,0"
+                        PlaceholderColor="#ebf3fb"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center"
+                        IsEnabled="False"
+                        ReturnType="Next" />
+                </Frame>
+            </Grid>
+            <Frame x:Name="email" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                <local:CustomEntry
+                        Text="{Binding Email}"
+                        ClearButtonVisibility="WhileEditing"
+                        FontSize="20"
+                        Margin="10,0,10,0"
+                        PlaceholderColor="#ebf3fb"
+                        TextColor="White"
+                        IsEnabled="False"
+                        HorizontalTextAlignment="Center"
+                        ReturnType="Next" />
+            </Frame>
+            <Frame x:Name="phone" BackgroundColor="#94b1e3" CornerRadius="20" HeightRequest="50" Margin="0,10,0,0" Padding="0" HasShadow="True" BorderColor="#667284">
+                <local:CustomEntry
+                        Text="{Binding Phone}"
+                        ClearButtonVisibility="WhileEditing"
+                        FontSize="20"
+                        Margin="10,0,10,0"
+                        PlaceholderColor="#ebf3fb"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center"
+                        ReturnType="Next" />
+            </Frame>
+            <Frame x:Name="saveButton" Margin="0,10,0,0" HasShadow="True" Padding="0" CornerRadius="40" WidthRequest="150" HorizontalOptions="Center">
+                <Button Text="Salvare" 
+                        TextColor="#ebf3fb"
+                        Clicked="GetEmployeeAccountUpdatesFromUI"
+                        BackgroundColor="#6ba1f9"/>
+            </Frame>
         </StackLayout>
-    </ContentPage.Content>
+    </StackLayout>
 </ContentPage>

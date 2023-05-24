@@ -32,6 +32,18 @@ namespace AppFrontend.Resources
             }
         }
 
+        private EmployeeDTO _employee;
+
+        public EmployeeDTO Employee
+        {
+            get { return _employee; }
+            set
+            {
+                _employee = value;
+                OnPropertyChanged("Employee");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)

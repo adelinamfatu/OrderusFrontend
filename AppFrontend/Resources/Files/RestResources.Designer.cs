@@ -133,6 +133,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to details/.
+        /// </summary>
+        internal static string DetailsURL {
+            get {
+                return ResourceManager.GetString("DetailsURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to employees/.
         /// </summary>
         internal static string EmployeesURL {

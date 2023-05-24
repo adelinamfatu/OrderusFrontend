@@ -17,7 +17,11 @@ namespace AppFrontend.ViewModels
 
         public string Name { get; set; }
 
+        public string Phone { get; set; }
+
         public bool IsConfirmed { get; set; }
+
+        public string Picture { get; set; }
 
         public ObservableCollection<ServiceDTO> Services { get; set; }
 
@@ -26,7 +30,9 @@ namespace AppFrontend.ViewModels
             this.Email = employee.Email;
             this.Name = employee.Name;
             this.Surname = employee.Surname;
+            this.Phone = employee.Phone;
             this.IsConfirmed = employee.IsConfirmed;
+            this.Picture = employee.Picture;
             this.Services = new ObservableCollection<ServiceDTO>();
             if (this.IsConfirmed == false)
             {
