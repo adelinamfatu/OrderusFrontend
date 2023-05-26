@@ -93,5 +93,25 @@ namespace AppFrontend.ContentPages.Employee
                 scheduledOrdersListView.ItemsSource = filteredOrders;
             }
         }
+
+        private void scheduledOrdersListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            if (e.Item == null)
+                return;
+
+            var item = e.Item as OrderDTO;
+            DateTime currentTime = DateTime.Now;
+            DateTime startTime = item.DateTime;
+            DateTime finishTime = item.FinishTime; 
+
+            if (currentTime >= startTime && currentTime < finishTime)
+            {
+                item.AreButtonsVisible = true;
+            }
+            else
+            {
+                item.AreButtonsVisible = false;
+            }
+        }
     }
 }
