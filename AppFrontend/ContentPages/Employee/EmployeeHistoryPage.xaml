@@ -30,7 +30,7 @@
                                         Grid.Row="0"
                                     />
                                     <Label 
-                                        Text="{Binding DateTime, StringFormat='{0:dd.MM.yyyy}'}"
+                                        Text="{Binding StartTime, StringFormat='{0:dd.MM.yyyy}'}"
                                         TextColor="White"
                                         FontAttributes="Bold"
                                         FontSize="25"
@@ -48,7 +48,7 @@
                                         Grid.ColumnSpan="2" >
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding DateTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic" FontSize="20" />
+                                                <Span Text="{Binding StartTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic" FontSize="20" />
                                                 <Span Text=" - " FontAttributes="Italic" FontSize="20" />
                                                 <Span Text="{Binding FinishTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic" FontSize="20" />
                                             </FormattedString>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.DTO;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -10,15 +11,21 @@ namespace AppFrontend.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is DateTime dateTime && parameter is ListView listView)
+            if (value is OrderDTO order)
             {
                 DateTime currentTime = DateTime.Now;
+                DateTime startTime = order.StartTime;
+                DateTime finishTime = order.FinishTime;
 
-                if (dateTime < currentTime)
+                if (currentTime < startTime)
                 {
                     return Color.SlateGray;
                 }
-                else if (dateTime > currentTime)
+                else if (startTime <= currentTime && currentTime <= finishTime)
+                {
+                    return Color.PaleGreen;
+                }
+                else
                 {
                     return Color.PaleVioletRed;
                 }

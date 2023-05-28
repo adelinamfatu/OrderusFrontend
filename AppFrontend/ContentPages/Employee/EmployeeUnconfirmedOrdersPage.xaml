@@ -1,12 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppFrontend.ContentPages.Employee.EmployeeUnconfirmedOrdersPage">
+             x:Class="AppFrontend.ContentPages.Employee.EmployeeUnconfirmedOrdersPage"
+             Title="Comenzi neconfirmate">
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView x:Name="unconfirmedOrdersListView" ItemsSource="{Binding Orders}" HasUnevenRows="True" SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Margin="5,5">
+                            <Frame CornerRadius="10" Padding="10" BackgroundColor="PaleVioletRed">
+                                <Grid VerticalOptions="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Text="{Binding ServiceName}"
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        InputTransparent="True"
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                    />
+                                    <Label 
+                                        Text="{Binding StartTime, StringFormat='{0:dd.MM.yyyy}'}"
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        InputTransparent="True"
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        HorizontalTextAlignment="End"
+                                    />
+                                    <Label 
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        InputTransparent="True"
+                                        HorizontalTextAlignment="Center"
+                                        Grid.Row="1"
+                                        Grid.Column="0" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding StartTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic" FontSize="20" />
+                                                <Span Text=" - " FontAttributes="Italic" FontSize="20" />
+                                                <Span Text="{Binding FinishTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic" FontSize="20" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Button x:Name="btnOrderDetails"
+                                            ImageSource="details.png"
+                                            Clicked="OpenOrderDetails"
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            BackgroundColor="Orange"
+                                            WidthRequest="50"
+                                            CornerRadius="20"
+                                            HorizontalOptions="End"
+                                    />
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

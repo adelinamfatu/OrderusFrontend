@@ -171,6 +171,9 @@
   <data name="TokenURL" xml:space="preserve">
     <value>token/</value>
   </data>
+  <data name="UnconfirmedURL" xml:space="preserve">
+    <value>unconfirmed/</value>
+  </data>
   <data name="UpdateURL" xml:space="preserve">
     <value>update/</value>
   </data>

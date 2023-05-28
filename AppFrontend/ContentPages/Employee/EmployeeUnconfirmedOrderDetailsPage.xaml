@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppFrontend.CustomControls" 
+             x:Class="AppFrontend.ContentPages.Employee.EmployeeUnconfirmedOrderDetailsPage">
+    
+    <StackLayout>
+        <Label Text="Detalii generale"
+               FontSize="20"
+               TextColor="Black"
+               Margin="0,10,0,0"
+               HorizontalTextAlignment="Center"
+                    />
+        <Frame x:Name="orderGeneralDetailsFrame" BackgroundColor="#94b1e3" Margin="10,10,10,0" CornerRadius="20" Padding="5" HasShadow="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Serviciu"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           FontSize="20"
+                           TextColor="Black"
+                           Margin="20,0,0,0"
+                    />
+                <Label Text="{Binding Order.ServiceName}"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           TextTransform="Uppercase"
+                           FontSize="20"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"
+                    />
+                <Label Text="Data"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           FontSize="20"
+                           TextColor="Black"
+                           Margin="20,0,0,0"
+                    />
+                <Label Text="{Binding Order.StartTime, StringFormat='{0:dd.MM.yyyy}'}"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           FontSize="20"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"
+                    />
+                <Label Text="De la"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           FontSize="20"
+                           TextColor="Black"
+                           Margin="20,0,0,0"
+                    />
+                <Label Text="{Binding Order.StartTime, StringFormat='{0:hh:mm tt}'}"
+                           Grid.Row="2"
+                           Grid.Column="1"
+                           FontSize="20"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"
+                    />
+                <Label Text="Pana la"
+                           Grid.Row="3"
+                           Grid.Column="0"
+                           FontSize="20"
+                           TextColor="Black"
+                           Margin="20,0,0,0"
+                    />
+                <Label Text="{Binding Order.FinishTime, StringFormat='{0:hh:mm tt}'}"
+                           Grid.Row="3"
+                           Grid.Column="1"
+                           FontSize="20"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"
+                    />
+            </Grid>
+        </Frame>
+        <Label Text="Detalii particulare"
+               FontSize="20"
+               TextColor="Black"
+               Margin="0,10,0,0"
+               HorizontalTextAlignment="Center"
+        />
+        <Frame x:Name="orderDetailsFrame" BackgroundColor="#94b1e3" Margin="10,10,10,0" CornerRadius="20" Padding="5" HasShadow="True">
+            <ListView ItemsSource="{Binding Order.Details}" HeightRequest="90">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Key}"
+                                    FontSize="20"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    Margin="20,0,0,0"
+                                    Grid.Column="0" />
+                                <Label Text="{Binding Value}"
+                                    FontSize="20"
+                                    TextColor="Black"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    Grid.Column="1" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+        <Label Text="Este nevoie de materiale suplimentare?"
+               FontSize="20"
+               TextColor="Black"
+               Margin="0,10,0,0"
+               HorizontalTextAlignment="Center"
+        />
+        <Switch x:Name="requireMaterialSw" IsToggled="False" HorizontalOptions="Center" Toggled="RequireMaterialToggled" />
+        <ListView x:Name="materialsListView" ItemsSource="{Binding Order.Materials}" IsVisible="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label 
+                                Text="{Binding Name}" 
+                                Grid.Column="0"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                />
+                            <local:CustomEntry 
+                                Placeholder="{Binding Quantity, StringFormat='{0} in stoc'}" 
+                                HorizontalTextAlignment="Center"
+                                Keyboard="Numeric"
+                                Grid.Column="1" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Frame x:Name="confirmButton" HasShadow="True" Padding="0" CornerRadius="40" WidthRequest="150" HorizontalOptions="Center">
+            <Button Text="Confirmare comanda" 
+                TextColor="#ebf3fb"
+                Clicked="ConfirmOrder"
+                BackgroundColor="#6ba1f9"/>
+        </Frame>
+    </StackLayout>
+</ContentPage>

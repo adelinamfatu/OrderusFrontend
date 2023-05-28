@@ -187,6 +187,24 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sunteti sigur ca doriti sa confirmati comanda?.
+        /// </summary>
+        internal static string OrderConfirmation {
+            get {
+                return ResourceManager.GetString("OrderConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmare comanda.
+        /// </summary>
+        internal static string OrderConfirmationTitle {
+            get {
+                return ResourceManager.GetString("OrderConfirmationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parolele nu corespund.
         /// </summary>
         internal static string PasswordError {

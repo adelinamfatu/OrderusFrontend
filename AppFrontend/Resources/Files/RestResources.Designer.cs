@@ -223,6 +223,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to unconfirmed/.
+        /// </summary>
+        internal static string UnconfirmedURL {
+            get {
+                return ResourceManager.GetString("UnconfirmedURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to update/.
         /// </summary>
         internal static string UpdateURL {

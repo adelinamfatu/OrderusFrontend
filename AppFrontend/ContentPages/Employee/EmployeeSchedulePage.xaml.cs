@@ -77,19 +77,19 @@ namespace AppFrontend.ContentPages.Employee
             string selectedOption = dayOptionsSC.Children[dayOptionsSC.SelectedSegment].Text;
             if (selectedOption == DisplayPrompts.Today)
             {
-                var filteredOrders = Orders.Where(order => order.DateTime.Date == currentTime.Date).ToList();
+                var filteredOrders = Orders.Where(order => order.StartTime.Date == currentTime.Date).ToList();
                 scheduledOrdersListView.ItemsSource = filteredOrders;
             }
             else if(selectedOption == DisplayPrompts.Tomorrow)
             {
                 currentTime = currentTime.AddDays(1);
-                var filteredOrders = Orders.Where(order => order.DateTime.Date == currentTime.Date).ToList();
+                var filteredOrders = Orders.Where(order => order.StartTime.Date == currentTime.Date).ToList();
                 scheduledOrdersListView.ItemsSource = filteredOrders;
             }
             else
             {
                 currentTime = currentTime.AddDays(2);
-                var filteredOrders = Orders.Where(order => order.DateTime.Date == currentTime.Date).ToList();
+                var filteredOrders = Orders.Where(order => order.StartTime.Date == currentTime.Date).ToList();
                 scheduledOrdersListView.ItemsSource = filteredOrders;
             }
         }
@@ -101,7 +101,7 @@ namespace AppFrontend.ContentPages.Employee
 
             var item = e.Item as OrderDTO;
             DateTime currentTime = DateTime.Now;
-            DateTime startTime = item.DateTime;
+            DateTime startTime = item.StartTime;
             DateTime finishTime = item.FinishTime; 
 
             if (currentTime >= startTime && currentTime < finishTime)

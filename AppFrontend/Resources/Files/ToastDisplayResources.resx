@@ -159,6 +159,12 @@
   <data name="LogoutConfirmationTitle" xml:space="preserve">
     <value>Confirmare delogare</value>
   </data>
+  <data name="OrderConfirmation" xml:space="preserve">
+    <value>Sunteti sigur ca doriti sa confirmati comanda?</value>
+  </data>
+  <data name="OrderConfirmationTitle" xml:space="preserve">
+    <value>Confirmare comanda</value>
+  </data>
   <data name="PasswordError" xml:space="preserve">
     <value>Parolele nu corespund</value>
   </data>
