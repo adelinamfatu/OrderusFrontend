@@ -27,6 +27,30 @@ namespace AppFrontend.ViewModels
 
         public ObservableCollection<MaterialDTO> Materials { get; set; }
 
+        public float Total
+        {
+            get
+            {
+                float sum = PaymentAmount;
+                if(Materials != null)
+                {
+                    foreach(var material in Materials)
+                    {
+                        sum += material.Total;
+                    }
+                }
+                return sum;
+            }
+        }
+
+        public double TotalTVA
+        {
+            get
+            {
+                return Total * 0.19;
+            }
+        }
+
         public OrderViewModel(OrderDTO order)
         {
             this.ID = order.ID;

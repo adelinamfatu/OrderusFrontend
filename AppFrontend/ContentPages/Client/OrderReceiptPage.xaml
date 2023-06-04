@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFrontend.ContentPages.Client.OrderReceiptPage">
+    
+    <ContentPage.Content>
+        <Grid Margin="10,10,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="20" TextColor="Black" HorizontalTextAlignment="Center" >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="S.C. " />
+                        <Span Text="{Binding Company.Name}" />
+                        <Span Text=" S.R.L." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Grid.Row="1" Grid.ColumnSpan="2" FontSize="20" TextColor="Black" HorizontalTextAlignment="Center" >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Company.Street}" />
+                        <Span Text=", " />
+                        <Span Text="{Binding Company.StreetNumber}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="Bucuresti"
+                   Grid.Row="2" 
+                   Grid.ColumnSpan="2"
+                   FontSize="20"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"
+                />
+            <Label Text="{Binding Order.ServiceName}"
+                   Grid.Row="4" 
+                   Grid.Column="0"
+                   FontSize="20"
+                   TextColor="Black"
+                />
+            <Label Text="{Binding Order.PaymentAmount, StringFormat='{0:F2}'}"
+                   Grid.Row="4" 
+                   Grid.Column="1"
+                   FontSize="20"
+                   TextColor="Black"
+                   HorizontalTextAlignment="End"
+                />
+            <ListView Grid.Row="5" Grid.ColumnSpan="2" ItemsSource="{Binding Order.Materials}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid VerticalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label FontSize="18" VerticalTextAlignment="Center" Grid.Row="0" TextColor="Black">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="      " />
+                                            <Span Text="{Binding Quantity, StringFormat='{0:F3}'}" />
+                                            <Span Text=" BUC x " />
+                                            <Span Text="{Binding Price, StringFormat='{0:F2}'}" />
+                                            <Span Text="      " />
+                                            <Span Text="{Binding Name}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Text="{Binding Total, StringFormat='{0:F2}'}"
+                                       Grid.Column="1"
+                                       FontSize="18"
+                                       TextColor="Black"
+                                       VerticalTextAlignment="End"
+                                       HorizontalTextAlignment="End"
+                                />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="TOTAL"
+                   Grid.Row="6" 
+                   Grid.Column="0"
+                   FontSize="24"
+                   TextColor="Black"
+                />
+            <Label Text="{Binding Order.Total}"
+                   Grid.Row="6" 
+                   Grid.Column="1"
+                   FontSize="24"
+                   TextColor="Black"
+                   HorizontalTextAlignment="End"
+                />
+            <Label Text="TOTAL TVA"
+                   Grid.Row="7" 
+                   Grid.Column="0"
+                   FontSize="18"
+                   TextColor="Black"
+                />
+            <Label Text="{Binding Order.TotalTVA, StringFormat='{0:F2}'}"
+                   Grid.Row="7" 
+                   Grid.Column="1"
+                   FontSize="18"
+                   TextColor="Black"
+                   HorizontalTextAlignment="End"
+                />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

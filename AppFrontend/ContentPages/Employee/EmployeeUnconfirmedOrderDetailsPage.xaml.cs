@@ -32,17 +32,17 @@ namespace AppFrontend.ContentPages.Employee
             InitializeComponent();
             globalService = DependencyService.Get<GlobalService>();
             this.Order = new OrderViewModel(order);
-            PrepareDataForUI();
+            PrepareDataForUIAsync();
             this.BindingContext = this;
         }
 
-        private void PrepareDataForUI()
+        private async void PrepareDataForUIAsync()
         {
-            GetOrderDetails();
+            await GetOrderDetails();
             GetMaterials();
         }
 
-        private async void GetOrderDetails()
+        private async Task GetOrderDetails()
         {
             string url = RestResources.ConnectionURL + RestResources.EmployeesURL + RestResources.OrdersURL + Order.ID;
 

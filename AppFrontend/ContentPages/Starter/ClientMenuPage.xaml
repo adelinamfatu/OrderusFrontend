@@ -22,8 +22,14 @@
             <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
         </NavigationPage.ToolbarItems>
     </NavigationPage>
-    <local:HistoryPage Title="Istoric" 
-               IconImageSource="activity_history.png"/>
+    <NavigationPage Title="Istoric" IconImageSource="activity_history.png" BarBackgroundColor="#6ba1f9">
+        <x:Arguments Title="Orderus">
+            <local:HistoryPage />
+        </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+        </NavigationPage.ToolbarItems>
+    </NavigationPage>
     <NavigationPage Title="Cont" IconImageSource="user.png" BarBackgroundColor="#6ba1f9">
         <x:Arguments Title="Orderus">
             <local:ClientProfilePage />
