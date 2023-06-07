@@ -1,14 +1,15 @@
 ﻿using App.DTO;
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
+using AppFrontend.Resources.Helpers;
 using AppFrontend.ViewModels;
 using Newtonsoft.Json;
+using PdfSharpCore.Drawing;
+using PdfSharpCore.Pdf;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -81,6 +82,19 @@ namespace AppFrontend.ContentPages.Client
                     string json = await response.Content.ReadAsStringAsync();
                     Company = JsonConvert.DeserializeObject<CompanyDTO>(json);
                 }
+            }
+        }
+
+        private async void DownloadOrderAsPDF(object sender, EventArgs e)
+        {
+            try
+            {
+                var pdfGenerator = new ReceiptPdfGenerator();
+                await pdfGenerator.GeneratePdf(Order, Company);
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }
