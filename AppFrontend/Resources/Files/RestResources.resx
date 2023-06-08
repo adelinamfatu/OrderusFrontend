@@ -120,6 +120,9 @@
   <data name="CategoriesURL" xml:space="preserve">
     <value>services/categories/</value>
   </data>
+  <data name="CleaningURL" xml:space="preserve">
+    <value>cleaning/</value>
+  </data>
   <data name="ClientsURL" xml:space="preserve">
     <value>clients/</value>
   </data>

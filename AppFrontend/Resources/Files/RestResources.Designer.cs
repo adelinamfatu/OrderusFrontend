@@ -70,6 +70,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cleaning/.
+        /// </summary>
+        internal static string CleaningURL {
+            get {
+                return ResourceManager.GetString("CleaningURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to clients/.
         /// </summary>
         internal static string ClientsURL {

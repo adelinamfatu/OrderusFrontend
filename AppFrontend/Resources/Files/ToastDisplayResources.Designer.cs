@@ -97,6 +97,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toate campurile trebuie completate.
+        /// </summary>
+        internal static string DataMissingError {
+            get {
+                return ResourceManager.GetString("DataMissingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to S-a produs o eroare la salvarea datelor.
         /// </summary>
         internal static string DataUpdateFail {
@@ -201,6 +210,24 @@ namespace AppFrontend.Resources.Files {
         internal static string OrderConfirmationTitle {
             get {
                 return ResourceManager.GetString("OrderConfirmationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nu este niciun angajat liber, va rog sa alegeti o alta data.
+        /// </summary>
+        internal static string OrderTimeEstimationError {
+            get {
+                return ResourceManager.GetString("OrderTimeEstimationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-a estimat o durata aproximativa pentru serviciul ales.
+        /// </summary>
+        internal static string OrderTimeEstimationSuccess {
+            get {
+                return ResourceManager.GetString("OrderTimeEstimationSuccess", resourceCulture);
             }
         }
         

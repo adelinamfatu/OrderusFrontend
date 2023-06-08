@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppFrontend.ContentPages.BasketPage">
-    
+
     <ContentPage.Content>
         <StackLayout>
             <Frame x:Name="serviceDetailsFrame" BackgroundColor="#94b1e3" Margin="10,10,10,0" CornerRadius="20" Padding="5" HasShadow="True">
@@ -39,7 +39,8 @@
                             Margin="0,0,5,0"
                             Clicked="RemoveOrderFromBasket"     
                     />
-                    <Label Text="{Binding CSO.Service.Name}"
+                    <Label x:Name="durationLabel"
+                           Text="nedeterminat"
                            Grid.Row="1"
                            Grid.Column="0"
                            FontSize="18"
@@ -59,7 +60,7 @@
                            FontSize="18"
                            TextColor="Black"
                     />
-                    <Label Text="nedeterminat"
+                    <Label Text="{Binding CSO.Duration}"
                            Grid.Row="2"
                            Grid.Column="1"
                            FontSize="18"
@@ -75,7 +76,7 @@
                            HorizontalOptions="Center"
                            TextColor="Black"
                     />
-                    <DatePicker
+                    <DatePicker x:Name="datePicker"
                         Grid.Row="5"
                         Grid.Column="0"
                     />
@@ -86,7 +87,7 @@
                            HorizontalOptions="Center"
                            TextColor="Black"
                     />
-                    <TimePicker
+                    <TimePicker x:Name="timePicker"
                         Grid.Row="5"
                         Grid.Column="1"
                     />
@@ -167,6 +168,17 @@
                     />
                 </Grid>
             </Frame>
+            <StackLayout HorizontalOptions="End" WidthRequest="250">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="info.png" />
+                    <Label Grid.Column="1" Text="Atentie! Pretul include doar serviciul" TextColor="Gray" VerticalTextAlignment="Center" />
+                    <Label Grid.Column="1" Grid.Row="1" Text="Orice cost suplimentar va fi taxat" TextColor="Gray" />
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

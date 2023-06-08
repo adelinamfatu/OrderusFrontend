@@ -129,6 +129,9 @@
   <data name="CreateAccountSuccess" xml:space="preserve">
     <value>Contul a fost creat cu succes</value>
   </data>
+  <data name="DataMissingError" xml:space="preserve">
+    <value>Toate campurile trebuie completate</value>
+  </data>
   <data name="DataUpdateFail" xml:space="preserve">
     <value>S-a produs o eroare la salvarea datelor</value>
   </data>
@@ -164,6 +167,12 @@
   </data>
   <data name="OrderConfirmationTitle" xml:space="preserve">
     <value>Confirmare comanda</value>
+  </data>
+  <data name="OrderTimeEstimationError" xml:space="preserve">
+    <value>Nu este niciun angajat liber, va rog sa alegeti o alta data</value>
+  </data>
+  <data name="OrderTimeEstimationSuccess" xml:space="preserve">
+    <value>S-a estimat o durata aproximativa pentru serviciul ales</value>
   </data>
   <data name="PasswordError" xml:space="preserve">
     <value>Parolele nu corespund</value>
