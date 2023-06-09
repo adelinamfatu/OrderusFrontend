@@ -250,6 +250,24 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la plasarea comenzii.
+        /// </summary>
+        internal static string PlaceOrderError {
+            get {
+                return ResourceManager.GetString("PlaceOrderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comanda dvs a fost plasata cu succes.
+        /// </summary>
+        internal static string PlaceOrderSuccess {
+            get {
+                return ResourceManager.GetString("PlaceOrderSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Renunta.
         /// </summary>
         internal static string PromptCancel {

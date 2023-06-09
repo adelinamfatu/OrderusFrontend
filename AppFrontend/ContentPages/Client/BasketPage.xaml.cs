@@ -2,6 +2,7 @@
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using AppFrontend.Resources.Helpers;
+using AppFrontend.ViewModels;
 using Newtonsoft.Json;
 using Plugin.Toast;
 using System;
@@ -24,6 +25,8 @@ namespace AppFrontend.ContentPages
 
         public GlobalService globalService { get; set; }
 
+        public OrderViewModel Order { get; set; }
+
         public BasketPage()
         {
             InitializeComponent();
@@ -33,7 +36,10 @@ namespace AppFrontend.ContentPages
             {
                 CSO = message.CSO;
             });
-            SetUIServiceInformation();
+            if(Preferences.ContainsKey("BasketItem"))
+            {
+                SetUIServiceInformation();
+            }
             this.BindingContext = this;
         }
 
@@ -43,11 +49,16 @@ namespace AppFrontend.ContentPages
             {
                 var basketItemJson = Preferences.Get("BasketItem", "");
                 CSO = JsonConvert.DeserializeObject<CompanyServiceOptionDTO>(basketItemJson);
+                Order = new OrderViewModel();
+                Order.Duration = 0;
             }
             else
             {
                 serviceDetailsFrame.IsVisible = false;
                 serviceOrderFrame.IsVisible = false;
+                priceInfoStackLayout.IsVisible = false;
+                emptyBasketImg.IsVisible = true;
+                emptyBasketLabel.IsVisible = true;
             }
         }
 
@@ -59,6 +70,9 @@ namespace AppFrontend.ContentPages
                 CSO = null;
                 serviceDetailsFrame.IsVisible = false;
                 serviceOrderFrame.IsVisible = false;
+                priceInfoStackLayout.IsVisible = false;
+                emptyBasketImg.IsVisible = true;
+                emptyBasketLabel.IsVisible = true;
             }
         }
 
@@ -95,7 +109,7 @@ namespace AppFrontend.ContentPages
                 }
             }
             
-
+            //other orders
         }
 
         private async void SendCleaningServiceData(PossibleOrderDTO po)
@@ -118,21 +132,78 @@ namespace AppFrontend.ContentPages
                     var duration = int.Parse(contentString);
                     ShowToast(duration);
                 }
+                else if(response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.OrderTimeEstimationError);
+                }
             }
         }
 
         private void ShowToast(int duration)
         {
-            if (duration == -1)
+            CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.OrderTimeEstimationSuccess);
+            CSO.Duration = duration;
+            Order.Duration = duration;
+            Order.PaymentAmount = CSO.Price * (CSO.Duration / 60.0f);
+            orderButton.IsEnabled = true;
+        }
+
+        private void PlaceOrder(object sender, EventArgs e)
+        {
+            var order = ConvertToOrder();
+            AddOrder(order);
+        }
+
+        private async void AddOrder(OrderDTO order)
+        {
+            string url = RestResources.ConnectionURL + RestResources.OrdersURL + RestResources.CreateAccountURL;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient client = new HttpClient(handler))
             {
-                CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.OrderTimeEstimationError);
+                var token = SecureStorage.GetAsync("client_token").Result;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var json = JsonConvert.SerializeObject(order);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.PlaceOrderSuccess);
+                    RemoveOrderFromBasket(null, EventArgs.Empty);
+                }
+                else
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.PlaceOrderError);
+                }
             }
-            else
+        }
+
+        private OrderDTO ConvertToOrder()
+        {
+            return new OrderDTO()
             {
-                CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.OrderTimeEstimationSuccess);
-                CSO.Duration = duration;
-                orderButton.IsEnabled = true;
+                StartTime = CSO.DateTime,
+                Duration = CSO.Duration,
+                ServiceID = CSO.Service.ID,
+                ClientEmail = globalService.Client.Email,
+                CompanyID = CSO.Company.ID,
+                PaymentAmount = Order.PaymentAmount,
+                Details = GetDetailsDictionary(),
+                Comment = commentEntry.Text
+            };
+        }
+
+        private Dictionary<string, string> GetDetailsDictionary()
+        {
+            Dictionary<string, string> details = new Dictionary<string, string>();
+            if(CSO.Service.Name == ServiceType.Curatare.ToString())
+            {
+                details.Add(noRoomsLabel.Text, noRoomsEntry.Text);
+                details.Add(surfaceLabel.Text, surfaceEntry.Text);
             }
+            return details;
         }
     }
 }

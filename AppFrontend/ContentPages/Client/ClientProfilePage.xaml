@@ -10,24 +10,43 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Frame CornerRadius="100" 
-                HeightRequest="100"
-                WidthRequest="100"
-                HorizontalOptions="Center"
-                Padding="0"
-                IsClippedToBounds="True">
-                <Image Source="{Binding Picture, Converter={StaticResource ImageUriConverter}}" 
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
-            </Frame>
+            <AbsoluteLayout HorizontalOptions="Center" Margin="0,10,0,0">
+                <Frame CornerRadius="100" 
+                    HeightRequest="100"
+                    WidthRequest="100"
+                    HorizontalOptions="Center"
+                    Padding="0"
+                    IsClippedToBounds="True">
+                    <Image Source="{Binding Picture, Converter={StaticResource ImageUriConverter}}" />
+                </Frame>
+                <Button ImageSource="add.png" 
+                        WidthRequest="30"
+                        HeightRequest="30" 
+                        Clicked="ChoosePhotoFromGallery"/>
+            </AbsoluteLayout>
             <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                 <Label Text="{Binding Name}" FontSize="17" TextColor="#667284"/>
                 <Label Text="{Binding Surname}" FontSize="17" TextTransform="Uppercase" FontAttributes="Bold" TextColor="#667284"/>
             </StackLayout>
-            <Button Text="Informatii cont"/>
-            <Button Text="Adresa"/>
-            <Button Text="Carduri"/>
-            <Button Text="Oferte si cupoane"/>
+            <StackLayout Margin="30,10,30,0">
+                <Button Text="Informatii cont"
+                        CornerRadius="20" 
+                        HeightRequest="50" 
+                        BackgroundColor="#6ba1f9" 
+                        Clicked="OpenAccountInformationPage"
+                        TextColor="White"
+                        FontSize="16"/>
+                <Button Text="Roata" 
+                        CornerRadius="20" 
+                        BackgroundColor="#94b1e3"
+                        TextColor="White"
+                        FontSize="16"/>
+                <Button Text="Oferte si cupoane" 
+                        CornerRadius="20" 
+                        BackgroundColor="#6ba1f9"
+                        TextColor="White"
+                        FontSize="16"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

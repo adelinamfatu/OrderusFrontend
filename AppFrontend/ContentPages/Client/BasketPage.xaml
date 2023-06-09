@@ -15,6 +15,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -60,7 +61,7 @@
                            FontSize="18"
                            TextColor="Black"
                     />
-                    <Label Text="{Binding CSO.Duration}"
+                    <Label Text="{Binding Order.Duration}"
                            Grid.Row="2"
                            Grid.Column="1"
                            FontSize="18"
@@ -123,11 +124,17 @@
                            Grid.Row="7"
                            Grid.Column="1"
                     />
-                    <Button 
+                    <Entry x:Name="commentEntry"
+                           Placeholder="ex: mi s-a stricat o balama"
+                           HorizontalTextAlignment="Center"
+                           Grid.Row="8"
+                           Grid.ColumnSpan="2"
+                    />
+                    <Button
                         Text="Calculeaza timp estimat" 
                         BackgroundColor="#667284" 
                         TextColor="White" 
-                        Grid.Row="8" 
+                        Grid.Row="9" 
                         Grid.ColumnSpan="2" 
                         CornerRadius="20"
                         Margin="5,0,5,0"
@@ -135,7 +142,7 @@
                     />
                 </Grid>
             </Frame>
-            <Frame x:Name="serviceOrderFrame" BackgroundColor="#94b1e3" Margin="0,30,0,0" Padding="5" HasShadow="True">
+            <Frame x:Name="serviceOrderFrame" BackgroundColor="#94b1e3" Margin="0,20,0,0" Padding="5" HasShadow="True">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -150,7 +157,7 @@
                            HorizontalOptions="Center"
                            TextColor="Black"
                     />
-                    <Label Text="x lei"
+                    <Label Text="{Binding Order.PaymentAmount, StringFormat='{0:F2} lei'}"
                            Grid.Column="1"
                            FontSize="20"
                            VerticalOptions="Center"
@@ -165,10 +172,11 @@
                         CornerRadius="30"
                         Margin="5,0,5,0"
                         IsEnabled="False"
+                        Clicked="PlaceOrder"
                     />
                 </Grid>
             </Frame>
-            <StackLayout HorizontalOptions="End" WidthRequest="250">
+            <StackLayout HorizontalOptions="End" WidthRequest="250" x:Name="priceInfoStackLayout">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -179,6 +187,14 @@
                     <Label Grid.Column="1" Grid.Row="1" Text="Orice cost suplimentar va fi taxat" TextColor="Gray" />
                 </Grid>
             </StackLayout>
+            <Grid VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image x:Name="emptyBasketImg" IsVisible="False" Source="empty_basket.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label x:Name="emptyBasketLabel" FontSize="18" TextColor="Gray" IsVisible="False" Text="Cosul dvs de cumparaturi este gol" HorizontalOptions="Center" Grid.Row="1" />
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

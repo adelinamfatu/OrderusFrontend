@@ -180,6 +180,12 @@
   <data name="PhoneNumberError" xml:space="preserve">
     <value>Numarul de telefon nu este unul valid</value>
   </data>
+  <data name="PlaceOrderError" xml:space="preserve">
+    <value>S-a produs o eroare la plasarea comenzii</value>
+  </data>
+  <data name="PlaceOrderSuccess" xml:space="preserve">
+    <value>Comanda dvs a fost plasata cu succes</value>
+  </data>
   <data name="PromptCancel" xml:space="preserve">
     <value>Renunta</value>
   </data>

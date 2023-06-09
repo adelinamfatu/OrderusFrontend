@@ -17,11 +17,35 @@ namespace AppFrontend.ViewModels
 
         public DateTime FinishTime { get; set; }
 
-        public int Duration { get; set; }
+        private int duration;
+        public int Duration
+        {
+            get { return duration; }
+            set
+            {
+                if (duration != value)
+                {
+                    duration = value;
+                    OnPropertyChanged(nameof(Duration));
+                }
+            }
+        }
 
         public string ServiceName { get; set; }
 
-        public float PaymentAmount { get; set; }
+        private float paymentAmount;
+        public float PaymentAmount
+        {
+            get { return paymentAmount; }
+            set
+            {
+                if (paymentAmount != value)
+                {
+                    paymentAmount = value;
+                    OnPropertyChanged(nameof(PaymentAmount));
+                }
+            }
+        }
 
         public Dictionary<string, string> Details { get; set; }
 
@@ -60,6 +84,10 @@ namespace AppFrontend.ViewModels
             this.ServiceName = order.ServiceName;
             this.PaymentAmount = order.PaymentAmount;
             this.Materials = new ObservableCollection<MaterialDTO>();
+        }
+
+        public OrderViewModel()
+        {
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
