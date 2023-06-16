@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             x:Class="AppFrontend.ContentPages.Client.ClientSpinningWheelPage">
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Text="---" x:Name="priceBox" HorizontalTextAlignment="Center" TextColor="Green" FontSize="30" Grid.Row="0" />
+            <skia:SKCanvasView x:Name="skiaView" PaintSurface="OnCanvasViewPaintSurface" Grid.Row="1" BackgroundColor="Transparent" />
+            <Button 
+                Text="Invarte roata" 
+                FontSize="Title" 
+                TextColor="White"
+                BackgroundColor="DarkGreen" 
+                Padding="30,10" 
+                Clicked="SpinTheWheel" 
+                Grid.Row="2" 
+                HeightRequest="50" 
+                CornerRadius="20"
+                Margin="50,0,50,40" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

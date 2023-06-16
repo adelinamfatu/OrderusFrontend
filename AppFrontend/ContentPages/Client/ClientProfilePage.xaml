@@ -37,6 +37,7 @@
                         TextColor="White"
                         FontSize="16"/>
                 <Button Text="Roata" 
+                        Clicked="OpenSpinningWheelPage"
                         CornerRadius="20" 
                         BackgroundColor="#94b1e3"
                         TextColor="White"
