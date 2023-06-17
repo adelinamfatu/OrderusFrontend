@@ -107,5 +107,10 @@ namespace AppFrontend.ContentPages
         {
             Navigation.PushAsync(new ClientSpinningWheelPage());
         }
+
+        private void OpenClientOffersPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ClientOffersPage());
+        }
     }
 }

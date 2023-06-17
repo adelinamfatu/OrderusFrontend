@@ -56,7 +56,6 @@ namespace AppFrontend.ContentPages.Client
         private void ViewModel_DataReady(object sender, EventArgs e)
         {
             skiaView.InvalidateSurface();
-            //UpdateButtons();
         }
 
         private async Task AnimationLoop(int extension = 0)
@@ -109,7 +108,7 @@ namespace AppFrontend.ContentPages.Client
         private void GetWinner()
         {
             priceBox.Text = viewModel.Prize.Price.ToString();
-            if(priceBox.TextColor == Color.Red)
+            if (priceBox.TextColor == Color.Red)
             {
                 CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.SpinningWheelNoPrize);
             }
@@ -139,9 +138,10 @@ namespace AppFrontend.ContentPages.Client
         {
             return new OfferDTO()
             {
-                DiscountValue = value,
+                Discount = value,
+                Type = DiscountType.Value,
                 ClientEmail = globalService.Client.Email,
-                ExpirationDate = DateTime.Now.AddDays(30)
+                ExpirationDate = DateTime.Now.AddDays(30).Date
             };
         }
 
@@ -149,9 +149,10 @@ namespace AppFrontend.ContentPages.Client
         {
             return new OfferDTO()
             {
-                DiscountPercentage = percentage,
+                Discount = percentage,
+                Type = DiscountType.Percentage,
                 ClientEmail = globalService.Client.Email,
-                ExpirationDate = DateTime.Now.AddDays(30)
+                ExpirationDate = DateTime.Now.AddDays(30).Date
             };
         }
 
@@ -366,10 +367,34 @@ namespace AppFrontend.ContentPages.Client
             canvas.DrawPath(path, outline);
         }
 
-        private void SpinTheWheel(object sender, EventArgs e)
+        private bool CanSpinWheel()
         {
-            _pageIsActive = true;
-            AnimationLoop();
+            DateTime lastSpinDate = Preferences.Get("LastSpinDate", DateTime.MinValue);
+            DateTime currentDate = DateTime.Now.Date;
+
+            if (lastSpinDate.Date < currentDate)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private async void SpinTheWheel(object sender, EventArgs e)
+        {
+            if (CanSpinWheel())
+            {
+                Preferences.Set("LastSpinDate", DateTime.Now.Date);
+
+                _pageIsActive = true;
+                await AnimationLoop();
+            }
+            else
+            {
+                CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.SpinningWheelInvalid);
+            }
         }
     }
 }

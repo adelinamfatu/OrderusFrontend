@@ -43,6 +43,7 @@
                         TextColor="White"
                         FontSize="16"/>
                 <Button Text="Oferte si cupoane" 
+                        Clicked="OpenClientOffersPage"
                         CornerRadius="20" 
                         BackgroundColor="#6ba1f9"
                         TextColor="White"
