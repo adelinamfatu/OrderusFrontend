@@ -187,6 +187,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to discount/.
+        /// </summary>
+        internal static string OfferURL {
+            get {
+                return ResourceManager.GetString("OfferURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to orders/.
         /// </summary>
         internal static string OrdersURL {

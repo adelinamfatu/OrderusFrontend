@@ -322,6 +322,24 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ghinion! Puteti incerca maine din nou!.
+        /// </summary>
+        internal static string SpinningWheelNoPrize {
+            get {
+                return ResourceManager.GetString("SpinningWheelNoPrize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Felicitari! Ati castigat!.
+        /// </summary>
+        internal static string SpinningWheelPrize {
+            get {
+                return ResourceManager.GetString("SpinningWheelPrize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trebuie sa alegeti un tip de strada.
         /// </summary>
         internal static string StreetTypeError {

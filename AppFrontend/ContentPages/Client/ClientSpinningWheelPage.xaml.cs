@@ -1,11 +1,19 @@
-﻿using AppFrontend.Resources.Helpers;
+﻿using App.DTO;
+using AppFrontend.Resources;
+using AppFrontend.Resources.Files;
+using AppFrontend.Resources.Helpers;
 using AppFrontend.ViewModels;
+using Newtonsoft.Json;
+using Plugin.Toast;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -25,9 +33,12 @@ namespace AppFrontend.ContentPages.Client
 
         private readonly Random random = new Random();
 
+        public GlobalService globalService { get; set; }
+
         public ClientSpinningWheelPage()
         {
             InitializeComponent();
+            globalService = DependencyService.Get<GlobalService>();
             viewModel = new ClientSpinningWheelViewModel();
         }
 
@@ -97,8 +108,69 @@ namespace AppFrontend.ContentPages.Client
 
         private void GetWinner()
         {
-            //show some pop-up or something. 
             priceBox.Text = viewModel.Prize.Price.ToString();
+            if(priceBox.TextColor == Color.Red)
+            {
+                CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.SpinningWheelNoPrize);
+            }
+            else
+            {
+                CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.SpinningWheelPrize);
+                int discount = 0;
+                string text = priceBox.Text;
+                if(text.Contains("%"))
+                {
+                    text = text.Replace(" ", "").Replace("%", "");
+                    discount = int.Parse(text);
+                    var offer = BuildPercentageDTO(discount);
+                    SendOfferData(offer);
+                }
+                else
+                {
+                    text = text.Replace(" ", "").Replace("lei", "");
+                    discount = int.Parse(text);
+                    var offer = BuildValueDTO(discount);
+                    SendOfferData(offer);
+                }
+            }
+        }
+
+        private OfferDTO BuildValueDTO(int value)
+        {
+            return new OfferDTO()
+            {
+                DiscountValue = value,
+                ClientEmail = globalService.Client.Email,
+                ExpirationDate = DateTime.Now.AddDays(30)
+            };
+        }
+
+        private OfferDTO BuildPercentageDTO(int percentage)
+        {
+            return new OfferDTO()
+            {
+                DiscountPercentage = percentage,
+                ClientEmail = globalService.Client.Email,
+                ExpirationDate = DateTime.Now.AddDays(30)
+            };
+        }
+
+        private async void SendOfferData(OfferDTO offer)
+        {
+            string url = RestResources.ConnectionURL + RestResources.ClientsURL + RestResources.OfferURL + RestResources.CreateAccountURL;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient httpClient = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("client_token").Result;
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var json = JsonConvert.SerializeObject(offer);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.PostAsync(url, content);
+            }
         }
 
         private void OnCanvasViewPaintSurface(object sender, SkiaSharp.Views.Forms.SKPaintSurfaceEventArgs args)
@@ -137,8 +209,6 @@ namespace AppFrontend.ContentPages.Client
                 {
                     path.MoveTo(center);
                     path.ArcTo(rect, startAngle, sweepAngle, false);
-
-
                     path.Close();
 
                     fillPaint.Style = SKPaintStyle.Fill;
@@ -149,12 +219,10 @@ namespace AppFrontend.ContentPages.Client
                     outlinePaint.Color = SKColors.White;
 
                     #region Text Writer
-                    //write text to the screen
                     textPaint.TextSize = 40;
                     textPaint.StrokeWidth = 1;
                     textPaint.Color = SKColors.White;
 
-                    //Adjust text size.
                     SKRect textBounds = new SKRect();
                     textPaint.MeasureText(item.Text, ref textBounds);
                     float yText = yCenter - textBounds.Height / 2 - textBounds.Top;
@@ -169,7 +237,6 @@ namespace AppFrontend.ContentPages.Client
 
                     DrawRotatedWithMatrices(canvas, path, fillPaint, outlinePaint, item, _degrees, (int)center.X, y);
 
-                    //Writing Actual texts
                     var test_angle = _degrees + (360 / viewModel.ChartData.Count / 2) - (360 / viewModel.ChartData.Count * 2);
 
                     float sweepAngleText = 360f / viewModel.ChartData.Count;
@@ -202,7 +269,6 @@ namespace AppFrontend.ContentPages.Client
             }
 
             #region Marker
-            //draw the Mark
             using (SKPaint fillMarkCirclePaint = new SKPaint())
             using (SKPaint fillMarkCirclePaintOuter = new SKPaint())
             using (SKPaint fillMarkTrianglePaint = new SKPaint())

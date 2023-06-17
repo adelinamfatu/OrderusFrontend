@@ -204,6 +204,12 @@
   <data name="ServiceSelectedTitle" xml:space="preserve">
     <value>Selectare serviciu</value>
   </data>
+  <data name="SpinningWheelNoPrize" xml:space="preserve">
+    <value>Ghinion! Puteti incerca maine din nou!</value>
+  </data>
+  <data name="SpinningWheelPrize" xml:space="preserve">
+    <value>Felicitari! Ati castigat!</value>
+  </data>
   <data name="StreetTypeError" xml:space="preserve">
     <value>Trebuie sa alegeti un tip de strada</value>
   </data>
