@@ -61,6 +61,42 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la schimbarea timpului.
+        /// </summary>
+        internal static string ChangeOrderError {
+            get {
+                return ResourceManager.GetString("ChangeOrderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-a trimis cu succes cererea de schimbare a timpului comenzii.
+        /// </summary>
+        internal static string ChangeOrderSuccess {
+            get {
+                return ResourceManager.GetString("ChangeOrderSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sunteti sigur ca doriti sa cereti schimbarea orei comenzii? Clientul este cel care va aproba sau refuza.
+        /// </summary>
+        internal static string ChangeOrderTime {
+            get {
+                return ResourceManager.GetString("ChangeOrderTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schimbare ora comanda.
+        /// </summary>
+        internal static string ChangeOrderTimeTitle {
+            get {
+                return ResourceManager.GetString("ChangeOrderTimeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trebuie sa alegeti o companie caruia ii veti fi afiliat.
         /// </summary>
         internal static string CompanyChoiceError {

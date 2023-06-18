@@ -191,4 +191,10 @@
   <ItemGroup>
     <Resource Include="Resources\ImageIcons\Afaceri.jpeg" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ContentPages\Client\TimePickerPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
 </Project>

@@ -1,7 +1,9 @@
 ﻿using Acr.UserDialogs;
 using App.DTO;
+using AppFrontend.ContentPages.Client;
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
+using AppFrontend.Resources.Helpers;
 using AppFrontend.ViewModels;
 using Newtonsoft.Json;
 using Plugin.Toast;
@@ -202,6 +204,71 @@ namespace AppFrontend.ContentPages.Employee
                 if (response.StatusCode == HttpStatusCode.Conflict)
                 {
                     CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.FinishOrderError);
+                }
+            }
+        }
+
+        private void MakeOrderDateChangeRequest(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            TimePicker timePicker = (TimePicker)button.Parent.FindByName("myTimePicker");
+
+            if (timePicker != null)
+            {
+                timePicker.Unfocused += TimePickerUnfocused;
+                timePicker.Focus();
+            }
+        }
+
+        private async void TimePickerUnfocused(object sender, FocusEventArgs e)
+        {
+            TimePicker timePicker = (TimePicker)sender;
+            var selectedTime = timePicker.Time;
+
+            if(selectedTime.Seconds == 0)
+            {
+                int orderId = (int)timePicker.Parent.FindByName<Button>("btnChangeOrderHour").CommandParameter;
+
+                var response = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+                {
+                    Title = ToastDisplayResources.ChangeOrderTimeTitle,
+                    Message = ToastDisplayResources.ChangeOrderTime,
+                    OkText = ToastDisplayResources.PromptYes,
+                    CancelText = ToastDisplayResources.PromptCancel
+                });
+
+                if(response)
+                {
+                    SendOrderTimeChangeRequest(selectedTime, orderId);
+                }
+                
+                timePicker.Unfocused -= TimePickerUnfocused;
+            }
+        }
+
+        private async void SendOrderTimeChangeRequest(TimeSpan time, int orderID)
+        {
+            string url = RestResources.ConnectionURL + RestResources.OrdersURL + RestResources.TimeURL + orderID;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient httpClient = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("employee_token").Result;
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var timeJson = JsonConvert.SerializeObject(time);
+                var content = new StringContent(timeJson, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await httpClient.PutAsync(url, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.ChangeOrderSuccess);
+                }
+                if (response.StatusCode == HttpStatusCode.Conflict)
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.ChangeOrderError);
                 }
             }
         }

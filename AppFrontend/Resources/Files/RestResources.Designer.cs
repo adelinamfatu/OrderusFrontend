@@ -241,6 +241,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to time/.
+        /// </summary>
+        internal static string TimeURL {
+            get {
+                return ResourceManager.GetString("TimeURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to token/.
         /// </summary>
         internal static string TokenURL {

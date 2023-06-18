@@ -177,6 +177,9 @@
   <data name="ServicesURL" xml:space="preserve">
     <value>services/</value>
   </data>
+  <data name="TimeURL" xml:space="preserve">
+    <value>time/</value>
+  </data>
   <data name="TokenURL" xml:space="preserve">
     <value>token/</value>
   </data>

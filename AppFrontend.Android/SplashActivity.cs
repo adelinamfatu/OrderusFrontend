@@ -24,6 +24,7 @@ namespace AppFrontend.Droid
             base.OnCreate(savedInstanceState);
             UserDialogs.Init(this);
             PdfSharp.Xamarin.Forms.Droid.Platform.Init();
+            Xamarin.Forms.Forms.Init(this, savedInstanceState);
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
             // Create your application here
         }

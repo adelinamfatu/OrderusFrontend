@@ -42,6 +42,20 @@ namespace AppFrontend.ViewModels
             }
         }
 
+        public TimeSpan time { get; set; }
+        public TimeSpan Time
+        {
+            get { return time; }
+            set
+            {
+                if (time != value)
+                {
+                    time = value;
+                    OnPropertyChanged(nameof(Time));
+                }
+            }
+        }
+
         private int duration;
         public int Duration
         {
@@ -125,6 +139,7 @@ namespace AppFrontend.ViewModels
             this.ServiceName = order.ServiceName;
             this.PaymentAmount = order.PaymentAmount;
             this.Materials = new ObservableCollection<MaterialDTO>();
+            Time = new TimeSpan(10, 0, 1);
             SetOrderColor();
             SetCurrentOrder();
         }
