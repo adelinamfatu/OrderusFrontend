@@ -159,6 +159,18 @@
   <data name="EmployeeConfirmationTitle" xml:space="preserve">
     <value>Confirmare cont angajat</value>
   </data>
+  <data name="FinishOrder" xml:space="preserve">
+    <value>Doriti sa inregistrati finalizarea comenzii?</value>
+  </data>
+  <data name="FinishOrderError" xml:space="preserve">
+    <value>S-a produs o eroare la salvarea statusului comenzii</value>
+  </data>
+  <data name="FinishOrderSuccess" xml:space="preserve">
+    <value>Ati finalizat comanda cu succes</value>
+  </data>
+  <data name="FinishOrderTitle" xml:space="preserve">
+    <value>Incheiere comanda</value>
+  </data>
   <data name="FunctionError" xml:space="preserve">
     <value>Functia deja exista</value>
   </data>

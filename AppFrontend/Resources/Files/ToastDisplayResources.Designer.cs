@@ -187,6 +187,42 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Doriti sa inregistrati finalizarea comenzii?.
+        /// </summary>
+        internal static string FinishOrder {
+            get {
+                return ResourceManager.GetString("FinishOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la salvarea statusului comenzii.
+        /// </summary>
+        internal static string FinishOrderError {
+            get {
+                return ResourceManager.GetString("FinishOrderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ati finalizat comanda cu succes.
+        /// </summary>
+        internal static string FinishOrderSuccess {
+            get {
+                return ResourceManager.GetString("FinishOrderSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incheiere comanda.
+        /// </summary>
+        internal static string FinishOrderTitle {
+            get {
+                return ResourceManager.GetString("FinishOrderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Functia deja exista.
         /// </summary>
         internal static string FunctionError {

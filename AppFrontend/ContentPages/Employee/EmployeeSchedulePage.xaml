@@ -40,11 +40,12 @@
                                         Grid.Row="0"
                                         VerticalOptions="Center"
                                     />
-                                    <Image 
+                                    <Image x:Name="clockImg"
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Source="delay.png" 
                                         HorizontalOptions="End"
+                                        IsVisible="{Binding IsCurrentOrder}"
                                         />
                                     <Button 
                                         x:Name="btnDelay10"
@@ -55,6 +56,7 @@
                                         Grid.Column="2"
                                         WidthRequest="80"
                                         HorizontalOptions="End"
+                                        IsVisible="{Binding IsCurrentOrder}"
                                         />
                                     <Button 
                                         x:Name="btnFinishOrder"
@@ -64,6 +66,9 @@
                                         Grid.Column="3"
                                         WidthRequest="80"
                                         HorizontalOptions="End"
+                                        IsVisible="{Binding IsCurrentOrder}"
+                                        Clicked="FinishOrder"
+                                        CommandParameter="{Binding ID}"
                                         />
                                     <Label 
                                         Text="{Binding StartTime, StringFormat='{0:dd.MM.yyyy}'}"

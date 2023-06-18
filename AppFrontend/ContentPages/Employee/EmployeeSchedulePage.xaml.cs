@@ -160,5 +160,50 @@ namespace AppFrontend.ContentPages.Employee
                 }
             }
         }
+
+        private async void FinishOrder(object sender, EventArgs e)
+        {
+            var response = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+            {
+                Title = ToastDisplayResources.FinishOrderTitle,
+                Message = ToastDisplayResources.FinishOrder,
+                OkText = ToastDisplayResources.PromptYes,
+                CancelText = ToastDisplayResources.PromptCancel
+            });
+
+            if (response)
+            {
+                Button button = (Button)sender;
+                int orderId = (int)button.CommandParameter;
+                SendFinishingOrderConfirmation(orderId);
+                Orders.Where(o => o.ID == orderId).FirstOrDefault().IsCurrentOrder = false;
+            }
+        }
+
+        private async void SendFinishingOrderConfirmation(int orderID)
+        {
+            string url = RestResources.ConnectionURL + RestResources.OrdersURL + orderID;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient httpClient = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("employee_token").Result;
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var content = new StringContent(globalService.Employee.Email, Encoding.UTF8, "text/plain");
+
+                HttpResponseMessage response = await httpClient.PutAsync(url, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.FinishOrderSuccess);
+                }
+                if (response.StatusCode == HttpStatusCode.Conflict)
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.FinishOrderError);
+                }
+            }
+        }
     }
 }

@@ -100,6 +100,20 @@ namespace AppFrontend.ViewModels
             }
         }
 
+        public bool isCurrentOrder { get; set; }
+        public bool IsCurrentOrder
+        {
+            get { return isCurrentOrder; }
+            set
+            {
+                if (isCurrentOrder != value)
+                {
+                    isCurrentOrder = value;
+                    OnPropertyChanged(nameof(IsCurrentOrder));
+                }
+            }
+        }
+
         public Color Color { get; set; }
 
         public OrderViewModel(OrderDTO order)
@@ -112,6 +126,7 @@ namespace AppFrontend.ViewModels
             this.PaymentAmount = order.PaymentAmount;
             this.Materials = new ObservableCollection<MaterialDTO>();
             SetOrderColor();
+            SetCurrentOrder();
         }
 
         private void SetOrderColor()
@@ -122,7 +137,7 @@ namespace AppFrontend.ViewModels
 
             if (currentTime < startTime)
             {
-                this.Color = Color.SlateGray;
+                this.Color = Color.PaleVioletRed;
             }
             else if (startTime <= currentTime && currentTime <= finishTime)
             {
@@ -130,7 +145,20 @@ namespace AppFrontend.ViewModels
             }
             else
             {
-                this.Color = Color.PaleVioletRed;
+                this.Color = Color.SlateGray;
+            }
+        }
+
+        private void SetCurrentOrder()
+        {
+            var currentTime = DateTime.Now;
+            if(this.startTime <= currentTime && currentTime <= this.finishTime)
+            {
+                IsCurrentOrder = true;
+            }
+            else
+            {
+                isCurrentOrder = false;
             }
         }
 
