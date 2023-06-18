@@ -142,6 +142,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to delay/.
+        /// </summary>
+        internal static string DelayURL {
+            get {
+                return ResourceManager.GetString("DelayURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to details/.
         /// </summary>
         internal static string DetailsURL {

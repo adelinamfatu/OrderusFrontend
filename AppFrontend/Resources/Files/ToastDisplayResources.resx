@@ -138,6 +138,18 @@
   <data name="DataUpdateSuccess" xml:space="preserve">
     <value>Datele au fost salvate cu succes</value>
   </data>
+  <data name="DelayOrder" xml:space="preserve">
+    <value>Sunteti sigur ca vreti sa amanati comenzile cu 10 minute?</value>
+  </data>
+  <data name="DelayOrderError" xml:space="preserve">
+    <value>S-a produs o eroare la amanare</value>
+  </data>
+  <data name="DelayOrderSuccess" xml:space="preserve">
+    <value>Ati amanat cu succes toate comenzile din ziua de azi</value>
+  </data>
+  <data name="DelayOrderTitle" xml:space="preserve">
+    <value>Amanare comenzi</value>
+  </data>
   <data name="EmailError" xml:space="preserve">
     <value>Adresa de mail nu are formatul corect</value>
   </data>

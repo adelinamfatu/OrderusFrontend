@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace AppFrontend.ViewModels
 {
@@ -13,9 +14,33 @@ namespace AppFrontend.ViewModels
 
         public int ID { get; set; }
 
-        public DateTime StartTime { get; set; }
+        public DateTime startTime { get; set; }
+        public DateTime StartTime
+        {
+            get { return startTime; }
+            set
+            {
+                if (startTime != value)
+                {
+                    startTime = value;
+                    OnPropertyChanged(nameof(StartTime));
+                }
+            }
+        }
 
-        public DateTime FinishTime { get; set; }
+        public DateTime finishTime { get; set; }
+        public DateTime FinishTime
+        {
+            get { return finishTime; }
+            set
+            {
+                if (finishTime != value)
+                {
+                    finishTime = value;
+                    OnPropertyChanged(nameof(FinishTime));
+                }
+            }
+        }
 
         private int duration;
         public int Duration
@@ -75,6 +100,8 @@ namespace AppFrontend.ViewModels
             }
         }
 
+        public Color Color { get; set; }
+
         public OrderViewModel(OrderDTO order)
         {
             this.ID = order.ID;
@@ -84,6 +111,27 @@ namespace AppFrontend.ViewModels
             this.ServiceName = order.ServiceName;
             this.PaymentAmount = order.PaymentAmount;
             this.Materials = new ObservableCollection<MaterialDTO>();
+            SetOrderColor();
+        }
+
+        private void SetOrderColor()
+        {
+            DateTime currentTime = DateTime.Now;
+            DateTime startTime = this.StartTime;
+            DateTime finishTime = this.FinishTime;
+
+            if (currentTime < startTime)
+            {
+                this.Color = Color.SlateGray;
+            }
+            else if (startTime <= currentTime && currentTime <= finishTime)
+            {
+                this.Color = Color.PaleGreen;
+            }
+            else
+            {
+                this.Color = Color.PaleVioletRed;
+            }
         }
 
         public OrderViewModel()

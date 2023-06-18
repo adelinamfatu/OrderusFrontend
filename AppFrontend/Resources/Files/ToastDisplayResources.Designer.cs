@@ -124,6 +124,42 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sunteti sigur ca vreti sa amanati comenzile cu 10 minute?.
+        /// </summary>
+        internal static string DelayOrder {
+            get {
+                return ResourceManager.GetString("DelayOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la amanare.
+        /// </summary>
+        internal static string DelayOrderError {
+            get {
+                return ResourceManager.GetString("DelayOrderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ati amanat cu succes toate comenzile din ziua de azi.
+        /// </summary>
+        internal static string DelayOrderSuccess {
+            get {
+                return ResourceManager.GetString("DelayOrderSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amanare comenzi.
+        /// </summary>
+        internal static string DelayOrderTitle {
+            get {
+                return ResourceManager.GetString("DelayOrderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adresa de mail nu are formatul corect.
         /// </summary>
         internal static string EmailError {

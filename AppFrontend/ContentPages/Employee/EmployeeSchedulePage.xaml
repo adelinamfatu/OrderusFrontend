@@ -1,14 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:conv="clr-namespace:AppFrontend.Converters"
              xmlns:sc="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
              x:Class="AppFrontend.ContentPages.Employee.EmployeeSchedulePage"
              Title="Orderus">
 
-    <ContentPage.Resources>
-        <conv:TimeToColorConverter x:Key="TimeToColorConverter" />
-    </ContentPage.Resources>
     <StackLayout>
         <sc:SegmentedControl x:Name="dayOptionsSC" TintColor="#667284" Margin="0,10,0,0" HorizontalOptions="Center" WidthRequest="250" ValueChanged="OnDayOptionsSelectedIndexChanged">
             <sc:SegmentedControl.Children>
@@ -17,19 +13,12 @@
                 <sc:SegmentedControlOption Text="Poimaine" />
             </sc:SegmentedControl.Children>
         </sc:SegmentedControl>
-        <ListView x:Name="scheduledOrdersListView" ItemsSource="{Binding Orders}" HasUnevenRows="True" SeparatorVisibility="None" ItemAppearing="scheduledOrdersListView_ItemAppearing">
+        <ListView x:Name="scheduledOrdersListView" ItemsSource="{Binding Orders}" HasUnevenRows="True" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Vertical" Margin="5,5">
-                            <Frame CornerRadius="10" Padding="10">
-                                <Frame.BackgroundColor>
-                                    <Binding Source="{Binding}">
-                                        <Binding.Converter>
-                                            <conv:TimeToColorConverter />
-                                        </Binding.Converter>
-                                    </Binding>
-                                </Frame.BackgroundColor>
+                            <Frame CornerRadius="10" Padding="10" BackgroundColor="{Binding Color}">
                                 <Grid VerticalOptions="Center">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -56,25 +45,25 @@
                                         Grid.Column="1"
                                         Source="delay.png" 
                                         HorizontalOptions="End"
-                                        IsVisible="{Binding AreButtonsVisible}"
                                         />
                                     <Button 
                                         x:Name="btnDelay10"
+                                        BackgroundColor="DarkOrange"
+                                        Clicked="DelayOrders"
                                         Text="+10 min"
                                         Grid.Row="0"
                                         Grid.Column="2"
                                         WidthRequest="80"
                                         HorizontalOptions="End"
-                                        IsVisible="{Binding AreButtonsVisible}"
                                         />
                                     <Button 
-                                        x:Name="btnDelay20"
-                                        Text="+20 min"
+                                        x:Name="btnFinishOrder"
+                                        BackgroundColor="ForestGreen"
+                                        ImageSource="ok.png"
                                         Grid.Row="0"
                                         Grid.Column="3"
                                         WidthRequest="80"
                                         HorizontalOptions="End"
-                                        IsVisible="{Binding AreButtonsVisible}"
                                         />
                                     <Label 
                                         Text="{Binding StartTime, StringFormat='{0:dd.MM.yyyy}'}"

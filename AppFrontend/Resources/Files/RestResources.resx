@@ -144,6 +144,9 @@
   <data name="CreateAccountURL" xml:space="preserve">
     <value>add/</value>
   </data>
+  <data name="DelayURL" xml:space="preserve">
+    <value>delay/</value>
+  </data>
   <data name="DetailsURL" xml:space="preserve">
     <value>details/</value>
   </data>
