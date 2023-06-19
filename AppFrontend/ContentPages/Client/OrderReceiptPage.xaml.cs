@@ -26,11 +26,11 @@ namespace AppFrontend.ContentPages.Client
 
         public GlobalService globalService { get; set; }
 
-        public OrderReceiptPage(OrderDTO order)
+        public OrderReceiptPage(OrderViewModel order)
         {
             InitializeComponent();
             globalService = DependencyService.Get<GlobalService>();
-            this.Order = new OrderViewModel(order);
+            this.Order = order;
             GetDataForUI();
         }
 

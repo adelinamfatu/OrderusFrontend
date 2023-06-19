@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CancelOrder" xml:space="preserve">
+    <value>Sunteti sigur ca vreti sa anulati comanda?</value>
+  </data>
+  <data name="CancelOrderError" xml:space="preserve">
+    <value>S-a produs o eroare la anularea comenzii</value>
+  </data>
+  <data name="CancelOrderSuccess" xml:space="preserve">
+    <value>Comanda dvs. a fost anulata</value>
+  </data>
+  <data name="CancelOrderTitle" xml:space="preserve">
+    <value>Anulare comanda</value>
+  </data>
   <data name="ChangeOrderError" xml:space="preserve">
     <value>S-a produs o eroare la schimbarea timpului</value>
   </data>

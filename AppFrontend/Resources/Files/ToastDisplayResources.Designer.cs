@@ -61,6 +61,42 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sunteti sigur ca vreti sa anulati comanda?.
+        /// </summary>
+        internal static string CancelOrder {
+            get {
+                return ResourceManager.GetString("CancelOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la anularea comenzii.
+        /// </summary>
+        internal static string CancelOrderError {
+            get {
+                return ResourceManager.GetString("CancelOrderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comanda dvs. a fost anulata.
+        /// </summary>
+        internal static string CancelOrderSuccess {
+            get {
+                return ResourceManager.GetString("CancelOrderSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anulare comanda.
+        /// </summary>
+        internal static string CancelOrderTitle {
+            get {
+                return ResourceManager.GetString("CancelOrderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to S-a produs o eroare la schimbarea timpului.
         /// </summary>
         internal static string ChangeOrderError {

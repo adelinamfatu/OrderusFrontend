@@ -128,6 +128,13 @@ namespace AppFrontend.ViewModels
             }
         }
 
+        public bool IsFinished { get; set; }
+
+        public bool IsNotFinished
+        {
+            get { return !IsFinished && DateTime.Now <= StartTime; }
+        }
+
         public Color Color { get; set; }
 
         public OrderViewModel(OrderDTO order)
@@ -138,6 +145,7 @@ namespace AppFrontend.ViewModels
             this.Duration = order.Duration;
             this.ServiceName = order.ServiceName;
             this.PaymentAmount = order.PaymentAmount;
+            this.IsFinished = order.IsFinished;
             this.Materials = new ObservableCollection<MaterialDTO>();
             Time = new TimeSpan(10, 0, 1);
             SetOrderColor();

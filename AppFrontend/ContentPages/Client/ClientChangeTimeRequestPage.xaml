@@ -19,7 +19,7 @@
                     <Label Grid.Column="2" Text="Timpul cerut" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18"  />
                     <Label Grid.Column="3" Text="Accepta" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18"  />
                     <Label Grid.Column="4" Text="Refuza" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18"  />
-                    <BoxView Color="Gray" HeightRequest="1" Grid.ColumnSpan="4" VerticalOptions="End" />
+                    <BoxView Color="Gray" HeightRequest="1" Grid.ColumnSpan="5" VerticalOptions="End" />
                 </Grid>
                 <ListView ItemsSource="{Binding Orders}">
                     <ListView.ItemTemplate>
