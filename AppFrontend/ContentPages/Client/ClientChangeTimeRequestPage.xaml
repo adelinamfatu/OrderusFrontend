@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFrontend.ContentPages.Client.ClientChangeTimeRequestPage">
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="Serviciu" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18" />
+                    <Label Grid.Column="1" Text="Timpul initial" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18" />
+                    <Label Grid.Column="2" Text="Timpul cerut" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18"  />
+                    <Label Grid.Column="3" Text="Accepta" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18"  />
+                    <Label Grid.Column="4" Text="Refuza" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18"  />
+                    <BoxView Color="Gray" HeightRequest="1" Grid.ColumnSpan="4" VerticalOptions="End" />
+                </Grid>
+                <ListView ItemsSource="{Binding Orders}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="1" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="1" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="1" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="1" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding ServiceName}" 
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"    
+                                        FontSize="18"
+                                        Grid.Column="0" />
+                                    <BoxView Grid.Column="1" BackgroundColor="Gray" WidthRequest="1" VerticalOptions="FillAndExpand" />
+                                    <Label Text="{Binding InitialDate, StringFormat='{0:HH:mm:ss}'}" 
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"    
+                                        FontSize="18"
+                                        Grid.Column="2" />
+                                    <BoxView Grid.Column="3" BackgroundColor="Gray" WidthRequest="1" VerticalOptions="FillAndExpand" />
+                                    <Label Text="{Binding ChangedDate, StringFormat='{0:HH:mm:ss}'}" 
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"    
+                                        FontSize="18"
+                                        Grid.Column="4" />
+                                    <BoxView Grid.Column="5" BackgroundColor="Gray" WidthRequest="1" VerticalOptions="FillAndExpand" />
+                                    <Button 
+                                        ImageSource="ok.png"
+                                        Grid.Column="6"
+                                        BackgroundColor="Green"
+                                        CornerRadius="10"
+                                        Clicked="ConfirmOrderTimeChangeRequest"
+                                        />
+                                    <BoxView Grid.Column="7" BackgroundColor="Gray" WidthRequest="1" VerticalOptions="FillAndExpand" />
+                                    <Button 
+                                        ImageSource="cancel.png"
+                                        BackgroundColor="Red"
+                                        Grid.Column="8"
+                                        CornerRadius="10"
+                                        Clicked="DeclineOrderTimeChangeRequest"
+                                        />
+                                    <BoxView Color="Gray" HeightRequest="1" Grid.ColumnSpan="9" VerticalOptions="End" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

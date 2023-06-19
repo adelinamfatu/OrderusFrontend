@@ -115,6 +115,42 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sunteti sigur ca vreti sa confirmati schimbarea timpului comenzii?.
+        /// </summary>
+        internal static string ConfirmOrderTimeChangeRequest {
+            get {
+                return ResourceManager.GetString("ConfirmOrderTimeChangeRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la schimbarea timpului.
+        /// </summary>
+        internal static string ConfirmOrderTimeChangeRequestError {
+            get {
+                return ResourceManager.GetString("ConfirmOrderTimeChangeRequestError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comanda dvs a fost confirmata la noua data cu succes.
+        /// </summary>
+        internal static string ConfirmOrderTimeChangeRequestSuccess {
+            get {
+                return ResourceManager.GetString("ConfirmOrderTimeChangeRequestSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmare comanda.
+        /// </summary>
+        internal static string ConfirmOrderTimeChangeRequestTitle {
+            get {
+                return ResourceManager.GetString("ConfirmOrderTimeChangeRequestTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exista deja un cont cu aceasta adresa.
         /// </summary>
         internal static string CreateAccountError {
@@ -156,6 +192,42 @@ namespace AppFrontend.Resources.Files {
         internal static string DataUpdateSuccess {
             get {
                 return ResourceManager.GetString("DataUpdateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sunteti sigur ca vreti sa refuzati schimbarea timpului comenzii?.
+        /// </summary>
+        internal static string DeclineOrderTimeChangeRequest {
+            get {
+                return ResourceManager.GetString("DeclineOrderTimeChangeRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la refuzarea cererii de schimbare a timpului.
+        /// </summary>
+        internal static string DeclineOrderTimeChangeRequestError {
+            get {
+                return ResourceManager.GetString("DeclineOrderTimeChangeRequestError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-a trimis refuzarea cererii.
+        /// </summary>
+        internal static string DeclineOrderTimeChangeRequestSuccess {
+            get {
+                return ResourceManager.GetString("DeclineOrderTimeChangeRequestSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refuzare comanda.
+        /// </summary>
+        internal static string DeclineOrderTimeChangeRequestTitle {
+            get {
+                return ResourceManager.GetString("DeclineOrderTimeChangeRequestTitle", resourceCulture);
             }
         }
         

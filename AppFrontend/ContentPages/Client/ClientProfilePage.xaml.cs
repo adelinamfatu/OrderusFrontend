@@ -112,5 +112,10 @@ namespace AppFrontend.ContentPages
         {
             Navigation.PushAsync(new ClientOffersPage());
         }
+
+        private void OpenOrderRequestChangePage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ClientChangeTimeRequestPage());
+        }
     }
 }

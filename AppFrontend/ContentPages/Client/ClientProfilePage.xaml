@@ -48,6 +48,12 @@
                         BackgroundColor="#6ba1f9"
                         TextColor="White"
                         FontSize="16"/>
+                <Button Text="Cereri de schimbare ora" 
+                        Clicked="OpenOrderRequestChangePage"
+                        CornerRadius="20" 
+                        BackgroundColor="#94b1e3"
+                        TextColor="White"
+                        FontSize="16"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

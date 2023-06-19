@@ -70,6 +70,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to change/.
+        /// </summary>
+        internal static string ChangeURL {
+            get {
+                return ResourceManager.GetString("ChangeURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to cleaning/.
         /// </summary>
         internal static string CleaningURL {
@@ -147,6 +156,15 @@ namespace AppFrontend.Resources.Files {
         internal static string DelayURL {
             get {
                 return ResourceManager.GetString("DelayURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to delete/.
+        /// </summary>
+        internal static string DeleteURL {
+            get {
+                return ResourceManager.GetString("DeleteURL", resourceCulture);
             }
         }
         

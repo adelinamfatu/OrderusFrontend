@@ -120,6 +120,9 @@
   <data name="CategoriesURL" xml:space="preserve">
     <value>services/categories/</value>
   </data>
+  <data name="ChangeURL" xml:space="preserve">
+    <value>change/</value>
+  </data>
   <data name="CleaningURL" xml:space="preserve">
     <value>cleaning/</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="DelayURL" xml:space="preserve">
     <value>delay/</value>
+  </data>
+  <data name="DeleteURL" xml:space="preserve">
+    <value>delete/</value>
   </data>
   <data name="DetailsURL" xml:space="preserve">
     <value>details/</value>

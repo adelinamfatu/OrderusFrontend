@@ -135,6 +135,18 @@
   <data name="CompanyServicesError" xml:space="preserve">
     <value>S-a produs o eroare la salvarea serviciilor</value>
   </data>
+  <data name="ConfirmOrderTimeChangeRequest" xml:space="preserve">
+    <value>Sunteti sigur ca vreti sa confirmati schimbarea timpului comenzii?</value>
+  </data>
+  <data name="ConfirmOrderTimeChangeRequestError" xml:space="preserve">
+    <value>S-a produs o eroare la schimbarea timpului</value>
+  </data>
+  <data name="ConfirmOrderTimeChangeRequestSuccess" xml:space="preserve">
+    <value>Comanda dvs a fost confirmata la noua data cu succes</value>
+  </data>
+  <data name="ConfirmOrderTimeChangeRequestTitle" xml:space="preserve">
+    <value>Confirmare comanda</value>
+  </data>
   <data name="CreateAccountError" xml:space="preserve">
     <value>Exista deja un cont cu aceasta adresa</value>
   </data>
@@ -149,6 +161,18 @@
   </data>
   <data name="DataUpdateSuccess" xml:space="preserve">
     <value>Datele au fost salvate cu succes</value>
+  </data>
+  <data name="DeclineOrderTimeChangeRequest" xml:space="preserve">
+    <value>Sunteti sigur ca vreti sa refuzati schimbarea timpului comenzii?</value>
+  </data>
+  <data name="DeclineOrderTimeChangeRequestError" xml:space="preserve">
+    <value>S-a produs o eroare la refuzarea cererii de schimbare a timpului</value>
+  </data>
+  <data name="DeclineOrderTimeChangeRequestSuccess" xml:space="preserve">
+    <value>S-a trimis refuzarea cererii</value>
+  </data>
+  <data name="DeclineOrderTimeChangeRequestTitle" xml:space="preserve">
+    <value>Refuzare comanda</value>
   </data>
   <data name="DelayOrder" xml:space="preserve">
     <value>Sunteti sigur ca vreti sa amanati comenzile cu 10 minute?</value>
