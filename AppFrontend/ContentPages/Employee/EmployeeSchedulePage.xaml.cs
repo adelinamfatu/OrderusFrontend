@@ -178,7 +178,6 @@ namespace AppFrontend.ContentPages.Employee
                 Button button = (Button)sender;
                 int orderId = (int)button.CommandParameter;
                 SendFinishingOrderConfirmation(orderId);
-                Orders.Where(o => o.ID == orderId).FirstOrDefault().IsCurrentOrder = false;
             }
         }
 
@@ -200,6 +199,7 @@ namespace AppFrontend.ContentPages.Employee
                 if (response.IsSuccessStatusCode)
                 {
                     CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.FinishOrderSuccess);
+                    Orders.Where(o => o.ID == orderID).FirstOrDefault().IsCurrentOrder = false;
                 }
                 if (response.StatusCode == HttpStatusCode.Conflict)
                 {
