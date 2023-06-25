@@ -1,7 +1,6 @@
 ﻿using AppFrontend.ContentPages;
 using AppFrontend.Resources;
 using Microsoft.Extensions.DependencyInjection;
-using Plugin.FirebasePushNotification;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -34,12 +33,12 @@ namespace AppFrontend
             {
                 MainPage = new LoginPage();
             }
-            CrossFirebasePushNotification.Current.OnTokenRefresh += Current_OnTokenRefresh;
-            CrossFirebasePushNotification.Current.OnNotificationError += Current_OnNotificationError;
-            System.Diagnostics.Debug.WriteLine($"Token: {CrossFirebasePushNotification.Current.Token}");
+            //CrossFirebasePushNotification.Current.OnTokenRefresh += Current_OnTokenRefresh;
+            //CrossFirebasePushNotification.Current.OnNotificationError += Current_OnNotificationError;
+            //System.Diagnostics.Debug.WriteLine($"Token: {CrossFirebasePushNotification.Current.Token}");
         }
 
-        private void Current_OnNotificationError(object source, FirebasePushNotificationErrorEventArgs e)
+        /*private void Current_OnNotificationError(object source, FirebasePushNotificationErrorEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine($"Eroare: {e.Message}");
         }
@@ -47,6 +46,6 @@ namespace AppFrontend
         private void Current_OnTokenRefresh(object source, FirebasePushNotificationTokenEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine($"Token: {e.Token}");
-        }
+        }*/
     }
 }

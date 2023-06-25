@@ -5,7 +5,6 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Plugin.FirebasePushNotification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,13 +26,13 @@ namespace AppFrontend.Droid
             PdfSharp.Xamarin.Forms.Droid.Platform.Init();
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
-            FirebasePushNotificationManager.ProcessIntent(this, Intent);
+            //FirebasePushNotificationManager.ProcessIntent(this, Intent);
         }
 
-        protected override void OnNewIntent(Intent intent)
+        /*protected override void OnNewIntent(Intent intent)
         {
             base.OnNewIntent(intent);
             FirebasePushNotificationManager.ProcessIntent(this, intent);
-        }
+        }*/
     }
 }

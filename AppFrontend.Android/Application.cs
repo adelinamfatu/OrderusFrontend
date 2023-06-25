@@ -8,11 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Plugin.FirebasePushNotification;
 
 namespace AppFrontend.Droid
 {
-    [Application]
+    //[Application]
     public class MainApplication : Application
     {
         public MainApplication(IntPtr handle, JniHandleOwnership transer) : base(handle, transer)
@@ -21,7 +20,7 @@ namespace AppFrontend.Droid
 
         public override void OnCreate()
         {
-            base.OnCreate();
+            /*base.OnCreate();
 
             if (Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.O)
             {
@@ -41,7 +40,7 @@ namespace AppFrontend.Droid
             CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
             {
                 
-            };
+            };*/
         }
     }
 }
