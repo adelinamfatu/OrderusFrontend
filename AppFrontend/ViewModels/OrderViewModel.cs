@@ -137,6 +137,10 @@ namespace AppFrontend.ViewModels
 
         public Color Color { get; set; }
 
+        public string Comment { get; set; }
+
+        public string ClientPhoneNumber { get; set; }
+
         public OrderViewModel(OrderDTO order)
         {
             this.ID = order.ID;
@@ -146,6 +150,8 @@ namespace AppFrontend.ViewModels
             this.ServiceName = order.ServiceName;
             this.PaymentAmount = order.PaymentAmount;
             this.IsFinished = order.IsFinished;
+            this.Comment = order.Comment;
+            this.ClientPhoneNumber = order.ClientNumber;
             this.Materials = new ObservableCollection<MaterialDTO>();
             Time = new TimeSpan(10, 0, 1);
             SetOrderColor();

@@ -34,13 +34,13 @@ namespace AppFrontend.ContentPages.Employee
             globalService = DependencyService.Get<GlobalService>();
             this.Order = new OrderViewModel(order);
             PrepareDataForUIAsync();
-            this.BindingContext = this;
         }
 
         private async void PrepareDataForUIAsync()
         {
             await GetOrderDetails();
             GetMaterials();
+            this.BindingContext = this;
         }
 
         private async Task GetOrderDetails()
@@ -149,6 +149,11 @@ namespace AppFrontend.ContentPages.Employee
             {
                 materialsListView.IsVisible = false;
             }
+        }
+
+        private void OpenPhoneDial(object sender, EventArgs e)
+        {
+            PhoneDialer.Open(Order.ClientPhoneNumber);
         }
     }
 }
