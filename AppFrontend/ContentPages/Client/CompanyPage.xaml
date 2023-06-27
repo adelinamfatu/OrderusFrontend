@@ -7,6 +7,7 @@
 
     <ContentPage.Resources>
         <conv:ImageUriConverter x:Key="ImageUriConverter" />
+        <conv:CommentStarsConverter x:Key="CommentStarsConverter" />
     </ContentPage.Resources>
     <StackLayout>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Center" Padding="5">
@@ -23,14 +24,21 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Label Text="{Binding Company.Site}" 
+            <Label Text="{Binding Company.Description}" 
                        TextColor="#667284"
                        FontSize="15"
                        Grid.Row="0"
                        HorizontalOptions="Center"
                 />
-            <Frame CornerRadius="10" BackgroundColor="#94b1e3" Padding="5" Grid.Row="1" Margin="5,10,5,0">
+            <Label Text="{Binding Company.Site}" 
+                       TextColor="#667284"
+                       FontSize="15"
+                       Grid.Row="1"
+                       HorizontalOptions="Center"
+                />
+            <Frame CornerRadius="10" BackgroundColor="#94b1e3" Padding="5" Grid.Row="2" Margin="5,10,5,0">
                 <Label TextColor="White" FontSize="20">
                     <Label.FormattedText>
                         <FormattedString>
@@ -53,13 +61,13 @@
                 </Label>
             </Frame>
         </Grid>
-        <ListView x:Name="servicesListView" ItemsSource="{Binding ServiceOptions}" HasUnevenRows="True" SeparatorVisibility="None" ItemTapped="ServiceSelectedEvent">
+        <ListView x:Name="servicesListView" ItemsSource="{Binding ServiceOptions}" HasUnevenRows="True" SeparatorVisibility="None" ItemTapped="ServiceSelectedEvent" HeightRequest="280">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Vertical" Margin="5,5">
                             <Frame BackgroundColor="#6ba1f9" CornerRadius="10" Padding="10">
-                                <Grid VerticalOptions="Center" SizeChanged="CalculateListViewHeight">
+                                <Grid VerticalOptions="Center">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
@@ -126,7 +134,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame CornerRadius="25" BackgroundColor="#94b1e3" Margin="5,0,5,0" Padding="10">
+                        <Frame CornerRadius="25" BackgroundColor="#94b1e3" Margin="5,10,5,0" Padding="10">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -137,14 +145,20 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Frame CornerRadius="50" WidthRequest="40" HeightRequest="40" Grid.Column="0" Grid.RowSpan="2" Padding="0" IsClippedToBounds="True">
+                                <Frame CornerRadius="50" 
+                                       WidthRequest="40" 
+                                       HeightRequest="40" 
+                                       Grid.Column="0" 
+                                       Grid.RowSpan="2" 
+                                       Padding="0" 
+                                       IsClippedToBounds="True" >
                                     <Image 
-                                        Source="user.jpg" 
+                                        Source="{Binding ClientPhoto, Converter={StaticResource ImageUriConverter}}" 
                                         Aspect="AspectFill" 
                                     />
                                 </Frame>
                                 <Label 
-                                    Text="{Binding ClientEmail}"
+                                    Text="{Binding ClientName}"
                                     TextColor="White"
                                     FontAttributes="Bold"
                                     FontSize="15"
@@ -152,7 +166,7 @@
                                     LineBreakMode="NoWrap"
                                 />
                                 <Label 
-                                    Text="{Binding Score, StringFormat='{0} ★'}"
+                                    Text="{Binding Score, Converter={StaticResource CommentStarsConverter}}"
                                     TextColor="White"
                                     FontAttributes="Bold"
                                     FontSize="15"

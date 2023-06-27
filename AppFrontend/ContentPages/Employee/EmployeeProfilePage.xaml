@@ -74,7 +74,7 @@
                         PlaceholderColor="#ebf3fb"
                         TextColor="White"
                         HorizontalTextAlignment="Center"
-                        ReturnType="Next" />
+                    />
             </Frame>
             <Frame x:Name="saveButton" Margin="0,10,0,0" HasShadow="True" Padding="0" CornerRadius="40" WidthRequest="150" HorizontalOptions="Center">
                 <Button Text="Salvare" 

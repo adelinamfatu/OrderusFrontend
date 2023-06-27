@@ -39,8 +39,6 @@ namespace AppFrontend
 
         public string RepresentativeSurname { get; set; }
 
-        //public ObservableCollection<string> Functions { get; set; }
-
         public List<CompanyServiceOptionDTO> services = new List<CompanyServiceOptionDTO>();
 
         public MultiSelectObservableCollection<CompanyServiceOptionDTO> Services { get; set; }
@@ -62,15 +60,7 @@ namespace AppFrontend
             this.RepresentativeEmail = company.RepresentativeEmail;
             this.RepresentativeName = company.RepresentativeName;
             this.RepresentativeSurname = company.RepresentativeSurname;
-            //this.Functions = new ObservableCollection<string>();
             this.Services = new MultiSelectObservableCollection<CompanyServiceOptionDTO>();
-            /*if(company.Functions != null)
-            {
-                foreach (string function in company.Functions)
-                {
-                    this.Functions.Add(function);
-                }
-            }*/
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

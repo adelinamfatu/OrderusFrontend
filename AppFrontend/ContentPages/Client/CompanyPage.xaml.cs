@@ -40,10 +40,6 @@ namespace AppFrontend.ContentPages
 
         public string FloorPrompt { get; set; }
 
-        private double listViewHeight = 0;
-
-        private int listViewNbRows = 0;
-
         private GlobalService globalService { get; set; }
 
         public CompanyPage(CompanyDTO company)
@@ -120,7 +116,7 @@ namespace AppFrontend.ContentPages
             {
                 comments.Add(new CommentDTO
                 {
-                    ClientEmail = comment.ClientEmail,
+                    ClientName = comment.ClientName,
                     Content = comment.Content,
                     Score = comment.Score
                 });
@@ -130,24 +126,6 @@ namespace AppFrontend.ContentPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-        }
-
-        private void CalculateListViewHeight(object sender, EventArgs e)
-        {
-            
-            if (sender is Grid)
-            {
-                Grid grid = (Grid)sender;
-
-                listViewHeight += grid.Height - 20;
-                listViewHeight += grid.Margin.Top;
-                listViewHeight += grid.Margin.Bottom;
-
-                if (++listViewNbRows == serviceOptions.Count)
-                {
-                    Device.BeginInvokeOnMainThread(() => servicesListView.MinimumHeightRequest = listViewHeight);
-                }
-            }
         }
 
         private async void ServiceSelectedEvent(object sender, ItemTappedEventArgs e)

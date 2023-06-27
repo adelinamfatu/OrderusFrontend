@@ -26,7 +26,6 @@ namespace AppFrontend.ContentPages
         public SearchCompanyPage(int serviceId)
         {
             InitializeComponent();
-            //globalService = DependencyService.Get<GlobalService>();
             this.BindingContext = this;
             RetrieveCompaniesByService(serviceId);
         }
@@ -75,7 +74,6 @@ namespace AppFrontend.ContentPages
 
         private void OpenCompanyPage(object sender, SelectedItemChangedEventArgs e)
         {
-            //var company = (CompanyDTO)e.SelectedItem;
             var company = (CompanyDTO)companiesListView.SelectedItem;
             Navigation.PushAsync(new CompanyPage(company));
         }

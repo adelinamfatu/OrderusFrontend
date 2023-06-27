@@ -156,7 +156,7 @@
                                     HorizontalTextAlignment="Center"
                                     VerticalTextAlignment="Center"
                                 />
-                                <local:CustomEntry 
+                                <local:CustomMaterialEntry 
                                     Placeholder="{Binding Quantity, StringFormat='{0} in stoc'}" 
                                     HorizontalTextAlignment="Center"
                                     Keyboard="Numeric"

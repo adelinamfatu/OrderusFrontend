@@ -55,6 +55,16 @@
                         TextColor="White"
                         FontSize="16"/>
             </StackLayout>
+            <StackLayout HorizontalOptions="End" WidthRequest="250" x:Name="appInfoStackLayout">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="info.png" />
+                    <Label Grid.Column="1" Text="Daca intampinati probleme, ne puteti scrie la adresa noreply.orderus@gmail.com" TextColor="Gray" VerticalTextAlignment="Center" />
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

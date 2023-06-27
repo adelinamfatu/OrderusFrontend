@@ -28,7 +28,6 @@ namespace AppFrontend.ContentPages
         public SearchServicePage(int categoryId)
         {
             InitializeComponent();
-            //globalService = DependencyService.Get<GlobalService>();
             this.BindingContext = this;
             RetrieveServicesByCategory(categoryId);
         }

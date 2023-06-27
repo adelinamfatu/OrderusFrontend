@@ -228,10 +228,6 @@ namespace AppFrontend.ContentPages.Client
                     textPaint.MeasureText(item.Text, ref textBounds);
                     float yText = yCenter - textBounds.Height / 2 - textBounds.Top;
 
-                    // Adjust TextSize property so text is 95% of the ARC
-                    // float textWidth = textPaint.MeasureText(item.Text);
-                    // textPaint.TextSize = 0.95f * info.Width * textPaint.TextSize / textWidth;
-
                     #endregion 
 
                     canvas.Save();
@@ -247,10 +243,6 @@ namespace AppFrontend.ContentPages.Client
                         canvas.Save();
                         canvas.RotateDegrees(startAngleText + _degrees - 90, xCenter, yCenter);
 
-                        /*if (itemer.Text.Trim().Length > 6)
-                            textPaint.TextSize = 30;
-                        else
-                            textPaint.TextSize = 40;*/
                         textPaint.TextSize = 50;
                         canvas.DrawText(itemer.Text, xCenter, yText, textPaint);
                         canvas.Restore();
@@ -278,7 +270,6 @@ namespace AppFrontend.ContentPages.Client
                 fillMarkCirclePaintOuter.Style = SKPaintStyle.StrokeAndFill;
                 fillMarkCirclePaintOuter.Color = Color.FromHex("#FFF180").ToSKColor();
 
-                // Define an array of rainbow colors
                 List<SKColor> colors = new List<SKColor>();
 
                 foreach (var col in viewModel.Colors)
@@ -354,7 +345,6 @@ namespace AppFrontend.ContentPages.Client
             var translate = SKMatrix.CreateTranslation(-cx, -cy);
             var rotate = SKMatrix.CreateRotationDegrees(degrees);
 
-            //angleBox.Text = degrees.ToString();
             var translate2 = SKMatrix.CreateTranslation(cx, cy);
 
             SKMatrix.PostConcat(ref identity, translate);

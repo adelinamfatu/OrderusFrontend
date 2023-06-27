@@ -18,6 +18,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="75" />
@@ -42,6 +43,15 @@
                                         InputTransparent="True"
                                     />
                                 </StackLayout>
+                                <Label 
+                                        Text="{Binding Score}"
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        FontSize="30"
+                                        InputTransparent="True"
+                                        Grid.Column="2"
+                                        VerticalOptions="Center"
+                                    />
                             </Grid>
                         </Frame>
                     </StackLayout>
