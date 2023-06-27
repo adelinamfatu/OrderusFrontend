@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppFrontend.ContentPages.HistoryPage">
+    
     <ContentPage.Content>
         <ListView x:Name="scheduledOrdersListView" ItemsSource="{Binding Orders}" HasUnevenRows="True" SeparatorVisibility="None">
             <ListView.ItemTemplate>
@@ -61,7 +62,7 @@
                                             WidthRequest="50"
                                             CornerRadius="20"
                                             HorizontalOptions="End"
-                                            IsVisible="{Binding IsFinished}"
+                                            IsVisible="{Binding IsNotCancelled}"
                                     />
                                     <Button x:Name="btnCancelOrder"
                                             ImageSource="cancel.png"

@@ -135,6 +135,13 @@ namespace AppFrontend.ViewModels
             get { return !IsFinished && DateTime.Now <= StartTime; }
         }
 
+        public bool IsNotCancelled
+        {
+            get { return IsFinished && DateTime.Now >= finishTime && IsConfirmed; }
+        }
+
+        public bool IsConfirmed { get; set; }
+
         public Color Color { get; set; }
 
         public string Comment { get; set; }
@@ -152,10 +159,11 @@ namespace AppFrontend.ViewModels
             this.IsFinished = order.IsFinished;
             this.Comment = order.Comment;
             this.ClientPhoneNumber = order.ClientNumber;
+            this.IsConfirmed = order.IsConfirmed;
             this.Materials = new ObservableCollection<MaterialDTO>();
             Time = new TimeSpan(10, 0, 1);
-            SetOrderColor();
             SetCurrentOrder();
+            SetOrderColor();
         }
 
         private void SetOrderColor()
@@ -164,17 +172,21 @@ namespace AppFrontend.ViewModels
             DateTime startTime = this.StartTime;
             DateTime finishTime = this.FinishTime;
 
-            if (currentTime < startTime)
+            if(this.IsConfirmed == false && this.IsFinished == true)
             {
                 this.Color = Color.PaleVioletRed;
             }
-            else if (startTime <= currentTime && currentTime <= finishTime)
+            else if(IsCurrentOrder)
             {
                 this.Color = Color.PaleGreen;
             }
-            else
+            else if(finishTime < currentTime)
             {
                 this.Color = Color.SlateGray;
+            }
+            else if(startTime > currentTime)
+            {
+                this.Color = Color.SandyBrown;
             }
         }
 
