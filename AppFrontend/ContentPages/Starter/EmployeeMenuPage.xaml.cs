@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using App.DTO;
+using AppFrontend.ContentPages.Employee;
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using Newtonsoft.Json;

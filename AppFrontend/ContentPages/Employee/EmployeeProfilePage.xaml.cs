@@ -139,5 +139,10 @@ namespace AppFrontend.ContentPages.Employee
                 }
             }
         }
+
+        private void OpenNotificationsPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new EmployeeNotificationsPage());
+        }
     }
 }

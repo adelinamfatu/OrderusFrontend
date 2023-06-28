@@ -61,6 +61,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cancel/.
+        /// </summary>
+        internal static string CancelURL {
+            get {
+                return ResourceManager.GetString("CancelURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to services/categories/.
         /// </summary>
         internal static string CategoriesURL {

@@ -35,7 +35,7 @@
         </x:Arguments>
         <NavigationPage.ToolbarItems>
             <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
-            <ToolbarItem IconImageSource="logout.png" Priority="1" Clicked="LogoutAccount"/>
+            <ToolbarItem IconImageSource="logout.png" Priority="2" Clicked="LogoutAccount"/>
         </NavigationPage.ToolbarItems>
     </NavigationPage>
 </TabbedPage>

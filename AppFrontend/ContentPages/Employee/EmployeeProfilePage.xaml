@@ -5,7 +5,10 @@
              xmlns:local="clr-namespace:AppFrontend.CustomControls"
              x:Class="AppFrontend.ContentPages.Employee.EmployeeProfilePage"
              Title="Orderus">
-    
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="bell.png" Priority="1" Clicked="OpenNotificationsPage" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <conv:ImageUriConverter x:Key="ImageUriConverter" />
     </ContentPage.Resources>
