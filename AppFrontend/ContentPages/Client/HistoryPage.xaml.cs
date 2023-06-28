@@ -116,7 +116,7 @@ namespace AppFrontend.ContentPages
                 if (response.IsSuccessStatusCode)
                 {
                     CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CancelOrderSuccess);
-                    RemoveOrderFromUI(orderID);
+                    CancelOrderOnUI(orderID);
                 }
                 if (response.StatusCode == HttpStatusCode.Conflict)
                 {
@@ -125,9 +125,11 @@ namespace AppFrontend.ContentPages
             }
         }
 
-        private void RemoveOrderFromUI(int orderID)
+        private void CancelOrderOnUI(int orderID)
         {
-            Orders.Remove(Orders.Where(o => o.ID == orderID).FirstOrDefault());
+            var order = Orders.Where(o => o.ID == orderID).FirstOrDefault();
+            order.IsFinished = true;
+            order.Color = Color.PaleVioletRed;
         }
     }
 }

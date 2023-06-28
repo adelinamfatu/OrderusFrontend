@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:conv="clr-namespace:AppFrontend.Converters"
              xmlns:local="clr-namespace:AppFrontend.CustomControls"
-             x:Class="AppFrontend.ContentPages.Employee.EmployeeProfilePage">
+             x:Class="AppFrontend.ContentPages.Employee.EmployeeProfilePage"
+             Title="Orderus">
     
     <ContentPage.Resources>
         <conv:ImageUriConverter x:Key="ImageUriConverter" />

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:conv="clr-namespace:AppFrontend.Converters"
              x:Class="AppFrontend.ContentPages.Employee.EmployeeHistoryPage"
-             Title="Orderus">
+             Title="Istoric comenzi">
 
     <ContentPage.Resources>
         <conv:IsConfirmedToColorConverter x:Key="IsConfirmedToColorConverter" />

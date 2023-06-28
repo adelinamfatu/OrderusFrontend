@@ -4,7 +4,7 @@
              xmlns:conv="clr-namespace:AppFrontend.Converters"
              xmlns:sc="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
              x:Class="AppFrontend.ContentPages.Employee.EmployeeSchedulePage"
-             Title="Orderus">
+             Title="Comenzi programate">
 
     <ContentPage.Resources>
         <ResourceDictionary>
