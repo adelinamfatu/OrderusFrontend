@@ -14,7 +14,14 @@
             <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
         </NavigationPage.ToolbarItems>
     </NavigationPage>
-    <local:CompanyStatisticsPage Title="Statistici" IconImageSource="statistics.png"/>
+    <NavigationPage Title="Statistici" IconImageSource="statistics.png" BarBackgroundColor="#6ba1f9">
+        <x:Arguments Title="Orderus">
+            <local:CompanyStatisticsPage />
+        </x:Arguments>
+        <NavigationPage.ToolbarItems>
+            <ToolbarItem IconImageSource="icon_white.png" Priority="0" />
+        </NavigationPage.ToolbarItems>
+    </NavigationPage>
     <NavigationPage Title="Stoc" IconImageSource="stock.png" BarBackgroundColor="#6ba1f9">
         <x:Arguments Title="Orderus">
             <local:CompanyStockPage />

@@ -6,5 +6,6 @@
 
     <StackLayout>
         <charts:ChartView x:Name="servicesPieChart" HeightRequest="200" />
+        <charts:ChartView x:Name="earningsBarChart" HeightRequest="300" />
     </StackLayout>
 </ContentPage>

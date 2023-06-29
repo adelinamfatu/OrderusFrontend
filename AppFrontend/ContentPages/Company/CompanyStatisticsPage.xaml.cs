@@ -21,6 +21,7 @@ namespace AppFrontend.ContentPages
     public partial class CompanyStatisticsPage : ContentPage
     {
         List<ChartEntry> ServicesData = new List<ChartEntry>();
+        List<ChartEntry> EarningsData = new List<ChartEntry>();
 
         public GlobalService globalService { get; set; }
 
@@ -37,6 +38,7 @@ namespace AppFrontend.ContentPages
             if (e.PropertyName == "Company")
             {
                 GetServicesData();
+                GetMonthlyEarnings();
             }
         }
 
@@ -61,6 +63,27 @@ namespace AppFrontend.ContentPages
             }
         }
 
+        private async void GetMonthlyEarnings()
+        {
+            string url = RestResources.ConnectionURL + RestResources.CompaniesURL + RestResources.EarningsURL + globalService.Company.ID;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient client = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("company_token").Result;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    var earningsJSON = JsonConvert.DeserializeObject<Dictionary<string, float>>(json);
+                    BuildBarChart(earningsJSON);
+                }
+            }
+        }
+
         private void BuildPieChart(Dictionary<string, int> orderCountJSON)
         {
             Random random = new Random();
@@ -81,6 +104,28 @@ namespace AppFrontend.ContentPages
                 });
             }
             servicesPieChart.Chart = new PieChart { Entries = ServicesData };
+        }
+
+        private void BuildBarChart(Dictionary<string, float> earningsJSON)
+        {
+            Random random = new Random();
+
+            foreach (var monthlyEarning in earningsJSON)
+            {
+                byte r = (byte)random.Next(256);
+                byte g = (byte)random.Next(256);
+                byte b = (byte)random.Next(256);
+                var color = new SKColor(r, g, b);
+
+                EarningsData.Add(new ChartEntry(monthlyEarning.Value)
+                {
+                    Color = color,
+                    Label = monthlyEarning.Key,
+                    ValueLabel = monthlyEarning.Value.ToString(),
+                    ValueLabelColor = color
+                });
+            }
+            earningsBarChart.Chart = new BarChart { Entries = EarningsData };
         }
     }
 }

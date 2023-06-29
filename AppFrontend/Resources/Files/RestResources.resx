@@ -159,6 +159,9 @@
   <data name="DetailsURL" xml:space="preserve">
     <value>details/</value>
   </data>
+  <data name="EarningsURL" xml:space="preserve">
+    <value>earnings/</value>
+  </data>
   <data name="EmployeesURL" xml:space="preserve">
     <value>employees/</value>
   </data>
