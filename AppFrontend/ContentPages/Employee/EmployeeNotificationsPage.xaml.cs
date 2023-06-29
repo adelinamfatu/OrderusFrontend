@@ -28,9 +28,10 @@ namespace AppFrontend.ContentPages.Employee
         public EmployeeNotificationsPage()
         {
             InitializeComponent();
-            globalService = DependencyService.Get<GlobalService>();
-            GetDataForUI();
+            globalService = DependencyService.Get<GlobalService>(); 
             this.BindingContext = this;
+            GetDataForUI();
+            
         }
 
         private async void GetDataForUI()
