@@ -6,6 +6,7 @@
 
     <ContentPage.Resources>
         <conv:ImageUriConverter x:Key="ImageUriConverter" />
+        <conv:IsCancelledToColorConverter x:Key="IsCancelledToColorConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
@@ -14,15 +15,17 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Frame CornerRadius="100" 
+            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                <Frame CornerRadius="50" 
                     HeightRequest="100"
                     WidthRequest="100"
                     Padding="0"
-                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
                     IsClippedToBounds="True">
-                <!--<Image Source="{Binding Employee.Picture, Converter={StaticResource ImageUriConverter}}" />-->
-                <Image Source="ok.png" />
-            </Frame>
+                    <Image Source="{Binding Employee.Picture, Converter={StaticResource ImageUriConverter}}" />
+                </Frame>
+            </Grid>
             <Frame BackgroundColor="#94b1e3" CornerRadius="20" Padding="5" Margin="5,5,5,0" Grid.Row="1">
                 <Grid HorizontalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
@@ -55,7 +58,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame BackgroundColor="#94b1e3" CornerRadius="20" Padding="5" Margin="5,5,5,0">
+                                <Frame BackgroundColor="{Binding IsCancelled, Converter={StaticResource IsCancelledToColorConverter}}" CornerRadius="20" Padding="5" Margin="5,5,5,0">
                                     <Grid HorizontalOptions="FillAndExpand">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -71,12 +74,12 @@
                                             HorizontalOptions="Center" 
                                             Grid.Column="1" 
                                             FontSize="20"
-                                            Text="{Binding DateTime, StringFormat='{0:dd.MM.yyyy}'}" />
+                                            Text="{Binding StartTime, StringFormat='{0:dd.MM.yyyy}'}" />
                                         <Label TextColor="White" 
                                             HorizontalOptions="Center" 
                                             Grid.Column="2" 
                                             FontSize="20"
-                                            Text="{Binding DateTime, StringFormat='{0:hh:mm tt}'}" />
+                                            Text="{Binding StartTime, StringFormat='{0:hh:mm tt}'}" />
                                     </Grid>
                                 </Frame>
                             </ViewCell>

@@ -304,6 +304,24 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Doriti sa descarcati un raport detaliat al performantei companiei?.
+        /// </summary>
+        internal static string DownloadCSVRaport {
+            get {
+                return ResourceManager.GetString("DownloadCSVRaport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Descarcare raport.
+        /// </summary>
+        internal static string DownloadCSVRaportTitle {
+            get {
+                return ResourceManager.GetString("DownloadCSVRaportTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adresa de mail nu are formatul corect.
         /// </summary>
         internal static string EmailError {

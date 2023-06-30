@@ -44,7 +44,7 @@
                                     />
                                 </StackLayout>
                                 <Label 
-                                        Text="{Binding Score}"
+                                        Text="{Binding Score, StringFormat='{0}★'}"
                                         TextColor="White"
                                         FontAttributes="Bold"
                                         FontSize="30"

@@ -1,4 +1,5 @@
-﻿using AppFrontend.Resources;
+﻿using Acr.UserDialogs;
+using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using Microcharts;
 using Newtonsoft.Json;
@@ -126,6 +127,22 @@ namespace AppFrontend.ContentPages
                 });
             }
             earningsBarChart.Chart = new BarChart { Entries = EarningsData };
+        }
+
+        private async void DownloadCSVFile(object sender, EventArgs e)
+        {
+            var response = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+            {
+                Title = ToastDisplayResources.DownloadCSVRaportTitle,
+                Message = ToastDisplayResources.DownloadCSVRaport,
+                OkText = ToastDisplayResources.PromptYes,
+                CancelText = ToastDisplayResources.PromptCancel
+            });
+
+            if (response)
+            {
+
+            }
         }
     }
 }

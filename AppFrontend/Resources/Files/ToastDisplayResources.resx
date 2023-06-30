@@ -198,6 +198,12 @@
   <data name="DelayOrderTitle" xml:space="preserve">
     <value>Amanare comenzi</value>
   </data>
+  <data name="DownloadCSVRaport" xml:space="preserve">
+    <value>Doriti sa descarcati un raport detaliat al performantei companiei?</value>
+  </data>
+  <data name="DownloadCSVRaportTitle" xml:space="preserve">
+    <value>Descarcare raport</value>
+  </data>
   <data name="EmailError" xml:space="preserve">
     <value>Adresa de mail nu are formatul corect</value>
   </data>

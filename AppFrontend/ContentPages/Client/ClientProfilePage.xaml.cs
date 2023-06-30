@@ -117,5 +117,10 @@ namespace AppFrontend.ContentPages
         {
             Navigation.PushAsync(new ClientChangeTimeRequestPage());
         }
+
+        private void OpenNotificationsPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ClientNotificationsPage());
+        }
     }
 }

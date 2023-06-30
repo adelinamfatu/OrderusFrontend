@@ -55,20 +55,7 @@ namespace AppFrontend.ContentPages
         {
             foreach (var company in companiesJSON)
             {
-                companies.Add(new CompanyDTO
-                {
-                    ID = company.ID,
-                    Name = company.Name,
-                    City = company.City,
-                    Street = company.Street,
-                    StreetNumber = company.StreetNumber,
-                    Building = company.Building,
-                    Staircase = company.Staircase,
-                    ApartmentNumber = company.ApartmentNumber,
-                    Floor = company.Floor,
-                    Logo = company.Logo,
-                    Site = company.Site
-                });
+                companies.Add(company);
             }
         }
 

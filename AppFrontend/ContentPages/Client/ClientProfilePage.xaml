@@ -5,6 +5,9 @@
              x:Class="AppFrontend.ContentPages.ClientProfilePage"
              Title="Orderus">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="bell.png" Priority="1" Clicked="OpenNotificationsPage" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <conv:ImageUriConverter x:Key="ImageUriConverter" />
     </ContentPage.Resources>
@@ -52,6 +55,11 @@
                         Clicked="OpenOrderRequestChangePage"
                         CornerRadius="20" 
                         BackgroundColor="#94b1e3"
+                        TextColor="White"
+                        FontSize="16"/>
+                <Button Text="Comentarii" 
+                        CornerRadius="20" 
+                        BackgroundColor="#6ba1f9"
                         TextColor="White"
                         FontSize="16"/>
             </StackLayout>

@@ -4,6 +4,9 @@
              xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="AppFrontend.ContentPages.CompanyStatisticsPage">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="download.png" Priority="0" Clicked="DownloadCSVFile" />
+    </ContentPage.ToolbarItems>
     <StackLayout>
         <charts:ChartView x:Name="servicesPieChart" HeightRequest="200" />
         <charts:ChartView x:Name="earningsBarChart" HeightRequest="300" />

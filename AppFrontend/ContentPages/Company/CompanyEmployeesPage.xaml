@@ -59,14 +59,13 @@
                                 Margin="0,0,10,0"
                                 Clicked="OpenEmployeeDetails"
                                 IsVisible="{Binding IsConfirmed}"
+                                CornerRadius="20"
                             />
                             <Label Grid.Row="1" Grid.ColumnSpan="2" TextColor="White" FontSize="20" HorizontalOptions="Start" Margin="5,0,0,0" IsVisible="{Binding IsConfirmed}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Status: " />
-                                        <Span Text="{Binding Surname}" FontSize="20" FontAttributes="Bold" />
-                                        <Span Text=" " />
-                                        <Span Text="{Binding Name}" FontSize="20" FontAttributes="Bold" />
+                                        <Span Text="Email: " />
+                                        <Span Text="{Binding Email}" FontSize="20" FontAttributes="Bold" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
