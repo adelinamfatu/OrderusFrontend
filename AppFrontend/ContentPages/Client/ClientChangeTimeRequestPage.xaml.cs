@@ -56,11 +56,11 @@ namespace AppFrontend.ContentPages.Client
             }
         }
 
-        private void BuildOrderList(List<OrderChangeDTO> offersJSON)
+        private void BuildOrderList(List<OrderChangeDTO> ordersJSON)
         {
-            foreach (var offer in offersJSON)
+            foreach (var order in ordersJSON)
             {
-                orders.Add(offer);
+                orders.Add(order);
             }
         }
 

@@ -59,6 +59,7 @@
                         FontSize="16"/>
                 <Button Text="Comentarii" 
                         CornerRadius="20" 
+                        Clicked="OpenCommentsListPage"
                         BackgroundColor="#6ba1f9"
                         TextColor="White"
                         FontSize="16"/>

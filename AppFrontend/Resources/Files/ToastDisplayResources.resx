@@ -291,6 +291,21 @@
   <data name="SpinningWheelPrize" xml:space="preserve">
     <value>Felicitari! Ati castigat!</value>
   </data>
+  <data name="StarReview" xml:space="preserve">
+    <value>Sunteti sigur ca doriti sa trimiteti recenzia?</value>
+  </data>
+  <data name="StarReviewError" xml:space="preserve">
+    <value>Trebuie sa acordati macar o stea</value>
+  </data>
+  <data name="StarReviewFail" xml:space="preserve">
+    <value>S-a produs o eroare la salvarea comentariului</value>
+  </data>
+  <data name="StarReviewSuccess" xml:space="preserve">
+    <value>S-a salvat comentariul cu succes</value>
+  </data>
+  <data name="StarReviewTitle" xml:space="preserve">
+    <value>Salvare recenzie</value>
+  </data>
   <data name="StreetTypeError" xml:space="preserve">
     <value>Trebuie sa alegeti un tip de strada</value>
   </data>

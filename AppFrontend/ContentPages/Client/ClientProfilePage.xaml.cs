@@ -122,5 +122,10 @@ namespace AppFrontend.ContentPages
         {
             Navigation.PushAsync(new ClientNotificationsPage());
         }
+
+        private void OpenCommentsListPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ClientCommentsPage());
+        }
     }
 }

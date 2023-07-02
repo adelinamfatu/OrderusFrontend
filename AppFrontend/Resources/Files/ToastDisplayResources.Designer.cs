@@ -583,6 +583,51 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sunteti sigur ca doriti sa trimiteti recenzia?.
+        /// </summary>
+        internal static string StarReview {
+            get {
+                return ResourceManager.GetString("StarReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trebuie sa acordati macar o stea.
+        /// </summary>
+        internal static string StarReviewError {
+            get {
+                return ResourceManager.GetString("StarReviewError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la salvarea comentariului.
+        /// </summary>
+        internal static string StarReviewFail {
+            get {
+                return ResourceManager.GetString("StarReviewFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-a salvat comentariul cu succes.
+        /// </summary>
+        internal static string StarReviewSuccess {
+            get {
+                return ResourceManager.GetString("StarReviewSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salvare recenzie.
+        /// </summary>
+        internal static string StarReviewTitle {
+            get {
+                return ResourceManager.GetString("StarReviewTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trebuie sa alegeti un tip de strada.
         /// </summary>
         internal static string StreetTypeError {
