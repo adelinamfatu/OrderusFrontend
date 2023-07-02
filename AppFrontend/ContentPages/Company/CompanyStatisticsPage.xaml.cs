@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using App.DTO;
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using Microcharts;
@@ -7,6 +8,7 @@ using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -139,10 +141,51 @@ namespace AppFrontend.ContentPages
                 CancelText = ToastDisplayResources.PromptCancel
             });
 
-            if (response)
+            if(response)
             {
-
+                GetCompanyData();
             }
+        }
+
+        private async void GetCompanyData()
+        {
+            string url = RestResources.ConnectionURL + RestResources.CompaniesURL + globalService.Company.ID;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient client = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("company_token").Result;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    var ordersJSON = JsonConvert.DeserializeObject<List<OrderDTO>>(json);
+                    BuildCSVFile(ordersJSON);
+                }
+            }
+        }
+
+        private async void BuildCSVFile(List<OrderDTO> orders)
+        {
+            StringBuilder csvContent = new StringBuilder();
+            csvContent.AppendLine("EmailAngajat,Serviciu,TimpIncepere,Durata,SumaPlata,Anulat");
+
+            foreach (var order in orders)
+            {
+                csvContent.AppendLine($"{order.EmployeeEmail},{order.ServiceName},{order.StartTime},{order.Duration},{order.PaymentAmount},{order.IsCancelled}");
+            }
+
+            string fileName = $"date_{globalService.Company.Name}.csv";
+            var file = Path.Combine(FileSystem.CacheDirectory, fileName);
+            File.WriteAllText(file, csvContent.ToString());
+
+            await Launcher.OpenAsync(new OpenFileRequest
+            {
+                File = new ReadOnlyFile(file)
+            });
         }
     }
 }
