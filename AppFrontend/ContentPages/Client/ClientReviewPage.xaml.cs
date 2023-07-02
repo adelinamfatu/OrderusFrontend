@@ -76,6 +76,7 @@ namespace AppFrontend.ContentPages.Client
                 if (response.IsSuccessStatusCode)
                 {
                     CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.StarReviewSuccess);
+                    await Navigation.PopAsync();
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {

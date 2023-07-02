@@ -69,6 +69,7 @@ namespace AppFrontend.ContentPages.Client
             Button button = (Button)sender;
             var order = (OrderDTO)button.BindingContext;
             Navigation.PushAsync(new ClientReviewPage(order));
+            Orders.Remove(order);
         }
     }
 }
