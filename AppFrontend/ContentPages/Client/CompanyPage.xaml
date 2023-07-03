@@ -109,8 +109,9 @@
                                         >
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding Price}" />
-                                                    <Span Text=" lei/ora" FontSize="15"/>
+                                                    <Span Text="{Binding Price}" FontSize="15" />
+                                                    <Span Text=" lei/" FontSize="15"/>
+                                                    <Span Text="{Binding Service.UnitOfMeasurement}" FontSize="15"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
