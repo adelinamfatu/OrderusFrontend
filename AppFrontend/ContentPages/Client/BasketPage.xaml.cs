@@ -27,9 +27,12 @@ namespace AppFrontend.ContentPages
 
         public OrderViewModel Order { get; set; }
 
+        public List<string> Offers { get; set; }
+
         public BasketPage()
         {
             InitializeComponent();
+            Offers = new List<string>();
             GetBasketInformation();
             globalService = DependencyService.Get<GlobalService>();
             MessagingCenter.Subscribe<CompanyPage, BasketItemMessage>(this, "BasketItemMessage", (sender, message) =>
@@ -40,7 +43,15 @@ namespace AppFrontend.ContentPages
             {
                 SetUIServiceInformation();
             }
-            this.BindingContext = this;
+            globalService.PropertyChanged += GlobalService_PropertyChanged;
+        }
+
+        private void GlobalService_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Client")
+            {
+                GetOffers();
+            }
         }
 
         private void GetBasketInformation()
@@ -85,6 +96,36 @@ namespace AppFrontend.ContentPages
                 noRoomsLabel.IsVisible = true;
                 noRoomsEntry.IsVisible = true;
             }
+        }
+
+        private async void GetOffers()
+        {
+            string url = RestResources.ConnectionURL + RestResources.ClientsURL + RestResources.OfferURL + RestResources.AvailableURL + globalService.Client.Email;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient client = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("client_token").Result;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    var offersJSON = JsonConvert.DeserializeObject<List<OfferDTO>>(json);
+                    BuildOfferPicker(offersJSON);
+                }
+            }
+        }
+
+        private void BuildOfferPicker(List<OfferDTO> offersJSON)
+        {
+            foreach(var offer in offersJSON)
+            {
+                Offers.Add(offer.Discount + (offer.Type == DiscountType.Percentage ? "%" : " lei"));
+            }
+            this.BindingContext = this;
         }
 
         private void CalculateEstimatedDuration(object sender, EventArgs e)
@@ -145,6 +186,7 @@ namespace AppFrontend.ContentPages
             CSO.Duration = duration;
             Order.Duration = duration;
             Order.PaymentAmount = CSO.Price * (CSO.Duration / 60.0f);
+            Order.InitialPaymentAmount = Order.PaymentAmount;
             orderButton.IsEnabled = true;
         }
 
@@ -204,6 +246,32 @@ namespace AppFrontend.ContentPages
                 details.Add(surfaceLabel.Text, surfaceEntry.Text);
             }
             return details;
+        }
+
+        private void AddOfferToOrder(object sender, EventArgs e)
+        {
+            this.Order.PaymentAmount = this.Order.InitialPaymentAmount;
+            var selectedOffer = offersPicker.SelectedItem.ToString();
+
+            if (selectedOffer.Contains("%"))
+            {
+                string numericValue = selectedOffer.Substring(0, selectedOffer.IndexOf("%"));
+                int value = int.Parse(numericValue);
+                Order.PaymentAmount -= this.Order.PaymentAmount / 100 * value;
+            }
+            else if (selectedOffer.Contains(" lei"))
+            {
+                string numericValue = selectedOffer.Substring(0, selectedOffer.IndexOf(" lei"));
+                int value = int.Parse(numericValue);
+                Order.PaymentAmount -= value;
+            }
+
+            CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.OrderOfferSuccess);
+        }
+
+        private void datePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            orderButton.IsEnabled = false;
         }
     }
 }

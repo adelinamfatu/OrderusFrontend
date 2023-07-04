@@ -72,6 +72,8 @@ namespace AppFrontend.ViewModels
 
         public string ServiceName { get; set; }
 
+        public float InitialPaymentAmount { get; set; }
+
         private float paymentAmount;
         public float PaymentAmount
         {

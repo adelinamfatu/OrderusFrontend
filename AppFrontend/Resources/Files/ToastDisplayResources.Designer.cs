@@ -448,6 +448,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to V-a fost aplicat un cupon de reducere la comanda.
+        /// </summary>
+        internal static string OrderOfferSuccess {
+            get {
+                return ResourceManager.GetString("OrderOfferSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nu este niciun angajat liber, va rog sa alegeti o alta data.
         /// </summary>
         internal static string OrderTimeEstimationError {

@@ -246,6 +246,9 @@
   <data name="OrderConfirmationTitle" xml:space="preserve">
     <value>Confirmare comanda</value>
   </data>
+  <data name="OrderOfferSuccess" xml:space="preserve">
+    <value>V-a fost aplicat un cupon de reducere la comanda</value>
+  </data>
   <data name="OrderTimeEstimationError" xml:space="preserve">
     <value>Nu este niciun angajat liber, va rog sa alegeti o alta data</value>
   </data>

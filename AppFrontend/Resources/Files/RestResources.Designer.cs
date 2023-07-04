@@ -61,6 +61,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to available/.
+        /// </summary>
+        internal static string AvailableURL {
+            get {
+                return ResourceManager.GetString("AvailableURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to cancel/.
         /// </summary>
         internal static string CancelURL {
