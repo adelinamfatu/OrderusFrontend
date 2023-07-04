@@ -130,27 +130,51 @@ namespace AppFrontend.ContentPages
 
         private void CalculateEstimatedDuration(object sender, EventArgs e)
         {
-            if (CSO.Service.Name == ServiceType.Curatare.ToString())
+            if(CheckTimeAndDate())
             {
-                if(surfaceEntry.Text == null && noRoomsEntry.Text == null)
+                if (CSO.Service.Name == ServiceType.Curatare.ToString())
                 {
-                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.DataMissingError);
+                    if (surfaceEntry.Text == null && noRoomsEntry.Text == null)
+                    {
+                        CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.DataMissingError);
+                    }
+                    else
+                    {
+                        CSO.Surface = int.Parse(surfaceEntry.Text);
+                        CSO.NbRooms = int.Parse(noRoomsEntry.Text);
+                        CSO.DateTime = new DateTime(datePicker.Date.Year,
+                                                    datePicker.Date.Month,
+                                                    datePicker.Date.Day,
+                                                    timePicker.Time.Hours,
+                                                    timePicker.Time.Minutes,
+                                                    timePicker.Time.Seconds);
+                        SendCleaningServiceData(ConvertCSOToPO.Convert(CSO, globalService.Client.Email));
+                    }
                 }
-                else
-                {
-                    CSO.Surface = int.Parse(surfaceEntry.Text);
-                    CSO.NbRooms = int.Parse(noRoomsEntry.Text);
-                    CSO.DateTime = new DateTime(datePicker.Date.Year,
-                                                datePicker.Date.Month,
-                                                datePicker.Date.Day,
-                                                timePicker.Time.Hours,
-                                                timePicker.Time.Minutes,
-                                                timePicker.Time.Seconds);
-                    SendCleaningServiceData(ConvertCSOToPO.Convert(CSO, globalService.Client.Email));
-                }
+
+                //other orders
             }
-            
-            //other orders
+        }
+
+        private bool CheckTimeAndDate()
+        {
+            DateTime currentDate = DateTime.Now.Date;
+            if(datePicker.Date < currentDate || datePicker.Date == currentDate)
+            {
+                CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.PastDateOrderError);
+                return false;
+            }
+            else if(datePicker.Date.DayOfWeek == DayOfWeek.Saturday || datePicker.Date.DayOfWeek == DayOfWeek.Sunday)
+            {
+                CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.WeekendOrderError);
+                return false;
+            }
+            else if(timePicker.Time < TimeSpan.FromHours(8) || timePicker.Time > TimeSpan.FromHours(20))
+            {
+                CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.OutOfOfficeOrderError);
+                return false;
+            }
+            return true;
         }
 
         private async void SendCleaningServiceData(PossibleOrderDTO po)

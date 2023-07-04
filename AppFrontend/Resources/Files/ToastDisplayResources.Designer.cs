@@ -475,11 +475,29 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nu se pot programa comenzi in afara orarului.
+        /// </summary>
+        internal static string OutOfOfficeOrderError {
+            get {
+                return ResourceManager.GetString("OutOfOfficeOrderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parolele nu corespund.
         /// </summary>
         internal static string PasswordError {
             get {
                 return ResourceManager.GetString("PasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nu se pot programa comenzi in trecut sau in ziua curenta.
+        /// </summary>
+        internal static string PastDateOrderError {
+            get {
+                return ResourceManager.GetString("PastDateOrderError", resourceCulture);
             }
         }
         
@@ -642,6 +660,15 @@ namespace AppFrontend.Resources.Files {
         internal static string StreetTypeError {
             get {
                 return ResourceManager.GetString("StreetTypeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nu se pot programa comenzi in weekend.
+        /// </summary>
+        internal static string WeekendOrderError {
+            get {
+                return ResourceManager.GetString("WeekendOrderError", resourceCulture);
             }
         }
     }

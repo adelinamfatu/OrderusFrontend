@@ -255,8 +255,14 @@
   <data name="OrderTimeEstimationSuccess" xml:space="preserve">
     <value>S-a estimat o durata aproximativa pentru serviciul ales</value>
   </data>
+  <data name="OutOfOfficeOrderError" xml:space="preserve">
+    <value>Nu se pot programa comenzi in afara orarului</value>
+  </data>
   <data name="PasswordError" xml:space="preserve">
     <value>Parolele nu corespund</value>
+  </data>
+  <data name="PastDateOrderError" xml:space="preserve">
+    <value>Nu se pot programa comenzi in trecut sau in ziua curenta</value>
   </data>
   <data name="PhoneNumberError" xml:space="preserve">
     <value>Numarul de telefon nu este unul valid</value>
@@ -311,5 +317,8 @@
   </data>
   <data name="StreetTypeError" xml:space="preserve">
     <value>Trebuie sa alegeti un tip de strada</value>
+  </data>
+  <data name="WeekendOrderError" xml:space="preserve">
+    <value>Nu se pot programa comenzi in weekend</value>
   </data>
 </root>
