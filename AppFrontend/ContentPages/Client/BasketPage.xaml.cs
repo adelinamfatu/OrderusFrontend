@@ -1,4 +1,5 @@
-﻿using App.DTO;
+﻿using Acr.UserDialogs;
+using App.DTO;
 using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using AppFrontend.Resources.Helpers;
@@ -26,6 +27,8 @@ namespace AppFrontend.ContentPages
         public GlobalService globalService { get; set; }
 
         public OrderViewModel Order { get; set; }
+
+        public List<OfferDTO> OffersJSON { get; set; }
 
         public List<string> Offers { get; set; }
 
@@ -113,15 +116,15 @@ namespace AppFrontend.ContentPages
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
-                    var offersJSON = JsonConvert.DeserializeObject<List<OfferDTO>>(json);
-                    BuildOfferPicker(offersJSON);
+                    OffersJSON = JsonConvert.DeserializeObject<List<OfferDTO>>(json);
+                    BuildOfferPicker();
                 }
             }
         }
 
-        private void BuildOfferPicker(List<OfferDTO> offersJSON)
+        private void BuildOfferPicker()
         {
-            foreach(var offer in offersJSON)
+            foreach(var offer in OffersJSON)
             {
                 Offers.Add(offer.Discount + (offer.Type == DiscountType.Percentage ? "%" : " lei"));
             }
@@ -218,6 +221,34 @@ namespace AppFrontend.ContentPages
         {
             var order = ConvertToOrder();
             AddOrder(order);
+            var offerID = 1;
+            var selectedOffer = offersPicker.SelectedItem.ToString();
+            if (selectedOffer.Contains("%"))
+            {
+                int numericValue = int.Parse(selectedOffer.Substring(0, selectedOffer.IndexOf("%")));
+                offerID = OffersJSON.Where(o => o.Type == DiscountType.Percentage && o.Discount == numericValue).FirstOrDefault().ID;
+            }
+            else
+            {
+                int numericValue = int.Parse(selectedOffer.Substring(0, selectedOffer.IndexOf(" lei")));
+                offerID = OffersJSON.Where(o => o.Type == DiscountType.Value && o.Discount == numericValue).FirstOrDefault().ID;
+            }
+            DeleteOffer(offerID);
+        }
+
+        private async void DeleteOffer(int offerID)
+        {
+            string url = RestResources.ConnectionURL + RestResources.ClientsURL + RestResources.OfferURL + RestResources.DeleteURL + offerID;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient httpClient = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("client_token").Result;
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                HttpResponseMessage response = await httpClient.DeleteAsync(url);
+            }
         }
 
         private async void AddOrder(OrderDTO order)
