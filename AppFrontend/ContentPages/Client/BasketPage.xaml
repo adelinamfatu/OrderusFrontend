@@ -58,7 +58,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{Binding CSO.Price}" />
-                                <Span Text=" / " />
+                                <Span Text=" lei / " />
                                 <Span Text="{Binding CSO.Service.UnitOfMeasurement}" />
                             </FormattedString>
                         </Label.FormattedText>

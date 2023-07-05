@@ -39,7 +39,8 @@ namespace AppFrontend.ContentPages
                 services.Add(new ServiceDTO
                 {
                     ID = service.ID,
-                    Name = service.Name
+                    Name = service.Name,
+                    Icon = service.Icon
                 });
             }
         }

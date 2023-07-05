@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:imgconv="clr-namespace:AppFrontend.Convertors"
+             xmlns:imgconv="clr-namespace:AppFrontend.Converters"
              x:Class="AppFrontend.ContentPages.SearchServicePage"
              Title="Orderus">
 
     <ContentPage.Resources>
-        <imgconv:ImageResourceConverter x:Key="ImageResourceConverter" />
+        <imgconv:ImageUriConverter x:Key="ImageUriConverter" />
     </ContentPage.Resources>
     <ScrollView>
         <xct:UniformGrid x:Name="servicesUniformGrid" VerticalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding Services, Mode=OneWay}">
@@ -26,7 +26,7 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Image
-                                Source="{Binding Name, Converter={StaticResource ImageResourceConverter}}"
+                                Source="{Binding Icon, Converter={StaticResource ImageUriConverter}}"
                                 Grid.Row="0"
                                 WidthRequest="130"
                                 HeightRequest="150"
