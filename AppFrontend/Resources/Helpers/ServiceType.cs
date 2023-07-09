@@ -6,7 +6,13 @@ namespace AppFrontend.Resources.Helpers
 {
     public enum ServiceType
     {
-        Curatare,
-        Reparare
+        Curatenie,
+        Reparare,
+        Matematica,
+        Romana,
+        Franceza,
+        Engleza,
+        Fizica,
+        Chimie
     }
 }

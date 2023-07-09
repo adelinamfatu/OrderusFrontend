@@ -9,15 +9,21 @@ namespace AppFrontend.Resources.Helpers
     {
         public static PossibleOrderDTO Convert(CompanyServiceOptionDTO cso, string clientEmail)
         {
-            return new PossibleOrderDTO()
+            var po = new PossibleOrderDTO()
             {
                 CompanyID = cso.Company.ID,
                 ServiceID = cso.Service.ID,
                 ClientEmail = clientEmail,
                 DateTime = cso.DateTime,
-                Surface = cso.Surface,
-                NbRooms = cso.NbRooms
             };
+
+            if (cso.Service.Name == ServiceType.Curatenie.ToString())
+            {
+                po.Surface = cso.Surface;
+                po.NbRooms = cso.NbRooms;
+            }
+
+            return po;
         }
     }
 }

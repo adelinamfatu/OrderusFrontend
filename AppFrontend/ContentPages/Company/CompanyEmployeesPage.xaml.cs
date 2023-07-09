@@ -5,6 +5,7 @@ using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using AppFrontend.ViewModels;
 using Newtonsoft.Json;
+using Plugin.Toast;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -139,16 +140,16 @@ namespace AppFrontend.ContentPages
             return null;
         }
 
-        private void ConfirmEmployeeAndServices(object sender, EventArgs e)
+        private async void ConfirmEmployeeAndServices(object sender, EventArgs e)
         {
-            var result = UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+            var result = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
             {
                 Title = ToastDisplayResources.EmployeeConfirmationTitle,
                 Message = ToastDisplayResources.EmployeeConfirmation,
                 OkText = ToastDisplayResources.PromptYes,
                 CancelText = ToastDisplayResources.PromptCancel
             });
-            if(result.Result == true)
+            if(result == true)
             {
                 Button button = (Button)sender;
                 EmployeeViewModel employee = (EmployeeViewModel)button.BindingContext;
@@ -177,6 +178,15 @@ namespace AppFrontend.ContentPages
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await httpClient.PutAsync(url, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CompanyEmployeeConfirmSuccess);
+                }
+                else
+                {
+                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CompanyEmployeeConfirmError);
+                }
             }
         }
 

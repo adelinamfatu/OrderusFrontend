@@ -144,6 +144,12 @@
   <data name="CompanyChoiceError" xml:space="preserve">
     <value>Trebuie sa alegeti o companie caruia ii veti fi afiliat</value>
   </data>
+  <data name="CompanyEmployeeConfirmError" xml:space="preserve">
+    <value>S-a produs o eroare la confirmarea angajatului</value>
+  </data>
+  <data name="CompanyEmployeeConfirmSuccess" xml:space="preserve">
+    <value>Angajatul a fost confirmat cu succes</value>
+  </data>
   <data name="CompanyServicesError" xml:space="preserve">
     <value>S-a produs o eroare la salvarea serviciilor</value>
   </data>

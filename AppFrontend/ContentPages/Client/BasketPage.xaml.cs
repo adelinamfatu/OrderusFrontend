@@ -32,6 +32,16 @@ namespace AppFrontend.ContentPages
 
         public List<string> Offers { get; set; }
 
+        HashSet<string> privateLessonsTypes = new HashSet<string>
+        {
+            ServiceType.Matematica.ToString(),
+            ServiceType.Romana.ToString(),
+            ServiceType.Franceza.ToString(),
+            ServiceType.Chimie.ToString(),
+            ServiceType.Fizica.ToString(),
+            ServiceType.Engleza.ToString()
+        };
+
         public BasketPage()
         {
             InitializeComponent();
@@ -92,12 +102,16 @@ namespace AppFrontend.ContentPages
 
         private void SetUIServiceInformation()
         {
-            if(CSO.Service.Name == ServiceType.Curatare.ToString())
+            if(CSO.Service.Name == ServiceType.Curatenie.ToString())
             {
                 surfaceLabel.IsVisible = true;
                 surfaceEntry.IsVisible = true;
                 noRoomsLabel.IsVisible = true;
                 noRoomsEntry.IsVisible = true;
+            }
+            else if(privateLessonsTypes.Contains(CSO.Service.Name))
+            {
+                etaBtn.Text = "Calculeaza pret";
             }
         }
 
@@ -135,7 +149,13 @@ namespace AppFrontend.ContentPages
         {
             if(CheckTimeAndDate())
             {
-                if (CSO.Service.Name == ServiceType.Curatare.ToString())
+                CSO.DateTime = new DateTime(datePicker.Date.Year,
+                                                    datePicker.Date.Month,
+                                                    datePicker.Date.Day,
+                                                    timePicker.Time.Hours,
+                                                    timePicker.Time.Minutes,
+                                                    timePicker.Time.Seconds);
+                if (CSO.Service.Name == ServiceType.Curatenie.ToString())
                 {
                     if (surfaceEntry.Text == null && noRoomsEntry.Text == null)
                     {
@@ -145,14 +165,12 @@ namespace AppFrontend.ContentPages
                     {
                         CSO.Surface = int.Parse(surfaceEntry.Text);
                         CSO.NbRooms = int.Parse(noRoomsEntry.Text);
-                        CSO.DateTime = new DateTime(datePicker.Date.Year,
-                                                    datePicker.Date.Month,
-                                                    datePicker.Date.Day,
-                                                    timePicker.Time.Hours,
-                                                    timePicker.Time.Minutes,
-                                                    timePicker.Time.Seconds);
                         SendCleaningServiceData(ConvertCSOToPO.Convert(CSO, globalService.Client.Email));
                     }
+                }
+                else if (privateLessonsTypes.Contains(CSO.Service.Name))
+                {
+                    ShowToast(60);
                 }
 
                 //other orders
@@ -209,10 +227,20 @@ namespace AppFrontend.ContentPages
 
         private void ShowToast(int duration)
         {
-            CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.OrderTimeEstimationSuccess);
+            if(CSO.Service.Name == ServiceType.Curatenie.ToString())
+            {
+                CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.OrderTimeEstimationSuccess);
+            }
             CSO.Duration = duration;
             Order.Duration = duration;
-            Order.PaymentAmount = CSO.Price * (CSO.Duration / 60.0f);
+            if(CSO.Service.Name == ServiceType.Curatenie.ToString())
+            {
+                Order.PaymentAmount = CSO.Price * int.Parse(surfaceEntry.Text);
+            }
+            else
+            {
+                Order.PaymentAmount = CSO.Price * (CSO.Duration / 60);
+            }
             Order.InitialPaymentAmount = Order.PaymentAmount;
             orderButton.IsEnabled = true;
         }
@@ -221,19 +249,22 @@ namespace AppFrontend.ContentPages
         {
             var order = ConvertToOrder();
             AddOrder(order);
-            var offerID = 1;
-            var selectedOffer = offersPicker.SelectedItem.ToString();
-            if (selectedOffer.Contains("%"))
+            if(offersPicker.SelectedItem != null)
             {
-                int numericValue = int.Parse(selectedOffer.Substring(0, selectedOffer.IndexOf("%")));
-                offerID = OffersJSON.Where(o => o.Type == DiscountType.Percentage && o.Discount == numericValue).FirstOrDefault().ID;
+                var offerID = 1;
+                var selectedOffer = offersPicker.SelectedItem.ToString();
+                if (selectedOffer.Contains("%"))
+                {
+                    int numericValue = int.Parse(selectedOffer.Substring(0, selectedOffer.IndexOf("%")));
+                    offerID = OffersJSON.Where(o => o.Type == DiscountType.Percentage && o.Discount == numericValue).FirstOrDefault().ID;
+                }
+                else
+                {
+                    int numericValue = int.Parse(selectedOffer.Substring(0, selectedOffer.IndexOf(" lei")));
+                    offerID = OffersJSON.Where(o => o.Type == DiscountType.Value && o.Discount == numericValue).FirstOrDefault().ID;
+                }
+                DeleteOffer(offerID);
             }
-            else
-            {
-                int numericValue = int.Parse(selectedOffer.Substring(0, selectedOffer.IndexOf(" lei")));
-                offerID = OffersJSON.Where(o => o.Type == DiscountType.Value && o.Discount == numericValue).FirstOrDefault().ID;
-            }
-            DeleteOffer(offerID);
         }
 
         private async void DeleteOffer(int offerID)
@@ -279,7 +310,7 @@ namespace AppFrontend.ContentPages
 
         private OrderDTO ConvertToOrder()
         {
-            return new OrderDTO()
+            var order = new OrderDTO()
             {
                 StartTime = CSO.DateTime,
                 Duration = CSO.Duration,
@@ -287,15 +318,20 @@ namespace AppFrontend.ContentPages
                 ClientEmail = globalService.Client.Email,
                 CompanyID = CSO.Company.ID,
                 PaymentAmount = Order.PaymentAmount,
-                Details = GetDetailsDictionary(),
                 Comment = commentEntry.Text
             };
+
+            if (CSO.Service.Name == ServiceType.Curatenie.ToString())
+            {
+                order.Details = GetDetailsDictionary();
+            }
+            return order;
         }
 
         private Dictionary<string, string> GetDetailsDictionary()
         {
             Dictionary<string, string> details = new Dictionary<string, string>();
-            if(CSO.Service.Name == ServiceType.Curatare.ToString())
+            if(CSO.Service.Name == ServiceType.Curatenie.ToString())
             {
                 details.Add(noRoomsLabel.Text, noRoomsEntry.Text);
                 details.Add(surfaceLabel.Text, surfaceEntry.Text);

@@ -129,8 +129,6 @@ namespace AppFrontend.ContentPages
                 description.IsVisible = false;
                 servicesLabel.IsVisible = true;
                 saveButton.IsVisible = true;
-                //functionEntryGrid.IsVisible = false;
-                //functionsUniformGrid.IsVisible = false;
                 multiListViewServices.IsVisible = true;
             }
             else if(page1Button.IsChecked == true)
@@ -147,41 +145,9 @@ namespace AppFrontend.ContentPages
                 description.IsVisible = true;
                 servicesLabel.IsVisible = false;
                 saveButton.IsVisible = false;
-                //functionEntryGrid.IsVisible = false;
-                //functionsUniformGrid.IsVisible = false;
                 multiListViewServices.IsVisible = false;
             }
-            /*else
-            {
-                name.IsVisible = false;
-                city.IsVisible = false;
-                street.IsVisible = false;
-                streetNumber.IsVisible = false;
-                building.IsVisible = false;
-                staircase.IsVisible = false;
-                apartmentNumber.IsVisible = false;
-                floor.IsVisible = false;
-                site.IsVisible = false;
-                description.IsVisible = false;
-                servicesLabel.IsVisible = true;
-                saveButton.IsVisible = true;
-                functionEntryGrid.IsVisible = false;
-                functionsUniformGrid.IsVisible = false;
-                multiListViewServices.IsVisible = true;
-            }*/
         }
-
-        /*private void AddFunctionToList(object sender, EventArgs e)
-        {
-            if(company.Functions.Contains(function.Text))
-            {
-                CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.FunctionError);
-            }
-            else
-            {
-                company.Functions.Add(function.Text);
-            }
-        }*/
 
         private async void ChoosePhotoFromGallery(object sender, EventArgs e)
         {
@@ -242,11 +208,6 @@ namespace AppFrontend.ContentPages
 
         private void GetCompanyAccountUpdatesFromUI(object sender, EventArgs e)
         {
-            /*var functions = new List<string>();
-            foreach(var function in company.Functions)
-            {
-                functions.Add(function);
-            }*/
             var Company = new CompanyDTO()
             {
                 Name = company.Name,
@@ -258,8 +219,7 @@ namespace AppFrontend.ContentPages
                 ApartmentNumber = company.ApartmentNumber,
                 Floor = company.Floor,
                 Site = company.Site,
-                Description = company.Description,
-                //Functions = functions
+                Description = company.Description
             };
             List<CompanyServiceOptionDTO> services = new List<CompanyServiceOptionDTO>();
             foreach(var service in company.Services)
@@ -284,6 +244,8 @@ namespace AppFrontend.ContentPages
                 var json = JsonConvert.SerializeObject(companyServiceOptions);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+                var token = SecureStorage.GetAsync("company_token").Result;
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage response = await httpClient.PostAsync(url, content);
 
                 if (response.StatusCode == HttpStatusCode.Conflict)
@@ -304,6 +266,8 @@ namespace AppFrontend.ContentPages
                 var json = JsonConvert.SerializeObject(Company);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+                var token = SecureStorage.GetAsync("company_token").Result;
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage response = await httpClient.PutAsync(url, content);
 
                 if (response.IsSuccessStatusCode)
@@ -316,14 +280,5 @@ namespace AppFrontend.ContentPages
                 }
             }
         }
-
-        /*private void RemoveFunctionFromList(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            Grid grid = (Grid)button.Parent;
-            Label label = (Label)grid.Children[0];
-            string function = label.Text;
-            company.Functions.Remove(function);
-        }*/
     }
 }

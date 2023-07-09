@@ -139,7 +139,7 @@
                            Grid.Row="8"
                            Grid.ColumnSpan="2"
                     />
-                    <Button
+                    <Button x:Name="etaBtn"
                         Text="Calculeaza timp estimat" 
                         BackgroundColor="#667284" 
                         TextColor="White" 

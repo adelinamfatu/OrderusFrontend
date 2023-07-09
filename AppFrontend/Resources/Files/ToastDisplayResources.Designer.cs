@@ -142,6 +142,24 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la confirmarea angajatului.
+        /// </summary>
+        internal static string CompanyEmployeeConfirmError {
+            get {
+                return ResourceManager.GetString("CompanyEmployeeConfirmError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Angajatul a fost confirmat cu succes.
+        /// </summary>
+        internal static string CompanyEmployeeConfirmSuccess {
+            get {
+                return ResourceManager.GetString("CompanyEmployeeConfirmSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to S-a produs o eroare la salvarea serviciilor.
         /// </summary>
         internal static string CompanyServicesError {
