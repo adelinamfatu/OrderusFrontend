@@ -13,6 +13,9 @@ namespace AppFrontend.Resources.Helpers
         Franceza,
         Engleza,
         Fizica,
-        Chimie
+        Chimie,
+        Contabilitate,
+        Consultanta_financiara,
+        Marketing_si_publicitate
     }
 }

@@ -32,7 +32,7 @@ namespace AppFrontend.ContentPages
 
         public List<string> Offers { get; set; }
 
-        HashSet<string> privateLessonsTypes = new HashSet<string>
+        private HashSet<string> privateLessonsTypes = new HashSet<string>
         {
             ServiceType.Matematica.ToString(),
             ServiceType.Romana.ToString(),
@@ -40,6 +40,13 @@ namespace AppFrontend.ContentPages
             ServiceType.Chimie.ToString(),
             ServiceType.Fizica.ToString(),
             ServiceType.Engleza.ToString()
+        };
+
+        private HashSet<string> businessTypes = new HashSet<string>
+        {
+            ServiceType.Contabilitate.ToString(),
+            ServiceType.Marketing_si_publicitate.ToString().Replace("_", " "),
+            ServiceType.Consultanta_financiara.ToString().Replace("_", " ")
         };
 
         public BasketPage()
@@ -109,7 +116,7 @@ namespace AppFrontend.ContentPages
                 noRoomsLabel.IsVisible = true;
                 noRoomsEntry.IsVisible = true;
             }
-            else if(privateLessonsTypes.Contains(CSO.Service.Name))
+            else if(privateLessonsTypes.Contains(CSO.Service.Name) || businessTypes.Contains(CSO.Service.Name))
             {
                 etaBtn.Text = "Calculeaza pret";
             }
@@ -168,7 +175,7 @@ namespace AppFrontend.ContentPages
                         SendCleaningServiceData(ConvertCSOToPO.Convert(CSO, globalService.Client.Email));
                     }
                 }
-                else if (privateLessonsTypes.Contains(CSO.Service.Name))
+                else if (privateLessonsTypes.Contains(CSO.Service.Name) || businessTypes.Contains(CSO.Service.Name))
                 {
                     ShowToast(60);
                 }
@@ -237,7 +244,7 @@ namespace AppFrontend.ContentPages
             {
                 Order.PaymentAmount = CSO.Price * int.Parse(surfaceEntry.Text);
             }
-            else
+            else if(privateLessonsTypes.Contains(CSO.Service.Name) || businessTypes.Contains(CSO.Service.Name))
             {
                 Order.PaymentAmount = CSO.Price * (CSO.Duration / 60);
             }
