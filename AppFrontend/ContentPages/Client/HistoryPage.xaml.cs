@@ -77,8 +77,7 @@ namespace AppFrontend.ContentPages
 
         private void OpenReceipt(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            OrderViewModel order = (OrderViewModel)button.BindingContext;
+            var order = (OrderViewModel)((MenuItem)sender).BindingContext;
             Navigation.PushAsync(new OrderReceiptPage(order));
         }
 

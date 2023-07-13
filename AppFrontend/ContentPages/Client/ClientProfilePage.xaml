@@ -5,9 +5,6 @@
              x:Class="AppFrontend.ContentPages.ClientProfilePage"
              Title="Orderus">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="bell.png" Priority="1" Clicked="OpenNotificationsPage" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <conv:ImageUriConverter x:Key="ImageUriConverter" />
     </ContentPage.Resources>
@@ -39,7 +36,7 @@
                         Clicked="OpenAccountInformationPage"
                         TextColor="White"
                         FontSize="16"/>
-                <Button Text="Roata" 
+                <Button Text="Roata de oferte" 
                         Clicked="OpenSpinningWheelPage"
                         CornerRadius="20" 
                         BackgroundColor="#94b1e3"
