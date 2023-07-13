@@ -268,6 +268,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to repairing/.
+        /// </summary>
+        internal static string RepairingURL {
+            get {
+                return ResourceManager.GetString("RepairingURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to schedule/.
         /// </summary>
         internal static string ScheduleURL {

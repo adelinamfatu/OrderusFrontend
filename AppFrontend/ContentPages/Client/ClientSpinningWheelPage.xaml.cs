@@ -305,7 +305,7 @@ namespace AppFrontend.ContentPages.Client
             var realIndex = viewModel.ChartData.Count == viewModel.ChartData.Count - (int)int_segment2 ? 0 : viewModel.ChartData.Count - (int)int_segment2;
             viewModel.Prize = viewModel.ChartData[realIndex].Sector;
             priceBox.Text = viewModel.Prize?.Price.ToString();
-            if (viewModel.Prize?.Price.ToString() == "ghinion")
+            if (viewModel.Prize?.Price.ToString() == "necastigator")
             {
                 priceBox.TextColor = Color.Red;
             }

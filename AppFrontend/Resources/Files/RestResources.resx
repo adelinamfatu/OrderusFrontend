@@ -186,6 +186,9 @@
   <data name="PhotoURL" xml:space="preserve">
     <value>photo/</value>
   </data>
+  <data name="RepairingURL" xml:space="preserve">
+    <value>repairing/</value>
+  </data>
   <data name="ScheduleURL" xml:space="preserve">
     <value>schedule/</value>
   </data>

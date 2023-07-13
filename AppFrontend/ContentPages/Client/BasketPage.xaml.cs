@@ -49,6 +49,12 @@ namespace AppFrontend.ContentPages
             ServiceType.Consultanta_financiara.ToString().Replace("_", " ")
         };
 
+        private HashSet<string> eventTypes = new HashSet<string>
+        {
+            ServiceType.Fotografie.ToString(),
+            ServiceType.Planificare_si_coordonare.ToString().Replace("_", " ")
+        };
+
         public BasketPage()
         {
             InitializeComponent();
@@ -116,9 +122,17 @@ namespace AppFrontend.ContentPages
                 noRoomsLabel.IsVisible = true;
                 noRoomsEntry.IsVisible = true;
             }
-            else if(privateLessonsTypes.Contains(CSO.Service.Name) || businessTypes.Contains(CSO.Service.Name))
+            else if(privateLessonsTypes.Contains(CSO.Service.Name) || businessTypes.Contains(CSO.Service.Name)
+                                        || eventTypes.Contains(CSO.Service.Name))
             {
                 etaBtn.Text = "Calculeaza pret";
+            }
+            else if(CSO.Service.Name == ServiceType.Reparatii.ToString())
+            {
+                complexityLabel.IsVisible = true;
+                complexitySlider.IsVisible = true;
+                noRepairsLabel.IsVisible = true;
+                noRepairsEntry.IsVisible = true;
             }
         }
 
@@ -172,12 +186,26 @@ namespace AppFrontend.ContentPages
                     {
                         CSO.Surface = int.Parse(surfaceEntry.Text);
                         CSO.NbRooms = int.Parse(noRoomsEntry.Text);
-                        SendCleaningServiceData(ConvertCSOToPO.Convert(CSO, globalService.Client.Email));
+                        SendServiceData(ConvertCSOToPO.Convert(CSO, globalService.Client.Email), RestResources.CleaningURL);
                     }
                 }
-                else if (privateLessonsTypes.Contains(CSO.Service.Name) || businessTypes.Contains(CSO.Service.Name))
+                else if (privateLessonsTypes.Contains(CSO.Service.Name) || businessTypes.Contains(CSO.Service.Name)
+                                                || eventTypes.Contains(CSO.Service.Name))
                 {
                     ShowToast(60);
+                }
+                else if(CSO.Service.Name == ServiceType.Reparatii.ToString())
+                {
+                    if (noRepairsEntry.Text == null)
+                    {
+                        CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.DataMissingError);
+                    }
+                    else
+                    {
+                        CSO.Complexity = (int)complexitySlider.Value;
+                        CSO.NbRepairs = int.Parse(noRepairsEntry.Text);
+                        SendServiceData(ConvertCSOToPO.Convert(CSO, globalService.Client.Email), RestResources.RepairingURL);
+                    }
                 }
 
                 //other orders
@@ -205,9 +233,9 @@ namespace AppFrontend.ContentPages
             return true;
         }
 
-        private async void SendCleaningServiceData(PossibleOrderDTO po)
+        private async void SendServiceData(PossibleOrderDTO po, string serviceName)
         {
-            string url = RestResources.ConnectionURL + RestResources.OrdersURL + RestResources.CleaningURL;
+            string url = RestResources.ConnectionURL + RestResources.OrdersURL + serviceName;
 
             var handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
@@ -234,7 +262,7 @@ namespace AppFrontend.ContentPages
 
         private void ShowToast(int duration)
         {
-            if(CSO.Service.Name == ServiceType.Curatenie.ToString())
+            if(CSO.Service.Name == ServiceType.Curatenie.ToString() || CSO.Service.Name == ServiceType.Reparatii.ToString())
             {
                 CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.OrderTimeEstimationSuccess);
             }
@@ -244,7 +272,8 @@ namespace AppFrontend.ContentPages
             {
                 Order.PaymentAmount = CSO.Price * int.Parse(surfaceEntry.Text);
             }
-            else if(privateLessonsTypes.Contains(CSO.Service.Name) || businessTypes.Contains(CSO.Service.Name))
+            else if(privateLessonsTypes.Contains(CSO.Service.Name) || businessTypes.Contains(CSO.Service.Name)
+                                    || eventTypes.Contains(CSO.Service.Name))
             {
                 Order.PaymentAmount = CSO.Price * (CSO.Duration / 60);
             }

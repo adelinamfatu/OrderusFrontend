@@ -23,6 +23,12 @@ namespace AppFrontend.Resources.Helpers
                 po.NbRooms = cso.NbRooms;
             }
 
+            if (cso.Service.Name == ServiceType.Reparatii.ToString())
+            {
+                po.Complexity = cso.Complexity;
+                po.NbRepairs = cso.NbRepairs;
+            }
+
             return po;
         }
     }

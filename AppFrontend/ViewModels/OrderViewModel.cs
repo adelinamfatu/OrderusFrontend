@@ -144,7 +144,19 @@ namespace AppFrontend.ViewModels
 
         public bool IsConfirmed { get; set; }
 
-        public Color Color { get; set; }
+        public Color color { get; set; }
+        public Color Color
+        {
+            get { return color; }
+            set
+            {
+                if (color != value)
+                {
+                    color = value;
+                    OnPropertyChanged(nameof(Color));
+                }
+            }
+        }
 
         public string Comment { get; set; }
 

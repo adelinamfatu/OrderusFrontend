@@ -94,9 +94,8 @@ namespace AppFrontend.ContentPages
 
             if(result)
             {
-                Button button = (Button)sender;
-                var order = (OrderViewModel)button.BindingContext;
-                SendCancelOrderRequest(order.ID);
+                var ID = int.Parse(((MenuItem)sender).CommandParameter.ToString());
+                SendCancelOrderRequest(ID);
             }
         }
 

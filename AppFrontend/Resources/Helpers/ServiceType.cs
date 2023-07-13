@@ -7,7 +7,7 @@ namespace AppFrontend.Resources.Helpers
     public enum ServiceType
     {
         Curatenie,
-        Reparare,
+        Reparatii,
         Matematica,
         Romana,
         Franceza,
@@ -16,6 +16,9 @@ namespace AppFrontend.Resources.Helpers
         Chimie,
         Contabilitate,
         Consultanta_financiara,
-        Marketing_si_publicitate
+        Marketing_si_publicitate,
+        Fotografie,
+        Planificare_si_coordonare,
+        Catering
     }
 }

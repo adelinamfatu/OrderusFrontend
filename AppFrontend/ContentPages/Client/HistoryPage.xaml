@@ -9,7 +9,17 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Vertical" Margin="5,5">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Anuleaza" 
+                                               BackgroundColor="Red" 
+                                               Clicked="CancelOrder" 
+                                               IsVisible="{Binding IsNotFinished}"
+                                               CommandParameter="{Binding ID}"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <StackLayout Orientation="Vertical" Margin="5,5">
                             <Frame CornerRadius="10" Padding="10" BackgroundColor="{Binding Color}">
                                 <Grid VerticalOptions="Center">
                                     <Grid.ColumnDefinitions>
@@ -54,7 +64,7 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Button x:Name="btnReceipt"
+                                        <Button x:Name="btnReceipt"
                                             ImageSource="receipt.png"
                                             Clicked="OpenReceipt"
                                             Grid.Row="1"
@@ -65,20 +75,10 @@
                                             HorizontalOptions="End"
                                             IsVisible="{Binding IsNotCancelled}"
                                     />
-                                    <Button x:Name="btnCancelOrder"
-                                            ImageSource="cancel.png"
-                                            Clicked="CancelOrder"
-                                            Grid.Row="1"
-                                            Grid.Column="1"
-                                            BackgroundColor="OrangeRed"
-                                            WidthRequest="50"
-                                            CornerRadius="20"
-                                            HorizontalOptions="End"
-                                            IsVisible="{Binding IsNotFinished}"
-                                    />
-                                </Grid>
+                                    </Grid>
                             </Frame>
                         </StackLayout>
+                        </SwipeView>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
