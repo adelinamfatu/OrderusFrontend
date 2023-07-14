@@ -12,11 +12,11 @@
     <ScrollView>
         <xct:UniformGrid x:Name="servicesUniformGrid" VerticalOptions="FillAndExpand" BindableLayout.ItemsSource="{Binding Services, Mode=OneWay}">
             <BindableLayout.EmptyView>
-                <Label Text="Nu exista servicii pentru categoria respectiva, pagina este in constructie"/>
+                <Label Text="Pagina este in constructie"/>
             </BindableLayout.EmptyView>
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <Frame Padding="5" BackgroundColor="Transparent" CornerRadius="20">
+                    <Frame Padding="5" BackgroundColor="Transparent">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OpenCompanySearchPage" />
                         </Frame.GestureRecognizers>
@@ -25,20 +25,14 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Frame
+                            <Image
+                                Source="{Binding Icon, Converter={StaticResource ImageUriConverter}}"
                                 Grid.Row="0"
-                                Padding="0"
                                 WidthRequest="130"
                                 HeightRequest="150"
+                                Aspect="AspectFill"
                                 Margin="10,10,10,0"
-                                HasShadow="False"
-                                CornerRadius="20"
-                                >
-                                <Image
-                                    Source="{Binding Icon, Converter={StaticResource ImageUriConverter}}"
-                                    Aspect="AspectFill"
-                                />  
-                            </Frame>
+                            />
                             <Label HorizontalOptions="Center" VerticalOptions="Center"
                                 Text="{Binding Name}"
                                 TextColor="White"

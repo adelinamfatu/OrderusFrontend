@@ -31,9 +31,9 @@ namespace AppFrontend.Droid.Renderers
 
             Control.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.ParseColor("#667284"));
 
-            IntPtr IntPtrtextViewClass = JNIEnv.FindClass(typeof(TextView));
+            /*IntPtr IntPtrtextViewClass = JNIEnv.FindClass(typeof(TextView));
             IntPtr mCursorDrawableResProperty = JNIEnv.GetFieldID(IntPtrtextViewClass, "mCursorDrawableRes", "I");
-            JNIEnv.SetField(Control.Handle, mCursorDrawableResProperty, Resource.Drawable.my_cursor);
+            JNIEnv.SetField(Control.Handle, mCursorDrawableResProperty, Resource.Drawable.my_cursor);*/
         } 
     }
 }

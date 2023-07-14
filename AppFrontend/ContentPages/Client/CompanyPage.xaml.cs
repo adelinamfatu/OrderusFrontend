@@ -4,6 +4,7 @@ using AppFrontend.Resources;
 using AppFrontend.Resources.Files;
 using AppFrontend.Resources.Helpers;
 using Newtonsoft.Json;
+using Plugin.Toast;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -130,23 +131,31 @@ namespace AppFrontend.ContentPages
 
         private async void ServiceSelectedEvent(object sender, ItemTappedEventArgs e)
         {
-            var service = (CompanyServiceOptionDTO)e.Item;
-            service.Company = Company;
-            var message = $"{string.Format(ToastDisplayResources.ServiceSelected, service.Service.Name)}";
-
-            var response = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+            if (Preferences.ContainsKey("BasketItem"))
             {
-                Title = ToastDisplayResources.ServiceSelectedTitle,
-                Message = message,
-                OkText = ToastDisplayResources.PromptYes,
-                CancelText = ToastDisplayResources.PromptCancel
-            });
-
-            if(response)
+                CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.AddOrderToBasketError);
+            }
+            else
             {
-                Preferences.Set("BasketItem", JsonConvert.SerializeObject(service));
-                var basketItemMessage = new BasketItemMessage { CSO = service };
-                MessagingCenter.Send(this, "BasketItemMessage", basketItemMessage);
+                var service = (CompanyServiceOptionDTO)e.Item;
+                service.Company = Company;
+                var message = $"{string.Format(ToastDisplayResources.ServiceSelected, service.Service.Name)}";
+
+                var response = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+                {
+                    Title = ToastDisplayResources.ServiceSelectedTitle,
+                    Message = message,
+                    OkText = ToastDisplayResources.PromptYes,
+                    CancelText = ToastDisplayResources.PromptCancel
+                });
+
+                if (response)
+                {
+                    Preferences.Set("BasketItem", JsonConvert.SerializeObject(service));
+                    var basketItemMessage = new BasketItemMessage { CSO = service };
+                    MessagingCenter.Send(this, "BasketItemMessage", basketItemMessage);
+                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.AddOrderToBasketSuccess);
+                }
             }
         }
     }

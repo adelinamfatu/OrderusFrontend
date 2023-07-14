@@ -58,12 +58,14 @@ namespace AppFrontend.ContentPages
         public BasketPage()
         {
             InitializeComponent();
+            Order = new OrderViewModel();
             Offers = new List<string>();
             GetBasketInformation();
             globalService = DependencyService.Get<GlobalService>();
             MessagingCenter.Subscribe<CompanyPage, BasketItemMessage>(this, "BasketItemMessage", (sender, message) =>
             {
                 CSO = message.CSO;
+                SetUIServiceInformation();
             });
             if(Preferences.ContainsKey("BasketItem"))
             {
@@ -86,7 +88,6 @@ namespace AppFrontend.ContentPages
             {
                 var basketItemJson = Preferences.Get("BasketItem", "");
                 CSO = JsonConvert.DeserializeObject<CompanyServiceOptionDTO>(basketItemJson);
-                Order = new OrderViewModel();
                 Order.Duration = 0;
             }
             else
@@ -115,6 +116,10 @@ namespace AppFrontend.ContentPages
 
         private void SetUIServiceInformation()
         {
+            Order.CompanyName = CSO.Company.Name;
+            Order.UnitOfMeasurement = CSO.Service.UnitOfMeasurement;
+            Order.Price = CSO.Price;
+
             if(CSO.Service.Name == ServiceType.Curatenie.ToString())
             {
                 surfaceLabel.IsVisible = true;
@@ -163,7 +168,7 @@ namespace AppFrontend.ContentPages
             {
                 Offers.Add(offer.Discount + (offer.Type == DiscountType.Percentage ? "%" : " lei"));
             }
-            this.BindingContext = this;
+            this.BindingContext = Order;
         }
 
         private void CalculateEstimatedDuration(object sender, EventArgs e)
@@ -271,6 +276,10 @@ namespace AppFrontend.ContentPages
             if(CSO.Service.Name == ServiceType.Curatenie.ToString())
             {
                 Order.PaymentAmount = CSO.Price * int.Parse(surfaceEntry.Text);
+            }
+            else if(CSO.Service.Name == ServiceType.Reparatii.ToString())
+            {
+                Order.PaymentAmount = CSO.Price * int.Parse(noRepairsEntry.Text);
             }
             else if(privateLessonsTypes.Contains(CSO.Service.Name) || businessTypes.Contains(CSO.Service.Name)
                                     || eventTypes.Contains(CSO.Service.Name))

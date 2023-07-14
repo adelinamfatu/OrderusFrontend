@@ -158,6 +158,48 @@ namespace AppFrontend.ViewModels
             }
         }
 
+        public string companyName { get; set; }
+        public string CompanyName
+        {
+            get { return companyName; }
+            set
+            {
+                if (companyName != value)
+                {
+                    companyName = value;
+                    OnPropertyChanged(nameof(CompanyName));
+                }
+            }
+        }
+
+        public string unitOfMeasurement { get; set; }
+        public string UnitOfMeasurement
+        {
+            get { return unitOfMeasurement; }
+            set
+            {
+                if (unitOfMeasurement != value)
+                {
+                    unitOfMeasurement = value;
+                    OnPropertyChanged(nameof(UnitOfMeasurement));
+                }
+            }
+        }
+
+        public float price { get; set; }
+        public float Price
+        {
+            get { return price; }
+            set
+            {
+                if (price != value)
+                {
+                    price = value;
+                    OnPropertyChanged(nameof(Price));
+                }
+            }
+        }
+
         public string Comment { get; set; }
 
         public string ClientPhoneNumber { get; set; }

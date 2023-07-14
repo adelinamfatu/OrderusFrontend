@@ -61,6 +61,24 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aveti deja o comanda in cos.
+        /// </summary>
+        internal static string AddOrderToBasketError {
+            get {
+                return ResourceManager.GetString("AddOrderToBasketError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comanda dvs a fost adaugata in cos.
+        /// </summary>
+        internal static string AddOrderToBasketSuccess {
+            get {
+                return ResourceManager.GetString("AddOrderToBasketSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sunteti sigur ca vreti sa anulati comanda?.
         /// </summary>
         internal static string CancelOrder {

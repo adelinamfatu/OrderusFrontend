@@ -23,7 +23,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Text="{Binding CSO.Company.Name}"
+                    <Label Text="{Binding CompanyName}"
                            Grid.Row="0"
                            Grid.Column="0"
                            TextTransform="Uppercase"
@@ -57,9 +57,9 @@
                            TextColor="Black">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding CSO.Price}" />
+                                <Span Text="{Binding Price}" />
                                 <Span Text=" lei / " />
-                                <Span Text="{Binding CSO.Service.UnitOfMeasurement}" />
+                                <Span Text="{Binding UnitOfMeasurement}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -69,7 +69,7 @@
                            FontSize="18"
                            TextColor="Black"
                     />
-                    <Label Text="{Binding Order.Duration}"
+                    <Label Text="{Binding Duration}"
                            Grid.Row="2"
                            Grid.Column="1"
                            FontSize="18"
@@ -150,7 +150,7 @@
                     />
                     <Label x:Name="noRepairsLabel"
                            IsVisible="false"
-                           Text="Numar obiecte de reparat"
+                           Text="Nr obiecte de reparat"
                            Grid.Row="6"
                            Grid.Column="1"
                            FontSize="18"
@@ -198,7 +198,7 @@
                            HorizontalOptions="Center"
                            TextColor="Black"
                     />
-                    <Label Text="{Binding Order.PaymentAmount, StringFormat='{0:F2} lei'}"
+                    <Label Text="{Binding PaymentAmount, StringFormat='{0:F2} lei'}"
                            Grid.Column="1"
                            FontSize="20"
                            VerticalOptions="Center"
@@ -210,7 +210,6 @@
                         SelectedIndexChanged="AddOfferToOrder"
                         HorizontalTextAlignment="Center"
                         Title="Reducere"
-                        ItemsSource="{Binding Offers}"
                         Grid.Column="2"
                         />
                     <Button x:Name="orderButton"

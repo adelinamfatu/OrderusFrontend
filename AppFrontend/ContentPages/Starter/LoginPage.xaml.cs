@@ -119,7 +119,7 @@ namespace AppFrontend.ContentPages
         private async Task ShowSuccessToastAndWaitForDismissal(string successMessage)
         {
             CrossToastPopUp.Current.ShowToastSuccess(successMessage);
-            await Task.Delay(1000);
+            await Task.Delay(500);
         }
 
         private ClientDTO GetClientFromUI()

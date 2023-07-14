@@ -201,7 +201,7 @@ namespace AppFrontend.ContentPages
                 Name = char.ToUpper(clientName.Text[0]) + clientName.Text.Substring(1),
                 Surname = char.ToUpper(clientSurname.Text[0]) + clientSurname.Text.Substring(1),
                 City = clientCity.Text,
-                Street = clientStreetTypePicker.SelectedItem + clientStreet.Text,
+                Street = clientStreetTypePicker.SelectedItem + " " + clientStreet.Text,
                 StreetNumber = clientStreetNumber.Text,
                 Building = !string.IsNullOrEmpty(clientBuilding.Text) ? clientBuilding.Text : null,
                 Staircase = !string.IsNullOrEmpty(clientStaircase.Text) ? clientStaircase.Text : null,
