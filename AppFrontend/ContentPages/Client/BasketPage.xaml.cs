@@ -30,8 +30,6 @@ namespace AppFrontend.ContentPages
 
         public List<OfferDTO> OffersJSON { get; set; }
 
-        public List<string> Offers { get; set; }
-
         private HashSet<string> privateLessonsTypes = new HashSet<string>
         {
             ServiceType.Matematica.ToString(),
@@ -59,7 +57,6 @@ namespace AppFrontend.ContentPages
         {
             InitializeComponent();
             Order = new OrderViewModel();
-            Offers = new List<string>();
             GetBasketInformation();
             globalService = DependencyService.Get<GlobalService>();
             MessagingCenter.Subscribe<CompanyPage, BasketItemMessage>(this, "BasketItemMessage", (sender, message) =>
@@ -166,7 +163,7 @@ namespace AppFrontend.ContentPages
         {
             foreach(var offer in OffersJSON)
             {
-                Offers.Add(offer.Discount + (offer.Type == DiscountType.Percentage ? "%" : " lei"));
+                Order.Offers.Add(offer.Discount + (offer.Type == DiscountType.Percentage ? "%" : " lei"));
             }
             this.BindingContext = Order;
         }

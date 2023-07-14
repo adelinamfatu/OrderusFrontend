@@ -16,6 +16,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -35,6 +36,20 @@ namespace AppFrontend.ContentPages
             InitializeComponent();
             globalService = DependencyService.Get<GlobalService>();
             globalService.PropertyChanged += GlobalService_PropertyChanged;
+            scheduledOrdersListView.Refreshing += OnListViewRefreshing;
+        }
+
+        private async void OnListViewRefreshing(object sender, EventArgs e)
+        {
+            scheduledOrdersListView.IsRefreshing = true;
+            await RefreshDataAsync();
+            scheduledOrdersListView.IsRefreshing = false;
+        }
+
+        private async Task RefreshDataAsync()
+        {
+            GetDataForUI();
+            await Task.Delay(2000); 
         }
 
         private void GlobalService_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -71,7 +86,11 @@ namespace AppFrontend.ContentPages
         {
             foreach (var order in ordersJSON)
             {
-                this.Orders.Add(new OrderViewModel(order));
+                var orderView = new OrderViewModel(order);
+                if(!Orders.Any(o => o.StartTime <= orderView.StartTime && o.FinishTime >= orderView.StartTime))
+                {
+                    this.Orders.Add(orderView);
+                }
             }
         }
 

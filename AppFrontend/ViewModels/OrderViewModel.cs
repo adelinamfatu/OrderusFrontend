@@ -70,6 +70,8 @@ namespace AppFrontend.ViewModels
             }
         }
 
+        public string EmployeePhoneNumber { get; set; }
+
         public string ServiceName { get; set; }
 
         public float InitialPaymentAmount { get; set; }
@@ -204,6 +206,8 @@ namespace AppFrontend.ViewModels
 
         public string ClientPhoneNumber { get; set; }
 
+        public ObservableCollection<string> Offers { get; set; }
+
         public OrderViewModel(OrderDTO order)
         {
             this.ID = order.ID;
@@ -216,7 +220,9 @@ namespace AppFrontend.ViewModels
             this.Comment = order.Comment;
             this.ClientPhoneNumber = order.ClientNumber;
             this.IsConfirmed = order.IsConfirmed;
+            this.EmployeePhoneNumber = order.EmployeePhoneNumber;
             this.Materials = new ObservableCollection<MaterialDTO>();
+            this.Offers = new ObservableCollection<string>();
             Time = new TimeSpan(10, 0, 1);
             SetCurrentOrder();
             SetOrderColor();

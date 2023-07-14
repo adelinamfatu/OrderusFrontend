@@ -207,9 +207,10 @@
                     />
                     <custom:CustomPicker
                         x:Name="offersPicker"
+                        ItemsSource="{Binding Offers}"
                         SelectedIndexChanged="AddOfferToOrder"
                         HorizontalTextAlignment="Center"
-                        Title="Reducere"
+                        Title="Oferte"
                         Grid.Column="2"
                         />
                     <Button x:Name="orderButton"
