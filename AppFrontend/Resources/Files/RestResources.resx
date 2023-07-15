@@ -189,6 +189,9 @@
   <data name="RepairingURL" xml:space="preserve">
     <value>repairing/</value>
   </data>
+  <data name="ReviewsURL" xml:space="preserve">
+    <value>reviews/</value>
+  </data>
   <data name="ScheduleURL" xml:space="preserve">
     <value>schedule/</value>
   </data>

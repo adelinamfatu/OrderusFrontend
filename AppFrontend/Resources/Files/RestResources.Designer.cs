@@ -277,6 +277,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to reviews/.
+        /// </summary>
+        internal static string ReviewsURL {
+            get {
+                return ResourceManager.GetString("ReviewsURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to schedule/.
         /// </summary>
         internal static string ScheduleURL {

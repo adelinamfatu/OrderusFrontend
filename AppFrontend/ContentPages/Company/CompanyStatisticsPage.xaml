@@ -7,8 +7,14 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="download.png" Priority="0" Clicked="DownloadCSVFile" />
     </ContentPage.ToolbarItems>
-    <StackLayout>
-        <charts:ChartView x:Name="servicesPieChart" HeightRequest="200" />
-        <charts:ChartView x:Name="earningsBarChart" HeightRequest="300" />
-    </StackLayout>
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Graficul serviciilor oferite" HorizontalTextAlignment="Center"/>
+            <charts:ChartView x:Name="servicesPieChart" HeightRequest="200" />
+            <Label Text="Graficul incasarilor pe ultimele luni" HorizontalTextAlignment="Center" />
+            <charts:ChartView x:Name="earningsBarChart" HeightRequest="300" />
+            <Label Text="Graficul evolutiei evaluarii de catre clienti" HorizontalTextAlignment="Center" />
+            <charts:ChartView x:Name="noteBarChart" HeightRequest="300" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

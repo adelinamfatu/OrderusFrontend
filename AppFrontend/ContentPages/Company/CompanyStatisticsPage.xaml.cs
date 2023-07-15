@@ -25,6 +25,7 @@ namespace AppFrontend.ContentPages
     {
         List<ChartEntry> ServicesData = new List<ChartEntry>();
         List<ChartEntry> EarningsData = new List<ChartEntry>();
+        List<ChartEntry> ReviewsData = new List<ChartEntry>();
 
         public GlobalService globalService { get; set; }
 
@@ -42,6 +43,7 @@ namespace AppFrontend.ContentPages
             {
                 GetServicesData();
                 GetMonthlyEarnings();
+                GetReviewNotes();
             }
         }
 
@@ -83,6 +85,27 @@ namespace AppFrontend.ContentPages
                     string json = await response.Content.ReadAsStringAsync();
                     var earningsJSON = JsonConvert.DeserializeObject<Dictionary<string, float>>(json);
                     BuildBarChart(earningsJSON);
+                }
+            }
+        }
+
+        private async void GetReviewNotes()
+        {
+            string url = RestResources.ConnectionURL + RestResources.CompaniesURL + RestResources.ReviewsURL + globalService.Company.ID;
+
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback += (send, cert, chain, sslPolicyErrors) => true;
+            using (HttpClient client = new HttpClient(handler))
+            {
+                var token = SecureStorage.GetAsync("company_token").Result;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    var reviewsJSON = JsonConvert.DeserializeObject<Dictionary<string, float>>(json);
+                    BuildLineChart(reviewsJSON);
                 }
             }
         }
@@ -129,6 +152,28 @@ namespace AppFrontend.ContentPages
                 });
             }
             earningsBarChart.Chart = new BarChart { Entries = EarningsData };
+        }
+
+        private void BuildLineChart(Dictionary<string, float> reviewsJSON)
+        {
+            Random random = new Random();
+
+            foreach (var review in reviewsJSON)
+            {
+                byte r = (byte)random.Next(256);
+                byte g = (byte)random.Next(256);
+                byte b = (byte)random.Next(256);
+                var color = new SKColor(r, g, b);
+
+                ReviewsData.Add(new ChartEntry(review.Value)
+                {
+                    Color = color,
+                    Label = review.Key,
+                    ValueLabel = review.Value.ToString(),
+                    ValueLabelColor = color
+                });
+            }
+            noteBarChart.Chart = new LineChart { Entries = EarningsData };
         }
 
         private async void DownloadCSVFile(object sender, EventArgs e)
