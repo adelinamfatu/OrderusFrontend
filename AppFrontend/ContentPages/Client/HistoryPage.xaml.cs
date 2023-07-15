@@ -48,6 +48,7 @@ namespace AppFrontend.ContentPages
 
         private async Task RefreshDataAsync()
         {
+            this.Orders.Clear();
             GetDataForUI();
             await Task.Delay(2000); 
         }
@@ -86,11 +87,7 @@ namespace AppFrontend.ContentPages
         {
             foreach (var order in ordersJSON)
             {
-                var orderView = new OrderViewModel(order);
-                if(!Orders.Any(o => o.StartTime <= orderView.StartTime && o.FinishTime >= orderView.StartTime))
-                {
-                    this.Orders.Add(orderView);
-                }
+                this.Orders.Add(new OrderViewModel(order));
             }
         }
 

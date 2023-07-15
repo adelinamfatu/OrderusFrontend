@@ -17,7 +17,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -40,10 +39,11 @@
                             VerticalOptions="Start"
                             HorizontalOptions="End"
                             Margin="0,0,5,0"
-                            Clicked="RemoveOrderFromBasket"     
+                            Clicked="RemoveOrderFromBasket"  
+                            CornerRadius="20"
                     />
                     <Label x:Name="durationLabel"
-                           Text="nedeterminat"
+                           Text="PRET PE U.M."
                            Grid.Row="1"
                            Grid.Column="0"
                            FontSize="18"
@@ -63,7 +63,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label Text="Timp estimat"
+                    <Label Text="TIMP ESTIMAT"
                            Grid.Row="2"
                            Grid.Column="0"
                            FontSize="18"
@@ -77,8 +77,7 @@
                            HorizontalTextAlignment="End"
                            TextColor="Black"
                     />
-                    <BoxView HeightRequest="5" BackgroundColor="White" Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="20" />
-                    <Label Text="Data"
+                    <Label Text="DATA"
                            Grid.Row="4"
                            Grid.Column="0"
                            FontSize="18"
@@ -90,7 +89,7 @@
                         DateSelected="datePicker_DateSelected" 
                         Grid.Column="0"
                     />
-                    <Label Text="Timpul"
+                    <Label Text="ORA"
                            Grid.Row="4"
                            Grid.Column="1"
                            FontSize="18"

@@ -62,6 +62,7 @@ namespace AppFrontend.ContentPages
             MessagingCenter.Subscribe<CompanyPage, BasketItemMessage>(this, "BasketItemMessage", (sender, message) =>
             {
                 CSO = message.CSO;
+                GetBasketInformation();
                 SetUIServiceInformation();
             });
             if(Preferences.ContainsKey("BasketItem"))
@@ -86,6 +87,11 @@ namespace AppFrontend.ContentPages
                 var basketItemJson = Preferences.Get("BasketItem", "");
                 CSO = JsonConvert.DeserializeObject<CompanyServiceOptionDTO>(basketItemJson);
                 Order.Duration = 0;
+                serviceDetailsFrame.IsVisible = true;
+                serviceOrderFrame.IsVisible = true;
+                priceInfoStackLayout.IsVisible = true;
+                emptyBasketImg.IsVisible = false;
+                emptyBasketLabel.IsVisible = false;
             }
             else
             {
@@ -363,7 +369,7 @@ namespace AppFrontend.ContentPages
                 Comment = commentEntry.Text
             };
 
-            if (CSO.Service.Name == ServiceType.Curatenie.ToString())
+            if (CSO.Service.Name == ServiceType.Curatenie.ToString() || CSO.Service.Name == ServiceType.Reparatii.ToString())
             {
                 order.Details = GetDetailsDictionary();
             }
@@ -377,6 +383,11 @@ namespace AppFrontend.ContentPages
             {
                 details.Add(noRoomsLabel.Text, noRoomsEntry.Text);
                 details.Add(surfaceLabel.Text, surfaceEntry.Text);
+            }
+            if (CSO.Service.Name == ServiceType.Reparatii.ToString())
+            {
+                details.Add(noRepairsLabel.Text, noRepairsEntry.Text);
+                details.Add(complexityLabel.Text, ((int)complexitySlider.Value).ToString());
             }
             return details;
         }
