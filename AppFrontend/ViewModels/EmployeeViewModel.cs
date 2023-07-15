@@ -11,7 +11,19 @@ namespace AppFrontend.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Email { get; set; }
+        public string email { get; set; }
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                if (email != value)
+                {
+                    email = value;
+                    OnPropertyChanged(nameof(Email));
+                }
+            }
+        }
 
         public string Surname { get; set; }
 
@@ -19,7 +31,19 @@ namespace AppFrontend.ViewModels
 
         public string Phone { get; set; }
 
-        public bool IsConfirmed { get; set; }
+        public bool isConfirmed { get; set; }
+        public bool IsConfirmed
+        {
+            get { return isConfirmed; }
+            set
+            {
+                if (isConfirmed != value)
+                {
+                    isConfirmed = value;
+                    OnPropertyChanged(nameof(IsConfirmed));
+                }
+            }
+        }
 
         public string Picture { get; set; }
 

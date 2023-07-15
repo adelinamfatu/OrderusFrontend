@@ -39,6 +39,12 @@ namespace AppFrontend.ContentPages
             this.BindingContext = this;
         }
 
+        private async Task RefreshDataAsync()
+        {
+            RetrieveEmployees();
+            await Task.Delay(2000);
+        }
+
         private void GlobalService_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Company")
@@ -78,14 +84,31 @@ namespace AppFrontend.ContentPages
         {
             foreach (var employee in employeeJSON)
             {
-                if(employee.IsConfirmed == false)
+                var existingEmployee = Employees.FirstOrDefault(e => e.Email == employee.Email);
+                if (existingEmployee != null)
                 {
-                    Employees.Add(new EmployeeViewModel(employee, services));
+                    if(existingEmployee.IsConfirmed != employee.IsConfirmed)
+                    {
+                        Employees.Remove(existingEmployee);
+                        AddEmployee(employee);
+                    }
                 }
                 else
                 {
-                    Employees.Add(new EmployeeViewModel(employee));
+                    AddEmployee(employee);
                 }
+            }
+        }
+
+        private void AddEmployee(EmployeeDTO employee)
+        {
+            if (employee.IsConfirmed == false)
+            {
+                Employees.Add(new EmployeeViewModel(employee, services));
+            }
+            else
+            {
+                Employees.Add(new EmployeeViewModel(employee));
             }
         }
 
@@ -151,9 +174,16 @@ namespace AppFrontend.ContentPages
             });
             if(result == true)
             {
-                Button button = (Button)sender;
-                EmployeeViewModel employee = (EmployeeViewModel)button.BindingContext;
-                employee.IsConfirmed = true;
+                EmployeeViewModel employee = null;
+                if (sender is Button button)
+                {
+                    employee = (EmployeeViewModel)button.BindingContext;
+                    
+                }
+                else if(sender is MenuItem menuItem)
+                {
+                    employee = (EmployeeViewModel)menuItem.BindingContext;
+                }
                 EmployeeDTO employeeToSend = new EmployeeDTO() { Email = employee.Email };
                 employeeToSend.Services = new List<ServiceDTO>();
                 foreach (var service in employee.Services)
@@ -161,6 +191,9 @@ namespace AppFrontend.ContentPages
                     employeeToSend.Services.Add(service);
                 }
                 SendEmployeeData(employeeToSend);
+                employeesListView.IsRefreshing = true;
+                await RefreshDataAsync();
+                employeesListView.IsRefreshing = false;
             }
         }
 

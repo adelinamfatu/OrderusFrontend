@@ -16,91 +16,103 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <Frame BackgroundColor="#94b1e3" CornerRadius="20" Padding="5" Margin="5,5,5,0">
-                        <Grid HorizontalOptions="FillAndExpand">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" TextColor="White" FontSize="20" HorizontalOptions="Start" Margin="5,0,0,0">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Nume: " />
-                                        <Span Text="{Binding Surname}" FontSize="20" FontAttributes="Bold" />
-                                        <Span Text=" " />
-                                        <Span Text="{Binding Name}" FontSize="20" FontAttributes="Bold" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Button
-                                ImageSource="ok.png"
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                BackgroundColor="Green"
-                                WidthRequest="60"
-                                HeightRequest="30"
-                                HorizontalOptions="End"
-                                Margin="0,0,10,0"
-                                Clicked="ConfirmEmployeeAndServices"
-                                IsVisible="{Binding IsConfirmed, Converter={StaticResource IsConfirmedConverter}}"
-                            />
-                            <Button
-                                ImageSource="employee_details.png"
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                BackgroundColor="DarkOrange"
-                                WidthRequest="60"
-                                HeightRequest="30"
-                                HorizontalOptions="End"
-                                Margin="0,0,10,0"
-                                Clicked="OpenEmployeeDetails"
-                                IsVisible="{Binding IsConfirmed}"
-                                CornerRadius="20"
-                            />
-                            <Label Grid.Row="1" Grid.ColumnSpan="2" TextColor="White" FontSize="20" HorizontalOptions="Start" Margin="5,0,0,0" IsVisible="{Binding IsConfirmed}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Email: " />
-                                        <Span Text="{Binding Email}" FontSize="20" FontAttributes="Bold" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <xct:UniformGrid x:Name="servicesUniformGrid" Grid.Row="1" Grid.ColumnSpan="2" BindableLayout.ItemsSource="{Binding Services, Mode=OneWay}" IsVisible="{Binding IsConfirmed, Converter={StaticResource IsConfirmedConverter}}">
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <Frame Padding="2" BackgroundColor="White" CornerRadius="10" Margin="10">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label 
-                                                    Text="{Binding Name}"
-                                                    TextColor="Black"
-                                                    FontAttributes="Bold"
-                                                    FontSize="20"
-                                                    Grid.Column="0"
-                                                    InputTransparent="True"  
-                                                />
-                                                <Button 
-                                                    ImageSource="cancel.png"
-                                                    WidthRequest="20"
-                                                    HeightRequest="20"
-                                                    Grid.Column="1"
-                                                    Clicked="RemoveServiceFromList"
-                                                    BackgroundColor="Red"
-                                                />
-                                            </Grid>
-                                        </Frame>
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
-                            </xct:UniformGrid>
-                        </Grid>
-                    </Frame>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Confirma" 
+                                               BackgroundColor="Green" 
+                                               Clicked="ConfirmEmployeeAndServices" 
+                                               IsVisible="{Binding IsConfirmed, Converter={StaticResource IsConfirmedConverter}}"
+                                               CommandParameter="{Binding .}"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Frame BackgroundColor="#94b1e3" CornerRadius="20" Padding="5" Margin="5,5,5,0">
+                            <Grid HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" TextColor="White" FontSize="20" HorizontalOptions="Start" Margin="5,0,0,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Nume: " />
+                                            <Span Text="{Binding Surname}" FontSize="20" FontAttributes="Bold" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding Name}" FontSize="20" FontAttributes="Bold" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button
+                                    ImageSource="ok.png"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    BackgroundColor="Green"
+                                    WidthRequest="60"
+                                    HeightRequest="30"
+                                    HorizontalOptions="End"
+                                    Margin="0,0,10,0"
+                                    Clicked="ConfirmEmployeeAndServices"
+                                    IsVisible="{Binding IsConfirmed, Converter={StaticResource IsConfirmedConverter}}"
+                                    CornerRadius="20"
+                                />
+                                <Button
+                                    ImageSource="employee_details.png"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    BackgroundColor="DarkOrange"
+                                    WidthRequest="60"
+                                    HeightRequest="30"
+                                    HorizontalOptions="End"
+                                    Margin="0,0,10,0"
+                                    Clicked="OpenEmployeeDetails"
+                                    IsVisible="{Binding IsConfirmed}"
+                                    CornerRadius="20"
+                                />
+                                <Label Grid.Row="1" Grid.ColumnSpan="2" TextColor="White" FontSize="20" HorizontalOptions="Start" Margin="5,0,0,0" IsVisible="{Binding IsConfirmed}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Email: " />
+                                            <Span Text="{Binding Email}" FontSize="20" FontAttributes="Bold" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <xct:UniformGrid x:Name="servicesUniformGrid" Grid.Row="1" Grid.ColumnSpan="2" BindableLayout.ItemsSource="{Binding Services, Mode=OneWay}" IsVisible="{Binding IsConfirmed, Converter={StaticResource IsConfirmedConverter}}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Frame Padding="2" BackgroundColor="White" CornerRadius="10" Margin="10">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label 
+                                                        Text="{Binding Name}"
+                                                        TextColor="Black"
+                                                        FontAttributes="Bold"
+                                                        FontSize="20"
+                                                        Grid.Column="0"
+                                                        InputTransparent="True"  
+                                                    />
+                                                    <Button 
+                                                        ImageSource="cancel.png"
+                                                        WidthRequest="20"
+                                                        HeightRequest="20"
+                                                        Grid.Column="1"
+                                                        Clicked="RemoveServiceFromList"
+                                                        BackgroundColor="Red"
+                                                    />
+                                                </Grid>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </xct:UniformGrid>
+                            </Grid>
+                        </Frame>
+                    </SwipeView>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
