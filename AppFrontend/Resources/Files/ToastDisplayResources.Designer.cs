@@ -430,7 +430,7 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contul deja exista sau datele sunt incorecte.
+        ///   Looks up a localized string similar to Contul nu exista sau datele sunt incorecte.
         /// </summary>
         internal static string LoginError {
             get {

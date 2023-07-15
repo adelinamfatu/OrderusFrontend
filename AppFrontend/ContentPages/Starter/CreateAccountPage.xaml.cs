@@ -262,6 +262,7 @@ namespace AppFrontend.ContentPages
                 if (response.IsSuccessStatusCode)
                 {
                     CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CreateAccountSuccess);
+                    CleanUIOfText();
                 }
                 if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
@@ -287,6 +288,7 @@ namespace AppFrontend.ContentPages
                 if (response.IsSuccessStatusCode)
                 {
                     CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CreateAccountSuccess);
+                    CleanUIOfText();
                 }
                 if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
@@ -312,12 +314,53 @@ namespace AppFrontend.ContentPages
                 if (response.IsSuccessStatusCode)
                 {
                     CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.CreateAccountSuccess);
+                    CleanUIOfText();
                 }
                 if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
                     CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.CreateAccountError);
                 }
             }
+        }
+
+        private void CleanUIOfText()
+        {
+            clientEmail.Text = null;
+            clientPhoneNumber.Text = null;
+            clientPassword.Text = null;
+            clientConfirmPassword.Text = null;
+            clientSurname.Text = null;
+            clientName.Text = null;
+            clientCity.Text = null;
+            clientStreet.Text = null;
+            clientStreetNumber.Text = null;
+            clientBuilding.Text = null;
+            clientStaircase.Text = null;
+            clientApartmentNumber.Text = null;
+            clientFloor.Text = null;
+            employeeEmail.Text = null;
+            employeePhoneNumber.Text = null;
+            employeePassword.Text = null;
+            employeeConfirmPassword.Text = null;
+            employeeSurname.Text = null;
+            employeeName.Text = null;
+            searchComboBox.Text = null;
+            companyEmail.Text = null;
+            companyPhoneNumber.Text = null;
+            companyPassword.Text = null;
+            companyConfirmPassword.Text = null;
+            companySurname.Text = null;
+            companyName.Text = null;
+            companyTitle.Text = null;
+            companyCity.Text = null;
+            companyStreet.Text = null;
+            companyStreetNumber.Text = null;
+            companyBuilding.Text = null;
+            companyStaircase.Text = null;
+            companyApartmentNumber.Text = null;
+            companyFloor.Text = null;
+            companySite.Text = null;
+            companyDescription.Text = null;
         }
 
         private void ValidateTextInput(object sender, TextChangedEventArgs e)

@@ -241,7 +241,7 @@
     <value>Functia deja exista</value>
   </data>
   <data name="LoginError" xml:space="preserve">
-    <value>Contul deja exista sau datele sunt incorecte</value>
+    <value>Contul nu exista sau datele sunt incorecte</value>
   </data>
   <data name="LoginSuccess" xml:space="preserve">
     <value>Ati fost autentificat cu succes</value>
