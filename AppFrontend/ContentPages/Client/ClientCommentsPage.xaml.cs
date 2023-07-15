@@ -66,10 +66,17 @@ namespace AppFrontend.ContentPages.Client
 
         private void ReviewOrder(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            var order = (OrderDTO)button.BindingContext;
+            var order = (OrderDTO)((MenuItem)sender).BindingContext;
             Navigation.PushAsync(new ClientReviewPage(order));
-            Orders.Remove(order);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            commentsListView.IsRefreshing = true;
+            Orders.Clear();
+            RetrieveOrders();
+            commentsListView.IsRefreshing = false;
         }
     }
 }

@@ -5,44 +5,60 @@
              Title="Comentarii">
     
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding Orders}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="{Binding ServiceName}" 
+        <StackLayout>
+            <Grid HorizontalOptions="End" WidthRequest="325">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Source="info.png" Grid.Column="0" />
+                <Label Text="Glisati la dreapta pentru a lasa un comentariu" TextColor="Gray"
+                    VerticalTextAlignment="Center" Grid.Column="1" />
+            </Grid>
+            <ListView x:Name="commentsListView" ItemsSource="{Binding Orders}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Comenteaza" 
+                                               BackgroundColor="Green" 
+                                               Clicked="ReviewOrder" 
+                                               CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding CompanyName}" 
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"    
                                         FontSize="18"
                                         Grid.Column="0" />
-                            <Label FontSize="18" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{Binding StartTime, StringFormat='{0:HH:mm}'}" FontSize="18" />
-                                        <Span Text="-" FontSize="18" />
-                                        <Span Text="{Binding FinishTime, StringFormat='{0:HH:mm}'}" FontSize="18" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <StackLayout Grid.Column="2"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center">
-                                <Button ImageSource="review.png"
-                                    BackgroundColor="Green"
-                                    CornerRadius="10"
-                                    Clicked="ReviewOrder"
-                                    WidthRequest="80"
-                                    HeightRequest="40" />
-                            </StackLayout>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                    <Label FontSize="18" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding StartTime, StringFormat='{0:HH:mm}'}" FontSize="18" />
+                                                <Span Text="-" FontSize="18" />
+                                                <Span Text="{Binding FinishTime, StringFormat='{0:HH:mm}'}" FontSize="18" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Text="{Binding StartTime, StringFormat='{0:dd.MM.yyyy}'}" 
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"    
+                                        FontSize="18"
+                                        Grid.Column="2" />
+                                </Grid>
+                            </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
