@@ -129,8 +129,10 @@ namespace AppFrontend.ContentPages
             Order.CompanyName = CSO.Company.Name;
             Order.UnitOfMeasurement = CSO.Service.UnitOfMeasurement;
             Order.Price = CSO.Price;
+            entryRow1.Height = GridLength.Auto;
+            entryRow2.Height = GridLength.Auto;
 
-            if(CSO.Service.Name == ServiceType.Curatenie.ToString())
+            if (CSO.Service.Name == ServiceType.Curatenie.ToString())
             {
                 surfaceLabel.IsVisible = true;
                 surfaceEntry.IsVisible = true;
@@ -141,6 +143,8 @@ namespace AppFrontend.ContentPages
                                         || eventTypes.Contains(CSO.Service.Name))
             {
                 etaBtn.Text = "Calculeaza pret";
+                entryRow1.Height = new GridLength(0);
+                entryRow2.Height = new GridLength(0);
             }
             else if(CSO.Service.Name == ServiceType.Reparatii.ToString())
             {
