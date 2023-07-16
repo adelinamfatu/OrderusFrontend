@@ -35,7 +35,7 @@ namespace AppFrontend.ContentPages
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             this.BarBackgroundColor = Color.FromHex("#6ba1f9");
             this.SelectedTabColor = Color.White;
-            this.UnselectedTabColor = Color.FromHex("#667284");
+            this.UnselectedTabColor = Color.FromHex("#bfcee6");
         }
 
         private async void SetClientData()

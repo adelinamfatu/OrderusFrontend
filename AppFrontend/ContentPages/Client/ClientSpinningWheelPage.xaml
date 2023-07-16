@@ -17,13 +17,17 @@
                 Text="Invarte roata" 
                 FontSize="Title" 
                 TextColor="White"
-                BackgroundColor="DarkGreen" 
-                Padding="30,10" 
-                Clicked="SpinTheWheel" 
                 Grid.Row="2" 
                 HeightRequest="50" 
                 CornerRadius="20"
-                Margin="50,0,50,40" />
+                Margin="50,0,50,40">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="DarkGreen" Offset="0" />
+                        <GradientStop Color="LimeGreen" Offset="1" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

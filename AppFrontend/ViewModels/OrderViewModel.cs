@@ -206,7 +206,7 @@ namespace AppFrontend.ViewModels
 
         public string ClientPhoneNumber { get; set; }
 
-        public ObservableCollection<string> Offers { get; set; }
+        public ObservableCollection<string> Offers { get; set; } = new ObservableCollection<string>();
 
         public ObservableCollection<string> Sizes = new ObservableCollection<string>()
         {
@@ -229,7 +229,6 @@ namespace AppFrontend.ViewModels
             this.IsConfirmed = order.IsConfirmed;
             this.EmployeePhoneNumber = order.EmployeePhoneNumber;
             this.Materials = new ObservableCollection<MaterialDTO>();
-            this.Offers = new ObservableCollection<string>();
             Time = new TimeSpan(10, 0, 1);
             SetCurrentOrder();
             SetOrderColor();

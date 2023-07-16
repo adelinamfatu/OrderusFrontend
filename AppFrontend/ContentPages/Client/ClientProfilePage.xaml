@@ -30,36 +30,71 @@
             </StackLayout>
             <StackLayout Margin="30,10,30,0">
                 <Button Text="Informatii cont"
-                        CornerRadius="20" 
-                        HeightRequest="50" 
-                        BackgroundColor="#6ba1f9" 
-                        Clicked="OpenAccountInformationPage"
-                        TextColor="White"
-                        FontSize="16"/>
+                    CornerRadius="20" 
+                    HeightRequest="50" 
+                    Clicked="OpenAccountInformationPage"
+                    TextColor="White"
+                    FontSize="16">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#6ba1f9" Offset="0" />
+                            <GradientStop Color="#a3c3f8" Offset="0.7" />
+                            <GradientStop Color="#cfe0fd" Offset="1" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
                 <Button Text="Roata de oferte" 
-                        Clicked="OpenSpinningWheelPage"
-                        CornerRadius="20" 
-                        BackgroundColor="#94b1e3"
-                        TextColor="White"
-                        FontSize="16"/>
+                    Clicked="OpenSpinningWheelPage"
+                    CornerRadius="20" 
+                    TextColor="White"
+                    FontSize="16">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#E6F1FF" Offset="0" />
+                            <GradientStop Color="#A3C1FF" Offset="0.5" />
+                            <GradientStop Color="#87aeff" Offset="1" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
                 <Button Text="Oferte si cupoane" 
-                        Clicked="OpenClientOffersPage"
-                        CornerRadius="20" 
-                        BackgroundColor="#6ba1f9"
-                        TextColor="White"
-                        FontSize="16"/>
+                    Clicked="OpenClientOffersPage"
+                    CornerRadius="20" 
+                    TextColor="White"
+                    FontSize="16">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#6ba1f9" Offset="0" />
+                            <GradientStop Color="#a3c3f8" Offset="0.7" />
+                            <GradientStop Color="#cfe0fd" Offset="1" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
                 <Button Text="Cereri de schimbare ora" 
-                        Clicked="OpenOrderRequestChangePage"
-                        CornerRadius="20" 
-                        BackgroundColor="#94b1e3"
-                        TextColor="White"
-                        FontSize="16"/>
+                    Clicked="OpenOrderRequestChangePage"
+                    CornerRadius="20" 
+                    TextColor="White"
+                    FontSize="16">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#E6F1FF" Offset="0" />
+                            <GradientStop Color="#A3C1FF" Offset="0.5" />
+                            <GradientStop Color="#87aeff" Offset="1" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
                 <Button Text="Comentarii" 
-                        CornerRadius="20" 
-                        Clicked="OpenCommentsListPage"
-                        BackgroundColor="#6ba1f9"
-                        TextColor="White"
-                        FontSize="16"/>
+                    CornerRadius="20" 
+                    Clicked="OpenCommentsListPage"
+                    TextColor="White"
+                    FontSize="16">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#6ba1f9" Offset="0" />
+                            <GradientStop Color="#a3c3f8" Offset="0.7" />
+                            <GradientStop Color="#cfe0fd" Offset="1" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </StackLayout>
             <StackLayout HorizontalOptions="End" WidthRequest="250" x:Name="appInfoStackLayout">
                 <Grid>
