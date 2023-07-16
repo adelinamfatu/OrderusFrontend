@@ -208,6 +208,13 @@ namespace AppFrontend.ViewModels
 
         public ObservableCollection<string> Offers { get; set; }
 
+        public ObservableCollection<string> Sizes = new ObservableCollection<string>()
+        {
+            "Mica",
+            "Medie",
+            "Mare"
+        };
+
         public OrderViewModel(OrderDTO order)
         {
             this.ID = order.ID;

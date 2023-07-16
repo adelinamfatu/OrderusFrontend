@@ -173,7 +173,7 @@ namespace AppFrontend.ContentPages
                     ValueLabelColor = color
                 });
             }
-            noteBarChart.Chart = new LineChart { Entries = EarningsData };
+            noteBarChart.Chart = new LineChart { Entries = ReviewsData };
         }
 
         private async void DownloadCSVFile(object sender, EventArgs e)

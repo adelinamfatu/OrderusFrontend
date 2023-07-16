@@ -5,6 +5,13 @@
              x:Class="AppFrontend.ContentPages.BasketPage"
              Title="Cos de cumparaturi">
 
+    <ContentPage.Resources>
+        <x:Array x:Key="SizeOptions" Type="{x:Type x:String}">
+            <x:String>Mica</x:String>
+            <x:String>Medie</x:String>
+            <x:String>Mare</x:String>
+        </x:Array>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <Frame x:Name="serviceDetailsFrame" BackgroundColor="#94b1e3" Margin="10,10,10,0" CornerRadius="20" Padding="5" HasShadow="True">
@@ -157,6 +164,37 @@
                            TextColor="Black"
                     />
                     <Entry x:Name="noRepairsEntry"
+                           IsVisible="false"
+                           Placeholder="ex: 2"
+                           HorizontalTextAlignment="Center"
+                           Grid.Row="7"
+                           Grid.Column="1"
+                    />
+                    <Label x:Name="sizeLabel"
+                           IsVisible="false"
+                           Text="Marime obiecte"
+                           Grid.Row="6"
+                           Grid.Column="0"
+                           FontSize="18"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                    />
+                    <Picker x:Name="sizePicker"
+                           ItemsSource="{StaticResource SizeOptions}"
+                           IsVisible="false"
+                           Grid.Row="7"
+                           Grid.Column="0"
+                    />
+                    <Label x:Name="noObjectsLabel"
+                           IsVisible="false"
+                           Text="Nr obiecte de montat"
+                           Grid.Row="6"
+                           Grid.Column="1"
+                           FontSize="18"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                    />
+                    <Entry x:Name="noObjectsEntry"
                            IsVisible="false"
                            Placeholder="ex: 2"
                            HorizontalTextAlignment="Center"

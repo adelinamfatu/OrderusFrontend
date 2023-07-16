@@ -8,6 +8,7 @@ namespace AppFrontend.Resources.Helpers
     {
         Curatenie,
         Reparatii,
+        Montare,
         Matematica,
         Romana,
         Franceza,

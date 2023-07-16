@@ -241,6 +241,15 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to mounting/.
+        /// </summary>
+        internal static string MountingURL {
+            get {
+                return ResourceManager.GetString("MountingURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to discount/.
         /// </summary>
         internal static string OfferURL {

@@ -30,6 +30,13 @@ namespace AppFrontend.ContentPages
 
         public List<OfferDTO> OffersJSON { get; set; }
 
+        private Dictionary<string, int> options = new Dictionary<string, int>()
+        {
+            { "Mica", 1 },
+            { "Medie", 2 },
+            { "Mare", 3 }
+        };
+
         private HashSet<string> privateLessonsTypes = new HashSet<string>
         {
             ServiceType.Matematica.ToString(),
@@ -142,6 +149,13 @@ namespace AppFrontend.ContentPages
                 noRepairsLabel.IsVisible = true;
                 noRepairsEntry.IsVisible = true;
             }
+            else if (CSO.Service.Name == ServiceType.Montare.ToString())
+            {
+                sizeLabel.IsVisible = true;
+                sizePicker.IsVisible = true;
+                noObjectsLabel.IsVisible = true;
+                noObjectsEntry.IsVisible = true;
+            }
         }
 
         private async void GetOffers()
@@ -213,6 +227,19 @@ namespace AppFrontend.ContentPages
                         CSO.Complexity = (int)complexitySlider.Value;
                         CSO.NbRepairs = int.Parse(noRepairsEntry.Text);
                         SendServiceData(ConvertCSOToPO.Convert(CSO, globalService.Client.Email), RestResources.RepairingURL);
+                    }
+                }
+                else if (CSO.Service.Name == ServiceType.Montare.ToString())
+                {
+                    if (noObjectsEntry.Text == null)
+                    {
+                        CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.DataMissingError);
+                    }
+                    else
+                    {
+                        CSO.Size = options[sizePicker.SelectedItem.ToString()];
+                        CSO.NoObjects = int.Parse(noObjectsEntry.Text);
+                        SendServiceData(ConvertCSOToPO.Convert(CSO, globalService.Client.Email), RestResources.MountingURL);
                     }
                 }
 
@@ -288,6 +315,10 @@ namespace AppFrontend.ContentPages
                                     || eventTypes.Contains(CSO.Service.Name))
             {
                 Order.PaymentAmount = CSO.Price * (CSO.Duration / 60);
+            }
+            else if (CSO.Service.Name == ServiceType.Montare.ToString())
+            {
+                Order.PaymentAmount = CSO.Price * int.Parse(noObjectsEntry.Text);
             }
             Order.InitialPaymentAmount = Order.PaymentAmount;
             orderButton.IsEnabled = true;
@@ -369,7 +400,8 @@ namespace AppFrontend.ContentPages
                 Comment = commentEntry.Text
             };
 
-            if (CSO.Service.Name == ServiceType.Curatenie.ToString() || CSO.Service.Name == ServiceType.Reparatii.ToString())
+            if (CSO.Service.Name == ServiceType.Curatenie.ToString() || CSO.Service.Name == ServiceType.Reparatii.ToString()
+                    || CSO.Service.Name == ServiceType.Montare.ToString())
             {
                 order.Details = GetDetailsDictionary();
             }
@@ -388,6 +420,11 @@ namespace AppFrontend.ContentPages
             {
                 details.Add(noRepairsLabel.Text, noRepairsEntry.Text);
                 details.Add(complexityLabel.Text, ((int)complexitySlider.Value).ToString());
+            }
+            if (CSO.Service.Name == ServiceType.Montare.ToString())
+            {
+                details.Add(noRepairsLabel.Text, noObjectsEntry.Text);
+                details.Add(complexityLabel.Text, options[sizePicker.SelectedItem.ToString()].ToString());
             }
             return details;
         }

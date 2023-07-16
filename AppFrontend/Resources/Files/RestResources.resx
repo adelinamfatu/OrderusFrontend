@@ -177,6 +177,9 @@
   <data name="MaterialsURL" xml:space="preserve">
     <value>materials/</value>
   </data>
+  <data name="MountingURL" xml:space="preserve">
+    <value>mounting/</value>
+  </data>
   <data name="OfferURL" xml:space="preserve">
     <value>discount/</value>
   </data>
