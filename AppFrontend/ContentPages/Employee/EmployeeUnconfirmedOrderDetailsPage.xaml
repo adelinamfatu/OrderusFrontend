@@ -13,6 +13,12 @@
                HorizontalTextAlignment="Center"
                     />
             <Frame x:Name="orderGeneralDetailsFrame" BackgroundColor="#94b1e3" Margin="10,10,10,0" CornerRadius="20" Padding="5" HasShadow="True">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#757f9a" Offset="0" />
+                        <GradientStop Color="#d7dde8" Offset="1" />
+                    </LinearGradientBrush>
+                </Frame.Background>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -30,7 +36,7 @@
                            Grid.Row="0"
                            Grid.Column="0"
                            FontSize="20"
-                           TextColor="Black"
+                           TextColor="White"
                            Margin="20,0,0,0"
                     />
                     <Label Text="{Binding Order.ServiceName}"
@@ -45,7 +51,7 @@
                            Grid.Row="1"
                            Grid.Column="0"
                            FontSize="20"
-                           TextColor="Black"
+                           TextColor="White"
                            Margin="20,0,0,0"
                     />
                     <Label Text="{Binding Order.StartTime, StringFormat='{0:dd.MM.yyyy}'}"
@@ -59,7 +65,7 @@
                            Grid.Row="2"
                            Grid.Column="0"
                            FontSize="20"
-                           TextColor="Black"
+                           TextColor="White"
                            Margin="20,0,0,0"
                     />
                     <Label Text="{Binding Order.StartTime, StringFormat='{0:hh:mm tt}'}"
@@ -73,7 +79,7 @@
                            Grid.Row="3"
                            Grid.Column="0"
                            FontSize="20"
-                           TextColor="Black"
+                           TextColor="White"
                            Margin="20,0,0,0"
                     />
                     <Label Text="{Binding Order.FinishTime, StringFormat='{0:hh:mm tt}'}"
@@ -87,7 +93,7 @@
                            Grid.Row="4"
                            Grid.Column="0"
                            FontSize="20"
-                           TextColor="Black"
+                           TextColor="White"
                            Margin="20,0,0,0"
                     />
                     <Label Text="{Binding Order.Comment}"
@@ -105,7 +111,13 @@
                Margin="0,10,0,0"
                HorizontalTextAlignment="Center"
             />
-            <Frame x:Name="orderDetailsFrame" BackgroundColor="#94b1e3" Margin="10,10,10,0" CornerRadius="20" Padding="5" HasShadow="True">
+            <Frame x:Name="orderDetailsFrame" Margin="10,10,10,0" CornerRadius="20" Padding="5" HasShadow="True">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#d7dde8" Offset="0" />
+                        <GradientStop Color="#757f9a" Offset="1" />
+                    </LinearGradientBrush>
+                </Frame.Background>
                 <ListView ItemsSource="{Binding Order.Details}" HeightRequest="90">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -123,7 +135,7 @@
                                         Grid.Column="0" />
                                     <Label Text="{Binding Value}"
                                         FontSize="20"
-                                        TextColor="Black"
+                                        TextColor="White"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Grid.Column="1" />
@@ -174,7 +186,7 @@
                 <Button Text="Confirmare comanda" 
                 TextColor="#ebf3fb"
                 Clicked="ConfirmOrder"
-                BackgroundColor="#6ba1f9"/>
+                BackgroundColor="#757f9a"/>
             </Frame>
         </StackLayout>
     </ScrollView>

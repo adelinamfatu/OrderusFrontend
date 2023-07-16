@@ -66,7 +66,15 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Vertical" Margin="5,5">
-                            <Frame BackgroundColor="#6ba1f9" CornerRadius="10" Padding="10">
+                            <Frame CornerRadius="10" Padding="10">
+                                <Frame.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="#667db6" Offset="0" />
+                                        <GradientStop Color="#0082c8" Offset="0.3" />
+                                        <GradientStop Color="#0082c8" Offset="0.7" />
+                                        <GradientStop Color="#667db6" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Frame.Background>
                                 <Grid VerticalOptions="Center">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
@@ -135,7 +143,15 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame CornerRadius="25" BackgroundColor="#94b1e3" Margin="5,10,5,0" Padding="10">
+                        <Frame CornerRadius="25" Margin="5,10,5,0" Padding="10" HasShadow="True">
+                            <Frame.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#005aa7" Offset="0" />
+                                    <GradientStop Color="#8db8e5" Offset="0.4" />
+                                    <GradientStop Color="#d5e6f7" Offset="0.6" />
+                                    <GradientStop Color="#fffde4" Offset="1" />
+                                </LinearGradientBrush>
+                            </Frame.Background>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -168,7 +184,7 @@
                                 />
                                 <Label 
                                     Text="{Binding Score, Converter={StaticResource CommentStarsConverter}}"
-                                    TextColor="White"
+                                    TextColor="#005aa7"
                                     FontAttributes="Bold"
                                     FontSize="15"
                                     Grid.Row="0"
