@@ -37,6 +37,21 @@ namespace AppFrontend.ContentPages.Employee
             InitializeComponent();
             globalService = DependencyService.Get<GlobalService>();
             globalService.PropertyChanged += GlobalService_PropertyChanged;
+            //scheduledOrdersListView.Refreshing += OnListViewRefreshing;
+        }
+
+        private async void OnListViewRefreshing(object sender, EventArgs e)
+        {
+            scheduledOrdersListView.IsRefreshing = true;
+            await RefreshDataAsync();
+            scheduledOrdersListView.IsRefreshing = false;
+        }
+
+        private async Task RefreshDataAsync()
+        {
+            this.Orders.Clear();
+            GetDataForUI();
+            await Task.Delay(2000);
         }
 
         private void GlobalService_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -80,6 +95,8 @@ namespace AppFrontend.ContentPages.Employee
 
         private void OnDayOptionsSelectedIndexChanged(object sender, EventArgs e)
         {
+            //this.Orders.Clear();
+            //GetDataForUI();
             DateTime currentTime = DateTime.Now;
             string selectedOption = dayOptionsSC.Children[dayOptionsSC.SelectedSegment].Text;
             if (selectedOption == DisplayPrompts.Today)
@@ -175,8 +192,7 @@ namespace AppFrontend.ContentPages.Employee
 
             if (response)
             {
-                Button button = (Button)sender;
-                int orderId = (int)button.CommandParameter;
+                var orderId = (int)((MenuItem)sender).CommandParameter;
                 SendFinishingOrderConfirmation(orderId);
             }
         }

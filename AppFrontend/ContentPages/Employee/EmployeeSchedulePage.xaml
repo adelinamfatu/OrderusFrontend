@@ -23,99 +23,98 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Vertical" Margin="5,5">
-                            <Frame CornerRadius="10" Padding="10" BackgroundColor="{Binding Color}">
-                                <Grid VerticalOptions="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Label 
-                                        Text="{Binding ServiceName}"
-                                        TextColor="White"
-                                        FontAttributes="Bold"
-                                        FontSize="25"
-                                        InputTransparent="True"
-                                        Grid.Column="0"
-                                        Grid.Row="0"
-                                        VerticalOptions="Center"
-                                    />
-                                    <Image x:Name="clockImg"
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        Source="delay.png" 
-                                        HorizontalOptions="End"
-                                        IsVisible="{Binding IsCurrentOrder}"
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem IconImageSource="ok.png"
+                                               BackgroundColor="Green" 
+                                               Clicked="FinishOrder" 
+                                               IsVisible="{Binding IsCurrentOrder}"
+                                               CommandParameter="{Binding ID}"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <StackLayout Orientation="Vertical" Margin="5,5">
+                                <Frame CornerRadius="10" Padding="10" BackgroundColor="{Binding Color}">
+                                    <Grid VerticalOptions="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label 
+                                            Text="{Binding ServiceName}"
+                                            TextColor="White"
+                                            FontAttributes="Bold"
+                                            FontSize="25"
+                                            InputTransparent="True"
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            VerticalOptions="Center"
                                         />
-                                    <Button 
-                                        x:Name="btnDelay10"
-                                        BackgroundColor="DarkOrange"
-                                        Clicked="DelayOrders"
-                                        Text="+10 min"
-                                        Grid.Row="0"
-                                        Grid.Column="2"
-                                        WidthRequest="80"
-                                        HorizontalOptions="End"
-                                        IsVisible="{Binding IsCurrentOrder}"
+                                        <Image x:Name="clockImg"
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Source="delay.png" 
+                                            HorizontalOptions="End"
+                                            IsVisible="{Binding IsCurrentOrder}"
                                         />
-                                    <Button 
-                                        x:Name="btnFinishOrder"
-                                        BackgroundColor="ForestGreen"
-                                        ImageSource="ok.png"
-                                        Grid.Row="0"
-                                        Grid.Column="3"
-                                        WidthRequest="80"
-                                        HorizontalOptions="End"
-                                        IsVisible="{Binding IsCurrentOrder}"
-                                        Clicked="FinishOrder"
-                                        CommandParameter="{Binding ID}"
+                                        <Button 
+                                            x:Name="btnDelay10"
+                                            BackgroundColor="DarkOrange"
+                                            Clicked="DelayOrders"
+                                            Text="+10 min"
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            WidthRequest="80"
+                                            HorizontalOptions="End"
+                                            IsVisible="{Binding IsCurrentOrder}"
+                                            CornerRadius="30"
                                         />
-                                    <Button 
-                                        x:Name="btnChangeOrderHour"
-                                        BackgroundColor="PaleTurquoise"
-                                        HeightRequest="35"
-                                        Text="Cere schimbare ora"
-                                        Grid.Row="0"
-                                        Grid.Column="3"
-                                        HorizontalOptions="End"
-                                        Clicked="MakeOrderDateChangeRequest"
-                                        CommandParameter="{Binding ID}"
-                                        IsVisible="{Binding StartTime, Converter={StaticResource DayAfterConverter}}" 
+                                        <Button 
+                                            x:Name="btnChangeOrderHour"
+                                            BackgroundColor="PaleTurquoise"
+                                            HeightRequest="35"
+                                            Text="Cere schimbare ora"
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            HorizontalOptions="End"
+                                            Clicked="MakeOrderDateChangeRequest"
+                                            CommandParameter="{Binding ID}"
+                                            IsVisible="{Binding StartTime, Converter={StaticResource DayAfterConverter}}" 
                                         />
-                                    <Label 
-                                        Text="{Binding StartTime, StringFormat='{0:dd.MM.yyyy}'}"
-                                        TextColor="White"
-                                        FontAttributes="Italic"
-                                        FontSize="20"
-                                        InputTransparent="True"
-                                        Grid.Column="0"
-                                        Grid.Row="1"
-                                    />
-                                    <TimePicker x:Name="myTimePicker" IsVisible="False" Time="{Binding Time}" />
-                                    <Label 
-                                        TextColor="White"
-                                        FontAttributes="Bold"
-                                        InputTransparent="True"
-                                        HorizontalTextAlignment="End"
-                                        Grid.Row="1"
-                                        Grid.ColumnSpan="4" >
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding StartTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic, Bold" FontSize="20" />
-                                                <Span Text=" - " FontAttributes="Italic" FontSize="20" />
-                                                <Span Text="{Binding FinishTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic, Bold" FontSize="20" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </Grid>
-                            </Frame>
-                        </StackLayout>
+                                        <Label 
+                                            Text="{Binding StartTime, StringFormat='{0:dd.MM.yyyy}'}"
+                                            TextColor="White"
+                                            FontAttributes="Italic"
+                                            FontSize="20"
+                                            InputTransparent="True"
+                                            Grid.Column="0"
+                                            Grid.Row="1"
+                                        />
+                                        <TimePicker x:Name="myTimePicker" IsVisible="False" Time="{Binding Time}" />
+                                        <Label 
+                                            TextColor="White"
+                                            FontAttributes="Bold"
+                                            InputTransparent="True"
+                                            HorizontalTextAlignment="End"
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="3" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding StartTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic, Bold" FontSize="20" />
+                                                    <Span Text=" - " FontAttributes="Italic" FontSize="20" />
+                                                    <Span Text="{Binding FinishTime, StringFormat='{0:hh:mm tt}'}" FontAttributes="Italic, Bold" FontSize="20" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </SwipeView>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
