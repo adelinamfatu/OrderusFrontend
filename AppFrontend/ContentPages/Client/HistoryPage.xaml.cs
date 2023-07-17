@@ -97,6 +97,12 @@ namespace AppFrontend.ContentPages
             Navigation.PushAsync(new OrderReceiptPage(order));
         }
 
+        private void CallProvider(object sender, EventArgs e)
+        {
+            var order = (OrderViewModel)((MenuItem)sender).BindingContext;
+            PhoneDialer.Open(order.EmployeePhoneNumber);
+        }
+
         private async void CancelOrder(object sender, EventArgs e)
         {
             var result = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig

@@ -119,7 +119,8 @@ namespace AppFrontend.ContentPages
                 {
                     ClientName = comment.ClientName,
                     Content = comment.Content,
-                    Score = comment.Score
+                    Score = comment.Score,
+                    ClientPhoto = comment.ClientPhoto
                 });
             }
         }

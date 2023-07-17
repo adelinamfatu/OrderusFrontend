@@ -162,7 +162,7 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Frame CornerRadius="50" 
+                                <Frame CornerRadius="100" 
                                        WidthRequest="40" 
                                        HeightRequest="40" 
                                        Grid.Column="0" 

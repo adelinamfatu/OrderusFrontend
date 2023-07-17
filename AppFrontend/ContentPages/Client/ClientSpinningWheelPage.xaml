@@ -20,6 +20,7 @@
                 Grid.Row="2" 
                 HeightRequest="50" 
                 CornerRadius="20"
+                Clicked="SpinTheWheel"
                 Margin="50,0,50,40">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
