@@ -170,7 +170,7 @@
                     />
                     <Label x:Name="noRepairsLabel"
                            IsVisible="false"
-                           Text="Nr obiecte de reparat"
+                           Text="Nr obiecte reparat"
                            Grid.Row="6"
                            Grid.Column="1"
                            FontSize="18"
@@ -203,7 +203,7 @@
                     />
                     <Label x:Name="noObjectsLabel"
                            IsVisible="false"
-                           Text="Nr obiecte de montat"
+                           Text="Nr obiecte montat"
                            Grid.Row="6"
                            Grid.Column="1"
                            FontSize="18"

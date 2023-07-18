@@ -269,8 +269,6 @@ namespace AppFrontend.ContentPages
                         SendServiceData(ConvertCSOToPO.Convert(CSO, globalService.Client.Email), RestResources.MountingURL);
                     }
                 }
-
-                //other orders
             }
         }
 

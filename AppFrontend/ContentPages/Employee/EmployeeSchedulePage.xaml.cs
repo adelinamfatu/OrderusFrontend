@@ -87,23 +87,24 @@ namespace AppFrontend.ContentPages.Employee
                 this.Orders.Clear();
                 GetDataForUI();
             }
+            IsFirstTimeLoading = true;
             DateTime currentTime = DateTime.Now;
             string selectedOption = dayOptionsSC.Children[dayOptionsSC.SelectedSegment].Text;
             if (selectedOption == DisplayPrompts.Today)
             {
-                var filteredOrders = Orders.Where(order => order.StartTime.Date == currentTime.Date).ToList();
+                var filteredOrders = Orders.Where(order => order.StartTime.Date == currentTime.Date).OrderBy(o => o.StartTime).ToList();
                 scheduledOrdersListView.ItemsSource = filteredOrders;
             }
             else if(selectedOption == DisplayPrompts.Tomorrow)
             {
                 currentTime = currentTime.AddDays(1);
-                var filteredOrders = Orders.Where(order => order.StartTime.Date == currentTime.Date).ToList();
+                var filteredOrders = Orders.Where(order => order.StartTime.Date == currentTime.Date).OrderBy(o => o.StartTime).ToList();
                 scheduledOrdersListView.ItemsSource = filteredOrders;
             }
             else
             {
                 currentTime = currentTime.AddDays(2);
-                var filteredOrders = Orders.Where(order => order.StartTime.Date == currentTime.Date).ToList();
+                var filteredOrders = Orders.Where(order => order.StartTime.Date == currentTime.Date).OrderBy(o => o.StartTime).ToList();
                 scheduledOrdersListView.ItemsSource = filteredOrders;
             }
         }
