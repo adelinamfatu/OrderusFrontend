@@ -120,6 +120,15 @@ namespace AppFrontend.ContentPages
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await httpClient.PutAsync(url, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    CrossToastPopUp.Current.ShowToastSuccess(ToastDisplayResources.MaterialStockUpdateSuccess);
+                }
+                else
+                {
+                    CrossToastPopUp.Current.ShowToastError(ToastDisplayResources.MaterialStockUpdateError);
+                }
             }
         }
     }

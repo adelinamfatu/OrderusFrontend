@@ -252,6 +252,12 @@
   <data name="LogoutConfirmationTitle" xml:space="preserve">
     <value>Confirmare delogare</value>
   </data>
+  <data name="MaterialStockUpdateError" xml:space="preserve">
+    <value>S-a produs o eroare la actualizare</value>
+  </data>
+  <data name="MaterialStockUpdateSuccess" xml:space="preserve">
+    <value>S-a produs actualizarea cu succes</value>
+  </data>
   <data name="OrderConfirmation" xml:space="preserve">
     <value>Sunteti sigur ca doriti sa confirmati comanda?</value>
   </data>

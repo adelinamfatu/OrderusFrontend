@@ -466,6 +466,24 @@ namespace AppFrontend.Resources.Files {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S-a produs o eroare la actualizare.
+        /// </summary>
+        internal static string MaterialStockUpdateError {
+            get {
+                return ResourceManager.GetString("MaterialStockUpdateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-a produs actualizarea cu succes.
+        /// </summary>
+        internal static string MaterialStockUpdateSuccess {
+            get {
+                return ResourceManager.GetString("MaterialStockUpdateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sunteti sigur ca doriti sa confirmati comanda?.
         /// </summary>
         internal static string OrderConfirmation {
