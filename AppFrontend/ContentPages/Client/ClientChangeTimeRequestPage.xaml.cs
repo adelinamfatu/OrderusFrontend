@@ -76,8 +76,7 @@ namespace AppFrontend.ContentPages.Client
 
             if(response)
             {
-                Button button = (Button)sender;
-                OrderChangeDTO order = (OrderChangeDTO)button.BindingContext;
+                var order = (OrderChangeDTO)((MenuItem)sender).BindingContext;
                 ChangeOrderTime(order.OrderID);
             }
         }
@@ -122,8 +121,7 @@ namespace AppFrontend.ContentPages.Client
 
             if (response)
             {
-                Button button = (Button)sender;
-                OrderChangeDTO order = (OrderChangeDTO)button.BindingContext;
+                var order = (OrderChangeDTO)((MenuItem)sender).BindingContext;
                 DeclineOrderTimeChange(order.OrderID);
             }
         }

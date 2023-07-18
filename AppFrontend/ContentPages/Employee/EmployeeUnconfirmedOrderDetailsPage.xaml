@@ -105,7 +105,8 @@
                     />
                 </Grid>
             </Frame>
-            <Label Text="Detalii particulare"
+            <Label x:Name="detailsLabel"
+               Text="Detalii particulare"
                FontSize="20"
                TextColor="Black"
                Margin="0,10,0,0"

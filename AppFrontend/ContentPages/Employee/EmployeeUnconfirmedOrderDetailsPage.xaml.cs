@@ -59,6 +59,11 @@ namespace AppFrontend.ContentPages.Employee
                 {
                     string json = await response.Content.ReadAsStringAsync();
                     Order.Details = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                    if(Order.Details.Count == 0)
+                    {
+                        detailsLabel.IsVisible = false;
+                        orderDetailsFrame.IsVisible = false;
+                    }
                 }
             }
         }

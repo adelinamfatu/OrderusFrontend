@@ -129,18 +129,22 @@ namespace AppFrontend.ContentPages
         {
             surfaceLabel.IsVisible = false;
             surfaceEntry.IsVisible = false;
+            surfaceEntry.Text = null;
             noRoomsLabel.IsVisible = false;
             noRoomsEntry.IsVisible = false;
+            noRepairsEntry.Text = null;
 
             complexityLabel.IsVisible = false;
             complexitySlider.IsVisible = false;
             noRepairsLabel.IsVisible = false;
             noRepairsEntry.IsVisible = false;
+            noRepairsEntry.Text = null;
 
             sizeLabel.IsVisible = false;
             sizePicker.IsVisible = false;
             noObjectsLabel.IsVisible = false;
             noObjectsEntry.IsVisible = false;
+            noObjectsEntry.Text = null;
         }
 
         private void SetUIServiceInformation()

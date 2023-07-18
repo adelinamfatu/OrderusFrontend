@@ -32,26 +32,13 @@ namespace AppFrontend.ContentPages.Employee
 
         public GlobalService globalService { get; set; }
 
+        private bool IsFirstTimeLoading = true;
+
         public EmployeeSchedulePage()
         {
             InitializeComponent();
             globalService = DependencyService.Get<GlobalService>();
             globalService.PropertyChanged += GlobalService_PropertyChanged;
-            //scheduledOrdersListView.Refreshing += OnListViewRefreshing;
-        }
-
-        private async void OnListViewRefreshing(object sender, EventArgs e)
-        {
-            scheduledOrdersListView.IsRefreshing = true;
-            await RefreshDataAsync();
-            scheduledOrdersListView.IsRefreshing = false;
-        }
-
-        private async Task RefreshDataAsync()
-        {
-            this.Orders.Clear();
-            GetDataForUI();
-            await Task.Delay(2000);
         }
 
         private void GlobalService_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -95,8 +82,11 @@ namespace AppFrontend.ContentPages.Employee
 
         private void OnDayOptionsSelectedIndexChanged(object sender, EventArgs e)
         {
-            //this.Orders.Clear();
-            //GetDataForUI();
+            if(!IsFirstTimeLoading)
+            {
+                this.Orders.Clear();
+                GetDataForUI();
+            }
             DateTime currentTime = DateTime.Now;
             string selectedOption = dayOptionsSC.Children[dayOptionsSC.SelectedSegment].Text;
             if (selectedOption == DisplayPrompts.Today)
@@ -228,6 +218,7 @@ namespace AppFrontend.ContentPages.Employee
         {
             Button button = (Button)sender;
             TimePicker timePicker = (TimePicker)button.Parent.FindByName("myTimePicker");
+            button.IsEnabled = false;
 
             if (timePicker != null)
             {

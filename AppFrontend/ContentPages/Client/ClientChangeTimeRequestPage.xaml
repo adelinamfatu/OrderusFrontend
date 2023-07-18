@@ -11,67 +11,61 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Text="Serviciu" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18" />
                     <Label Grid.Column="1" Text="Timpul initial" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18" />
                     <Label Grid.Column="2" Text="Timpul cerut" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18"  />
-                    <Label Grid.Column="3" Text="Accepta" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18"  />
-                    <Label Grid.Column="4" Text="Refuza" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="18"  />
-                    <BoxView Color="Gray" HeightRequest="1" Grid.ColumnSpan="5" VerticalOptions="End" />
+                    <BoxView Color="Gray" HeightRequest="1" Grid.ColumnSpan="3" VerticalOptions="End" />
                 </Grid>
                 <ListView ItemsSource="{Binding Orders}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="1" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="1" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="1" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="1" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding ServiceName}" 
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"    
-                                        FontSize="18"
-                                        Grid.Column="0" />
-                                    <BoxView Grid.Column="1" BackgroundColor="Gray" WidthRequest="1" VerticalOptions="FillAndExpand" />
-                                    <Label Text="{Binding InitialDate, StringFormat='{0:HH:mm:ss}'}" 
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"    
-                                        FontSize="18"
-                                        Grid.Column="2" />
-                                    <BoxView Grid.Column="3" BackgroundColor="Gray" WidthRequest="1" VerticalOptions="FillAndExpand" />
-                                    <Label Text="{Binding ChangedDate, StringFormat='{0:HH:mm:ss}'}" 
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"    
-                                        FontSize="18"
-                                        Grid.Column="4" />
-                                    <BoxView Grid.Column="5" BackgroundColor="Gray" WidthRequest="1" VerticalOptions="FillAndExpand" />
-                                    <Button 
-                                        ImageSource="ok.png"
-                                        Grid.Column="6"
-                                        BackgroundColor="Green"
-                                        CornerRadius="10"
-                                        Clicked="ConfirmOrderTimeChangeRequest"
-                                        />
-                                    <BoxView Grid.Column="7" BackgroundColor="Gray" WidthRequest="1" VerticalOptions="FillAndExpand" />
-                                    <Button 
-                                        ImageSource="cancel.png"
-                                        BackgroundColor="Red"
-                                        Grid.Column="8"
-                                        CornerRadius="10"
-                                        Clicked="DeclineOrderTimeChangeRequest"
-                                        />
-                                    <BoxView Color="Gray" HeightRequest="1" Grid.ColumnSpan="9" VerticalOptions="End" />
-                                </Grid>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem IconImageSource="ok.png"
+                                               BackgroundColor="Green" 
+                                               Clicked="ConfirmOrderTimeChangeRequest" 
+                                               CommandParameter="{Binding .}"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <SwipeView.LeftItems>
+                                        <SwipeItems>
+                                            <SwipeItem IconImageSource="cancel.png"
+                                               BackgroundColor="Red" 
+                                               Clicked="DeclineOrderTimeChangeRequest" 
+                                               CommandParameter="{Binding .}"/>
+                                        </SwipeItems>
+                                    </SwipeView.LeftItems>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="1" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="1" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding ServiceName}" 
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center"    
+                                            FontSize="18"
+                                            Grid.Column="0" />
+                                        <BoxView Grid.Column="1" BackgroundColor="Gray" WidthRequest="1" VerticalOptions="FillAndExpand" />
+                                        <Label Text="{Binding InitialDate, StringFormat='{0:HH:mm:ss}'}" 
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center"    
+                                            FontSize="18"
+                                            Grid.Column="2" />
+                                        <BoxView Grid.Column="3" BackgroundColor="Gray" WidthRequest="1" VerticalOptions="FillAndExpand" />
+                                        <Label Text="{Binding ChangedDate, StringFormat='{0:HH:mm:ss}'}" 
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center"    
+                                            FontSize="18"
+                                            Grid.Column="4" />
+                                        <BoxView Color="Gray" HeightRequest="1" Grid.ColumnSpan="5" VerticalOptions="End" />
+                                    </Grid>
+                                </SwipeView>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
