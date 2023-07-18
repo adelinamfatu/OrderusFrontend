@@ -215,6 +215,8 @@ namespace AppFrontend.ViewModels
             "Mare"
         };
 
+        public string ClientLocation { get; set; }
+
         public OrderViewModel(OrderDTO order)
         {
             this.ID = order.ID;
@@ -227,6 +229,7 @@ namespace AppFrontend.ViewModels
             this.Comment = order.Comment;
             this.ClientPhoneNumber = order.ClientNumber;
             this.IsConfirmed = order.IsConfirmed;
+            this.ClientLocation = order.ClientLocation;
             this.EmployeePhoneNumber = order.EmployeePhoneNumber;
             this.Materials = new ObservableCollection<MaterialDTO>();
             Time = new TimeSpan(10, 0, 1);

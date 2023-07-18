@@ -280,5 +280,36 @@ namespace AppFrontend.ContentPages.Employee
                 }
             }
         }
+
+        private void OpenMapsWithClientLocation(object sender, EventArgs e)
+        {
+            var clientLocation = (string)((MenuItem)sender).CommandParameter;
+            var location = $"{clientLocation}, Bucharest, Romania";
+
+            OpenMapWithAddress(location);
+        }
+
+        public async void OpenMapWithAddress(string address)
+        {
+            try
+            {
+                var locations = await Geocoding.GetLocationsAsync(address);
+
+                if (locations != null && locations.Any())
+                {
+                    var location = locations.First();
+                    await Map.OpenAsync(location.Latitude, location.Longitude, new MapLaunchOptions { Name = address });
+                }
+                else
+                {
+                    Console.WriteLine("No location found for the given address.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception if the map application is not available on the device or any other error occurs
+                Console.WriteLine($"Error opening map: {ex.Message}");
+            }
+        }
     }
 }
