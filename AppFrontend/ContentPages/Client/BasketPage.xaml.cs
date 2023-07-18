@@ -69,6 +69,7 @@ namespace AppFrontend.ContentPages
             MessagingCenter.Subscribe<CompanyPage, BasketItemMessage>(this, "BasketItemMessage", (sender, message) =>
             {
                 CSO = message.CSO;
+                ResetAllUI();
                 GetBasketInformation();
                 SetUIServiceInformation();
             });
@@ -122,6 +123,24 @@ namespace AppFrontend.ContentPages
                 emptyBasketImg.IsVisible = true;
                 emptyBasketLabel.IsVisible = true;
             }
+        }
+
+        private void ResetAllUI()
+        {
+            surfaceLabel.IsVisible = false;
+            surfaceEntry.IsVisible = false;
+            noRoomsLabel.IsVisible = false;
+            noRoomsEntry.IsVisible = false;
+
+            complexityLabel.IsVisible = false;
+            complexitySlider.IsVisible = false;
+            noRepairsLabel.IsVisible = false;
+            noRepairsEntry.IsVisible = false;
+
+            sizeLabel.IsVisible = false;
+            sizePicker.IsVisible = false;
+            noObjectsLabel.IsVisible = false;
+            noObjectsEntry.IsVisible = false;
         }
 
         private void SetUIServiceInformation()
