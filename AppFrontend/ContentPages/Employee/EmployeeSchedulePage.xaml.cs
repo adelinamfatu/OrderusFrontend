@@ -32,8 +32,6 @@ namespace AppFrontend.ContentPages.Employee
 
         public GlobalService globalService { get; set; }
 
-        private bool IsFirstTimeLoading = true;
-
         public EmployeeSchedulePage()
         {
             InitializeComponent();
@@ -82,12 +80,6 @@ namespace AppFrontend.ContentPages.Employee
 
         private void OnDayOptionsSelectedIndexChanged(object sender, EventArgs e)
         {
-            if(!IsFirstTimeLoading)
-            {
-                this.Orders.Clear();
-                GetDataForUI();
-            }
-            IsFirstTimeLoading = true;
             DateTime currentTime = DateTime.Now;
             string selectedOption = dayOptionsSC.Children[dayOptionsSC.SelectedSegment].Text;
             if (selectedOption == DisplayPrompts.Today)
